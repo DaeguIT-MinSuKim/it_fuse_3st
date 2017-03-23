@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
+<!-- 	
+	<sql id="selectSql">SELECT code,name,saleprice,origiprice FROM Employee </sql>
+	<sql id="selectSqlForSellInfo">SELECT code,name,saleprice FROM Employee </sql>
+	<sql id="whereSql"><where><if test="code !=null">code = #{code}</if></where></sql>
+	
+	<select id="selectEmployeeByAll" resultType="Employee">
+		<include refid="selectSql"/>
+	</select>
+	
+	<insert id="insertEmployee" parameterType="Employee" >
+      insert into Employee (code,name,saleprice,origiprice)
+      values (#{code},#{name},#{salePrice},#{origiPrice})
+   <trim prefix="values(" suffix=")" suffixOverrides=",">
+         <if test="code !=null">
+            #{code},
+         </if>
+         <if test="name !=null">
+            #{name},
+         </if>
+         <if test="salePrice !=null">
+            #{salePrice},
+         </if>
+         <if test="origiPrice !=null">
+            #{origiPrice},
+         </if>
+      </trim> 
+   	</insert>
+	
+	<update id="updateEmployee" parameterType="Employee">
+		UPDATE Employee
+		<set>
+			<if test="name != null">
+				name = #{name},	</if>   
+			<if test="salePrice != null">
+				saleprice = #{salePrice},	</if> 
+			<if test="origiPrice != null">
+				origiprice = #{origiPrice},	</if> 
+		</set>
+		<include refid="whereSql"></include>
+	</update>
+ 	<delete id="deleteEmployee" parameterType="Employee">
+		delete from Employee
+		<include refid="whereSql"/>
+	</delete> 
+ 	<select id="selectEmployeeByNo" parameterType="Employee" resultType="Employee"> 
+		<include refid="selectSql"></include>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectEmployeeByNoForSellInfo" parameterType="Employee" resultType="Employee"> 
+		<include refid="selectSqlForSellInfo"></include>
+		<include refid="whereSql"/>
+	</select> -->
+	
+	
+</mapper>
+

@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+tasks.withType(JavaCompile){
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+   compile group: 'org.mybatis', name: 'mybatis', version: '3.4.2'
+   compile group: 'log4j', name: 'log4j', version: '1.2.17'
+   compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
+   testImplementation 'junit:junit:4.12'
+   compile files('src/erp_myframework.jar')
+
+}
