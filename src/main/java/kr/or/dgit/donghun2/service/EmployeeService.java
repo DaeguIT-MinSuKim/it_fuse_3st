@@ -7,7 +7,6 @@ import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dao.EmployeeMapper;
-import kr.or.dgit.donghun2.dao.EmployeeMapperImpl;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 
@@ -21,45 +20,49 @@ public class EmployeeService {
 	public List<Employee> selectEmployeeByAll(){
 		log.debug("selectEmployeeByAll()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			EmployeeMapper EmployeeMapper = new EmployeeMapperImpl(sqlSession);
-			return EmployeeMapper.selectEmployeeByAll();
+			List<Employee> list =sqlSession.getMapper(EmployeeMapper.class).selectEmployeeByAll();
+			return list;
 		}
 	}
-
-	public int insertEmployee(Employee Employee){
-		log.debug("insertEmployee()");
-		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			EmployeeMapper EmployeeMapper = new EmployeeMapperImpl(sqlSession);
-			int res = EmployeeMapper.insertEmployee(Employee);
+	
+	public int insertEmployee(Employee employee){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int res = sqlSession.getMapper(EmployeeMapper.class).insertEmployee(employee);
 			sqlSession.commit();
 			return res;
 		}
 	}
 	
-	public int updateEmployee(Employee Employee){
-		log.debug("updateEmployee()");
-		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			EmployeeMapper EmployeeMapper = new EmployeeMapperImpl(sqlSession);
-			int res = EmployeeMapper.updateEmployee(Employee);
+	public int updateEmployee(Employee employee){
+		SqlSession sqlSession = MybatisSqlSessionFactory.openSession();
+		try{
+			EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+			int res = employeeMapper.updateEmployee(employee);
 			sqlSession.commit();
 			return res;
+		} catch(Exception e){
+			sqlSession.rollback();
+			e.printStackTrace();
+			throw new RuntimeException(e.getCause());
+		} finally {
+			sqlSession.close();
 		}
 	}
+	
 	public int deleteEmployee(Employee code){
-		log.debug("updateEmployee()");
-		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			EmployeeMapper EmployeeMapper = new EmployeeMapperImpl(sqlSession);
-			int res = EmployeeMapper.deleteEmployee(code);
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int res = sqlSession.getMapper(EmployeeMapper.class).deleteEmployee(code);
 			sqlSession.commit();
 			return res;
 		}
 	}
+	
 	
 	public Employee selectEmployeeByNo(Employee code){
 		log.debug("selectEmployeeByNo()");
-		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			EmployeeMapper EmployeeMapper = new EmployeeMapperImpl(sqlSession);
-			return EmployeeMapper.selectEmployeeByNo(code);
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			Employee employee = sqlSession.getMapper(EmployeeMapper.class).selectEmployeeByNo(code);
+			return employee;
 		}
 	}
 }

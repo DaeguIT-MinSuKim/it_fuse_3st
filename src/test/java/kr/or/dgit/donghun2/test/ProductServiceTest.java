@@ -18,7 +18,7 @@ import kr.or.dgit.donghun2.service.ProductService;
 public class ProductServiceTest {
 	private static ProductService productService;
 
-	@BeforeClass
+/*	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
 		productService = ProductService.getInstance();
@@ -38,7 +38,7 @@ public class ProductServiceTest {
 		}
 		Assert.assertNotNull(products);
 	}
-/*	
+	
    @Test
 	public void bTestInsertProduct() {
 		Product item = new Product();

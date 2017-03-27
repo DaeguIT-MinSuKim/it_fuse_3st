@@ -15,7 +15,7 @@ import kr.or.dgit.donghun2.service.CustomerService;
 public class CustomerServiceTest {
 	private static CustomerService customerService;
 
-	@BeforeClass
+/*	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
 		customerService = CustomerService.getInstance();
@@ -71,7 +71,7 @@ public class CustomerServiceTest {
 		
 		Assert.assertNotNull(Customer);
 	}	
-	
+	*/
 
 
 	
