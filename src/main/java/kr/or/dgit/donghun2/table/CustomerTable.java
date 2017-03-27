@@ -11,10 +11,11 @@ import javax.swing.table.DefaultTableModel;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.service.CustomerService;
 
 public class CustomerTable extends JPanel {
 	private JTable table;
-	private static CustomerMapper dao;
+	private static CustomerService dao;
 
 	/**
 	 * Create the panel.
@@ -40,10 +41,10 @@ public class CustomerTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Customer> vCustomer = dao.selectCustomerByAll();
-		String[][] datas = new String[vCustomer.size()][];
+		List<Customer> customers = dao.selectCustomerByAll();
+		String[][] datas = new String[customers.size()][];
 		for(int i = 0; i < datas.length; i++){
-			datas[i] = vCustomer.get(i).toArray();
+			datas[i] = customers.get(i).toArray();
 		}
 		return datas;
 	}

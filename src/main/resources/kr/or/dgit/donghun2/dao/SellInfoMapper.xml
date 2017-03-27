@@ -1,1 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
+	
+	<sql id="selectSql">SELECT code,name,saleprice,origiprice FROM SellInfo </sql>
+	<sql id="selectSqlForSellInfo">SELECT code,name,saleprice FROM SellInfo </sql>
+	<sql id="whereSql"><where><if test="code !=null">code = #{code}</if></where></sql>
+	
+	<select id="selectSellInfoByAll" resultType="SellInfo">
+		<include refid="selectSql"/>
+	</select>
+	
+	<insert id="insertSellInfo" parameterType="SellInfo" >
+      insert into SellInfo (code,name,saleprice,origiprice)
+      values (#{code},#{name},#{salePrice},#{origiPrice})
+   <trim prefix="values(" suffix=")" suffixOverrides=",">
+         <if test="code !=null">
+            #{code},
+         </if>
+         <if test="name !=null">
+            #{name},
+         </if>
+         <if test="salePrice !=null">
+            #{salePrice},
+         </if>
+         <if test="origiPrice !=null">
+            #{origiPrice},
+         </if>
+      </trim> 
+   	</insert>
+	
+	<update id="updateSellInfo" parameterType="SellInfo">
+		UPDATE SellInfo
+		<set>
+			<if test="name != null">
+				name = #{name},	</if>   
+			<if test="salePrice != null">
+				saleprice = #{salePrice},	</if> 
+			<if test="origiPrice != null">
+				origiprice = #{origiPrice},	</if> 
+		</set>
+		<include refid="whereSql"></include>
+	</update>
+ 	<delete id="deleteSellInfo" parameterType="SellInfo">
+		delete from SellInfo
+		<include refid="whereSql"/>
+	</delete> 
+ 	<select id="selectSellInfoByNo" parameterType="SellInfo" resultType="SellInfo"> 
+		<include refid="selectSql"></include>
+		<include refid="whereSql"/>
+	</select>
+	
+	<select id="selectSellInfoByNoForSellInfo" parameterType="SellInfo" resultType="SellInfo"> 
+		<include refid="selectSqlForSellInfo"></include>
+		<include refid="whereSql"/>
+	</select> 
+
+</mapper>

@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.panel.CustomerPanel;
+import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;
 
 public class CustomerView extends JFrame implements ActionListener {
@@ -27,7 +28,7 @@ public class CustomerView extends JFrame implements ActionListener {
 	private CustomerTable pTable;
 	private JButton btnSearch;
 	
-	private static CustomerMapper dao;
+	private static CustomerService dao;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

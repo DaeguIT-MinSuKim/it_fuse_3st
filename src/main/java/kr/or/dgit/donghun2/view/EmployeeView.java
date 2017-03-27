@@ -16,6 +16,7 @@ import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dao.EmployeeMapper;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
+import kr.or.dgit.donghun2.service.EmployeeService;
 
 @SuppressWarnings("serial")
 public class EmployeeView extends JFrame implements ActionListener {
@@ -27,7 +28,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 	private JButton btnSave;
 	private JButton btnDele;
 
-	private static EmployeeMapper dao;
+	private static EmployeeService dao;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -97,7 +98,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 		if(pEmployee.isEmpty()){
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다");
 		}else{
-			dao.insertEmployee(pEmployee.getObject());
+			dao.getInstance().insertEmployee(pEmployee.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다");
 		}
 		

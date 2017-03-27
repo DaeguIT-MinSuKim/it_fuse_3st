@@ -16,6 +16,7 @@ import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dao.ProductMapper;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.panel.ProductPanel;
+import kr.or.dgit.donghun2.service.ProductService;
 import kr.or.dgit.donghun2.table.ProductTable;
 
 public class ProductView extends JFrame implements ActionListener {
@@ -27,7 +28,7 @@ public class ProductView extends JFrame implements ActionListener {
 	private ProductPanel pProduct;
 	private ProductTable pTable;
 
-	private static ProductMapper dao;
+	private static ProductService dao;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -77,10 +78,10 @@ public class ProductView extends JFrame implements ActionListener {
 		pProduct.clear();
 	}
 
-	public void setDao(ProductMapper dao) {
-		this.dao = dao;
+
+	public static void setDao(ProductService dao) {
+		ProductView.dao = dao;
 	}
-	
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnSearch) {

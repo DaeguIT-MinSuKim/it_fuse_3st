@@ -12,10 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import kr.or.dgit.donghun2.dao.CustomerMapper;
-import kr.or.dgit.donghun2.dao.EmployeeMapper;
-import kr.or.dgit.donghun2.dao.ProductMapper;
-import kr.or.dgit.donghun2.dao.SellInfoMapper;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
@@ -24,6 +20,10 @@ import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.ProductPanel;
 import kr.or.dgit.donghun2.panel.SellInfoPanel;
+import kr.or.dgit.donghun2.service.CustomerService;
+import kr.or.dgit.donghun2.service.EmployeeService;
+import kr.or.dgit.donghun2.service.ProductService;
+import kr.or.dgit.donghun2.service.SellInfoService;
 
 public class SellInfoView extends JFrame implements ActionListener {
 
@@ -41,10 +41,10 @@ public class SellInfoView extends JFrame implements ActionListener {
 	private CustomerPanel pCustomer;
 	private JButton btnOK3;
 	
-	private static SellInfoMapper dao;
-	private static ProductMapper pdao;
-	private static EmployeeMapper edao;
-	private static CustomerMapper cdao;
+	private static SellInfoService dao;
+	private static ProductService pdao;
+	private static EmployeeService edao;
+	private static CustomerService cdao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

@@ -14,10 +14,11 @@ import javax.swing.table.TableColumnModel;
 
 import kr.or.dgit.donghun2.dao.ProductMapper;
 import kr.or.dgit.donghun2.dto.Product;
+import kr.or.dgit.donghun2.service.ProductService;
 
 public class ProductTable extends JPanel {
 	private JTable table;
-	private static ProductMapper dao;
+	private static ProductService dao;
 
 	
 	public ProductTable() {
@@ -68,10 +69,10 @@ public class ProductTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Product> vProduct = dao.selectProductByAll();
-		String[][] datas = new String[vProduct.size()][];
+		List<Product> products = dao.selectProductByAll();
+		String[][] datas = new String[products.size()][];
 		for(int i = 0; i < datas.length; i++){
-			datas[i] = vProduct.get(i).toArray();
+			datas[i] = products.get(i).toArray();
 		}
 		return datas;
 	}
