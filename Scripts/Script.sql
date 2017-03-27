@@ -5,46 +5,32 @@ create database donghun2;
 use donghun2;
 -- 영원사원
 CREATE TABLE employee (
-	code  CHAR(4)  NOT NULL COMMENT '사원코드', 
+	code  CHAR(4)  NOT NULL COMMENT '사원코드' PRIMARY KEY, 
 	name  CHAR(11) NOT NULL COMMENT '사원명', 
 	grade CHAR(1)  NOT NULL COMMENT '사원등급' 
 )
 COMMENT '영원사원';
 
--- 영원사원
-ALTER TABLE  employee
-	ADD CONSTRAINT PK_employee
-		PRIMARY KEY (code);
-
 -- 제품
 CREATE TABLE  product (
-	code       CHAR(4)  NOT NULL COMMENT '제품코드',
+	code       CHAR(4)  NOT NULL COMMENT '제품코드' PRIMARY KEY,
 	name       CHAR(11) NOT NULL COMMENT '제품명',
 	saleprice  INT      NOT NULL COMMENT '판매정가', 
 	origiprice INT      NOT NULL COMMENT '판매원가' 
 )
 COMMENT '제품';
 
--- 제품
-ALTER TABLE  product
-	ADD CONSTRAINT PK_product
-		PRIMARY KEY (code);
-
 -- 거래처
 CREATE TABLE  customer (
-	code  CHAR(4)  NOT NULL COMMENT '거래처코드',
+	code  CHAR(4)  NOT NULL COMMENT '거래처코드' PRIMARY KEY,
 	name  CHAR(11) NOT NULL COMMENT '거래처명',
 	grade CHAR(1)  NOT NULL COMMENT '거래처등급'
 )
 COMMENT '거래처';
 
--- 거래처
-ALTER TABLE  customer
-	ADD CONSTRAINT PK_customer PRIMARY KEY (code);
-
 -- 거래내역
 CREATE TABLE  sellInfo (
-	scode	  char(4) not null comment '거래내역코드',
+	scode	  char(4) not null comment '거래내역코드' PRIMARY KEY,
 	ecode     CHAR(4) NOT NULL COMMENT '사원코드',
 	pcode     CHAR(4) NOT NULL COMMENT '제품코드', 
 	ccode     CHAR(4) NOT NULL COMMENT '거래처코드', 
@@ -58,26 +44,10 @@ COMMENT '거래내역';
 
 -- 거래내역
 ALTER TABLE  sellInfo
-	ADD CONSTRAINT FK_employee_TO_sellInfo
-		FOREIGN KEY (ecode) REFERENCES  employee (code);
-
--- 거래내역
-ALTER TABLE  sellInfo
-	ADD CONSTRAINT FK_product_TO_sellInfo
-		FOREIGN KEY (pcode) REFERENCES  product (code);
-
--- 거래내역
-ALTER TABLE  sellInfo
-	ADD CONSTRAINT FK_customer_TO_sellInfo
+	ADD CONSTRAINT FK_sellInfo
+		FOREIGN KEY (ecode) REFERENCES  employee (code),
+		FOREIGN KEY (pcode) REFERENCES  product (code),
 		FOREIGN KEY (ccode)	REFERENCES  customer (code);
-
-
-
-insert into product values 
-('P005','아메리카노',3000,1000),
-('P002','카푸치노',4000,2000),
-('P003','카페모카',5000,25000),
-('P004','마끼아또',6000,3000);
 
 select * from product;
 
