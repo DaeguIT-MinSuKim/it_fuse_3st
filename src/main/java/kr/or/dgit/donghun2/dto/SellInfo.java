@@ -6,6 +6,7 @@ public class SellInfo {
 	private Employee employee;
 	private Customer customer;
 	private Product product;
+	private String code;
 	private Date saleDate;
 	private int quantity;
 	private int unitprice;
@@ -46,6 +47,16 @@ public class SellInfo {
 		this.disprice = disprice;
 	}
 	
+	
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -116,6 +127,7 @@ public class SellInfo {
 				"SaleInfo [employee=%s, customer=%s, product=%s, saleDate=%s, quantity=%s, unitprice=%s, sellprice=%s, disprice=%s]",
 				employee, customer, product, saleDate, quantity, unitprice, sellprice, disprice);
 	}
+
 	
 	
 }

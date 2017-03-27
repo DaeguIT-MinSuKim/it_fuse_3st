@@ -2,12 +2,9 @@ package kr.or.dgit.donghun2.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dto.Customer;
-import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 
 public class CustomerMapperImpl implements CustomerMapper{
 	private String namespace = "kr.or.dgit.donghun2.dao.CustomerMapper.";

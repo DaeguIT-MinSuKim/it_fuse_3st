@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dto.Employee;
-import kr.or.dgit.donghun2.dto.Employee;
 
 public class EmployeeMapperImpl implements EmployeeMapper{
 private String namespace = "kr.or.dgit.donghun2.dao.EmployeeMapper.";
