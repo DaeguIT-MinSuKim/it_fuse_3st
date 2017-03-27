@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
+
+	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code, name, grade) values(#{code},#{name},#{grade}) </insert>
+	
+	<select id="selectEmployeeByAll" resultType="Employee"> select code, name, grade from Employee </select>
+	
+	
+	<update parameterType="Employee" id="updateEmployee">
+		update Employee 
+	<set>
+	
+	<if test="code !=null">code=#{code},</if>
+	
+	<if test="code !=null">name=#{name},</if>
+	
+	<if test="code !=null">grade=#{grade}</if>
+	
+	</set>
+	where code = #{code} 
+	</update>
+	
+	<delete parameterType="Employee" id="deleteEmployee"> delete from Employee where code=#{code} </delete>
+	
+	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade from Employee where code=#{code}; </select>
+
+</mapper>
+
