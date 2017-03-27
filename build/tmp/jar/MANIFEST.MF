@@ -1,5 +1,2 @@
 Manifest-Version: 1.0
-Title: CustomerMain
-Version: 1.0
-Main-Class: kr.or.dgit.donghun2.view.ProductView
 

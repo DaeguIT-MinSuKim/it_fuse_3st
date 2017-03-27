@@ -1,0 +1,77 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.donghun2.dao.SellInfoDetailMapper">
+	
+	<sql id="selectSql">SELECT unitprice, sellprice, disprice
+					FROM sellinfoDetail</sql>
+						
+	<sql id="selectForTableSql">SELECT quantity,saleDate,unitprice, sellprice, disprice
+					FROM sellinfo s join sellInfoDetail sd
+					on s.scode = sd.scode </sql>
+	<resultMap type="SellInfoDetail" id="SellInfoDetailResult">
+		<result property="unitprice" column="unitprice"/>
+		<result property="sellprice" column="sellprice"/>
+		<result property="disprice" column="disprice"/>
+	</resultMap>
+	<resultMap type="SellInfoDetail" id="SellInfoDetailandMarginResult">
+		<id property ="scode" column="scode"/>
+		<result property="unitprice" column="unitprice"/>
+		<result property="sellprice" column="sellprice"/>
+		<result property="disprice" column="disprice"/>
+		<result property="marginPrice" column="marginPrice"/>
+		<result property="marginPct" column="marginPct"/>
+	</resultMap>
+<!-- 	
+	 <select id="selectSellInfoByNo" parameterType="SellInfo" resultType="SellInfo"> 
+		<include refid="selectSql"></include>
+		<include refid="whereSql"/>
+	</select> -->
+<!-- 			
+	<select id="selectSellInfoByAll" resultMap="sellInfoResult">
+		<include refid="selectSql"/>
+	</select> -->
+	
+	<insert id="insertSellInfo" parameterType="SellInfo" >
+	insert into sellinfo(scode,pcode,ecode,ccode,quantity,saleDate)
+	values(#{scode},#{pcode},#{ecode},#{ccode},#{quantity},#{saleDate})
+<!--    <trim prefix="values(" suffix=")" suffixOverrides=",">
+         <if test="scode !=null">
+            #{scode},
+         </if>
+         <if test="ecode !=null">
+            #{ecode},
+         </if>
+         <if test="pcode !=null">
+            #{pcode},
+         </if>
+         <if test="ccode !=null">
+            #{ccode},
+         </if>
+         <if test="quantity !=null">
+            #{quantity},
+         </if>
+         <if test="saleDate !=null">
+            #{saleDate},
+         </if>
+      </trim>  -->
+   	</insert>
+	<!-- 
+	<update id="updateSellInfo" parameterType="SellInfo">
+		UPDATE SellInfo
+		<set>
+			<if test="name != null">
+				name = #{name},	</if>   
+			<if test="salePrice != null">
+				saleprice = #{salePrice},	</if> 
+			<if test="origiPrice != null">
+				origiprice = #{origiPrice},	</if> 
+		</set>
+		<include refid="whereSql"></include>
+	</update>
+ 	<delete id="deleteSellInfo" parameterType="SellInfo">
+		delete from SellInfo
+		<include refid="whereSql"/>
+	</delete> 
+
+	
+ -->
+</mapper>

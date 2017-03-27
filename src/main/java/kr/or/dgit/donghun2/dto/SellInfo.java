@@ -6,12 +6,10 @@ public class SellInfo {
 	private Employee employee;
 	private Customer customer;
 	private Product product;
-	private String code;
+	private String scode;
 	private Date saleDate;
 	private int quantity;
-	private int unitprice;
-	private int sellprice;
-	private int disprice;
+	private SellInfoDetail sellInfoDetail;
 	
 	public SellInfo() {}
 	
@@ -19,42 +17,32 @@ public class SellInfo {
 		this.saleDate = saleDate;
 		this.quantity = quantity;
 	}
-	
-	public SellInfo(int unitprice, int sellprice, int disprice) {
-		this.unitprice = unitprice;
-		this.sellprice = sellprice;
-		this.disprice = disprice;
-	}
-
-	public SellInfo(Date saleDate, int quantity, int unitprice, int sellprice, int disprice) {
-		this.saleDate = saleDate;
-		this.quantity = quantity;
-		this.unitprice = unitprice;
-		this.sellprice = sellprice;
-		this.disprice = disprice;
-	}
 
 	public SellInfo(Employee employee, Customer customer, Product product, Date saleDate, int quantity, int unitprice,
 			int sellprice, int disprice) {
-		super();
 		this.employee = employee;
 		this.customer = customer;
 		this.product = product;
 		this.saleDate = saleDate;
 		this.quantity = quantity;
-		this.unitprice = unitprice;
-		this.sellprice = sellprice;
-		this.disprice = disprice;
-	}
-	
-	
-	
-	public String getCode() {
-		return code;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	
+	
+	public String getScode() {
+		return scode;
+	}
+
+	public void setScode(String scode) {
+		this.scode = scode;
+	}
+
+	public SellInfoDetail getSellInfoDetail() {
+		return sellInfoDetail;
+	}
+
+	public void setSellInfoDetail(SellInfoDetail sellInfoDetail) {
+		this.sellInfoDetail = sellInfoDetail;
 	}
 
 	public Employee getEmployee() {
@@ -77,17 +65,6 @@ public class SellInfo {
 		return quantity;
 	}
 
-	public int getUnitprice() {
-		return unitprice;
-	}
-
-	public int getSellprice() {
-		return sellprice;
-	}
-
-	public int getDisprice() {
-		return disprice;
-	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
@@ -109,23 +86,12 @@ public class SellInfo {
 		this.quantity = quantity;
 	}
 
-	public void setUnitprice(int unitprice) {
-		this.unitprice = unitprice;
-	}
-
-	public void setSellprice(int sellprice) {
-		this.sellprice = sellprice;
-	}
-
-	public void setDisprice(int disprice) {
-		this.disprice = disprice;
-	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"SaleInfo [employee=%s, customer=%s, product=%s, saleDate=%s, quantity=%s, unitprice=%s, sellprice=%s, disprice=%s]",
-				employee, customer, product, saleDate, quantity, unitprice, sellprice, disprice);
+				"SaleInfo [employee=%s, customer=%s, product=%s, saleDate=%s, quantity=%s",
+				employee, customer, product, saleDate, quantity);
 	}
 
 	

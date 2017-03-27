@@ -1,6 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'application'
 
 tasks.withType(JavaCompile){
 	options.encoding = 'UTF-8'
@@ -19,14 +18,3 @@ dependencies {
 
 }
 
-jar{
-	//mainClassName='kr.or.dgit.donghun2.Main.Main'
-	mainClassName='kr.or.dgit.donghun2.view.ProductView'
-	baseName='CustomerMain'
-	appendix='bin'
-	version =1.0
-	manifest{
-		attributes 'Title':baseName , 'Version': version, 'Main-Class': mainClassName
-	}
-	dependsOn configurations.runtime
-}

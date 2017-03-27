@@ -16,6 +16,7 @@ import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.dto.SellInfo;
+import kr.or.dgit.donghun2.dto.SellInfoDetail;
 import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.ProductPanel;
@@ -145,16 +146,17 @@ public class SellInfoView extends JFrame implements ActionListener {
 		 Employee eitem = pEmployee.getObject();
 		 Product pitem = pProduct.getObject();
 		 Customer citem = pCustomer.getObject();
-		 SellInfo sitem = pSellInfo.getObjectAllSell();
+		 SellInfo sitem1 = pSellInfo.getObjectDateQuantity();
+		 SellInfoDetail sitem2 = pSellInfo.getObjectPrice();
 
-		if (eitem==null || pitem==null || citem==null || sitem==null) {
+		if (eitem==null || pitem==null || citem==null || sitem1==null|| sitem2==null) {
 			JOptionPane.showMessageDialog(null, "공백 존재");
 		}
 		String msg = "추가됨";
-		if(dao.selectSellInfoByNo(sitem)!=null){
+		/*		if(dao.selectSellInfoByNo(sitem)!=null){
 			msg = "데이터가 이미 존재하므로 덮어씀";
 		}
-/*		DaoSellInfo.getInstance().replaceItem(sitem);
+		DaoSellInfo.getInstance().replaceItem(sitem);
 		DaoEmployee.getInstance().replaceItem(eitem);
 		DaoProduct.getInstance().replaceItem(pitem);
 		DaoCustomer.getInstance().replaceItem(citem);
@@ -196,9 +198,9 @@ public class SellInfoView extends JFrame implements ActionListener {
 			int sellPrice = unitPrice*(pSellInfo.getObjectDateQuantity().getQuantity());
 			int disPrice = salePrice*(pSellInfo.getObjectDateQuantity().getQuantity())-sellPrice;
 					
-			SellInfo sellinfo = new SellInfo(unitPrice, sellPrice, disPrice);
-			pSellInfo.setObject(sellinfo);
-			System.out.println(sellinfo);
+			SellInfoDetail sellinfod = new SellInfoDetail(unitPrice, sellPrice, disPrice);
+			pSellInfo.setObject(sellinfod);
+			System.out.println(sellinfod);
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 		}	
 	}
