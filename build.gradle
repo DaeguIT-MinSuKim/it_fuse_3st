@@ -15,12 +15,13 @@ dependencies {
    compile group: 'log4j', name: 'log4j', version: '1.2.17'
    compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
    testImplementation 'junit:junit:4.12'
-   compile files('src/erp_myframework.jar')
+   compile files('src/main/resources/erp_myframework.jar')
 
 }
 
 jar{
-	mainClassName='kr.or.dgit.donghun2.Main.Main'
+	//mainClassName='kr.or.dgit.donghun2.Main.Main'
+	mainClassName='kr.or.dgit.donghun2.view.ProductView'
 	baseName='CustomerMain'
 	appendix='bin'
 	version =1.0
