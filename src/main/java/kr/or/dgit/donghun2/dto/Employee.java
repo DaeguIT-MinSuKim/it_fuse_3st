@@ -64,4 +64,8 @@ public class Employee {
 		return String.format("%s, %s, %s", code, name, grade);
 	}
 
+	public String[] toArray() {
+		return new String[]{code,name,grade};
+	}
+
 }

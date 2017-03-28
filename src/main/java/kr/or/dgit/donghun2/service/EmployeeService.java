@@ -50,6 +50,7 @@ public class EmployeeService {
 	}
 	
 	public int deleteEmployee(Employee code){
+		log.debug("deleteEmployee()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			int res = sqlSession.getMapper(EmployeeMapper.class).deleteEmployee(code);
 			sqlSession.commit();

@@ -17,6 +17,7 @@ import kr.or.dgit.donghun2.dao.EmployeeMapper;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.service.EmployeeService;
+import kr.or.dgit.donghun2.table.EmployeeTable;
 
 @SuppressWarnings("serial")
 public class EmployeeView extends JFrame implements ActionListener {
@@ -27,6 +28,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 	private JPanel pBtn;
 	private JButton btnSave;
 	private JButton btnDele;
+	private EmployeeTable pTable;
 
 	private static EmployeeService dao;
 	
@@ -53,6 +55,10 @@ public class EmployeeView extends JFrame implements ActionListener {
 		
 		pEmployee = EmployeePanel.getInstance();
 		contentPane.add(pEmployee);
+		
+		pTable = new EmployeeTable();
+		contentPane.add(pTable);
+		pTable.setVisible(true);
 		
 		pBtn = new JPanel();
 		pEmployee.add(pBtn);
@@ -83,7 +89,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		Employee res = dao.selectEmployeeByNo(pEmployee.getObject());
+		Employee res = dao.getInstance().selectEmployeeByNo(pEmployee.getObject());
 		if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다");
 		}else{
@@ -100,17 +106,19 @@ public class EmployeeView extends JFrame implements ActionListener {
 		}else{
 			dao.getInstance().insertEmployee(pEmployee.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다");
+			pTable.loadDate();
 		}
 		
 	}
 	protected void actionPerformedBtnDele(ActionEvent e) {
 		
-		int res=dao.deleteEmployee(pEmployee.getObject());
+		int res=dao.getInstance().deleteEmployee(pEmployee.getObject());
 		
 		if(res==0){
 			JOptionPane.showMessageDialog(null, "삭제실패");
 		}else{
 			JOptionPane.showMessageDialog(null, "삭제성공");
+			pTable.loadDate();
 		}
 	
 	}
