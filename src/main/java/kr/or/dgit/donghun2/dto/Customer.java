@@ -3,13 +3,10 @@ package kr.or.dgit.donghun2.dto;
 
 public class Customer {
 	
-	public static final int L = 4;
-	public static final int M = 3;
-	public static final int S = 2;
-	
 	private String code;
 	private String name;
 	private String grade;
+	private boolean isexist;
 	
 	public Customer() {}
 	
@@ -22,17 +19,14 @@ public class Customer {
 		this.name = name;
 		this.grade = grade;
 	}
+
 	
-	public static int getL() {
-		return L;
+	public boolean isIsexist() {
+		return isexist;
 	}
 
-	public static int getM() {
-		return M;
-	}
-
-	public static int getS() {
-		return S;
+	public void setIsexist(boolean isexist) {
+		this.isexist = isexist;
 	}
 
 	public String getCode() {

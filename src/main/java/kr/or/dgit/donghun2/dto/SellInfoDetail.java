@@ -1,6 +1,5 @@
 package kr.or.dgit.donghun2.dto;
 
-import java.util.Date;
 
 public class SellInfoDetail {
 	private String scode;

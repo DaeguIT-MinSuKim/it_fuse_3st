@@ -5,6 +5,7 @@ public class Product {
 	private String name;
 	private int salePrice;
 	private int origiPrice;
+	private boolean isexist;
 	
 	public Product(String code, String name, int salePrice, int origiPrice) {
 		this.code = code;
@@ -37,6 +38,19 @@ public class Product {
 
 
 	public Product() {
+	}
+
+
+	
+
+	public boolean isIsexist() {
+		return isexist;
+	}
+
+
+
+	public void setIsexist(boolean isexist) {
+		this.isexist = isexist;
 	}
 
 
@@ -73,10 +87,16 @@ public class Product {
 		this.origiPrice = origiPrice;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Product [code=%s, name=%s, salePrice=%s, origiPrice=%s]", code, name, salePrice,
-				origiPrice);
+
+
+
+	public Product(String code, String name, int salePrice, int origiPrice, boolean isexist) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.salePrice = salePrice;
+		this.origiPrice = origiPrice;
+		this.isexist = isexist;
 	}
 
 

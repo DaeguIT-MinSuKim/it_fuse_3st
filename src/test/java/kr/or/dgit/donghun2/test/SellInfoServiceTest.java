@@ -18,7 +18,7 @@ import kr.or.dgit.donghun2.service.SellInfoService;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SellInfoServiceTest {
 	private static SellInfoService sellInfoService;
-/*	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -30,15 +30,15 @@ public class SellInfoServiceTest {
 		System.out.println("tearDownAfterClass()");
 		sellInfoService = null;
 	}
-*/
-/*	@Test
+
+	@Test
 	public void aTestSelectSellInfoByAll() {
 		List<SellInfo> sellInfos = sellInfoService.selectSellInfoByAll();
 		for(SellInfo s : sellInfos){
 			System.out.println(s);
 		}
 		Assert.assertNotNull(sellInfos);
-	}*/
+	}
 /*	
    @Test
 	public void bTestInsertSellInfo() {
