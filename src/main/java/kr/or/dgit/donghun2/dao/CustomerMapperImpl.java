@@ -39,6 +39,11 @@ public class CustomerMapperImpl implements CustomerMapper{
 		return sqlSession.selectOne(namespace+"selectCustomerByNo",code);
 	}
 
+	@Override
+	public List<Customer> selectCustomerByCondition() {
+		return sqlSession.selectList(namespace+"selectCustomerByCondition");
+	}
+
 
 	
 }

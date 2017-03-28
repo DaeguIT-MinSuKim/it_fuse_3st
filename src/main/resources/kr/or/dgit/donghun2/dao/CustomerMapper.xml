@@ -2,9 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CustomerMapper">
 
-	<insert parameterType="Customer" id="insertCustomer"> insert into customer(code, name, grade) values(#{code},#{name},#{grade}) </insert>
+	<insert parameterType="Customer" id="insertCustomer"> 
+		insert into customer(code, name, grade) values(#{code},#{name},#{grade}) 
+	</insert>
 	
-	<select id="selectCustomerByAll" resultType="Customer"> select code, name, grade from customer </select>
+	<select id="selectCustomerByAll" resultType="Customer"> 
+		select code, name, grade from customer 
+	</select>
 	
 	
 	<update parameterType="Customer" id="updateCustomer">
@@ -20,6 +24,11 @@
 	</set>
 	where code = #{code} 
 	</update>
+	
+	<select id="selectCustomerByCondition" resultType="Customer" >
+		select saledate, p.code, p.name,quantity, sellprice,disprice, marginprice, marginpct
+		from product p join sellinfo sel on p.code=sel.pcode join sellinfodetail seld on sel.scode = seld.scode; 
+	</select>
 	
 	<delete parameterType="Customer" id="deleteCustomer"> delete from customer where code=#{code} </delete>
 	

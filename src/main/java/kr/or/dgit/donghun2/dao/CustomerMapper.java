@@ -7,6 +7,7 @@ import kr.or.dgit.donghun2.dto.Customer;
 public interface CustomerMapper {
 	
 	List<Customer> selectCustomerByAll();
+	List<Customer> selectCustomerByCondition();
 	
 	int insertCustomer(Customer customer);
 

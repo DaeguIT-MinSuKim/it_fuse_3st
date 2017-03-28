@@ -67,5 +67,12 @@ public class CustomerService {
 			return customer;
 		}
 	}
+	public List<Customer> selectCustomerByCondition(){
+		log.debug("selectCustomerByCondition()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			List<Customer> list = sqlSession.getMapper(CustomerMapper.class).selectCustomerByCondition();
+			return list;
+		}
+	}
 	
 }
