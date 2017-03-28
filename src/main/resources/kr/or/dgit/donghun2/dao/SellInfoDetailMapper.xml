@@ -1,11 +1,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.SellInfoDetailMapper">
-	
+<!--	
 	<sql id="selectSql">SELECT unitprice, sellprice, disprice
 					FROM sellinfoDetail</sql>
 						
 	<sql id="selectForTableSql">SELECT quantity,saleDate,unitprice, sellprice, disprice
-					FROM sellinfo s join sellInfoDetail sd
+					FROM SellInfo s join sellInfoDetail sd
 					on s.scode = sd.scode </sql>
 	<resultMap type="SellInfoDetail" id="SellInfoDetailResult">
 		<result property="unitprice" column="unitprice"/>
@@ -20,20 +20,21 @@
 		<result property="marginPrice" column="marginPrice"/>
 		<result property="marginPct" column="marginPct"/>
 	</resultMap>
-<!-- 	
-	 <select id="selectSellInfoByNo" parameterType="SellInfo" resultType="SellInfo"> 
+ 	
+	 <select id="selectSellInfoDetailByNo" parameterType="SellInfoDetail" resultType="SellInfoDetail"> 
 		<include refid="selectSql"></include>
 		<include refid="whereSql"/>
 	</select> -->
-<!-- 			
-	<select id="selectSellInfoByAll" resultMap="sellInfoResult">
-		<include refid="selectSql"/>
-	</select> -->
+ 			
+	<select id="selectSellInfoDetailByAll" resultType="SellInfoDetail">
+	SELECT scode, unitprice, sellprice, disprice, marginPrice, marginPct
+	FROM sellinfodetail;
+	</select>
 	
-	<insert id="insertSellInfo" parameterType="SellInfo" >
-	insert into sellinfo(scode,pcode,ecode,ccode,quantity,saleDate)
+<!-- 	<insert id="insertSellInfoDetail" parameterType="SellInfoDetail" >
+	insert into SellInfoDetail(scode,pcode,ecode,ccode,quantity,saleDate)
 	values(#{scode},#{pcode},#{ecode},#{ccode},#{quantity},#{saleDate})
-<!--    <trim prefix="values(" suffix=")" suffixOverrides=",">
+   <trim prefix="values(" suffix=")" suffixOverrides=",">
          <if test="scode !=null">
             #{scode},
          </if>
@@ -52,11 +53,11 @@
          <if test="saleDate !=null">
             #{saleDate},
          </if>
-      </trim>  -->
-   	</insert>
+      </trim> 
+   	</insert> -->
 	<!-- 
-	<update id="updateSellInfo" parameterType="SellInfo">
-		UPDATE SellInfo
+	<update id="updateSellInfoDetail" parameterType="SellInfoDetail">
+		UPDATE SellInfoDetail
 		<set>
 			<if test="name != null">
 				name = #{name},	</if>   
@@ -67,8 +68,8 @@
 		</set>
 		<include refid="whereSql"></include>
 	</update>
- 	<delete id="deleteSellInfo" parameterType="SellInfo">
-		delete from SellInfo
+ 	<delete id="deleteSellInfoDetail" parameterType="SellInfoDetail">
+		delete from SellInfoDetail
 		<include refid="whereSql"/>
 	</delete> 
 

@@ -30,7 +30,7 @@ public class SellInfoServiceTest {
 		System.out.println("tearDownAfterClass()");
 		sellInfoService = null;
 	}
-
+	/*
 	@Test
 	public void aTestSelectSellInfoByAll() {
 		List<SellInfo> sellInfos = sellInfoService.selectSellInfoByAll();
@@ -39,7 +39,7 @@ public class SellInfoServiceTest {
 		}
 		Assert.assertNotNull(sellInfos);
 	}
-/*	
+	
    @Test
 	public void bTestInsertSellInfo() {
 	   SellInfo item = new SellInfo();

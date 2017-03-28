@@ -16,6 +16,29 @@ public class SellInfo {
 	
 	public SellInfo() {}
 	
+	
+	
+	public SellInfo(String scode, Date saleDate, int quantity, int saleprice, int origiprice) {
+		this.scode = scode;
+		this.saleDate = saleDate;
+		this.quantity = quantity;
+		this.saleprice = saleprice;
+		this.origiprice = origiprice;
+	}
+
+
+
+	public SellInfo(String scode, Date saleDate, int quantity, int saleprice, int origiprice, boolean isexist) {
+		this.scode = scode;
+		this.saleDate = saleDate;
+		this.quantity = quantity;
+		this.saleprice = saleprice;
+		this.origiprice = origiprice;
+		this.isexist = isexist;
+	}
+
+
+
 	public SellInfo(Date saleDate, int quantity) {
 		this.saleDate = saleDate;
 		this.quantity = quantity;

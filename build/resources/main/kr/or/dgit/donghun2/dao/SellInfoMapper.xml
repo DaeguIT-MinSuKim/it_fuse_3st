@@ -12,15 +12,18 @@
 		<result property="quantity" column="quantity"/>
 		<result property="saleDate" column="saleDate"/>
 	</resultMap>
-	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
+<!-- 	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
 		<result property="sellInfoDetail.unitprice" column="unitprice"/>
 		<result property="sellInfoDetail.sellprice" column="sellprice"/>
 		<result property="sellInfoDetail.disprice" column="disprice"/>
+	</resultMap> -->
+	
+	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
+		<association property="sellInfoDetail" resultMap="kr.or.dgit.donghun2.dao.SellInfoDetailMapper.SellInfoDetailResult"/>
 	</resultMap>
-			
+	
 	<select id="selectSellInfoByAll" resultMap="SellInfoResultex">
 		<include refid="SelectForTableSql"/>
-		
 	</select>
 	
 <!--	<update id="updateSellInfo" parameterType="SellInfo">

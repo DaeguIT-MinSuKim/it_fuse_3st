@@ -9,6 +9,8 @@ public class SellInfoDetail {
 	private int marginPrice;
 	private int marginPct;
 	
+	public SellInfoDetail() {
+	}
 	public SellInfoDetail(String scode, int unitprice, int sellprice, int disprice) {
 		this.scode = scode;
 		this.unitprice = unitprice;
@@ -27,6 +29,14 @@ public class SellInfoDetail {
 		this.unitprice = unitPrice;
 		this.sellprice = sellPrice;
 		this.disprice = disPrice;
+	}
+	public SellInfoDetail(int unitprice, int sellprice, int disprice, int marginPrice, int marginPct) {
+		super();
+		this.unitprice = unitprice;
+		this.sellprice = sellprice;
+		this.disprice = disprice;
+		this.marginPrice = marginPrice;
+		this.marginPct = marginPct;
 	}
 	public String getScode() {
 		return scode;
@@ -64,13 +74,13 @@ public class SellInfoDetail {
 	public void setMarginPct(int marginPct) {
 		this.marginPct = marginPct;
 	}
-	
 	@Override
 	public String toString() {
 		return String.format(
-				"SaleInfo [unitprice=%s, sellprice=%s, disprice=%s, marginPrice=%s, marginPct=%s]",
-				 unitprice, sellprice, disprice,marginPrice,marginPct);
+				"SellInfoDetail [scode=%s, unitprice=%s, sellprice=%s, disprice=%s, marginPrice=%s, marginPct=%s]",
+				scode, unitprice, sellprice, disprice, marginPrice, marginPct);
 	}
+	
 
 	
 	

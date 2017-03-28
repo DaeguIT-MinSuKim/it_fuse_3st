@@ -149,4 +149,4 @@ from vw_InfoByEmployee;
 
 -- drop view vw_InfoByEmployee;
 
-
+SELECT scode, unitprice, sellprice, disprice, marginPrice, marginPct  FROM sellinfodetail;
