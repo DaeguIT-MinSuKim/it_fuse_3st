@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.SellInfo;
+import kr.or.dgit.donghun2.dto.SellInfoDetail;
 
 public class SellInfoPanel extends JPanel {
 	private static final SellInfoPanel instance = new SellInfoPanel();
@@ -95,21 +96,17 @@ public class SellInfoPanel extends JPanel {
 		int quantity = Integer.parseInt(pQuantity.getTfValue());
 		return new SellInfo(saleDate, quantity);
 	}
-	public SellInfo getObjectAllSell(){
-		Date saleDate = null;
-		try {saleDate = sdf.parse(pSaleDate.getTfValue());
-		} catch (ParseException e) {e.printStackTrace();}
-		int quantity = Integer.parseInt(pQuantity.getTfValue());
+	public SellInfoDetail getObjectPrice(){
 		int unitprice = Integer.parseInt(pUnPrice.getTfValue());
 		int sellprice = Integer.parseInt(pSellPrice.getTfValue());
 		int disprice = Integer.parseInt(pDisPrice.getTfValue());
-		return new SellInfo(saleDate, quantity, unitprice, sellprice, disprice);
+		return new SellInfoDetail(unitprice, sellprice, disprice);
 	}
 	
-	public void setObject(SellInfo item){
-		pUnPrice.setTfValue(String.valueOf(item.getUnitprice()));
-		pSellPrice.setTfValue(String.valueOf(item.getSellprice()));
-		pDisPrice.setTfValue(String.valueOf(item.getDisprice()));
+	public void setObject(SellInfoDetail sellinfod){
+		pUnPrice.setTfValue(String.valueOf(sellinfod.getUnitprice()));
+		pSellPrice.setTfValue(String.valueOf(sellinfod.getSellprice()));
+		pDisPrice.setTfValue(String.valueOf(sellinfod.getDisprice()));
 	}
 
 	public void clear(){
