@@ -20,6 +20,7 @@
 			
 	<select id="selectSellInfoByAll" resultMap="SellInfoResultex">
 		<include refid="SelectForTableSql"/>
+		
 	</select>
 	
 <!--	<update id="updateSellInfo" parameterType="SellInfo">
