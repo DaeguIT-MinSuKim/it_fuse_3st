@@ -1,8 +1,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.ProductMapper">
 	
-	<sql id="selectSql">SELECT code,name,saleprice,origiprice FROM Product </sql>
-	<sql id="selectSqlForSellInfo">SELECT code,name,saleprice FROM Product </sql>
+	<sql id="selectSql">SELECT code,name,salePrice,origiPrice FROM Product </sql>
+	<sql id="selectSqlForSellInfo">SELECT code,name,salePrice FROM Product </sql>
 	<sql id="whereSql"><where><if test="code !=null">code = #{code}</if></where></sql>
 	
 	<select id="selectProductByAll" resultType="Product">
@@ -10,7 +10,7 @@
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product" >
-      insert into Product (code,name,saleprice,origiprice)
+      insert into Product (code,name,salePrice,origiPrice)
       values (#{code},#{name},#{salePrice},#{origiPrice})
    <trim prefix="values(" suffix=")" suffixOverrides=",">
          <if test="code !=null">

@@ -16,7 +16,6 @@ import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.dto.SellInfo;
-import kr.or.dgit.donghun2.dto.SellInfoDetail;
 import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.ProductPanel;
@@ -147,9 +146,8 @@ public class SellInfoView extends JFrame implements ActionListener {
 		 Product pitem = pProduct.getObject();
 		 Customer citem = pCustomer.getObject();
 		 SellInfo sitem1 = pSellInfo.getObjectDateQuantity();
-		 SellInfoDetail sitem2 = pSellInfo.getObjectPrice();
 
-		if (eitem==null || pitem==null || citem==null || sitem1==null|| sitem2==null) {
+		if (eitem==null || pitem==null || citem==null || sitem1==null) {
 			JOptionPane.showMessageDialog(null, "공백 존재");
 		}
 		String msg = "추가됨";
@@ -198,9 +196,6 @@ public class SellInfoView extends JFrame implements ActionListener {
 			int sellPrice = unitPrice*(pSellInfo.getObjectDateQuantity().getQuantity());
 			int disPrice = salePrice*(pSellInfo.getObjectDateQuantity().getQuantity())-sellPrice;
 					
-			SellInfoDetail sellinfod = new SellInfoDetail(unitPrice, sellPrice, disPrice);
-			pSellInfo.setObject(sellinfod);
-			System.out.println(sellinfod);
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 		}	
 	}
