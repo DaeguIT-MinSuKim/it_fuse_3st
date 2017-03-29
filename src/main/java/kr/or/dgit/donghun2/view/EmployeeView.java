@@ -83,7 +83,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		Employee res = dao.selectEmployeeByNo(pEmployee.getObject());
+		Employee res = dao.getInstance().selectEmployeeByNo(pEmployee.getObject());
 		if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다");
 		}else{

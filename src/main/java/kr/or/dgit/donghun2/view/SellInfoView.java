@@ -201,7 +201,7 @@ public class SellInfoView extends JFrame implements ActionListener {
 	}
 
 	private void actionPerformedBtnOK1(ActionEvent e) {
-		Employee res = edao.selectEmployeeByNo(pEmployee.getObject());
+		Employee res = edao.getInstance().selectEmployeeByNo(pEmployee.getObject());
 		if (res == null ) {
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다");
 		} else {
@@ -211,7 +211,7 @@ public class SellInfoView extends JFrame implements ActionListener {
 		}
 	}
 	private void actionPerformedBtnOK2(ActionEvent e) {
-		Product res = pdao.selectProductByNoForSellInfo(pProduct.getObject());
+		Product res = pdao.getInstance().selectProductByNoForSellInfo(pProduct.getObject());
 		if(res == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 			pProduct.clear();
@@ -223,7 +223,7 @@ public class SellInfoView extends JFrame implements ActionListener {
 		}
 	}
 	private void actionPerformedBtnOK3(ActionEvent e) {
-		Customer res = cdao.selectCustomerByNo(pCustomer.getObject());
+		Customer res = cdao.getInstance().selectCustomerByNo(pCustomer.getObject());
 		if(res == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		}else{

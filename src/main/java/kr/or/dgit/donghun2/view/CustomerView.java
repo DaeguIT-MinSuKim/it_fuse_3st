@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
@@ -31,6 +32,12 @@ public class CustomerView extends JFrame implements ActionListener {
 	private static CustomerService dao;
 	
 	public static void main(String[] args) {
+		 try {
+		 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+		 
+		}catch (Exception e) {}
+		CustomerView cv = new CustomerView();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -90,7 +97,7 @@ public class CustomerView extends JFrame implements ActionListener {
 		if(pCustomer.isEmpty()){
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
 		}else{
-			dao.insertCustomer(pCustomer.getObject());
+			dao.getInstance().insertCustomer(pCustomer.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다.");
 			pTable.loadDate();
 		}
@@ -98,7 +105,7 @@ public class CustomerView extends JFrame implements ActionListener {
 		
 	}
 	protected void actionPerformedBtnDele(ActionEvent e) {
-		int res = dao.deleteCustomer(pCustomer.getObject());
+		int res = dao.getInstance().deleteCustomer(pCustomer.getObject());
 		if(res==0){
 			JOptionPane.showMessageDialog(null, "삭제안댐");
 		}else{
@@ -107,7 +114,7 @@ public class CustomerView extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		Customer res = dao.selectCustomerByNo(pCustomer.getObject());
+		Customer res = dao.getInstance().selectCustomerByNo(pCustomer.getObject());
 		if(res == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		}else{

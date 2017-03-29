@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.view.CustomerView;
@@ -21,6 +22,7 @@ public class Basic extends JFrame implements ActionListener{
 	private JButton btnNewButton_2;
 
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

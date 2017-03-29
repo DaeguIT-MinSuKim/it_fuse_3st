@@ -69,7 +69,7 @@ public class ProductTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Product> products = dao.selectProductByAll();
+		List<Product> products = dao.getInstance().selectProductByAll();
 		String[][] datas = new String[products.size()][];
 		for(int i = 0; i < datas.length; i++){
 			datas[i] = products.get(i).toArray();
