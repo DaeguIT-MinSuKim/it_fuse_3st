@@ -137,7 +137,7 @@ order by ccode asc;		-- 주의 사항 처리해야함
 select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_InfoByProduct;
 
- drop view vw_InfoByProduct;
+-- drop view vw_InfoByProduct;
 
 create view vw_InfoByEmployee as
 select e.code ecode, e.name ename, sellprice, marginprice, marginpct
@@ -149,4 +149,4 @@ from vw_InfoByEmployee;
 
 -- drop view vw_InfoByEmployee;
 
-
+SELECT scode, unitprice, sellprice, disprice, marginPrice, marginPct  FROM sellinfodetail;

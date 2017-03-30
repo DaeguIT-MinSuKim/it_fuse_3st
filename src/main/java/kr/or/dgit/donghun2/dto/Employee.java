@@ -1,16 +1,15 @@
 package kr.or.dgit.donghun2.dto;
 
 public class Employee {
-
-	public static final int A = 3;
-	public static final int B = 2;
-	public static final int C = 1;
-	
 	private String code;
 	private String name;
 	private String grade;
+<<<<<<< HEAD
 	
 	boolean isexist;
+=======
+	private boolean isexist;
+>>>>>>> refs/remotes/origin/master
 
 	public Employee() {}
 
@@ -20,16 +19,14 @@ public class Employee {
 		this.grade = grade;
 	}
 	
-	public static int getA() {
-		return A;
+	
+	
+	public boolean isIsexist() {
+		return isexist;
 	}
 
-	public static int getB() {
-		return B;
-	}
-
-	public static int getC() {
-		return C;
+	public void setIsexist(boolean isexist) {
+		this.isexist = isexist;
 	}
 
 	public String getCode() {
@@ -61,13 +58,19 @@ public class Employee {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("%s, %s, %s", code, name, grade);
+	public Employee(String code, String name, String grade, boolean isexist) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.grade = grade;
+		this.isexist = isexist;
 	}
 
+<<<<<<< HEAD
 	public String[] toArray() {
 		return new String[]{code,name,grade};
 	}
+=======
+>>>>>>> refs/remotes/origin/master
 
 }

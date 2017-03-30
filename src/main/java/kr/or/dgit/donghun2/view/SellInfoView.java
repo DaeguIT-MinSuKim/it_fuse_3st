@@ -185,18 +185,18 @@ public class SellInfoView extends JFrame implements ActionListener {
 			String cgrade = cRes.getGrade(); //거래처등급
 			int dispercentage=0;
 			if(egrade.equals("A")){
-				dispercentage += Employee.getA();
+				dispercentage += 3;
 			}else if(egrade.equals("B")){
-				dispercentage += Employee.getB();
+				dispercentage += 2;
 			}else if(egrade.equals("C")){
-				dispercentage += Employee.getC();
+				dispercentage += 1;
 			}
 			if(cgrade.equals("L")){
-				dispercentage += Customer.getL();
+				dispercentage += 4;
 			}else if(cgrade.equals("M")){
-				dispercentage += Customer.getM();
+				dispercentage += 3;
 			}else if(cgrade.equals("S")){
-				dispercentage += Customer.getS();
+				dispercentage += 2;
 			}
 			
 			int unitPrice = (int) (salePrice*(1-(dispercentage*0.01)));

@@ -9,9 +9,39 @@ public class SellInfo {
 	private String scode;
 	private Date saleDate;
 	private int quantity;
+<<<<<<< HEAD
+=======
+	private int saleprice;
+	private int origiprice;
+	private boolean isexist;
+	private SellInfoDetail sellInfoDetail;
+>>>>>>> refs/remotes/origin/master
 	
 	public SellInfo() {}
 	
+	
+	
+	public SellInfo(String scode, Date saleDate, int quantity, int saleprice, int origiprice) {
+		this.scode = scode;
+		this.saleDate = saleDate;
+		this.quantity = quantity;
+		this.saleprice = saleprice;
+		this.origiprice = origiprice;
+	}
+
+
+
+	public SellInfo(String scode, Date saleDate, int quantity, int saleprice, int origiprice, boolean isexist) {
+		this.scode = scode;
+		this.saleDate = saleDate;
+		this.quantity = quantity;
+		this.saleprice = saleprice;
+		this.origiprice = origiprice;
+		this.isexist = isexist;
+	}
+
+
+
 	public SellInfo(Date saleDate, int quantity) {
 		this.saleDate = saleDate;
 		this.quantity = quantity;
@@ -28,6 +58,30 @@ public class SellInfo {
 
 	
 	
+	public int getSaleprice() {
+		return saleprice;
+	}
+
+	public void setSaleprice(int saleprice) {
+		this.saleprice = saleprice;
+	}
+
+	public int getOrigiprice() {
+		return origiprice;
+	}
+
+	public void setOrigiprice(int origiprice) {
+		this.origiprice = origiprice;
+	}
+
+	public boolean isIsexist() {
+		return isexist;
+	}
+
+	public void setIsexist(boolean isexist) {
+		this.isexist = isexist;
+	}
+
 	public String getScode() {
 		return scode;
 	}
@@ -77,13 +131,13 @@ public class SellInfo {
 		this.quantity = quantity;
 	}
 
-
 	@Override
 	public String toString() {
 		return String.format(
-				"SaleInfo [employee=%s, customer=%s, product=%s, saleDate=%s, quantity=%s",
-				employee, customer, product, saleDate, quantity);
+				"SellInfo [employee=%s, customer=%s, product=%s, scode=%s, saleDate=%s, quantity=%s, saleprice=%s, origiprice=%s, isexist=%s]",
+				employee, customer, product, scode, saleDate, quantity, saleprice, origiprice, isexist);
 	}
+
 
 	
 	
