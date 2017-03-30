@@ -16,6 +16,12 @@ public class SellInfo {
 	private boolean isexist;
 	
 	public SellInfo() {}
+	
+	public SellInfo(String scode, Date saledate, int quantity) {
+		this.scode = scode;
+		this.saledate = saledate;
+		this.quantity = quantity;
+	}
 
 	public SellInfo(String scode, String ecode, String pcode, String ccode, int quantity, Date saledate, int saleprice,
 			int origiprice, int dispcts, boolean isexist) {
