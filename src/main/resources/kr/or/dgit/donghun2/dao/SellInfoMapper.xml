@@ -4,9 +4,12 @@
 <!-- 	<sql id="selectSql">SELECT saleDate, quantity
 					FROM sellInfo</sql>
 		 -->				
-	<sql id="SelectForTableSql">SELECT s.scode, quantity,saleDate,unitprice,sellprice, disprice
-					FROM sellInfo s join sellInfoDetail sd
-					on s.scode = sd.scode </sql>
+	<sql id="SelectForTableSql">SELECT s.scode, quantity,saleDate,unitprice,sellprice,disprice
+					FROM sellInfo s join vw_calculate_sellInfo vwcs
+					on s.scode = vwcs.scode; </sql>
+	<insert id="insertSellInfo" parameterType="SellInfo">
+		
+	</insert>
 	<resultMap type="SellInfo" id="SellInfoResult">
 		<id property ="scode" column="scode"/>
 		<result property="quantity" column="quantity"/>

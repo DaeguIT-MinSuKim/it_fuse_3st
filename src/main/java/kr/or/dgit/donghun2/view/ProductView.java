@@ -106,10 +106,10 @@ public class ProductView extends JFrame implements ActionListener {
 		}
 		String msg = "추가됨";
 		Product item = pProduct.getObject();
-		if(dao.selectProductByNo(item)!=null){
+		if(dao.getInstance().selectProductByNo(item)!=null){
 			msg = "데이터가 이미 존재하므로 덮어씀";
 		}
-		dao.insertProduct(item);
+		dao.getInstance().insertProduct(item);
 		JOptionPane.showMessageDialog(null, msg);
 		pProduct.clear();
 		pTable.loadData();
@@ -120,7 +120,7 @@ public class ProductView extends JFrame implements ActionListener {
 			return;
 		}
 		Product item = pProduct.getObject();
-		if(dao.deleteProduct(item)==0){
+		if(dao.getInstance().deleteProduct(item)==0){
 			JOptionPane.showMessageDialog(null, "삭제할 데이터 없음");
 		}else{
 			JOptionPane.showMessageDialog(null, "삭제 되었습니다");
@@ -129,7 +129,7 @@ public class ProductView extends JFrame implements ActionListener {
 		pTable.loadData();
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
-		Product res = dao.selectProductByNo(pProduct.getObject());
+		Product res = dao.getInstance().selectProductByNo(pProduct.getObject());
 		if(res == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		}else{

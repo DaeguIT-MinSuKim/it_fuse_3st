@@ -41,7 +41,7 @@ public class CustomerTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Customer> customers = dao.selectCustomerByAll();
+		List<Customer> customers = dao.getInstance().selectCustomerByAll();
 		String[][] datas = new String[customers.size()][];
 		for(int i = 0; i < datas.length; i++){
 			datas[i] = customers.get(i).toArray();

@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.SellInfo;
-import kr.or.dgit.donghun2.dto.SellInfoDetail;
 
 public class SellInfoPanel extends JPanel {
 	private static final SellInfoPanel instance = new SellInfoPanel();
@@ -95,18 +94,6 @@ public class SellInfoPanel extends JPanel {
 		} catch (ParseException e) {e.printStackTrace();}
 		int quantity = Integer.parseInt(pQuantity.getTfValue());
 		return new SellInfo(saleDate, quantity);
-	}
-	public SellInfoDetail getObjectPrice(){
-		int unitprice = Integer.parseInt(pUnPrice.getTfValue());
-		int sellprice = Integer.parseInt(pSellPrice.getTfValue());
-		int disprice = Integer.parseInt(pDisPrice.getTfValue());
-		return new SellInfoDetail(unitprice, sellprice, disprice);
-	}
-	
-	public void setObject(SellInfoDetail sellinfod){
-		pUnPrice.setTfValue(String.valueOf(sellinfod.getUnitprice()));
-		pSellPrice.setTfValue(String.valueOf(sellinfod.getSellprice()));
-		pDisPrice.setTfValue(String.valueOf(sellinfod.getDisprice()));
 	}
 
 	public void clear(){

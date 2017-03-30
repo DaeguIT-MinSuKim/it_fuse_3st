@@ -9,7 +9,6 @@ public class SellInfo {
 	private String scode;
 	private Date saleDate;
 	private int quantity;
-	private SellInfoDetail sellInfoDetail;
 	
 	public SellInfo() {}
 	
@@ -35,14 +34,6 @@ public class SellInfo {
 
 	public void setScode(String scode) {
 		this.scode = scode;
-	}
-
-	public SellInfoDetail getSellInfoDetail() {
-		return sellInfoDetail;
-	}
-
-	public void setSellInfoDetail(SellInfoDetail sellInfoDetail) {
-		this.sellInfoDetail = sellInfoDetail;
 	}
 
 	public Employee getEmployee() {

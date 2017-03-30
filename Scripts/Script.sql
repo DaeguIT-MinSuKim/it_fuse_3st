@@ -48,14 +48,14 @@ CREATE TABLE  customer (		-- 거래처테이블
 );
 
 INSERT INTO customer
-(code, name, grade)
-VALUES('C003', '빽다방', 'S'),('C001', '콩다방', 'L'),('C002', '별다방', 'M');
+(code, name, grade,isexist)
+VALUES('C003', '빽다방', 'S',true),('C001', '콩다방', 'L',true),('C002', '별다방', 'M',true);
 INSERT INTO product
-(code, name, saleprice, origiprice)
-VALUES('P002', '코스타리카',25000,8000),('P001', '콜롬비아',20000,6000),('P003', '예가체프',30000,10000);
+(code, name, saleprice, origiprice,isexist)
+VALUES('P002', '코스타리카',25000,8000,true),('P001', '콜롬비아',20000,6000,true),('P003', '예가체프',30000,10000,true);
 INSERT INTO employee
-(code, name, grade)
-VALUES('E003', '신진욱', 'C'),('E002', '이준욱', 'A'),('E001', '설동훈', 'B');
+(code, name, grade,isexist)
+VALUES('E003', '신진욱', 'C',true),('E002', '이준욱', 'A',true),('E001', '설동훈', 'B',true);
 
 
 CREATE TABLE  sellInfo (		-- 거래내역 테이블

@@ -10,9 +10,9 @@
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product" >
-      insert into Product (code,name,saleprice,origiprice)
-      values (#{code},#{name},#{salePrice},#{origiPrice})
-   <trim prefix="values(" suffix=")" suffixOverrides=",">
+      insert into Product (code,name,saleprice,origiprice,isexist)
+      values (#{code},#{name},#{salePrice},#{origiPrice},true)
+   <!-- <trim prefix="values(" suffix=")" suffixOverrides=",">
          <if test="code !=null">
             #{code},
          </if>
@@ -25,7 +25,7 @@
          <if test="origiPrice !=null">
             #{origiPrice},
          </if>
-      </trim> 
+      </trim>  -->
    	</insert>
 	
 	<update id="updateProduct" parameterType="Product">

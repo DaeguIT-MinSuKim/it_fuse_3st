@@ -9,6 +9,8 @@ public class Employee {
 	private String code;
 	private String name;
 	private String grade;
+	
+	boolean isexist;
 
 	public Employee() {}
 

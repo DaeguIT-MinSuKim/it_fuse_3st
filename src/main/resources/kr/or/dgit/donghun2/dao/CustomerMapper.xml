@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CustomerMapper">
 
-	<insert parameterType="Customer" id="insertCustomer"> insert into customer(code, name, grade) values(#{code},#{name},#{grade}) </insert>
+	<insert parameterType="Customer" id="insertCustomer"> insert into customer(code, name, grade,isexist) values(#{code},#{name},#{grade},true) </insert>
 	
 	<select id="selectCustomerByAll" resultType="Customer"> select code, name, grade from customer </select>
 	
