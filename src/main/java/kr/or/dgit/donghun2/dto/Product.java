@@ -5,7 +5,10 @@ public class Product {
 	private String name;
 	private int salePrice;
 	private int origiPrice;
+	private boolean isexist;
 	
+	public Product() {}
+
 	public Product(String code, String name, int salePrice, int origiPrice) {
 		this.code = code;
 		this.name = name;
@@ -36,7 +39,9 @@ public class Product {
 
 
 
-	public Product() {
+
+	public void setIsexist(boolean isexist) {
+		this.isexist = isexist;
 	}
 
 

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
@@ -29,7 +30,7 @@ public class ProductView extends JFrame implements ActionListener {
 	private ProductTable pTable;
 
 	private static ProductService dao;
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -69,15 +70,13 @@ public class ProductView extends JFrame implements ActionListener {
 		btnSearch = new JButton("검색");
 		btnSearch.addActionListener(this);
 		pBtn.add(btnSearch);
-		
+
 		pTable = new ProductTable();
 		contentPane.add(pTable);
 		pTable.setVisible(true);
-		
-		
+
 		pProduct.clear();
 	}
-
 
 	public static void setDao(ProductService dao) {
 		ProductView.dao = dao;
@@ -94,19 +93,22 @@ public class ProductView extends JFrame implements ActionListener {
 			actionPerformedBtnSave(e);
 		}
 	}
-	
+
 	protected void actionPerformedBtnSave(ActionEvent e) {
-		if(pProduct.isEmpty()){
+		if (pProduct.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "공백이 존재");
 			return;
 		}
-		if(Integer.parseInt(pProduct.getpSalePrice().getTfValue())<Integer.parseInt(pProduct.getpOrigiPrice().getTfValue())){
+		if (Integer.parseInt(pProduct.getpSalePrice().getTfValue()) < Integer
+				.parseInt(pProduct.getpOrigiPrice().getTfValue())) {
 			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
 			return;
 		}
 		String msg = "추가됨";
 		Product item = pProduct.getObject();
-		if(dao.getInstance().selectProductByNo(item)!=null){
+
+		if (dao.getInstance().selectProductByNo(item) != null) {
+
 			msg = "데이터가 이미 존재하므로 덮어씀";
 		}
 		dao.getInstance().insertProduct(item);
@@ -114,25 +116,29 @@ public class ProductView extends JFrame implements ActionListener {
 		pProduct.clear();
 		pTable.loadData();
 	}
+
 	protected void actionPerformedBtnDele(ActionEvent e) {
-		if(pProduct.getpCode().isEmpty()){
+		if (pProduct.getpCode().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "공백이 존재");
 			return;
 		}
 		Product item = pProduct.getObject();
-		if(dao.getInstance().deleteProduct(item)==0){
+
+		if (dao.deleteProduct(item) == 0) {
 			JOptionPane.showMessageDialog(null, "삭제할 데이터 없음");
-		}else{
+		} else {
 			JOptionPane.showMessageDialog(null, "삭제 되었습니다");
 		}
 		pProduct.clear();
 		pTable.loadData();
 	}
+
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		Product res = dao.getInstance().selectProductByNo(pProduct.getObject());
-		if(res == null){
+
+		if (res == null) {
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		}else{
+		} else {
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 			pProduct.setObject(res);
 		}

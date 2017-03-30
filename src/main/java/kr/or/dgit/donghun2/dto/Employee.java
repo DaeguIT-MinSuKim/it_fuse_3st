@@ -3,13 +3,9 @@ package kr.or.dgit.donghun2.dto;
 public class Employee {
 	private String code;
 	private String name;
-	private String grade;
-<<<<<<< HEAD
-	
-	boolean isexist;
-=======
+	private String grade;	
 	private boolean isexist;
->>>>>>> refs/remotes/origin/master
+
 
 	public Employee() {}
 
@@ -66,11 +62,9 @@ public class Employee {
 		this.isexist = isexist;
 	}
 
-<<<<<<< HEAD
+
 	public String[] toArray() {
 		return new String[]{code,name,grade};
 	}
-=======
->>>>>>> refs/remotes/origin/master
 
 }

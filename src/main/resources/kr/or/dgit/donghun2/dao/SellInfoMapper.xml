@@ -1,8 +1,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
 	
-<!-- 	<sql id="selectSql">SELECT saleDate, quantity
+	<sql id="selectSql">select scode,quantity,saleDate,saleprice,origiprice, dispcts,isexist
 					FROM sellInfo</sql>
+<<<<<<< HEAD
 		 -->				
 	<sql id="SelectForTableSql">SELECT s.scode, quantity,saleDate,unitprice,sellprice,disprice
 					FROM sellInfo s join vw_calculate_sellInfo vwcs
@@ -10,24 +11,60 @@
 	<insert id="insertSellInfo" parameterType="SellInfo">
 		
 	</insert>
+=======
+>>>>>>> refs/remotes/origin/master
 	<resultMap type="SellInfo" id="SellInfoResult">
 		<id property ="scode" column="scode"/>
+		<result property="ecode" column="ecode"/>
+		<result property="pcode" column="pcode"/>
+		<result property="ccode" column="ccode"/>
 		<result property="quantity" column="quantity"/>
-		<result property="saleDate" column="saleDate"/>
+		<result property="saledate" column="saledate"/>
+		<result property="saleprice" column="saleprice"/>
+		<result property="origiprice" column="origiprice"/>
+		<result property="dispcts" column="dispcts"/>
+		<result property="isexist" column="isexist"/>
 	</resultMap>
-<!-- 	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
-		<result property="sellInfoDetail.unitprice" column="unitprice"/>
-		<result property="sellInfoDetail.sellprice" column="sellprice"/>
-		<result property="sellInfoDetail.disprice" column="disprice"/>
-	</resultMap> -->
-	
-	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
-		<association property="sellInfoDetail" resultMap="kr.or.dgit.donghun2.dao.SellInfoDetailMapper.SellInfoDetailResult"/>
-	</resultMap>
-	
-	<select id="selectSellInfoByAll" resultMap="SellInfoResultex">
-		<include refid="SelectForTableSql"/>
+
+	<select id="selectSellInfoByAll" resultMap="SellInfoResult">
+		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
+		FROM sellInfo
 	</select>
+	<insert id="insertSellInfo" parameterType="SellInfo" >
+		INSERT INTO sellinfo<!-- (scode, ecode, pcode, ccode, saledate, quantity, saleprice, origiprice, dispcts, isexist) -->
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="scode !=null">
+			#{scode},
+			</if>
+			<if test="ecode !=null">
+			#{ecode},
+			</if>
+			<if test="pcode !=null">
+			#{pcode},
+			</if>
+			<if test="ccode !=null">
+			#{ccode},
+			</if>
+			<if test="saledate !=null">
+			#{saledate},
+			</if>
+			<if test="quantity !=null">
+			#{quantity},
+			</if>
+			<if test="saleprice !=null">
+			#{saleprice},
+			</if>
+			<if test="origiprice !=null">
+			#{origiprice},
+			</if>
+			<if test="dispcts !=null">
+			#{dispcts},
+			</if>
+			<if test="isexist !=null">
+			#{isexist},
+			</if>
+			</trim>
+    </insert>
 	
 <!--	<update id="updateSellInfo" parameterType="SellInfo">
 		UPDATE SellInfo

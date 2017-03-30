@@ -202,6 +202,8 @@ public class SellInfoView extends JFrame implements ActionListener {
 			int unitPrice = (int) (salePrice*(1-(dispercentage*0.01)));
 			int sellPrice = unitPrice*(pSellInfo.getObjectDateQuantity().getQuantity());
 			int disPrice = salePrice*(pSellInfo.getObjectDateQuantity().getQuantity())-sellPrice;
+
+					
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");*/
 		}	
 	}
@@ -217,7 +219,7 @@ public class SellInfoView extends JFrame implements ActionListener {
 		}
 	}
 	private void actionPerformedBtnOK2(ActionEvent e) {
-		Product res = pdao.getInstance().selectProductByNo(pProduct.getObject());
+		Product res = pdao.getInstance().selectProductByNoForSellInfo(pProduct.getObject());
 		if(res == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 			pProduct.clear();

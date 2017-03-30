@@ -8,8 +8,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.donghun2.view.CustomerView;
 import kr.or.dgit.donghun2.view.SellInfoView;
 
 public class Main extends JFrame implements ActionListener{
@@ -22,6 +24,11 @@ public class Main extends JFrame implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		 try {
+			 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+			 
+			}catch (Exception e) {}
+			CustomerView cv = new CustomerView();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

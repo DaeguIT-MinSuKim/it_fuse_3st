@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
@@ -31,6 +32,12 @@ public class CustomerView extends JFrame implements ActionListener {
 	private static CustomerService dao;
 	
 	public static void main(String[] args) {
+		 try {
+		 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+		 
+		}catch (Exception e) {}
+		CustomerView cv = new CustomerView();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
