@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.donghun2.dao.CustomerMapper">
+
+	<insert parameterType="Customer" id="insertCustomer"> insert into customer(code, name, grade,isexist) values(#{code},#{name},#{grade},true) </insert>
+	
+	<select id="selectCustomerByAll" resultType="Customer"> select code, name, grade from customer </select>
+	
+	
+	<update parameterType="Customer" id="updateCustomer">
+		update customer 
+	<set>
+	
+	<if test="code !=null">code=#{code},</if>
+	
+	<if test="code !=null">name=#{name},</if>
+	
+	<if test="code !=null">grade=#{grade}</if>
+	
+	</set>
+	where code = #{code} 
+	</update>
+	
+	<delete parameterType="Customer" id="deleteCustomer"> delete from customer where code=#{code} </delete>
+	
+	<select parameterType="Customer" id="selectCustomerByNo" resultType="Customer"> select code, name, grade from customer where code=#{code}; </select>
+
+</mapper>
+
