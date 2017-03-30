@@ -21,12 +21,10 @@ import kr.or.dgit.donghun2.table.EmployeeTable;
 import kr.or.dgit.donghun2.panel.ProductPanel;
 import kr.or.dgit.donghun2.table.ProductTable;
 import kr.or.dgit.donghun2.view.CustomerView;
-import kr.or.dgit.donghun2.panel.SellInfoPanelC;
 
 public class MainFrame extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-	private SellInfoPanelC pSellInfo;
 	private JPanel pCustomer;
 	private JPanel pProduct;
 	private JPanel pEmployee;
@@ -152,8 +150,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		pCustomer.add(pCust);
 		pCust.loadDate();
 		
-		pSellInfo = new SellInfoPanelC();
-		tabbedPane.addTab("거래내역관리", null, pSellInfo, null);
 	}
 
 	public void actionPerformed(ActionEvent e) {

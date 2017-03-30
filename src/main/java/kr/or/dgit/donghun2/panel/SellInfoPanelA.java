@@ -2,6 +2,7 @@ package kr.or.dgit.donghun2.panel;
 
 import javax.swing.JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.text.ParseException;
@@ -33,21 +34,29 @@ public class SellInfoPanelA extends JPanel {
 	 * Create the panel.
 	 */
 	public SellInfoPanelA() {
-		setLayout(new GridLayout(0, 1, 0, 10));
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel basePanel = new JPanel();
+		add(basePanel);
+		basePanel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JPanel contentPanel = new JPanel();
+		
+		contentPanel.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pScode = new TextFiledPanel();
 		pScode.setTitle("거래내역코드    ");
-		add(pScode);
+		contentPanel.add(pScode);
 		pScode.setLayout(new BoxLayout(pScode, BoxLayout.X_AXIS));
 		
 		pSaleDate = new TextFiledPanel();
 		pSaleDate.setTitle("거  래  일  자      ");
-		add(pSaleDate);
+		contentPanel.add(pSaleDate);
 		pSaleDate.setLayout(new BoxLayout(pSaleDate, BoxLayout.X_AXIS));
 		
 		pQuantity = new TextFiledPanel();
 		pQuantity.setTitle("판  매  수  량      ");
-		add(pQuantity);
+		contentPanel.add(pQuantity);
 		pQuantity.setLayout(new BoxLayout(pQuantity, BoxLayout.X_AXIS));
 		
 		btnOk = new JButton("확인");
@@ -55,18 +64,24 @@ public class SellInfoPanelA extends JPanel {
 		
 		pUnPrice = new TextFiledPanel();
 		pUnPrice.setTitle("판  매  단  가      ");
-		add(pUnPrice);
+		contentPanel.add(pUnPrice);
 		pUnPrice.setLayout(new BoxLayout(pUnPrice, BoxLayout.X_AXIS));
 		
 		pSellPrice = new TextFiledPanel();
 		pSellPrice.setTitle("판  매  금  액      ");
-		add(pSellPrice);
+		contentPanel.add(pSellPrice);
 		pSellPrice.setLayout(new BoxLayout(pSellPrice, BoxLayout.X_AXIS));
 		
 		pDisPrice = new TextFiledPanel();
 		pDisPrice.setTitle("할  인  금  액      ");
-		add(pDisPrice);
+		contentPanel.add(pDisPrice);
 		pDisPrice.setLayout(new BoxLayout(pDisPrice, BoxLayout.X_AXIS));
+		
+		
+		basePanel.add(contentPanel);
+		
+		JPanel empty = new JPanel();
+		basePanel.add(empty);
 
 	}
 	public SellInfo getObjectDateQuantity(){
@@ -80,7 +95,8 @@ public class SellInfoPanelA extends JPanel {
 	
 
 	public void clear(){
-		pScode.setTfValue("");
+		pScode.setTfValue("S006");
+		pScode.gettF().setEnabled(false);
 		pSaleDate.setTfValue(sdf.format(new Date()));
 		pQuantity.setTfValue("0");
 		pUnPrice.setTfValue("0");
