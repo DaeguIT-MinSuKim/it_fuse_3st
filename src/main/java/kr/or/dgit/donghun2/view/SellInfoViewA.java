@@ -28,6 +28,7 @@ import kr.or.dgit.donghun2.panel.SellInfoPanelA;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.service.EmployeeService;
 import kr.or.dgit.donghun2.service.ProductService;
+import kr.or.dgit.donghun2.service.SellInfoService;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 
 public class SellInfoViewA extends JFrame implements ActionListener {
@@ -40,10 +41,11 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private ProductPanel pProduct;
 	private CustomerPanel pCustomer;
 	
-	private static CalculatedValueService sdao;
+	private static CalculatedValueService cvdao;
 	private static ProductService pdao;
 	private static EmployeeService edao;
 	private static CustomerService cdao;
+	private static SellInfoService sdao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -144,8 +146,21 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		pSellInfoA = new SellInfoPanelA();
 		pSellInfoA.getBtnOk().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int unitprice = 0;
+				int sellprice = 0;
+				int disprice = 0;
+				
 				Product pRes = (Product) pProductForCombo.getSelectItem();
-				// 여기서 부터 판매단가, 판매금액, 할인금액 xml파일 매퍼 select구문 빼고 받아와야함
+				int selectedsaleprice = pRes.getSalePrice();
+				System.out.println(selectedsaleprice);
+				Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
+				String eCode = eRes.getCode();
+		//		edao.s
+				Customer cRes  = (Customer) pCustomerCombo.getSelectItem();
+				String cCode = cRes.getCode();
+				
+				
+				
 			}
 		});
 		contentPane.add(pSellInfoA);
