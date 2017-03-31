@@ -99,8 +99,8 @@ public class ProductView extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "공백이 존재");
 			return;
 		}
-		if (Integer.parseInt(pProduct.getpSalePrice().getTfValue()) < Integer
-				.parseInt(pProduct.getpOrigiPrice().getTfValue())) {
+		if (Integer.parseInt(pProduct.getpSalePrice().getSpinner().toString()) <
+				Integer.parseInt(pProduct.getpOrigiPrice().getSpinner().toString())) {
 			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
 			return;
 		}
@@ -123,7 +123,6 @@ public class ProductView extends JFrame implements ActionListener {
 			return;
 		}
 		Product item = pProduct.getObject();
-
 		if (dao.deleteProduct(item) == 0) {
 			JOptionPane.showMessageDialog(null, "삭제할 데이터 없음");
 		} else {
@@ -135,7 +134,6 @@ public class ProductView extends JFrame implements ActionListener {
 
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		Product res = dao.getInstance().selectProductByNo(pProduct.getObject());
-
 		if (res == null) {
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		} else {

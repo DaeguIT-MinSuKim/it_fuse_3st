@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.SellInfo;
 
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+
 public class SellInfoPanel extends JPanel {
 	private static final SellInfoPanel instance = new SellInfoPanel();
 	public static SellInfoPanel getInstance() {return instance;}
@@ -27,7 +30,7 @@ public class SellInfoPanel extends JPanel {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	private TextFiledPanel pScode;
 
-	private SellInfoPanel() {
+	public SellInfoPanel() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{225, 225, 0};
 		gridBagLayout.rowHeights = new int[]{58, 58, 58, 58, 58, 58, 0};
@@ -108,10 +111,9 @@ public class SellInfoPanel extends JPanel {
 		} catch (ParseException e) {e.printStackTrace();}
 		String scode = pScode.getTfValue();
 		int quantity = Integer.parseInt(pQuantity.getTfValue());
-
 		return new SellInfo(scode, saleDate, quantity);
 	}
-
+	
 
 	public void clear(){
 		pSaleDate.setTfValue(sdf.format(new Date()));

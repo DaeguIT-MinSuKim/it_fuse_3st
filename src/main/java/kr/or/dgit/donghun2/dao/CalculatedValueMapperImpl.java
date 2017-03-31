@@ -16,12 +16,12 @@ public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	
 	@Override
 	public List<CalculatedValue> selectCalculatedValueByAll() {
-		return sqlSession.selectList(namespace+"selectCalculatedValue");
+		return sqlSession.selectList(namespace+"selectCalculatedValueByAll");
 	}
 
 	@Override
 	public CalculatedValue selectCalculatedValueByNo(CalculatedValue code) {
-		return sqlSession.selectOne(namespace+"selectCalculatedValue", code);
+		return sqlSession.selectOne(namespace+"selectCalculatedValueByNo", code);
 	}
 
 }

@@ -1,33 +1,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
 	
-<!-- 	<sql id="selectSql">SELECT saleDate, quantity
-					FROM sellInfo</sql>
-		 -->				
-	<sql id="SelectForTableSql">SELECT s.scode, quantity,saleDate,unitprice,sellprice, disprice
-					FROM sellInfo s join sellInfoDetail sd
-					on s.scode = sd.scode </sql>
-	<resultMap type="SellInfo" id="SellInfoResult">
-		<id property ="scode" column="scode"/>
-		<result property="quantity" column="quantity"/>
-		<result property="saleDate" column="saleDate"/>
-	</resultMap>
-<!-- 	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
-		<result property="sellInfoDetail.unitprice" column="unitprice"/>
-		<result property="sellInfoDetail.sellprice" column="sellprice"/>
-		<result property="sellInfoDetail.disprice" column="disprice"/>
-	</resultMap> -->
-	
-	<resultMap type="SellInfo" id="SellInfoResultex" extends="SellInfoResult">
-		<association property="sellInfoDetail" resultMap="kr.or.dgit.donghun2.dao.SellInfoDetailMapper.SellInfoDetailResult"/>
-	</resultMap>
-	
-	<select id="selectSellInfoByAll" resultMap="SellInfoResultex">
-		<include refid="SelectForTableSql"/>
-		
+	<sql id="whereSql">where scode = #{scode}</sql>
+
+	<select id="selectSellInfoByAll" resultType="SellInfo">
+		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
+		FROM sellInfo
 	</select>
+	<insert id="insertSellInfo" parameterType="SellInfo" >
+		INSERT INTO sellinfo (scode, saledate, quantity, saleprice, origiprice, dispcts, isexist) 
+		values (#{scode},#{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},#{isexist})
+    </insert>
 	
-<!--	<update id="updateSellInfo" parameterType="SellInfo">
+	<update id="updateSellInfo" parameterType="SellInfo">
 		UPDATE SellInfo
 		<set>
 			<if test="name != null">
@@ -45,5 +30,4 @@
 	</delete> 
 
 	
- -->
 </mapper>

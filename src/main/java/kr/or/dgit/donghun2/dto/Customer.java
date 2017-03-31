@@ -49,11 +49,12 @@ public class Customer {
 		this.grade = grade;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return String.format("Customer [code=%s, name=%s]", code, name);
+		return "거래처코드 : " + code + "____거래처명 : " + name + "____거래처등급 : " + grade+"____";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

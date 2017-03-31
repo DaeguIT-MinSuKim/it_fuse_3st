@@ -18,10 +18,7 @@ public class CustomerPanel extends JPanel {
 	private TextFiledPanel pName;
 	private ComboPanel pGrade;
 
-	/**
-	 * Create the panel.
-	 */
-	private CustomerPanel() {
+	public CustomerPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		pCode = new TextFiledPanel();

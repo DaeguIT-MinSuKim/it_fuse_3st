@@ -12,7 +12,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.view.CustomerView;
-import kr.or.dgit.donghun2.view.SellInfoView;
+import kr.or.dgit.donghun2.view.SellInfoViewA;
 
 public class Main extends JFrame implements ActionListener{
 
@@ -26,6 +26,7 @@ public class Main extends JFrame implements ActionListener{
 	public static void main(String[] args) {
 		 try {
 			 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+			 UIManager.setLookAndFeel("com.jtattoo.plaf.texture.TextureLookAndFeel");
 			 
 			}catch (Exception e) {}
 			CustomerView cv = new CustomerView();
@@ -77,7 +78,7 @@ public class Main extends JFrame implements ActionListener{
 		ba.setVisible(true);
 	}
 	protected void actionPerformedBtnNewButton_2(ActionEvent e) {
-		SellInfoView siv = new SellInfoView();
+		SellInfoViewA siv = new SellInfoViewA();
 		siv.setVisible(true);
 	}
 }

@@ -10,28 +10,8 @@
 	</select>
 	
 	<insert id="insertProduct" parameterType="Product" >
-<<<<<<< HEAD
       insert into Product (code,name,saleprice,origiprice,isexist)
       values (#{code},#{name},#{salePrice},#{origiPrice},true)
-   <!-- <trim prefix="values(" suffix=")" suffixOverrides=",">
-=======
-      insert into Product (code,name,salePrice,origiPrice)
-      values (#{code},#{name},#{salePrice},#{origiPrice})
-   <trim prefix="values(" suffix=")" suffixOverrides=",">
->>>>>>> refs/remotes/origin/master
-         <if test="code !=null">
-            #{code},
-         </if>
-         <if test="name !=null">
-            #{name},
-         </if>
-         <if test="salePrice !=null">
-            #{salePrice},
-         </if>
-         <if test="origiPrice !=null">
-            #{origiPrice},
-         </if>
-      </trim>  -->
    	</insert>
 	
 	<update id="updateProduct" parameterType="Product">

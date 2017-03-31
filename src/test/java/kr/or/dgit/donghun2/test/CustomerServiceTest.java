@@ -35,6 +35,30 @@ public class CustomerServiceTest {
 		}
 		Assert.assertNotNull(customers);
 	}
+=======
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("setUpBeforeClass()");
+		customerService = CustomerService.getInstance();
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("tearDownAfterClass()");
+		customerService = null;
+	}
+
+	@Test
+	public void aTestSelectCustomerByAll() {
+		List<Customer> customers = customerService.selectCustomerByAll();
+		for(Customer c : customers){
+			System.out.println(c);
+		}
+		Assert.assertNotNull(customers);
+	}
+	
+	/*
+>>>>>>> refs/remotes/origin/master
 	@Test
 	public void bTestInsertCustomer() {
 		Customer item = new Customer();

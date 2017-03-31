@@ -2,14 +2,12 @@ package kr.or.dgit.donghun2.table;
 
 import java.awt.BorderLayout;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 

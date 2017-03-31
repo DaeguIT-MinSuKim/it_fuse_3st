@@ -5,8 +5,10 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
+import erp_myframework.SpinnerPanel;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Product;
+
 
 public class ProductPanel extends JPanel {
 	private static final ProductPanel instance = new ProductPanel();
@@ -17,10 +19,10 @@ public class ProductPanel extends JPanel {
 	
 	private TextFiledPanel pCode;
 	private TextFiledPanel pName;
-	private TextFiledPanel pSalePrice;
-	private TextFiledPanel pOrigiPrice;
+	private SpinnerPanel pSalePrice;
+	private SpinnerPanel pOrigiPrice;
 
-	private ProductPanel() {
+	public ProductPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		pCode = new TextFiledPanel();
@@ -31,11 +33,11 @@ public class ProductPanel extends JPanel {
 		pName.setTitle("제 품 명");
 		add(pName);
 		
-		pSalePrice = new TextFiledPanel();
+		pSalePrice = new SpinnerPanel();
 		pSalePrice.setTitle("판매정가");
 		add(pSalePrice);
 		
-		pOrigiPrice = new TextFiledPanel();
+		pOrigiPrice = new SpinnerPanel();
 		pOrigiPrice.setTitle("판매원가");
 		add(pOrigiPrice);
 
@@ -47,32 +49,32 @@ public class ProductPanel extends JPanel {
 	public TextFiledPanel getpName() {
 		return pName;
 	}
-	public TextFiledPanel getpSalePrice() {
+	public SpinnerPanel getpSalePrice() {
 		return pSalePrice;
 	}
-	public TextFiledPanel getpOrigiPrice() {
+	public SpinnerPanel getpOrigiPrice() {
 		return pOrigiPrice;
 	}
 	public Product getObject(){
 		String code = pCode.getTfValue();
 		String name = pName.getTfValue();
-		int salePrice = Integer.parseInt(pSalePrice.getTfValue());
-		int origiPrice = Integer.parseInt(pOrigiPrice.getTfValue());
+		int salePrice = (int)pSalePrice.getValue();
+		int origiPrice = (int)pOrigiPrice.getValue();
 		return new Product(code, name, salePrice, origiPrice);
 	}
 	
 	public void setObject(Product item){
 		pCode.setTfValue(item.getCode());
 		pName.setTfValue(item.getName());
-		pSalePrice.setTfValue(String.valueOf(item.getSalePrice()));
-		pOrigiPrice.setTfValue(String.valueOf(item.getOrigiPrice()));
+		pSalePrice.setValue(item.getSalePrice());
+		pOrigiPrice.setValue(item.getOrigiPrice());
 	}
 
 	public void clear(){
 		pCode.setTfValue("");
 		pName.setTfValue("");
-		pSalePrice.setTfValue("0");
-		pOrigiPrice.setTfValue("0");
+		pSalePrice.setValue(0);
+		pOrigiPrice.setValue(0);
 	}
 	public boolean isEmpty(){
 		boolean result = false;

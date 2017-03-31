@@ -2,7 +2,6 @@ package kr.or.dgit.donghun2.table;
 
 import java.awt.BorderLayout;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,7 +11,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-import kr.or.dgit.donghun2.dao.ProductMapper;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.service.ProductService;
 

@@ -18,7 +18,7 @@ public class EmployeePanel extends JPanel{
 	private TextFiledPanel pName;
 	private ComboPanel<String> pGrade;
 
-	private EmployeePanel() {
+	public EmployeePanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		pCode = new TextFiledPanel();

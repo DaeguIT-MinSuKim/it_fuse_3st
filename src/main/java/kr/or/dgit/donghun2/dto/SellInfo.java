@@ -9,11 +9,12 @@ public class SellInfo {
 	private String ccode;
 	private int quantity;
 	private Date saledate;
+
 	private int saleprice;
 	private int origiprice;
 	private int dispcts;
 	private boolean isexist;
-
+	
 	public SellInfo() {}
 	
 	public SellInfo(String scode, Date saledate, int quantity) {
@@ -87,11 +88,21 @@ public class SellInfo {
 		return scode;
 	}
 
+	public void setScode(String scode) {
+		this.scode = scode;
+	}
+
+	public Date getSaleDate() {
+		return saledate;
+	}
+
 	public void setSaleDate(Date saleDate) {
 		this.saledate = saleDate;
 	}
 
-
+	public int getQuantity() {
+		return quantity;
+	}
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
@@ -125,22 +136,8 @@ public class SellInfo {
 		return dispcts;
 	}
 
-
-	public void setScode(String scode) {
-		this.scode = scode;
-	}
-	
-	public Date getSaleDate() {
-		return saledate;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
 	public void setDispcts(int dispcts) {
 		this.dispcts = dispcts;
-
 	}
 
 
