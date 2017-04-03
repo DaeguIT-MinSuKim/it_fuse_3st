@@ -75,15 +75,12 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		ComboPanel<Employee> pEmployeeForCombo = new ComboPanel<>();
 		
 		pEmployeeForCombo.setTitle("사원");
-		
 		GridBagLayout egridBagLayout = new GridBagLayout();
 		egridBagLayout.columnWidths = new int[]{100, 425, 0};		egridBagLayout.rowHeights = new int[]{51, 0};		egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pEmployeeForCombo.setLayout(egridBagLayout);
-		
 		GridBagConstraints egbc_lbl = new GridBagConstraints();
 		egbc_lbl.fill = GridBagConstraints.BOTH;		egbc_lbl.insets = new Insets(0, 0, 0, 5);		egbc_lbl.gridx = 0;		egbc_lbl.gridy = 0;
 		panel.add(pEmployeeForCombo,egbc_lbl);
-		
 		GridBagConstraints egbc_combo = new GridBagConstraints();
 		egbc_combo.fill = GridBagConstraints.BOTH;		egbc_combo.gridx = 1;		egbc_combo.gridy = 0;
 		panel.add(pEmployeeForCombo, egbc_combo);
@@ -126,15 +123,12 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		ComboPanel<Customer> pCustomerForCombo = new ComboPanel();
 		
 		pCustomerForCombo.setTitle("거래처");
-		
 		GridBagLayout cgridBagLayout = new GridBagLayout();
 		cgridBagLayout.columnWidths = new int[]{100, 425, 0};		cgridBagLayout.rowHeights = new int[]{51, 0};		cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pCustomerForCombo.setLayout(cgridBagLayout);
-		
 		GridBagConstraints cgbc_lbl = new GridBagConstraints();
 		cgbc_lbl.fill = GridBagConstraints.BOTH;		cgbc_lbl.insets = new Insets(0, 0, 0, 5);		cgbc_lbl.gridx = 0;		cgbc_lbl.gridy = 0;
 		panel.add(pCustomerForCombo,cgbc_lbl);
-		
 		GridBagConstraints cgbc_combo = new GridBagConstraints();
 		panel.add(pCustomerForCombo, cgbc_combo);
 		

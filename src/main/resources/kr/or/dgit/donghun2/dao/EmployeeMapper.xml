@@ -2,18 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
 
- 	<resultMap type="Employee" id="EmployeeResult">
-		<id property="code" column="code"/>
-		<result property="name" column="name"/>
-		<result property="grade" column="grade"/>
-		<collection property="eGrade" resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult"/>
+<!-- 	<resultMap type="Employee" id="EGradeExtends">
+		<result property="eGrade.grade" column="grade"/>
+		<result property="eGrade.dispct" column="dispct"/>
 	</resultMap>
 	
-	<select id="selectDiscnt" parameterType="Employee" resultMap="EmployeeResult">
+	<select id="selectDiscnt" parameterType="Employee" resultMap="EgradeExtends">
 		select dispct from egrade eg join employee e 
 		on eg.grade = e.grade 
 		where code = #{code}
-	</select> 
+	</select> -->
 
 	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code, name, grade, isexist) values(#{code},#{name},#{grade},true) </insert>
 	
