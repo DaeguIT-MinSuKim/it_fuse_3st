@@ -1,33 +1,15 @@
-package kr.or.dgit.donghun2.Main;
-
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Vector;
+package kr.or.dgit.donghun2.panel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
-import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
-import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.CustomerPanel;
-import kr.or.dgit.donghun2.panel.EmployeePanel;
-import kr.or.dgit.donghun2.panel.InquiryPanel;
-import kr.or.dgit.donghun2.panel.ProductPanel;
-import kr.or.dgit.donghun2.panel.SellInfoPanelA;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.service.EmployeeService;
 import kr.or.dgit.donghun2.service.ProductService;
@@ -35,97 +17,64 @@ import kr.or.dgit.donghun2.table.CustomerTable;
 import kr.or.dgit.donghun2.table.EmployeeTable;
 import kr.or.dgit.donghun2.table.ProductTable;
 
-public class MainFrame extends JFrame implements ActionListener {
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Vector;
 
-	private JPanel contentPane;
-	private JPanel pCustomer;
-	private JPanel pProduct;
+public class BasicTabbedPanel extends JPanel implements ActionListener {
+
+	private JTabbedPane tabbedPane;
 	private JPanel pEmployee;
-	private JButton CbtnSave;
-	private JPanel pCusb;
-	private CustomerPanel pCusp;
-	private CustomerTable pCust;
-	private CustomerService dao;
-	private EmployeeTable pEmpt;
-	private JPanel pEmpb;
 	private EmployeePanel pEmpp;
-	private JButton EbtnSearch;
-	private JButton EbtnDele;
+	private JPanel pEmpb;
 	private JButton EbtnSave;
+	private JButton EbtnDele;
+	private JButton EbtnSearch;
+	private EmployeeTable pEmpt;
+	private JPanel pProduct;
 	private ProductPanel pProp;
 	private JPanel pProb;
-	private ProductTable pProt;
 	private JButton PbtnSave;
 	private JButton PbtnDele;
 	private JButton PbtnSearch;
+	private ProductTable pProt;
+	private JPanel pCustomer;
+	private CustomerPanel pCusp;
+	private JButton CbtnSave;
+	private JButton CbtnDele;
+	private Container pCusb;
+	private JButton CbtnSearch;
+	private CustomerTable pCust;
 	private JPanel pSellInfo;
+	private ComboPanel pEmployeeForCombo;
 
 	private EmployeeService edao;
 	private ProductService pdao;
 	private CustomerService cdao;
-	private ComboPanel<Employee> pEmployeeForCombo;
-	private ComboPanel<Product> pProductForCombo;
-	private ComboPanel<Customer> pCustomerForCombo;
-	private TextFiledPanel pScode;
-	private TextFiledPanel pSaleDate;
-	private TextFiledPanel pQuantity;
-	private JButton btnOk;
-	private TextFiledPanel pUnPrice;
-	private TextFiledPanel pSellPrice;
-	private TextFiledPanel pDisPrice;
+	private ComboPanel pProductForCombo;
+	private ComboPanel pCustomerForCombo;
 	private JPanel psellInfoDetail;
-	private JPanel pBtn;
+	private JPanel psellInfobtn;
 	private JButton btnSave;
+	private JPanel pBtn;
+	private Container contentPane;
 	private JButton btn1;
 	private JButton btn2;
 	private JButton btn3;
-	private JTabbedPane tabbedPane;
-	
-	private JPanel psellInfobtn;
-	private JButton CbtnSearch;
-	private JButton CbtnDele;
-	private JPanel pTabbedPane;
 
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-
-		} catch (Exception e) {
-		}
-		MainFrame mf = new MainFrame();
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainFrame frame = new MainFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MainFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 600);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(10, 10));
-		setContentPane(contentPane);
+	public BasicTabbedPanel() {
+		setLayout(new BorderLayout(0, 0));
 		
-		
-		pTabbedPane = new JPanel();
-		contentPane.add(pTabbedPane, BorderLayout.CENTER);
-		
-		
+		JPanel pBasic = new JPanel();
+		add(pBasic);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		pTabbedPane.add(tabbedPane);
-
-		/*pEmployee = new JPanel();
+		pBasic.add(tabbedPane);
+		
+		pEmployee = new JPanel();
 		tabbedPane.addTab("영업사원관리", null, pEmployee, null);
 		pEmployee.setLayout(new BoxLayout(pEmployee, BoxLayout.Y_AXIS));
 
@@ -227,7 +176,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			pVector.addElement(pList.get(i));
 		}
 		pProductForCombo.setcomboData(pVector);
-		
+
 		pCustomerForCombo = new ComboPanel<>();
 		pSellInfo.add(pCustomerForCombo);
 		pCustomerForCombo.setLayout(new BoxLayout(pCustomerForCombo, BoxLayout.Y_AXIS));
@@ -242,85 +191,142 @@ public class MainFrame extends JFrame implements ActionListener {
 			cVector.addElement(cList.get(i));
 		}
 		pCustomerForCombo.setcomboData(cVector);
-		
+
 		psellInfoDetail = new JPanel();
-		
-		
+
 		psellInfoDetail = new SellInfoPanelA();
 		pSellInfo.add(psellInfoDetail);
-		
+
 		psellInfobtn = new JPanel();
 		btnSave = new JButton("저장");
 		psellInfobtn.add(btnSave);
-		pSellInfo.add(psellInfobtn);*/
-		
-		pBtn = new JPanel();
-		contentPane.add(pBtn, BorderLayout.EAST);
-		pBtn.setLayout(new GridLayout(0, 1, 10, 50));
-		btn1 = new JButton("기초자료관리");
-		btn2 = new JButton("기초자료 현황");
-		btn3 = new JButton("거래내역 조회");
-		pBtn.add(btn1);
-		btn1.addActionListener(this);
-		pBtn.add(btn2);
-		btn2.addActionListener(this);
-		pBtn.add(btn3);
-		System.out.println("**");
-	}
+		pSellInfo.add(psellInfobtn);
 
-	
+	}
 
 	public void actionPerformed(ActionEvent e) {
-		/*if (e.getSource() == CbtnSave) {
+		if (e.getSource() == CbtnSave) {
 			actionPerformedCBtnSave(e);
 		}
-		if(e.getSource() == CbtnDele){
+		if (e.getSource() == CbtnDele) {
 			actionPerformedCBtnDele(e);
-		}*/
-		if(e.getSource() == btn2){
-			actionPerformedbtn2(e);
 		}
-		if(e.getSource()== btn1){
-			actionPerformedbtn1(e);
+		if (e.getSource() == CbtnSearch) {
+			actionPerformedCbtnSearch(e);
+		}
+		if (e.getSource() == PbtnSave) {
+			actionPerformedPBtnSave(e);
+		}
+		if (e.getSource() == PbtnDele) {
+			actionPerformedPBtnDele(e);
+		}
+		if (e.getSource() == PbtnSearch) {
+			actionPerformedPbtnSearch(e);
+		}
+		if (e.getSource() == EbtnSave) {
+			actionPerformedEBtnSave(e);
+		}
+		if (e.getSource() == EbtnDele) {
+			actionPerformedEBtnDele(e);
+		}
+		if (e.getSource() == EbtnSearch) {
+			actionPerformedEbtnSearch(e);
 		}
 	}
-	
 
-	
-
-	private void actionPerformedbtn1(ActionEvent e) {
-		pTabbedPane.removeAll();
-		pTabbedPane.add(new BasicTabbedPanel());
-		revalidate();
-		repaint();
+	private void actionPerformedEbtnSearch(ActionEvent e) {
+		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
+		if (res == null) {
+			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		} else {
+			JOptionPane.showMessageDialog(null, "검색하였습니다.");
+			pEmpp.setObject(res);
+		}
 		
 	}
 
-	private void actionPerformedbtn2(ActionEvent e) {
-		pTabbedPane.removeAll();
-		pTabbedPane.add(new InquiryPanel());
-		revalidate();
-		repaint();
+	private void actionPerformedEBtnDele(ActionEvent e) {
+		int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
+		if (res == 0) {
+			JOptionPane.showMessageDialog(null, "삭제안댐");
+		} else {
+			JOptionPane.showMessageDialog(null, "삭제댐");
+			pEmpt.loadDate();
+		}
+		
 	}
 
-	/*private void actionPerformedCBtnDele(ActionEvent e) {
-		int res = dao.getInstance().deleteCustomer(pCusp.getObject());
-		if(res==0){
+	private void actionPerformedEBtnSave(ActionEvent e) {
+		if (pEmpp.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
+		} else {
+			edao.getInstance().insertEmployee(pEmpp.getObject());
+			JOptionPane.showMessageDialog(null, "저장되었습니다.");
+			pEmpt.loadDate();
+		}
+		
+	}
+
+	private void actionPerformedPbtnSearch(ActionEvent e) {
+		Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
+		if (res == null) {
+			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		} else {
+			JOptionPane.showMessageDialog(null, "검색하였습니다.");
+			pProp.setObject(res);
+		}
+		
+	}
+
+	private void actionPerformedPBtnDele(ActionEvent e) {
+		int res = pdao.getInstance().deleteProduct(pProp.getObject());
+		if (res == 0) {
 			JOptionPane.showMessageDialog(null, "삭제안댐");
-		}else{
+		} else {
+			JOptionPane.showMessageDialog(null, "삭제댐");
+			pProt.loadData();
+		}
+		
+	}
+
+	private void actionPerformedPBtnSave(ActionEvent e) {
+		if (pProp.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
+		} else {
+			pdao.getInstance().insertProduct(pProp.getObject());
+			JOptionPane.showMessageDialog(null, "저장되었습니다.");
+			pProt.loadData();
+		}
+		
+	}
+
+	private void actionPerformedCbtnSearch(ActionEvent e) {
+		Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
+		if (res == null) {
+			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		} else {
+			JOptionPane.showMessageDialog(null, "검색하였습니다.");
+			pCusp.setObject(res);
+		}
+	}
+
+	private void actionPerformedCBtnDele(ActionEvent e) {
+		int res = cdao.getInstance().deleteCustomer(pCusp.getObject());
+		if (res == 0) {
+			JOptionPane.showMessageDialog(null, "삭제안댐");
+		} else {
 			JOptionPane.showMessageDialog(null, "삭제댐");
 			pCust.loadDate();
 		}
 	}
 
-	protected void actionPerformedCBtnSave(ActionEvent e) {
+	private void actionPerformedCBtnSave(ActionEvent e) {
 		if (pCusp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
 		} else {
-			dao.getInstance().insertCustomer(pCusp.getObject());
+			cdao.getInstance().insertCustomer(pCusp.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다.");
 			pCust.loadDate();
 		}
-	}*/
-
+	}
 }

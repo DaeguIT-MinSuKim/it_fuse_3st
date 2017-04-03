@@ -34,6 +34,7 @@ public class SellInfoPanelA extends JPanel {
 	public SellInfoPanelA() {
 		setLayout(new BorderLayout(0, 0));
 		
+		
 		JPanel basePanel = new JPanel();
 		add(basePanel);
 		basePanel.setLayout(new GridLayout(0, 2, 0, 0));
@@ -80,6 +81,8 @@ public class SellInfoPanelA extends JPanel {
 		
 		JPanel empty = new JPanel();
 		basePanel.add(empty);
+		
+		
 
 	}
 	public SellInfo getObjectDateQuantity(){

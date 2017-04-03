@@ -25,11 +25,10 @@ import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.ProductPanel;
 import kr.or.dgit.donghun2.panel.SellInfoPanelA;
+import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.service.EmployeeService;
 import kr.or.dgit.donghun2.service.ProductService;
-import kr.or.dgit.donghun2.service.SellInfoService;
-import kr.or.dgit.donghun2.service.CalculatedValueService;
 
 public class SellInfoViewA extends JFrame implements ActionListener {
 	
@@ -45,7 +44,6 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private static ProductService pdao;
 	private static EmployeeService edao;
 	private static CustomerService cdao;
-	private static SellInfoService sdao;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
