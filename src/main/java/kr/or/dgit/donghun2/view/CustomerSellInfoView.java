@@ -29,7 +29,7 @@ public class CustomerSellInfoView extends JFrame {
 		});
 	}
 
-	/**
+	/**ㅇㅣ거!!!
 	 * Create the frame.
 	 */
 	public CustomerSellInfoView() {

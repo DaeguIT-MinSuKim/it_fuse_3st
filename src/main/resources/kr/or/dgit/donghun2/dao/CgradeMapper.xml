@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.donghun2.dao.CgradeMapper">
+	
+	<resultMap type="Cgrade" id="CgradeResult">
+		<result property="grade" column="grade"/>
+		<result property="dispct" column="dispct"/>
+	</resultMap>
+	
+	<select id="selectDiscntByGrade" resultMap="CgradeResult">
+		select grade, dispct from cgrade
+	</select>
+
+</mapper>
