@@ -7,6 +7,7 @@ import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
+import kr.or.dgit.donghun2.dao.EmployeeMapper;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 
@@ -65,6 +66,15 @@ public class CustomerService {
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			Customer customer = sqlSession.getMapper(CustomerMapper.class).selectCustomerByNo(code);
 			return customer;
+		}
+	}
+
+
+	public int selectDiscnt(Customer code) {
+		log.debug("selectDiscnt()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int discnt = sqlSession.getMapper(CustomerMapper.class).selectDiscnt(code);
+			return discnt;
 		}
 	}
 	

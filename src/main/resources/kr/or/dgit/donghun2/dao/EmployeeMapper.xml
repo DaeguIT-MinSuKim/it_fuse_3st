@@ -2,6 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
 
+<!-- 	<resultMap type="Employee" id="EGradeExtends">
+		<result property="eGrade.grade" column="grade"/>
+		<result property="eGrade.dispct" column="dispct"/>
+	</resultMap>
+	
+	<select id="selectDiscnt" parameterType="Employee" resultMap="EgradeExtends">
+		select dispct from egrade eg join employee e 
+		on eg.grade = e.grade 
+		where code = #{code}
+	</select> -->
+
 	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code, name, grade, isexist) values(#{code},#{name},#{grade},true) </insert>
 	
 	<select id="selectEmployeeByAll" resultType="Employee"> select code, name, grade from Employee </select>
@@ -23,7 +34,7 @@
 	
 	<delete parameterType="Employee" id="deleteEmployee"> delete from Employee where code=#{code} </delete>
 	
-	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade from Employee where code=#{code}; </select>
+	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade from Employee where code=#{code} </select>
 
 </mapper>
 

@@ -15,4 +15,6 @@ public interface CustomerMapper {
 	int deleteCustomer(Customer customer);
 	
 	Customer selectCustomerByNo(Customer customer);
+
+	int selectDiscnt(Customer code);
 }	

@@ -4,6 +4,7 @@ public class Employee {
 	private String code;
 	private String name;
 	private String grade;	
+	private Egrade eGrade;
 	private boolean isexist;
 
 
@@ -17,6 +18,11 @@ public class Employee {
 	
 	
 	
+	public Employee(String code) {
+		super();
+		this.code = code;
+	}
+
 	public boolean isIsexist() {
 		return isexist;
 	}

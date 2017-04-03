@@ -1,14 +1,19 @@
 package kr.or.dgit.donghun2.test;
 
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.EmployeeService;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmployeeServiceTest {
 	private static EmployeeService employeeService;
-	/*
+	/*	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -20,7 +25,15 @@ public class EmployeeServiceTest {
 		System.out.println("tearDownAfterClass()");
 		employeeService = null;
 	}
-
+	
+	@Test
+	public void fTestSelectDiscnt() {
+		Employee	item = new Employee();
+		item.setCode("E001");
+		int res = employeeService.selectDiscnt(item);
+	}
+	
+	
 	@Test
 	public void aTestSelectEmployeeByAll() {
 		List<Employee> employees = employeeService.selectEmployeeByAll();
@@ -68,5 +81,11 @@ public class EmployeeServiceTest {
 		Assert.assertEquals(1,res);
 	}
 	
+	@Test
+	public void fTestSelectDiscnt() {
+		Employee	item = new Employee();
+		item.setCode("E001");
+		int res = employeeService.selectDiscnt(item);
+	}
 */
 }

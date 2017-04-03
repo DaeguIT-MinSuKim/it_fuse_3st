@@ -120,17 +120,17 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		pProductForCombo.setcomboData(pVector);
 		
 		
-		ComboPanel<Customer> pCustomerCombo = new ComboPanel();
+		ComboPanel<Customer> pCustomerForCombo = new ComboPanel();
 		
-		pCustomerCombo.setTitle("거래처");
+		pCustomerForCombo.setTitle("거래처");
 		GridBagLayout cgridBagLayout = new GridBagLayout();
 		cgridBagLayout.columnWidths = new int[]{100, 425, 0};		cgridBagLayout.rowHeights = new int[]{51, 0};		cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		pCustomerCombo.setLayout(cgridBagLayout);
+		pCustomerForCombo.setLayout(cgridBagLayout);
 		GridBagConstraints cgbc_lbl = new GridBagConstraints();
 		cgbc_lbl.fill = GridBagConstraints.BOTH;		cgbc_lbl.insets = new Insets(0, 0, 0, 5);		cgbc_lbl.gridx = 0;		cgbc_lbl.gridy = 0;
-		panel.add(pCustomerCombo,cgbc_lbl);
+		panel.add(pCustomerForCombo,cgbc_lbl);
 		GridBagConstraints cgbc_combo = new GridBagConstraints();
-		panel.add(pCustomerCombo, cgbc_combo);
+		panel.add(pCustomerForCombo, cgbc_combo);
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
 		for(Customer c : cList){
@@ -140,7 +140,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		for(int i = 0 ; i < cList.size(); i++){
 			cVector.addElement(cList.get(i));
 		}
-		pCustomerCombo.setcomboData(cVector);
+		pCustomerForCombo.setcomboData(cVector);
 		
 		
 		pSellInfoA = new SellInfoPanelA();
@@ -154,9 +154,9 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 				int selectedsaleprice = pRes.getSalePrice();
 				System.out.println(selectedsaleprice);
 				Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
-				String eCode = eRes.getCode();
-		//		edao.s
-				Customer cRes  = (Customer) pCustomerCombo.getSelectItem();
+				int dis = edao.selectDiscnt(eRes);
+				System.out.println(dis);
+				Customer cRes  = (Customer) pCustomerForCombo.getSelectItem();
 				String cCode = cRes.getCode();
 				
 				

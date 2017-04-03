@@ -39,6 +39,11 @@ public class CustomerMapperImpl implements CustomerMapper{
 		return sqlSession.selectOne(namespace+"selectCustomerByNo",code);
 	}
 
+	@Override
+	public int selectDiscnt(Customer code) {
+		return sqlSession.selectOne(namespace+"selectDiscnt",code);
+	}
+
 
 	
 }
