@@ -1,25 +1,22 @@
 package kr.or.dgit.donghun2.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.metal.OceanTheme;
-
-import erp_myframework.ComboPanel;
-import kr.or.dgit.donghun2.dto.Customer;
-import kr.or.dgit.donghun2.service.CustomerService;
-
-import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.List;
 import java.util.Vector;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.service.CustomerService;
+import kr.or.dgit.donghun2.table.CustomerSellInfoTable;
 
 public class CustomerSellInfoView extends JFrame {
 
@@ -81,7 +78,7 @@ public class CustomerSellInfoView extends JFrame {
 		pCombo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		
-		JPanel pTable = new JPanel();
+		JPanel pTable = new CustomerSellInfoTable();
 		contentPane.add(pTable);
 		pTable.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 	}

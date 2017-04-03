@@ -1,5 +1,8 @@
 package kr.or.dgit.donghun2.dto;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 public class CalculatedValue {
 	private String scode;
 	private int unitprice;
@@ -221,9 +224,26 @@ public class CalculatedValue {
 	}
 	
 
+	public String[] toArrayforCustomerSellInfoT(){
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		return new String[] 
+				{df.format(sellinfo.getSaleDate()),
+							product.getCode(),
+							product.getName(),
+				 String.format("%,d",sellinfo.getQuantity()),
+				 String.format("%,d",sellprice),
+				 String.format("%,d",disprice),
+				 String.format("%,d",marginprice),
+				 String.format("%,d",marginpct)};
+	}
 	
+	public String[] toArrayforProductSellInfoT(){
+		return new String[] {};
+	}
 	
-	
+	public String[] toArrayforEmployeeSellInfoT(){
+		return new String[] {};
+	}
 	
 	
 	

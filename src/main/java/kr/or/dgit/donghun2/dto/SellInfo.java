@@ -1,5 +1,7 @@
 package kr.or.dgit.donghun2.dto;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SellInfo {
@@ -9,7 +11,7 @@ public class SellInfo {
 	private String ccode;
 	private int quantity;
 	private Date saledate;
-
+	
 	private int saleprice;
 	private int origiprice;
 	private int dispcts;
@@ -149,8 +151,33 @@ public class SellInfo {
 				ecode, pcode, ccode, scode, saledate, quantity, saleprice, origiprice, dispcts, isexist);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((scode == null) ? 0 : scode.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SellInfo other = (SellInfo) obj;
+		if (scode == null) {
+			if (other.scode != null)
+				return false;
+		} else if (!scode.equals(other.scode))
+			return false;
+		return true;
+	}
 
 
+	
 
 
 	
