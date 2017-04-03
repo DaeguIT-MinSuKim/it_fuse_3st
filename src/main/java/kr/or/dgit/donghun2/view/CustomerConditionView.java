@@ -18,29 +18,24 @@ import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;
 
-public class CustomeConditionrView extends JFrame {
+public class CustomerConditionView extends JFrame {
 
 	private JPanel contentPane;
 	private CustomerPanel pCustomer;
 	private JPanel pbtn;
-	private JButton btnSave;
-	private JButton btnDele;
 	private CustomerTable pTable;
-	private JButton btnSearch;
-	
-	private static CustomerService dao;
 	
 	public static void main(String[] args) {
 		 try {
 		 UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
 		 
 		}catch (Exception e) {}
-		CustomeConditionrView cv = new CustomeConditionrView();
+		CustomerConditionView cv = new CustomerConditionView();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CustomeConditionrView frame = new CustomeConditionrView();
+					CustomerConditionView frame = new CustomerConditionView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +44,7 @@ public class CustomeConditionrView extends JFrame {
 		});
 	}
 
-	public CustomeConditionrView() {
+	public CustomerConditionView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 277);
 		contentPane = new JPanel();
