@@ -1,15 +1,20 @@
-package kr.or.dgit.donghun2.Main;
+package kr.or.dgit.donghun2.view;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class PresentCondition extends JFrame {
+import kr.or.dgit.donghun2.table.CustomerTable;
+import kr.or.dgit.donghun2.table.ProductTable;
+
+public class CustomerCondition extends JFrame {
+
 	private JPanel contentPane;
+	private CustomerTable pTable;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -18,7 +23,7 @@ public class PresentCondition extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PresentCondition frame = new PresentCondition();
+					CustomerCondition frame = new CustomerCondition();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,15 +35,18 @@ public class PresentCondition extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PresentCondition() {
+	public CustomerCondition() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1010, 205);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		pTable = new CustomerTable();
+		contentPane.add(pTable);
 		
 		
 	}
+
 }

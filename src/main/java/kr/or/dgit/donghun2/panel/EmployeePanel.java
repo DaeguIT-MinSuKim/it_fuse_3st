@@ -19,7 +19,7 @@ public class EmployeePanel extends JPanel{
 	private ComboPanel<String> pGrade;
 
 	public EmployeePanel() {
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pCode = new TextFiledPanel();
 		pCode.setTitle("사원코드");

@@ -1,14 +1,15 @@
 package kr.or.dgit.donghun2.Main;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 
-public class PresentCondition extends JFrame {
+public class Test extends JFrame {
+
 	private JPanel contentPane;
 
 	/**
@@ -18,7 +19,7 @@ public class PresentCondition extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PresentCondition frame = new PresentCondition();
+					Test frame = new Test();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,15 +31,27 @@ public class PresentCondition extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PresentCondition() {
+	public Test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1010, 205);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
+		setLayout(new BorderLayout(0, 0));
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		add(tabbedPane, BorderLayout.CENTER);
 		
+		JPanel pEmpCon = new JPanel();
+		tabbedPane.addTab("영업사원현황", null, pEmpCon, null);
+		
+		JPanel pProCon = new JPanel();
+		tabbedPane.addTab("제품현황", null, pProCon, null);
+		
+		JPanel pCusCon = new JPanel();
+		tabbedPane.addTab("거래처현황", null, pCusCon, null);
 	}
+
 }
