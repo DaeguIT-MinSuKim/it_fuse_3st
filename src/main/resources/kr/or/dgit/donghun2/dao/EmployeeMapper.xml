@@ -6,7 +6,7 @@
 		<id property="code" column="code"/>
 		<result property="name" column="name"/>
 		<result property="grade" column="grade"/>
-		<collection property="eGrade" resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult"/>
+		<association property="eGrade" resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult"></association>
 	</resultMap>
 	
 	<select id="selectDiscnt" parameterType="Employee" resultMap="EmployeeResult">

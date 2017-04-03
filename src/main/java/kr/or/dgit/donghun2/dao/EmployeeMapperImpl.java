@@ -40,7 +40,7 @@ private String namespace = "kr.or.dgit.donghun2.dao.EmployeeMapper.";
 	}
 
 	@Override
-	public int selectDiscnt(Employee code) {
+	public Employee selectDiscnt(Employee code) {
 		return sqlSession.selectOne(namespace+"selectDiscnt", code);
 	}
 

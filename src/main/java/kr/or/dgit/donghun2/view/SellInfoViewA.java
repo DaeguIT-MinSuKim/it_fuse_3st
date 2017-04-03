@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.Cgrade;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
@@ -155,16 +156,30 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 				int unitprice = 0;
 				int sellprice = 0;
 				int disprice = 0;
-				
+				int quantity = pSellInfoA.getObjectDateQuantity().getQuantity(); // 판매수량
+				// 제품 판매정가 받아오기
 				Product pRes = (Product) pProductForCombo.getSelectItem();
-				int selectedsaleprice = pRes.getSalePrice();
-				System.out.println(selectedsaleprice);
+				int saleprice = pRes.getSalePrice();
+				// 사원 등급에따른 할인율 받아오기
 				Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
-				int dis = edao.selectDiscnt(eRes);
-				System.out.println(dis);
+				int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+				// 거래처 등급에따른 할인율 받아오기
 				Customer cRes  = (Customer) pCustomerForCombo.getSelectItem();
-				String cCode = cRes.getCode();
+				int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+				// 더하기
+				int dispct = edispct+cdispct;
 				
+				// 판매단가 = 판매정가 *할인율
+				unitprice = (int) ((saleprice) * (1-(dispct)*0.01));
+				// 판매금액 = 판매단가*판매수량
+				sellprice = unitprice*quantity;
+				// 할인금액 = 판매정가*판매수량-판매금액 
+				disprice = saleprice*quantity-sellprice;
+				
+				//뷰에 입력
+				pSellInfoA.setpUnPrice(unitprice);
+				pSellInfoA.setpSellPrice(sellprice);
+				pSellInfoA.setpDisPrice(disprice);
 				
 				
 			}

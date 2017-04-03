@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CustomerMapper">
+	<resultMap type="Customer" id="CustomerResult">
+		<result property="code" column="code"/>
+		<result property="name" column="name"/>
+		<result property="grade" column="grade"/>
+		<association property="cGrade" resultMap="kr.or.dgit.donghun2.dao.CgradeMapper.CgradeResult"></association>
+	</resultMap>
+	
 
-	<select id="selectDiscnt" parameterType="Customer" resultType="int">
+	<select id="selectDiscnt" parameterType="Customer" resultMap="CustomerResult">
 		select dispct from cgrade cg join customer c 
 		on cg.grade = c.grade 
 		where code = #{code}; 

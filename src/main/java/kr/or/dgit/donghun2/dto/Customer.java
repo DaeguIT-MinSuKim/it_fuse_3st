@@ -6,6 +6,7 @@ public class Customer {
 	private String code;
 	private String name;
 	private String grade;
+	private Cgrade cGrade;
 	private boolean isexist;
 	
 	public Customer() {}
@@ -21,6 +22,15 @@ public class Customer {
 	}
 
 	
+	
+	public Cgrade getcGrade() {
+		return cGrade;
+	}
+
+	public void setcGrade(Cgrade cGrade) {
+		this.cGrade = cGrade;
+	}
+
 	public boolean isIsexist() {
 		return isexist;
 	}

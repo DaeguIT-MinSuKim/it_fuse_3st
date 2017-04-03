@@ -29,6 +29,33 @@ public class Egrade {
 	public void setIsexist(boolean isexist) {
 		this.isexist = isexist;
 	}
+	@Override
+	public String toString() {
+		return "Egrade [grade=" + grade + ", dispct=" + dispct + ", isexist=" + isexist + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((grade == null) ? 0 : grade.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Egrade other = (Egrade) obj;
+		if (grade == null) {
+			if (other.grade != null)
+				return false;
+		} else if (!grade.equals(other.grade))
+			return false;
+		return true;
+	}
 	
 	
 	

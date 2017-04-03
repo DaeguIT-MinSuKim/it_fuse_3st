@@ -82,6 +82,23 @@ public class SellInfoPanelA extends JPanel {
 		basePanel.add(empty);
 
 	}
+	
+	
+	public void setpUnPrice(int pUnPrice) {
+		this.pUnPrice.setTfValue(String.valueOf(pUnPrice));
+	}
+
+
+	public void setpSellPrice(int pSellPrice) {
+		this.pSellPrice.setTfValue(String.valueOf(pSellPrice));
+	}
+
+
+	public void setpDisPrice(int pDisPrice) {
+		this.pDisPrice.setTfValue(String.valueOf(pDisPrice));
+	}
+
+
 	public SellInfo getObjectDateQuantity(){
 		Date saleDate = null;
 		try {saleDate = sdf.parse(pSaleDate.getTfValue());
@@ -90,7 +107,6 @@ public class SellInfoPanelA extends JPanel {
 		int quantity = Integer.parseInt(pQuantity.getTfValue());
 		return new SellInfo(scode, saleDate, quantity);
 	}
-	
 
 	public void clear(){
 		pScode.setTfValue("S006");

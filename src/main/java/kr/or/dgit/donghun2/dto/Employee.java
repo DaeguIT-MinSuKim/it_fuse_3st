@@ -23,6 +23,16 @@ public class Employee {
 		this.code = code;
 	}
 
+	
+	
+	public Egrade geteGrade() {
+		return eGrade;
+	}
+
+	public void seteGrade(Egrade eGrade) {
+		this.eGrade = eGrade;
+	}
+
 	public boolean isIsexist() {
 		return isexist;
 	}

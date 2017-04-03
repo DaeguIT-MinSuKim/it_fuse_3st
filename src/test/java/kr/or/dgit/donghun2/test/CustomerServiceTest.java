@@ -8,6 +8,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import kr.or.dgit.donghun2.dto.Cgrade;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 
@@ -31,7 +32,9 @@ public class CustomerServiceTest {
 	public void fTestSelectDiscnt() {
 		Customer	item = new Customer();
 		item.setCode("C001");
-		int res = customerService.selectDiscnt(item);
+		Customer c = customerService.selectDiscnt(item);
+		
+		System.out.println(c.getcGrade().getDispct());
 	}
 	/*
 	@Test
