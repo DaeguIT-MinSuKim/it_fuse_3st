@@ -1,6 +1,6 @@
 -- 영업사원 등급 할인율 추출
 select dispct from egrade eg join employee e on eg.grade = e.grade where code = 'E001'; 
-
+select grade, dispct from egrade;
 
 -- 거래처 영업관리 프로그램
 DROP database IF EXISTS donghun2;
