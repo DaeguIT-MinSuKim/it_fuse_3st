@@ -20,8 +20,23 @@ public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	}
 
 	@Override
-	public CalculatedValue selectCalculatedValueByNo(CalculatedValue code) {
-		return sqlSession.selectOne(namespace+"selectCalculatedValueByNo", code);
+	public CalculatedValue selectCalculatedValueByNo(CalculatedValue scode) {
+		return sqlSession.selectOne(namespace+"selectCalculatedValueByNo", scode);
+	}
+
+	@Override
+	public List<CalculatedValue> vw_InfoByCustomer() {
+		return sqlSession.selectList(namespace+"vw_InfoByCustomer");
+	}
+
+	@Override
+	public List<CalculatedValue> vw_InfoByProduct() {
+		return sqlSession.selectList(namespace+"vw_InfoByProduct");
+	}
+
+	@Override
+	public List<CalculatedValue> vw_InfoByEmployee() {
+		return sqlSession.selectList(namespace+"vw_InfoByEmployee");
 	}
 
 }

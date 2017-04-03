@@ -7,11 +7,31 @@ public class CalculatedValue {
 	private int disprice;
 	private int marginprice;
 	private int marginpct;
+	private Employee employee;
+	private Product product;
+	private Customer customer;
+	private SellInfo sellinfo;
 	
 	public CalculatedValue() {}
 	
 	
 	
+	public CalculatedValue(String scode, int unitprice, int sellprice, int disprice, int marginprice, int marginpct,
+			Employee employee, Product product, Customer customer, SellInfo sellinfo) {
+		this.scode = scode;
+		this.unitprice = unitprice;
+		this.sellprice = sellprice;
+		this.disprice = disprice;
+		this.marginprice = marginprice;
+		this.marginpct = marginpct;
+		this.employee = employee;
+		this.product = product;
+		this.customer = customer;
+		this.sellinfo = sellinfo;
+	}
+
+
+
 	public CalculatedValue(String scode, int unitprice, int sellprice, int disprice, int marginprice, int marginpct) {
 		super();
 		this.scode = scode;
@@ -21,6 +41,7 @@ public class CalculatedValue {
 		this.marginprice = marginprice;
 		this.marginpct = marginpct;
 	}
+	
 
 
 
@@ -31,6 +52,17 @@ public class CalculatedValue {
 		this.marginprice = marginprice;
 		this.marginpct = marginpct;
 	}
+
+	
+	
+	
+	public CalculatedValue(String scode) {
+		super();
+		this.scode = scode;
+	}
+
+	
+
 
 	public String getScode() {
 		return scode;
@@ -48,50 +80,106 @@ public class CalculatedValue {
 		return unitprice;
 	}
 
+
+
 	public void setUnitprice(int unitprice) {
 		this.unitprice = unitprice;
 	}
+
+
 
 	public int getSellprice() {
 		return sellprice;
 	}
 
+
+
 	public void setSellprice(int sellprice) {
 		this.sellprice = sellprice;
 	}
+
+
 
 	public int getDisprice() {
 		return disprice;
 	}
 
+
+
 	public void setDisprice(int disprice) {
 		this.disprice = disprice;
 	}
+
+
 
 	public int getMarginprice() {
 		return marginprice;
 	}
 
+
+
 	public void setMarginprice(int marginprice) {
 		this.marginprice = marginprice;
 	}
+
+
 
 	public int getMarginpct() {
 		return marginpct;
 	}
 
+
+
 	public void setMarginpct(int marginpct) {
 		this.marginpct = marginpct;
 	}
-	
 
 
 
-	@Override
-	public String toString() {
-		return String.format(
-				"CalculatedValue [scode=%s, unitprice=%s, sellprice=%s, disprice=%s, marginprice=%s, marginpct=%s]",
-				scode, unitprice, sellprice, disprice, marginprice, marginpct);
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
+	public SellInfo getSellinfo() {
+		return sellinfo;
+	}
+
+
+
+	public void setSellinfo(SellInfo sellinfo) {
+		this.sellinfo = sellinfo;
 	}
 
 
@@ -122,7 +210,17 @@ public class CalculatedValue {
 			return false;
 		return true;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "CalculatedValue [scode=" + scode + ", unitprice=" + unitprice + ", sellprice=" + sellprice
+				+ ", disprice=" + disprice + ", marginprice=" + marginprice + ", marginpct=" + marginpct + ", employee="
+				+ employee + ", product=" + product + ", customer=" + customer + ", sellinfo=" + sellinfo + "]";
+	}
 	
+
 	
 	
 	

@@ -15,7 +15,7 @@ import kr.or.dgit.donghun2.service.CustomerService;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CustomerServiceTest {
 	private static CustomerService customerService;
-
+	/*
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -28,15 +28,7 @@ public class CustomerServiceTest {
 		customerService = null;
 	}
 	
-	@Test
-	public void fTestSelectDiscnt() {
-		Customer	item = new Customer();
-		item.setCode("C001");
-		Customer c = customerService.selectDiscnt(item);
-		
-		System.out.println(c.getcGrade().getDispct());
-	}
-	/*
+	
 	@Test
 	public void aTestSelectCustomerByAll() {
 		List<Customer> customers = customerService.selectCustomerByAll();
@@ -84,12 +76,15 @@ public class CustomerServiceTest {
 		Assert.assertNotNull(Customer);
 	}	
 	
-	@Test
+		@Test
 	public void fTestSelectDiscnt() {
 		Customer	item = new Customer();
 		item.setCode("C001");
-		int res = customerService.selectDiscnt(item);
+		Customer c = customerService.selectDiscnt(item);
+		
+		System.out.println(c.getcGrade().getDispct());
 	}
+
 	*/
 
 	

@@ -25,12 +25,32 @@ public class CalculatedValueService {
 		}
 	}
 	
-	public CalculatedValue selectCalculatedValueByNo(CalculatedValue code){
+	public CalculatedValue selectCalculatedValueByNo(CalculatedValue scode){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
-			return calculatedValueMapper.selectCalculatedValueByNo(code);
+			return calculatedValueMapper.selectCalculatedValueByNo(scode);
 		}
 	}
 	
+	public List<CalculatedValue> vw_InfoByCustomer(){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByCustomer();
+		}
+	}
+	
+	public List<CalculatedValue> vw_InfoByProduct(){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByProduct();
+		}
+	}
+	
+	public List<CalculatedValue> vw_InfoByEmployee(){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByEmployee();
+		}
+	}
 	
 }

@@ -16,7 +16,7 @@ import kr.or.dgit.donghun2.service.CalculatedValueService;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CalculatedValueServiceTest {
 	private static CalculatedValueService calculatedValueService;
-	/*
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -29,6 +29,37 @@ public class CalculatedValueServiceTest {
 		calculatedValueService = null;
 	}
 	
+
+	@Test
+	public void cTestvw_InfoByCustomer() {
+//		CalculatedValue	item = new CalculatedValue();
+//		item.setScode("S001");
+		List<CalculatedValue> calculatedValues = calculatedValueService.vw_InfoByCustomer();
+		for(CalculatedValue cv : calculatedValues){
+			System.out.println(cv);
+		}
+	}
+	
+	@Test
+	public void dTestvw_InfoByProduct() {
+//		CalculatedValue	item = new CalculatedValue();
+//		item.setScode("S001");
+		List<CalculatedValue> calculatedValues = calculatedValueService.vw_InfoByProduct();
+		for(CalculatedValue cv : calculatedValues){
+			System.out.println(cv);
+		}
+	}
+	
+	@Test
+	public void eTestvw_InfoByEmployee() {
+//		CalculatedValue	item = new CalculatedValue();
+//		item.setScode("S001");
+		List<CalculatedValue> calculatedValues = calculatedValueService.vw_InfoByEmployee();
+		for(CalculatedValue cv : calculatedValues){
+			System.out.println(cv);
+		}
+	}
+	/*
 	@Test
 	public void aTestSelectSellInfoByAll() {
 		List<CalculatedValue> calculatedValues = calculatedValueService.selectCalculatedValueByAll();
@@ -39,7 +70,7 @@ public class CalculatedValueServiceTest {
 	}
 	
 	@Test
-	public void eTestSelectCalculatedValueByNo() {
+	public void bTestSelectCalculatedValueByNo() {
 		CalculatedValue	item = new CalculatedValue();
 		item.setScode("S001");
 		CalculatedValue calculatedValue = calculatedValueService.selectCalculatedValueByNo(item);
@@ -47,5 +78,14 @@ public class CalculatedValueServiceTest {
 		Assert.assertNotNull(calculatedValue);
 	}
 	
+	@Test
+	public void cTestvw_InfoByCustomer() {
+		CalculatedValue	item = new CalculatedValue();
+		item.setScode("S001");
+		CalculatedValue calculatedValue = calculatedValueService.vw_InfoByCustomer(item);
+		
+		Assert.assertNotNull(calculatedValue);
+	}
+
 */
 }

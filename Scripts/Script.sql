@@ -1,7 +1,3 @@
--- 영업사원 등급 할인율 추출
-select dispct from egrade eg join employee e on eg.grade = e.grade where code = 'E001'; 
-select grade, dispct from egrade;
-
 -- 거래처 영업관리 프로그램
 DROP database IF EXISTS donghun2;
 create database donghun2;
@@ -69,7 +65,7 @@ CREATE TABLE  sellInfo (		-- 거래내역 테이블
 	ecode     CHAR(4) /*NOT NULL*/,
 	pcode     CHAR(4) /*NOT NULL*/, 
 	ccode     CHAR(4) /*NOT NULL*/, 
-	saledate  DATE    /*NOT NULL*/,
+	saledate  DATE    NOT NULL,
 	quantity  INT     NOT NULL,
 	saleprice int	  not null,
 	origiprice int	  not null, 
@@ -96,19 +92,19 @@ CREATE TABLE  sellInfoDetail (		-- 거래내역 상세 테이블 (계산값)
 );
 */
 
--- 판매단가unitPrice,판매금액sellPrice,할인금액disprice,마진액marginprice,마진율marginPct 계산된 뷰 테이블
+-- 판매단가unitPrice,판매금액sellprice,할인금액disprice,마진액marginprice,마진율marginpct 계산된 뷰 테이블
 drop view if exists vw_calculate_sellInfo;
 create view vw_calculate_sellInfo as
 select s.scode,
- (saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitPrice,
+ (saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitprice,
 -- 판매정가  * (1-(사원등급할인율+거래처등급할인율)*0.01) = 판매단가
- (saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellPrice,
+ (saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellprice,
 -- 판매단가*판매수량  = 판매금액
  (saleprice) * (quantity) - (saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) as disprice,
 -- 판매정가*판매수량-판매금액  = 할인금액
  (saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) - origiprice * quantity as marginprice,
 -- 판매금액-(판매원가*판매수량) = 마진액
- ROUND(((saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-origiprice*quantity) / ((saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginPct
+ ROUND(((saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-origiprice*quantity) / ((saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginpct
 -- 마진액/판매금액*100 = 마진율 // 소수 둘째자리에서 반올림해서 첫째자리까지 표시
 from sellinfo s 
 join employee e on s.ecode= e.code 
@@ -118,9 +114,9 @@ join cgrade cg on cg.grade=c.grade;
 
 select * from vw_calculate_sellInfo;
 
-select * from sellInfo where scode='s001';
+select * from vw_calculate_sellInfo where scode='s001';
 
--- 판매단가unitPrice,판매금액sellPrice,할인금액disprice,마진액marginprice,마진율marginPct 계산하는 프로시저
+-- 판매단가unitPrice,판매금액sellprice,할인금액disprice,마진액marginprice,마진율marginpct 계산하는 프로시저
 /*
 drop procedure if exists proc_calculate_sellInfo;
 create procedure proc_calculate_sellInfo(
@@ -135,10 +131,10 @@ begin
 	select 
 	saleprice * (1-(eg.dispct+cg.dispct)*0.01),  -- 판매단가
 	unitprice * quantity,-- 판매금액
-	saleprice * quantity - sellPrice, -- 할인금액
-	sellPrice - origiprice * quantity, -- 마진액
-	ROUND((marginprice/sellPrice*100), 1) -- 마진율
-	into unitprice,sellPrice,disprice,marginprice,marginPct 
+	saleprice * quantity - sellprice, -- 할인금액
+	sellprice - origiprice * quantity, -- 마진액
+	ROUND((marginprice/sellprice*100), 1) -- 마진율
+	into unitprice,sellprice,disprice,marginprice,marginpct 
 
 	from sellinfo s 
 	join employee e on s.ecode= e.code 
@@ -173,7 +169,8 @@ from vw_InfoByCustomer;
 create view vw_InfoByProduct as
 select c.code ccode, c.name cname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
-order by ccode asc;		-- 주의 사항 처리해야함
+group by c.code
+order by ccode asc ;		-- 주의 사항 처리해야함
 
 select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_InfoByProduct;

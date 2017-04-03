@@ -2,6 +2,17 @@
 <mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
 	
 	<sql id="whereSql">where scode = #{scode}</sql>
+	
+	<resultMap type="SellInfo" id="SellInfoResult">
+		<id property="scode" column="scode"/>
+		<result property="quantity" column="quantity"/>
+		<result property="saledate" column="saledate"/>
+		<result property="saleprice" column="saleprice"/>
+		<result property="origiprice" column="origiprice"/>
+		<result property="dispcts" column="dispcts"/>
+		<result property="isexist" column="isexist"/>
+		</resultMap>
+
 
 	<select id="selectSellInfoByAll" resultType="SellInfo">
 		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
