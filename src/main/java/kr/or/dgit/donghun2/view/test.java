@@ -2,29 +2,26 @@ package kr.or.dgit.donghun2.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.metal.OceanTheme;
 
 import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 
-import javax.swing.BoxLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.List;
 import java.util.Vector;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
-public class CustomerSellInfoView extends JFrame {
+public class test extends JFrame {
 
-	private JPanel contentPane;
 	private CustomerService cdao;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -33,7 +30,7 @@ public class CustomerSellInfoView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CustomerSellInfoView frame = new CustomerSellInfoView();
+					test frame = new test();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,18 +39,19 @@ public class CustomerSellInfoView extends JFrame {
 		});
 	}
 
-	/**ㅇㅣ거!!!
+	/**
 	 * Create the frame.
 	 */
-	public CustomerSellInfoView() {
+	public test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 588, 347);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
+		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JPanel pCombo = new JPanel();
+		JPanel panel = new JPanel();
+		contentPane.add(panel);
 		
 		ComboPanel<Customer> pCustomerForCombo = new ComboPanel();
 		pCustomerForCombo.setTitle("거래처");
@@ -64,10 +62,11 @@ public class CustomerSellInfoView extends JFrame {
 		
 		GridBagConstraints cgbc_lbl = new GridBagConstraints();
 		cgbc_lbl.fill = GridBagConstraints.BOTH;		cgbc_lbl.insets = new Insets(0, 0, 0, 5);		cgbc_lbl.gridx = 0;		cgbc_lbl.gridy = 0;
-		pCombo.add(pCustomerForCombo,cgbc_lbl);
+		panel.add(pCustomerForCombo,cgbc_lbl);
 		
 		GridBagConstraints cgbc_combo = new GridBagConstraints();
-		pCombo.add(pCustomerForCombo, cgbc_combo);
+		panel.add(pCustomerForCombo, cgbc_combo);
+		
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
 		Vector<Customer> cVector = new Vector<>();
@@ -75,15 +74,7 @@ public class CustomerSellInfoView extends JFrame {
 			cVector.addElement(cList.get(i));
 		}
 		pCustomerForCombo.setcomboData(cVector);
-		
-		pCombo.add(pCustomerForCombo);
-		contentPane.add(pCombo);
-		pCombo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
-		JPanel pTable = new JPanel();
-		contentPane.add(pTable);
-		pTable.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.add(pCustomerForCombo);
 	}
 
 }
