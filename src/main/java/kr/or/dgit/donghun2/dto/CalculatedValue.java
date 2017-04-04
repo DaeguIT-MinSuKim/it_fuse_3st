@@ -238,11 +238,23 @@ public class CalculatedValue {
 	}
 	
 	public String[] toArrayforProductSellInfoT(){
-		return new String[] {};
+		return new String[] 
+				{			customer.getCode(),
+							customer.getName(),
+				 String.format("%,d",sellinfo.getQuantity()),
+				 String.format("%,d",sellprice),
+				 String.format("%,d",disprice),
+				 String.format("%,d",marginprice),
+				 String.format("%,d",marginpct)};
 	}
 	
 	public String[] toArrayforEmployeeSellInfoT(){
-		return new String[] {};
+		return new String[] 
+				{			employee.getCode(),
+							employee.getName(),
+				 String.format("%,d",sellprice),
+				 String.format("%,d",marginprice),
+				 String.format("%,d",marginpct)};
 	}
 	
 	

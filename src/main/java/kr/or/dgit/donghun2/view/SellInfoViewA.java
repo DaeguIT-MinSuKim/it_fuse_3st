@@ -18,10 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Cgrade;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.Product;
+import kr.or.dgit.donghun2.dto.SellInfo;
 import kr.or.dgit.donghun2.panel.CustomerPanel;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.ProductPanel;
@@ -38,6 +40,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private SellInfoPanelA pSellInfoA;
 	private JButton btnOK;
+	private JButton btnSave;
 	private EmployeePanel pEmployee;
 	private ProductPanel pProduct;
 	private CustomerPanel pCustomer;
@@ -47,6 +50,9 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private static EmployeeService edao;
 	private static CustomerService cdao;
 	private static SellInfoService sdao;
+	private ComboPanel<String> pEmployeeForCombo;
+	private ComboPanel<String> pProductForCombo;
+	private ComboPanel<String> pCustomerForCombo;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -63,7 +69,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 	public SellInfoViewA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 561, 629);
+		setBounds(100, 100, 500, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -73,12 +79,12 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(0, 1, 0, 10));
 		
-		ComboPanel<Employee> pEmployeeForCombo = new ComboPanel<>();
+		pEmployeeForCombo = new ComboPanel<>();
 		
 		pEmployeeForCombo.setTitle("사원");
 		
 		GridBagLayout egridBagLayout = new GridBagLayout();
-		egridBagLayout.columnWidths = new int[]{100, 425, 0};		egridBagLayout.rowHeights = new int[]{51, 0};		egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		egridBagLayout.columnWidths = new int[]{50,100,0};		egridBagLayout.rowHeights = new int[]{51, 0};		egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pEmployeeForCombo.setLayout(egridBagLayout);
 		
 		GridBagConstraints egbc_lbl = new GridBagConstraints();
@@ -90,21 +96,20 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pEmployeeForCombo, egbc_combo);
 		
 		List<Employee> eList = edao.getInstance().selectEmployeeByAll();
-		for(Employee c : eList){
-			System.out.println(c);
-		}
-		Vector<Employee> eVector = new Vector<>();
+		Vector<String> eVector = new Vector<>();
+		String einit = "데이터를 선택하세요";
+		eVector.addElement(einit);
 		for(int i = 0 ; i < eList.size(); i++){
-			eVector.addElement(eList.get(i));
+			eVector.addElement(eList.get(i).toString());
 		}
 		pEmployeeForCombo.setcomboData(eVector);
 		
 		
-		ComboPanel<Product> pProductForCombo = new ComboPanel();
+		pProductForCombo = new ComboPanel();
 		
 		pProductForCombo.setTitle("제품");
 		GridBagLayout pgridBagLayout = new GridBagLayout();
-		pgridBagLayout.columnWidths = new int[]{100, 425, 0};		pgridBagLayout.rowHeights = new int[]{51, 0};		pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		pgridBagLayout.columnWidths = new int[]{50, 100, 0};		pgridBagLayout.rowHeights = new int[]{51, 0};		pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pProductForCombo.setLayout(pgridBagLayout);
 		GridBagConstraints pgbc_lbl = new GridBagConstraints();
 		pgbc_lbl.fill = GridBagConstraints.BOTH;		pgbc_lbl.insets = new Insets(0, 0, 0, 5);		pgbc_lbl.gridx = 0;		pgbc_lbl.gridy = 0;
@@ -114,22 +119,21 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pProductForCombo, pgbc_combo);
 
 		List<Product> pList = pdao.getInstance().selectProductByAll();
-		for(Product p : pList){
-			System.out.println(p);
-		}
-		Vector<Product> pVector = new Vector<>();
+		Vector<String> pVector = new Vector<>();
+		String pinit = "데이터를 선택하세요";
+		pVector.addElement(pinit);
 		for(int i = 0 ; i < pList.size(); i++){
-			pVector.addElement(pList.get(i));
+			pVector.addElement(pList.get(i).toString());
 		}
 		pProductForCombo.setcomboData(pVector);
 		
 		
-		ComboPanel<Customer> pCustomerForCombo = new ComboPanel();
+		pCustomerForCombo = new ComboPanel();
 		
 		pCustomerForCombo.setTitle("거래처");
 		
 		GridBagLayout cgridBagLayout = new GridBagLayout();
-		cgridBagLayout.columnWidths = new int[]{100, 425, 0};		cgridBagLayout.rowHeights = new int[]{51, 0};		cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		cgridBagLayout.columnWidths = new int[]{50,100,0};		cgridBagLayout.rowHeights = new int[]{51, 0};		cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		pCustomerForCombo.setLayout(cgridBagLayout);
 		
 		GridBagConstraints cgbc_lbl = new GridBagConstraints();
@@ -140,57 +144,28 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pCustomerForCombo, cgbc_combo);
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
-		for(Customer c : cList){
-			System.out.println(c);
-		}
-		Vector<Customer> cVector = new Vector<>();
+		Vector<String> cVector = new Vector<>();
+		String cinit = "데이터를 선택하세요";
+		cVector.addElement(cinit);
 		for(int i = 0 ; i < cList.size(); i++){
-			cVector.addElement(cList.get(i));
+			cVector.addElement(cList.get(i).toString());
 		}
 		pCustomerForCombo.setcomboData(cVector);
 		
 		
 		pSellInfoA = new SellInfoPanelA();
-		pSellInfoA.getBtnOk().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int unitprice = 0;
-				int sellprice = 0;
-				int disprice = 0;
-				int quantity = pSellInfoA.getObjectDateQuantity().getQuantity(); // 판매수량
-				// 제품 판매정가 받아오기
-				Product pRes = (Product) pProductForCombo.getSelectItem();
-				int saleprice = pRes.getSalePrice();
-				// 사원 등급에따른 할인율 받아오기
-				Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
-				int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
-				// 거래처 등급에따른 할인율 받아오기
-				Customer cRes  = (Customer) pCustomerForCombo.getSelectItem();
-				int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
-				// 더하기
-				int dispct = edispct+cdispct;
-				
-				// 판매단가 = 판매정가 *할인율
-				unitprice = (int) ((saleprice) * (1-(dispct)*0.01));
-				// 판매금액 = 판매단가*판매수량
-				sellprice = unitprice*quantity;
-				// 할인금액 = 판매정가*판매수량-판매금액 
-				disprice = saleprice*quantity-sellprice;
-				
-				//뷰에 입력
-				pSellInfoA.setpUnPrice(unitprice);
-				pSellInfoA.setpSellPrice(sellprice);
-				pSellInfoA.setpDisPrice(disprice);
-				
-				
-			}
-		});
+		
+		btnOK = pSellInfoA.getBtnOk();
+		btnOK.addActionListener(this);
+
 		contentPane.add(pSellInfoA);
 		
 		JPanel panel_4 = new JPanel();
 		contentPane.add(panel_4);
 		
-		JButton btnNewButton = new JButton("저장");
-		panel_4.add(btnNewButton);
+		btnSave = new JButton("저장");
+		btnSave.addActionListener(this);
+		panel_4.add(btnSave);
 		
 		pSellInfoA.clear();
 
@@ -200,34 +175,65 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		if (e.getSource() == btnOK) {
 			actionPerformedBtnOK(e);
 		}
+		if (e.getSource() == btnSave) {
+			actionPerformedbtnSave(e);
+		}
 	}
 	
+	private void actionPerformedbtnSave(ActionEvent e) {
+		System.out.println("클릭");
+		SellInfo sellInfo = pSellInfoA.getObjectDateQuantity();
+		sdao.getInstance().insertSellInfo(sellInfo);
+		List<CalculatedValue> calculatedValue = 
+				cvdao.getInstance().selectCalculatedValueByAll();
+		for(CalculatedValue c : calculatedValue){
+			System.out.println(c);
+		}
+		JOptionPane.showMessageDialog(null, "저장되었습니다.");
+		
+	}
+
 	private void actionPerformedBtnOK(ActionEvent e) {
-		Employee eRes = pEmployee.getObject();
-		Product pRes = pProduct.getObject();
-		Customer cRes = pCustomer.getObject();
-		if(eRes == null || pRes == null || cRes ==null ){
+		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
+		Product pRes = (Product) pProductForCombo.getSelectItem();
+		Customer cRes  = (Customer) pCustomerForCombo.getSelectItem();
+		SellInfo sRes = null;
+		try{
+			sRes = pSellInfoA.getObjectDateQuantity();
+		}catch(NumberFormatException ne){
+			ne.getStackTrace();
+		}
+		if(eRes == null || pRes == null || cRes == null || sRes == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-			
 		}else{
-			int salePrice = pRes.getSalePrice(); 	//판매정가
-			String egrade = eRes.getGrade(); //사원등급
-			String cgrade = cRes.getGrade(); //거래처등급
-			int dispercentage=0;
-			if(egrade.equals("A")){
-				dispercentage += 3;
-			}else if(egrade.equals("B")){
-				dispercentage += 2;
-			}else if(egrade.equals("C")){
-				dispercentage += 1;
-			}
-			if(cgrade.equals("L")){
-				dispercentage += 4;
-			}else if(cgrade.equals("M")){
-				dispercentage += 3;
-			}else if(cgrade.equals("S")){
-				dispercentage += 2;
-			}
+			int unitprice = 0;
+			int sellprice = 0;
+			int disprice = 0;
+			int quantity = sRes.getQuantity(); // 판매수량
+			// 제품 판매정가 받아오기
+			int saleprice = pRes.getSalePrice();
+			// 사원 등급에따른 할인율 받아오기
+			int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+			// 거래처 등급에따른 할인율 받아오기
+			int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+			// 더하기
+			int dispct = edispct+cdispct;
+
+			// DB에서 해주는 것이나 확정값이 아직 아니기에 java로 임시 처리
+			
+			// 판매단가 = 판매정가 *할인율
+			unitprice = (int) ((saleprice) * (1-(dispct)*0.01));
+			// 판매금액 = 판매단가*판매수량
+			sellprice = unitprice*quantity;
+			// 할인금액 = 판매정가*판매수량-판매금액 
+			disprice = saleprice*quantity-sellprice;
+			
+			//뷰에 입력
+			pSellInfoA.setpUnPrice(unitprice);
+			pSellInfoA.setpSellPrice(sellprice);
+			pSellInfoA.setpDisPrice(disprice);
+			
+			
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 		}	
 	}

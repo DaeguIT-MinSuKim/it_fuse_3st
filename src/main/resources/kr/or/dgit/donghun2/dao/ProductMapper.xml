@@ -4,8 +4,8 @@
 	 	<resultMap type="Product" id="ProductResult">
 		<id property="code" column="code"/>
 		<result property="name" column="name"/>
-		<result property="saleprice" column="saleprice"/>
-		<result property="origiprice" column="origiprice"/>
+		<result property="salePrice" column="saleprice"/>
+		<result property="origiPrice" column="origiprice"/>
 		<result property="isexist" column="isexist"/>
 		</resultMap>
 	<sql id="selectSql">SELECT code,name,salePrice,origiPrice FROM Product </sql>

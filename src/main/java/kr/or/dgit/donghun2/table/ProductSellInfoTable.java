@@ -11,12 +11,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Product;
+import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.ProductService;
 
 public class ProductSellInfoTable extends JPanel {
 	private JTable table;
-	private static ProductService dao;
+	private static CalculatedValueService dao;
 
 	
 	public ProductSellInfoTable() {
@@ -67,10 +69,10 @@ public class ProductSellInfoTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Product> products = dao.getInstance().selectProductByAll();
-		String[][] datas = new String[products.size()][];
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByProduct();
+		String[][] datas = new String[calculatedValues.size()][];
 		for(int i = 0; i < datas.length; i++){
-			datas[i] = products.get(i).toArray();
+			datas[i] = calculatedValues.get(i).toArrayforProductSellInfoT();
 		}
 		return datas;
 	}
