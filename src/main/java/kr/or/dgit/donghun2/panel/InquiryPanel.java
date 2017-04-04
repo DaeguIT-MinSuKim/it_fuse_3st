@@ -13,7 +13,7 @@ public class InquiryPanel extends JPanel {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		add(tabbedPane, BorderLayout.CENTER);
 		
-		JPanel pEmpCon = new JPanel();
+		EmployeeConditionPanel pEmpCon = new EmployeeConditionPanel();
 		tabbedPane.addTab("영업사원현황", null, pEmpCon, null);
 		
 		JPanel pProCon = new JPanel();

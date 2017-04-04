@@ -85,12 +85,15 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
 		pEmployee.add(pEmpb);
 
 		EbtnSave = new JButton("저장");
+		EbtnSave.addActionListener(this);
 		pEmpb.add(EbtnSave);
 
 		EbtnDele = new JButton("삭제");
+		EbtnDele.addActionListener(this);
 		pEmpb.add(EbtnDele);
 
 		EbtnSearch = new JButton("검색");
+		EbtnSearch.addActionListener(this);
 		pEmpb.add(EbtnSearch);
 
 		pEmpt = new EmployeeTable();
@@ -107,12 +110,15 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
 		pProduct.add(pProb);
 
 		PbtnSave = new JButton("저장");
+		PbtnSave.addActionListener(this);
 		pProb.add(PbtnSave);
 
 		PbtnDele = new JButton("삭제");
+		PbtnDele.addActionListener(this);
 		pProb.add(PbtnDele);
 
 		PbtnSearch = new JButton("검색");
+		PbtnSearch.addActionListener(this);
 		pProb.add(PbtnSearch);
 
 		pProt = new ProductTable();
@@ -137,6 +143,7 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
 		pCusb.add(CbtnDele);
 
 		CbtnSearch = new JButton("검색");
+		CbtnSearch.addActionListener(this);
 		pCusb.add(CbtnSearch);
 
 		pCust = new CustomerTable();
@@ -329,4 +336,35 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
 			pCust.loadDate();
 		}
 	}
+	
+	/*public JButton getCBtnSave(){
+		return CbtnSave;
+	}
+	public JButton getCBtnDele(){
+		return CbtnDele;
+	}
+	public JButton getCBtnSearch(){
+		return CbtnSearch;
+	}
+	public JButton getPBtnSave(){
+		return PbtnSave;
+	}
+	public JButton getPBtnDele(){
+		return PbtnDele;
+	}
+	public JButton getPBtnSearch(){
+		return PbtnSearch;
+	}
+	public JButton getEBtnSave(){
+		return EbtnSave;
+	}
+	public JButton getEBtnDele(){
+		return EbtnDele;
+	}
+	public JButton getEBtnSearch(){
+		return EbtnSearch;
+	}
+	*/
+	
+	
 }
