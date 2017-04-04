@@ -19,7 +19,7 @@ public class CustomerPanel extends JPanel {
 	private ComboPanel pGrade;
 
 	public CustomerPanel() {
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pCode = new TextFiledPanel();
 		pCode.setTitle("거래처코드");
