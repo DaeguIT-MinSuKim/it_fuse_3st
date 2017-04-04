@@ -2,6 +2,9 @@ package kr.or.dgit.donghun2.panel;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+
+import kr.or.dgit.donghun2.table.ProductTable;
+
 import java.awt.BorderLayout;
 
 public class InquiryPanel extends JPanel {
@@ -16,10 +19,10 @@ public class InquiryPanel extends JPanel {
 		EmployeeConditionPanel pEmpCon = new EmployeeConditionPanel();
 		tabbedPane.addTab("영업사원현황", null, pEmpCon, null);
 		
-		JPanel pProCon = new JPanel();
+		ProductTable pProCon = new ProductTable();
 		tabbedPane.addTab("제품현황", null, pProCon, null);
 		
-		JPanel pCusCon = new JPanel();
+		CustomerConditionPanel pCusCon = new CustomerConditionPanel();
 		tabbedPane.addTab("거래처현황", null, pCusCon, null);
 		
 		
