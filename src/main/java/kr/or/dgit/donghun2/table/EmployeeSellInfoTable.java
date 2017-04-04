@@ -10,14 +10,16 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
+import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
+import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.service.EmployeeService;
 
 public class EmployeeSellInfoTable extends JPanel {
 	private JTable table;
-	private static EmployeeService dao;
+	private static CalculatedValueService dao;
 
 	/**
 	 * Create the panel.
@@ -39,14 +41,14 @@ public class EmployeeSellInfoTable extends JPanel {
 	
 	
 	protected String[] getColumn() {
-		return new String[]{"사원코드","사원명","사원등급"};
+		return new String[]{"사원코드","사원명","판매금액","마진액","마진율"};
 	}
 	
 	protected String[][] getRowDate() {
-		List<Employee> employee = dao.getInstance().selectEmployeeByAll();
-		String[][] datas = new String[employee.size()][];
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByEmployee();
+		String[][] datas = new String[calculatedValues.size()][];
 		for(int i = 0; i < datas.length; i++){
-			datas[i] = employee.get(i).toArray();
+			datas[i] = calculatedValues.get(i).toArrayforEmployeeSellInfoT();
 		}
 		return datas;
 	}

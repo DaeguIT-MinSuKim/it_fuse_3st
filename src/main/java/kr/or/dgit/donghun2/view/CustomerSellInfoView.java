@@ -17,15 +17,22 @@ import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerSellInfoTable;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class CustomerSellInfoView extends JFrame {
 
 	private JPanel contentPane;
 	private CustomerService cdao;
+	private JPanel pCombo;
+	private ComboPanel<String> pCustomerForCombo;
+	private JScrollPane scrollPane_1;
+	private JScrollPane scrollPane;
+	private CustomerSellInfoTable table;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,9 +57,12 @@ public class CustomerSellInfoView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel pCombo = new JPanel();
+		pCombo = new JPanel();
 		
-		ComboPanel<Customer> pCustomerForCombo = new ComboPanel();
+		
+		
+		
+		pCustomerForCombo = new ComboPanel();
 		pCustomerForCombo.setTitle("거래처");
 
 		GridBagLayout cgridBagLayout = new GridBagLayout();
@@ -67,9 +77,11 @@ public class CustomerSellInfoView extends JFrame {
 		pCombo.add(pCustomerForCombo, cgbc_combo);
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
-		Vector<Customer> cVector = new Vector<>();
+		Vector<String> cVector = new Vector<>();
+		String cinit = "데이터를 선택하세요";
+		cVector.addElement(cinit);
 		for(int i = 0 ; i < cList.size(); i++){
-			cVector.addElement(cList.get(i));
+			cVector.addElement(cList.get(i).toString());
 		}
 		pCustomerForCombo.setcomboData(cVector);
 		
@@ -77,10 +89,16 @@ public class CustomerSellInfoView extends JFrame {
 		contentPane.add(pCombo);
 		pCombo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		
-		JPanel pTable = new CustomerSellInfoTable();
+		JPanel pTable = new JPanel();
 		contentPane.add(pTable);
-		pTable.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		pTable.setLayout(new BorderLayout(0, 0));
+		
+		scrollPane = new JScrollPane();
+		pTable.add(scrollPane, BorderLayout.CENTER);
+		
+		table = new CustomerSellInfoTable();
+		scrollPane.setViewportView(table);
+		
 	}
 
 }

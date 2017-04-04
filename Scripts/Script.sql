@@ -3,7 +3,6 @@ DROP database IF EXISTS donghun2;
 create database donghun2;
 
 use donghun2;
-
 create table egrade(	-- 사원 등급 테이블이구요
 	grade varchar(1) not null primary key,
 	dispct int
@@ -112,6 +111,9 @@ join egrade eg on eg.grade=e.grade
 join customer c on s.ccode = c.code		-- sellinfo가 있다는것은 employee custom모두 값이 있다는 전제이므로
 join cgrade cg on cg.grade=c.grade;
 
+
+select * from sellinfo;
+
 select * from vw_calculate_sellInfo;
 
 select * from vw_calculate_sellInfo where scode='s001';
@@ -167,12 +169,12 @@ from vw_InfoByCustomer;
 -- drop view vw_InfoByCustomer;
 
 create view vw_InfoByProduct as
-select c.code ccode, c.name cname, quantity, sellprice, disprice, marginprice, marginpct
+select c.code ccode, c.name cname, sum(quantity), sum(sellprice), sum(disprice), sum(marginprice), avg(marginpct)
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
-group by c.code
+group by ccode
 order by ccode asc ;		-- 주의 사항 처리해야함
 
-select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+select *
 from vw_InfoByProduct;
 
 -- drop view vw_InfoByProduct;
