@@ -31,6 +31,11 @@ public class CalculatedValueService {
 			return calculatedValueMapper.selectCalculatedValueByNo(code);
 		}
 	}
+
+	public List<CalculatedValue> vw_InfoByCustomer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
