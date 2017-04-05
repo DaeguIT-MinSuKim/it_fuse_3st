@@ -12,6 +12,9 @@ public class InquiryPanel extends JPanel {
 
 
    private JTabbedPane tabbedPane;
+   private EmployeeSellInfoPanel pEmpSellInfo;
+   private CustomerSellInfoPanel pCusSellInfo;
+   private ProductSellInfoPanel pProSellInfo;
 
    public InquiryPanel() {
       setLayout(new BorderLayout(0, 0));
@@ -32,15 +35,15 @@ public class InquiryPanel extends JPanel {
       pCusCon.setLayout(new BoxLayout(pCusCon, BoxLayout.Y_AXIS));
       tabbedPane.addTab("거래처현황", null, pCusCon, null);
       
-      JPanel pEmpSellInfo = new JPanel();
+      pEmpSellInfo = new EmployeeSellInfoPanel();
       pEmpSellInfo.setLayout(new BoxLayout(pEmpSellInfo, BoxLayout.Y_AXIS));
       tabbedPane.addTab("영업사원 별 거래 현황", null, pEmpSellInfo, null);
       
-      JPanel pProSellInfo = new JPanel();
+      pProSellInfo = new ProductSellInfoPanel();
       pProSellInfo.setLayout(new BoxLayout(pProSellInfo, BoxLayout.Y_AXIS));
       tabbedPane.addTab("제품 별 거래 현황", null, pProSellInfo, null);
       
-      JPanel pCusSellInfo = new JPanel();
+      pCusSellInfo = new CustomerSellInfoPanel();
       pCusSellInfo.setLayout(new BoxLayout(pCusSellInfo, BoxLayout.Y_AXIS));
       tabbedPane.addTab("거래처 별 거래 현황", null, pCusSellInfo, null);
    }

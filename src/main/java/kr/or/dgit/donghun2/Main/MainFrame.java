@@ -45,7 +45,6 @@ public class MainFrame extends JFrame implements ActionListener {
 	
 	private JButton btn1;
 	private JButton btn2;
-	private JButton btn3;
 	private JTabbedPane tabbedPane;
 	
 	
