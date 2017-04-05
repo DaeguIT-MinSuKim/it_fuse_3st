@@ -194,11 +194,6 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private void setinit() {
 		List<SellInfo> sellInfos = sdao.getInstance().selectSellInfoByAll();
 		sellInfos.get(sellInfos.size() - 1).getScode();
-		System.out.println(sellInfos);
-		System.out.println(sellInfos.get(sellInfos.size() - 1).getScode());
-		System.out.println(sellInfos.get(sellInfos.size() - 1).getScode().substring(1));
-		System.out.println(Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
-
 		String value = String.format(setNoFormat(),
 				Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
 		pSellInfoA.getpScode().setTfValue(value);
