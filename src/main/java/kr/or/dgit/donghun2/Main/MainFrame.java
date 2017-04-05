@@ -76,7 +76,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 700);
+		setBounds(100, 100, 750, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(10, 10));
@@ -84,6 +84,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		
 		pTabbedPane = new JPanel();
+		pTabbedPane.setLayout(new BoxLayout(pTabbedPane, BoxLayout.Y_AXIS));
 		contentPane.add(pTabbedPane, BorderLayout.CENTER);
 		
 		
@@ -96,14 +97,13 @@ public class MainFrame extends JFrame implements ActionListener {
 		contentPane.add(pBtn, BorderLayout.EAST);
 		pBtn.setLayout(new GridLayout(0, 1, 10, 50));
 		btn1 = new JButton("기초자료관리");
-		btn2 = new JButton("기초자료 현황");
-		btn3 = new JButton("거래내역 조회");
+		btn2 = new JButton("조회 현황");
+		
 		pBtn.add(btn1);
 		btn1.addActionListener(this);
 		pBtn.add(btn2);
 		btn2.addActionListener(this);
-		pBtn.add(btn3);
-		System.out.println("**");
+		
 	}
 
 	
