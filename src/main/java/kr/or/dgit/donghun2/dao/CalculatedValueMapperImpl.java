@@ -1,10 +1,12 @@
 package kr.or.dgit.donghun2.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dto.CalculatedValue;
+import kr.or.dgit.donghun2.dto.Employee;
 
 public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	private String namespace="kr.or.dgit.donghun2.dao.CalculatedValueMapper.";
@@ -40,18 +42,18 @@ public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	}
 
 	@Override
-	public CalculatedValue vw_InfoByCustomerByCode(CalculatedValue ccode) {
-		return sqlSession.selectOne(namespace+"vw_InfoByCustomerByCode", ccode);
+	public List<CalculatedValue> vw_InfoByCustomerByCode(Map<String, String> item) {
+		return sqlSession.selectList(namespace+"vw_InfoByCustomerByCode", item);
 	}
 
 	@Override
-	public CalculatedValue vw_InfoByProductByCode(CalculatedValue pcode) {
-		return sqlSession.selectOne(namespace+"vw_InfoByProductByCode", pcode);
+	public List<CalculatedValue> vw_InfoByProductByCode(Map<String, String> item) {
+		return sqlSession.selectList(namespace+"vw_InfoByProductByCode", item);
 	}
 
 	@Override
-	public CalculatedValue vw_InfoByEmployeeByCode(CalculatedValue ecode) {
-		return sqlSession.selectOne(namespace+"vw_InfoByEmployeeByCode", ecode);
+	public List<CalculatedValue> vw_InfoByEmployeeByCode(Map<String, String> item) {
+		return sqlSession.selectList(namespace+"vw_InfoByEmployeeByCode", item);
 	}
 
 }

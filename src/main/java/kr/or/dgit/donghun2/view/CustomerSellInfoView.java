@@ -8,7 +8,9 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
@@ -18,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
+import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.CustomerService;
@@ -48,10 +51,6 @@ public class CustomerSellInfoView extends JFrame {
 			}
 		});
 	}
-
-	/**ㅇㅣ거!!!
-	 * Create the frame.
-	 */
 	public CustomerSellInfoView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 588, 347);
@@ -122,9 +121,16 @@ public class CustomerSellInfoView extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Customer cRes = (Customer) pCustomerForCombo.getSelectItem();
-			//			CalculatedValue cValue = 
-			//			CalculatedValue cValue = cvdao.getInstance().vw_InfoByCustomerByCode(cRes.getCode());
-			//			System.out.println(cValue);
+						
+						Map<String, String> item = new HashMap<>();
+						item.put("ccode", cRes.getCode());
+						List<CalculatedValue> calculatedValues = cvdao.getInstance().vw_InfoByCustomerByCode(item);
+						for(CalculatedValue cv : calculatedValues){
+							System.out.println(cv);
+						}
+					//	table.loadDateByCode(cRes);
+						
+						
 					}
 				}
 				

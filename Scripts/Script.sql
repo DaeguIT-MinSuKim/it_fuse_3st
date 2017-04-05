@@ -111,23 +111,26 @@ values('S003','P001','E002','C002',20000,6000,150,now(),1),
 		('S004','P003','E002','C003',30000,10000,50,now(),1);
 /*delete from sellinfo where scode = 'S001';*/
 
--- 프로시저 쓰면 이 뷰 못씁니다.
 create view vw_InfoByCustomer as
 select s.ccode,saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join product p on s.pcode = p.code
 order by saledate desc;
 
 select saledate, pcode, pname, quantity, sellprice, disprice, marginprice, marginpct
-from vw_InfoByCustomer where ccode='C001';
+from vw_InfoByCustomer 
+where ccode='C001';
 
 -- drop view vw_InfoByCustomer;
 
 create view vw_InfoByProduct as
-select s.pcode, c.code ccode, c.name cname, sum(quantity), sum(sellprice), sum(disprice), sum(marginprice), avg(marginpct)
+select s.pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
 group by ccode
-order by ccode asc ;		-- 주의 사항 처리해야함
-select * from vw_infobyproduct where pcode='P001';
+order by ccode asc ;
+
+select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+from vw_infobyproduct 
+where pcode='P001';
 /*select  ccode,cname,sum(quantity),sum(sellprice),sum(disprice),sum(marginprice),avg(marginpct)
 from vw_InfoByProduct where pcode='P001';  ??*/
 
@@ -136,7 +139,7 @@ from vw_InfoByProduct where pcode='P001';  ??*/
 create view vw_InfoByEmployee as
 select e.code ecode, e.name ename, sellprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join employee e on s.ecode = e.code
-order by ecode asc;
+order by e.code asc;
 
 select ecode, ename, sellprice, marginprice, marginpct
 from vw_InfoByEmployee

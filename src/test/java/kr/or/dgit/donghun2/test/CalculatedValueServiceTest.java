@@ -1,6 +1,8 @@
 package kr.or.dgit.donghun2.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -10,13 +12,14 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import kr.or.dgit.donghun2.dto.CalculatedValue;
+import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CalculatedValueServiceTest {
 	private static CalculatedValueService calculatedValueService;
-	
+	/*
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -30,49 +33,6 @@ public class CalculatedValueServiceTest {
 	}
 	
 	@Test
-	public void aTestSelectSellInfoByAll() {
-		List<CalculatedValue> calculatedValues = calculatedValueService.selectCalculatedValueByAll();
-		for(CalculatedValue cv : calculatedValues){
-			System.out.println(cv);
-		}
-		Assert.assertNotNull(calculatedValues);
-	}
-	
-	@Test
-	public void bTestSelectCalculatedValueByNo() {
-		CalculatedValue	item = new CalculatedValue();
-		item.setScode("S001");
-		CalculatedValue calculatedValue = calculatedValueService.selectCalculatedValueByNo(item);
-		
-		Assert.assertNotNull(calculatedValue);
-	}
-	
-	@Test
-	public void fTestvw_InfoByCustomerByCode() {
-		CalculatedValue	item = new CalculatedValue();
-		item.setScode("S001");
-		CalculatedValue calculatedValue = calculatedValueService.vw_InfoByCustomerByCode(item);
-		
-		Assert.assertNotNull(calculatedValue);
-	}
-	@Test
-	public void gTestvw_InfoByProductByCode() {
-		CalculatedValue	item = new CalculatedValue();
-		item.setScode("S001");
-		CalculatedValue calculatedValue = calculatedValueService.vw_InfoByProductByCode(item);
-		
-		Assert.assertNotNull(calculatedValue);
-	}
-	@Test
-	public void hTestvw_InfoByEmployeeByCode() {
-		CalculatedValue	item = new CalculatedValue();
-		item.setScode("S001");
-		CalculatedValue calculatedValue = calculatedValueService.vw_InfoByEmployeeByCode(item);
-		
-		Assert.assertNotNull(calculatedValue);
-	}
-
-/*	@Test
 	public void cTestvw_InfoByCustomer() {
 
 		List<CalculatedValue> calculatedValues = calculatedValueService.vw_InfoByCustomer();
@@ -80,7 +40,7 @@ public class CalculatedValueServiceTest {
 			System.out.println(cv);
 		}
 	}
-	
+		
 	@Test
 	public void dTestvw_InfoByProduct() {
 
@@ -97,8 +57,28 @@ public class CalculatedValueServiceTest {
 		for(CalculatedValue cv : calculatedValues){
 			System.out.println(cv);
 		}
-	}*/
-	/*
+	}
+	
+	@Test
+	public void fTestvw_InfoByCustomerByCode() {
+		Map<String, String> item = new HashMap<>();
+		item.put("ccode", "C001");
+		calculatedValueService.vw_InfoByCustomerByCode(item);
+	}
+	@Test
+	public void gTestvw_InfoByProductByCode() {
+		Map<String, String> item = new HashMap<>();
+		item.put("pcode", "P001");
+		calculatedValueService.vw_InfoByProductByCode(item);
+	}
+	@Test
+	public void hTestvw_InfoByEmployeeByCode() {
+		Map<String, String> item = new HashMap<>();
+		item.put("ecode", "E001");
+		calculatedValueService.vw_InfoByEmployeeByCode(item);
+	}
+	
+	
 	@Test
 	public void aTestSelectSellInfoByAll() {
 		List<CalculatedValue> calculatedValues = calculatedValueService.selectCalculatedValueByAll();
@@ -113,15 +93,6 @@ public class CalculatedValueServiceTest {
 		CalculatedValue	item = new CalculatedValue();
 		item.setScode("S001");
 		CalculatedValue calculatedValue = calculatedValueService.selectCalculatedValueByNo(item);
-		
-		Assert.assertNotNull(calculatedValue);
-	}
-	
-	@Test
-	public void cTestvw_InfoByCustomer() {
-		CalculatedValue	item = new CalculatedValue();
-		item.setScode("S001");
-		CalculatedValue calculatedValue = calculatedValueService.vw_InfoByCustomer(item);
 		
 		Assert.assertNotNull(calculatedValue);
 	}

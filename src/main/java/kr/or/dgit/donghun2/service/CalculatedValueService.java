@@ -1,6 +1,7 @@
 package kr.or.dgit.donghun2.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.dgit.donghun2.dao.CalculatedValueMapper;
 import kr.or.dgit.donghun2.dao.CalculatedValueMapperImpl;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
+import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.SellInfo;
 import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 
@@ -53,24 +55,24 @@ public class CalculatedValueService {
 		}
 	}
 	
-	public CalculatedValue vw_InfoByCustomerByCode(CalculatedValue item){
+	public List<CalculatedValue> vw_InfoByCustomerByCode(Map<String, String> item){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
 			return calculatedValueMapper.vw_InfoByCustomerByCode(item);
 		}
 	}
 	
-	public CalculatedValue vw_InfoByProductByCode(CalculatedValue pcode){
+	public List<CalculatedValue> vw_InfoByProductByCode(Map<String, String> item){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
-			return calculatedValueMapper.vw_InfoByProductByCode(pcode);
+			return calculatedValueMapper.vw_InfoByProductByCode(item);
 		}
 	}
 	
-	public CalculatedValue vw_InfoByEmployeeByCode(CalculatedValue ecode){
+	public List<CalculatedValue> vw_InfoByEmployeeByCode(Map<String, String> item){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
-			return calculatedValueMapper.vw_InfoByEmployeeByCode(ecode);
+			return calculatedValueMapper.vw_InfoByEmployeeByCode(item);
 		}
 	}
 }

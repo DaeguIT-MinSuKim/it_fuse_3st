@@ -256,6 +256,18 @@ public class CalculatedValue {
 				 String.format("%,d",marginprice),
 				 String.format("%,d",marginpct)};
 	}
+
+
+
+	public String[] toArrayforEmployeeSellInfoByCodeT() {
+		return new String[] 
+				{		//	employee.getCode(),
+						//	employee.getName(),
+						"","",
+				 String.format("%,d",sellprice),
+				 String.format("%,d",marginprice),
+				 String.format("%,d",marginpct)};
+	}
 	
 	
 	

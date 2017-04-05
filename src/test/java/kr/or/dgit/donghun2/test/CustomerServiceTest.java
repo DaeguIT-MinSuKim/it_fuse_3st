@@ -38,7 +38,7 @@ public class CustomerServiceTest {
 		Assert.assertNotNull(customers);
 	}
 	
-	/*
+	
 	@Test
 	public void bTestInsertCustomer() {
 		Customer item = new Customer();

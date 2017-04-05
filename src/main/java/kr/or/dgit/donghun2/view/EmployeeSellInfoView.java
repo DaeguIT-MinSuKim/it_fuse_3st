@@ -16,8 +16,12 @@ import erp_myframework.ComboPanel;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+
+import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.EmployeeService;
@@ -69,7 +73,7 @@ public class EmployeeSellInfoView extends JFrame {
 		
 		
 		pEmployeeForCombo = new ComboPanel<>();
-		pEmployeeForCombo.setTitle("거래처");
+		pEmployeeForCombo.setTitle("사원");
 
 		GridBagLayout egridBagLayout = new GridBagLayout();
 		egridBagLayout.columnWidths = new int[]{100, 425, 0};		egridBagLayout.rowHeights = new int[]{51, 0};		egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};		egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
@@ -128,9 +132,16 @@ public class EmployeeSellInfoView extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
-			//			CalculatedValue cValue = 
-			//			CalculatedValue cValue = cvdao.getInstance().vw_InfoByEmployeeByCode(cRes.getCode());
-			//			System.out.println(cValue);
+						
+						Map<String, String> item = new HashMap<>();
+						item.put("ecode", eRes.getCode());
+						List<CalculatedValue> calculatedValues = cvdao.getInstance().vw_InfoByEmployeeByCode(item);
+						for(CalculatedValue cv : calculatedValues){
+							System.out.println(cv);
+						}
+						table.loadDateByCode(eRes);
+						
+						
 					}
 				}
 				

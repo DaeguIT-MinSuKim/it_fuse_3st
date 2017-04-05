@@ -1,7 +1,9 @@
 package kr.or.dgit.donghun2.table;
 
 import java.awt.BorderLayout;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -39,10 +41,29 @@ public class EmployeeSellInfoTable extends JPanel {
 		table.setModel(new DefaultTableModel(getRowDate(),getColumn()));
 	}
 	
-	
 	protected String[] getColumn() {
 		return new String[]{"사원코드","사원명","판매금액","마진액","마진율"};
 	}
+	
+	public void loadDateByCode(Employee eRes) {
+		table.setModel(new DefaultTableModel(getRowDate(eRes),getColumn()));
+		
+	}
+	
+	private String[][] getRowDate(Employee eRes) {
+		Map<String, String> item = new HashMap<>();
+		item.put("ecode", eRes.getCode());
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByEmployeeByCode(item);
+		for(CalculatedValue cv : calculatedValues){
+			System.out.println(cv);
+		}
+		String[][] datas = new String[calculatedValues.size()][];
+		for(int i = 0; i < datas.length; i++){
+			datas[i] = calculatedValues.get(i).toArrayforEmployeeSellInfoByCodeT();
+		}
+		return datas;
+	}
+	
 	
 	protected String[][] getRowDate() {
 		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByEmployee();
@@ -52,6 +73,7 @@ public class EmployeeSellInfoTable extends JPanel {
 		}
 		return datas;
 	}
+	
 	
 
 }

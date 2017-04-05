@@ -14,8 +14,32 @@
 		<association property="sellinfo" resultMap="kr.or.dgit.donghun2.dao.SellInfoMapper.SellInfoResult"/>		
 	</resultMap>
 	
+	<parameterMap type="Customer" id="CustomerParam">
+		
+		<parameter property="name" />
+	</parameterMap>
+	
+	<select id="vw_InfoByCustomerByCode" parameterType="Customer" resultMap="CalculatedValueResult">
+	select saledate, pcode, pname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_InfoByCustomer 
+		where ccode=#{ccode};
+	</select>
+	
+	<select id="vw_InfoByProductByCode" resultMap="CalculatedValueResult">
+	select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_infobyproduct 
+		where pcode=#{pcode}
+	</select>
+	
+	<select id="vw_InfoByEmployeeByCode" resultMap="CalculatedValueResult">
+	select ecode, ename, sellprice, marginprice, marginpct
+		from vw_InfoByEmployee
+		where ecode = #{ecode}
+	</select>
+
+	
 	<select id="vw_InfoByCustomer" resultMap="CalculatedValueResult">
-	select saledate, p.code , p.name , quantity, sellprice, disprice, marginprice, marginpct
+	select saledate, p.code, p.name, quantity, sellprice, disprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
 	join sellinfo s 
 	on vw.scode= s.scode 
@@ -24,17 +48,7 @@
 	order by saledate desc
 	</select>
 	
-	<select id="vw_InfoByCustomerByCode" parameterMap="CalculatedValueResult" resultMap="CalculatedValueResult">
-	select saledate, p.code , p.name , quantity, sellprice, disprice, marginprice, marginpct
-	from vw_calculate_sellInfo vw 
-	join sellinfo s 
-	on vw.scode= s.scode 
-	join product p 
-	on s.pcode = p.code
-	where ccode = #{ccode};
-	order by saledate desc
-	</select>
-	
+
 	<select id="vw_InfoByProduct" resultMap="CalculatedValueResult">
 	select c.code, c.name, quantity, sellprice, disprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
@@ -46,18 +60,7 @@
 	order by c.code asc
 	</select>
 	
-	<select id="vw_InfoByProductByCode" parameterType="int" resultMap="CalculatedValueResult">
-	select c.code, c.name, quantity, sellprice, disprice, marginprice, marginpct
-	from vw_calculate_sellInfo vw 
-	join sellinfo s 
-	on vw.scode= s.scode 
-	join customer c 
-	on s.ccode = c.code
-	where pcode = #{pcode};
-	group by c.code
-	order by c.code asc
-	</select>
-	
+
 	
 	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
 	select e.code , e.name , sellprice, marginprice, marginpct
@@ -69,24 +72,13 @@
 	order by ecode asc
 	</select>
 	
-	<select id="vw_InfoByEmployeeByCode" parameterType="int" resultMap="CalculatedValueResult">
-	select e.code , e.name , sellprice, marginprice, marginpct
-	from vw_calculate_sellInfo vw 
-	join sellinfo s 
-	on vw.scode= s.scode 
-	join employee e 
-	on s.ecode = e.code
-	where ecode = #{ecode};
-	order by ecode asc
-	</select>
-
  
 	<select id="selectCalculatedValueByAll" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo
 	</select>
 	
-	<select id="selectCalculatedValueByNo" parameterType="int" resultMap="CalculatedValueResult">
+	<select id="selectCalculatedValueByNo" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo 
 		where scode= #{scode}
