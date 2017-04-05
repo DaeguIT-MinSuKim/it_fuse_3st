@@ -96,6 +96,7 @@ public class CustomerView extends JFrame implements ActionListener {
 			actionPerformedBtnSave(e);
 		}
 	}
+	
 	protected void actionPerformedBtnSave(ActionEvent e) {
 		if(pCustomer.isEmpty()){
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");

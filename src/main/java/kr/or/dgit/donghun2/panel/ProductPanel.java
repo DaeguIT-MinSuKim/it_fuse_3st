@@ -23,7 +23,7 @@ public class ProductPanel extends JPanel {
 	private SpinnerPanel pOrigiPrice;
 
 	public ProductPanel() {
-		setLayout(new GridLayout(0, 1, 0, 0));
+		setLayout(new GridLayout(0, 1, 0, 10));
 		
 		pCode = new TextFiledPanel();
 		pCode.setTitle("제품코드");

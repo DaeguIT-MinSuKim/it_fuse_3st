@@ -1,48 +1,87 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
-	
-	<sql id="whereSql">where scode = #{scode}</sql>
-	
-	<resultMap type="SellInfo" id="SellInfoResult">
-		<id property="scode" column="scode"/>
-		<result property="quantity" column="quantity"/>
-		<result property="saledate" column="saledate"/>
-		<result property="saleprice" column="saleprice"/>
-		<result property="origiprice" column="origiprice"/>
-		<result property="dispcts" column="dispcts"/>
-		<result property="isexist" column="isexist"/>
-		</resultMap>
-<<<<<<< HEAD
 
-=======
+<mapper namespace="kr.or.dgit.donghun2.dao.SellInfoMapper">
+
 	
->>>>>>> refs/remotes/origin/jinuk
+
+	<sql id="whereSql">where scode = #{scode}</sql>
+
+	
+
+	<resultMap type="SellInfo" id="SellInfoResult">
+
+		<id property="scode" column="scode"/>
+
+		<result property="quantity" column="quantity"/>
+
+		<result property="saledate" column="saledate"/>
+
+		<result property="saleprice" column="saleprice"/>
+
+		<result property="origiprice" column="origiprice"/>
+
+		<result property="dispcts" column="dispcts"/>
+
+		<result property="isexist" column="isexist"/>
+
+		</resultMap>
+
+
+
+
 
 	<select id="selectSellInfoByAll" resultType="SellInfo">
+
 		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
+
 		FROM sellInfo
+
 	</select>
+
 	<insert id="insertSellInfo" parameterType="SellInfo" >
+
 		INSERT INTO sellinfo (scode, saledate, quantity, saleprice, origiprice, dispcts, isexist) 
+
 		values (#{scode},#{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},#{isexist})
+
     </insert>
-	
-	<update id="updateSellInfo" parameterType="SellInfo">
-		UPDATE SellInfo
-		<set>
-			<if test="name != null">
-				name = #{name},	</if>   
-			<if test="salePrice != null">
-				saleprice = #{salePrice},	</if> 
-			<if test="origiPrice != null">
-				origiprice = #{origiPrice},	</if> 
-		</set>
-		<include refid="whereSql"></include>
-	</update>
- 	<delete id="deleteSellInfo" parameterType="SellInfo">
-		delete from SellInfo
-		<include refid="whereSql"/>
-	</delete> 
 
 	
+
+	<update id="updateSellInfo" parameterType="SellInfo">
+
+		UPDATE SellInfo
+
+		<set>
+
+			<if test="name != null">
+
+				name = #{name},	</if>   
+
+			<if test="salePrice != null">
+
+				saleprice = #{salePrice},	</if> 
+
+			<if test="origiPrice != null">
+
+				origiprice = #{origiPrice},	</if> 
+
+		</set>
+
+		<include refid="whereSql"></include>
+
+	</update>
+
+ 	<delete id="deleteSellInfo" parameterType="SellInfo">
+
+		delete from SellInfo
+
+		<include refid="whereSql"/>
+
+	</delete> 
+
+
+
+	
+
 </mapper>
