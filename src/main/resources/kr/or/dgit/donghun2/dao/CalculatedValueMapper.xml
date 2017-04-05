@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CalculatedValueMapper">
+<<<<<<< HEAD
+=======
+	<sql id="whereSql">where s.scode=#{scode}</sql>
+>>>>>>> refs/remotes/origin/jinuk
 	<resultMap type="CalculatedValue" id="CalculatedValueResult">
 		<id property="scode" column="scode"/>
 		<result property="unitprice" column="unitprice"/>
@@ -14,6 +18,7 @@
 		<association property="sellinfo" resultMap="kr.or.dgit.donghun2.dao.SellInfoMapper.SellInfoResult"/>		
 	</resultMap>
 	
+<<<<<<< HEAD
 	<parameterMap type="Customer" id="CustomerParam">
 		
 		<parameter property="name" />
@@ -72,13 +77,53 @@
 	order by ecode asc
 	</select>
 	
+=======
+	<select id="vw_InfoByCustomer" resultMap="CalculatedValueResult">
+	select saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join product p 
+	on s.pcode = p.code
+	<!-- 	<include refid="whereSql"/> -->
+	order by saledate desc
+	</select>
+	
+	<select id="vw_InfoByProduct" resultMap="CalculatedValueResult">
+	select c.code ccode, c.name cname, quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join customer c 
+	on s.ccode = c.code
+		<!-- 	<include refid="whereSql"/> -->
+	group by c.code
+	order by ccode asc
+	</select>
+
+	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
+	select e.code ecode, e.name ename, sellprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join employee e 
+	on s.ecode = e.code
+		<!-- 	<include refid="whereSql"/> -->
+	order by ecode asc
+	</select>
+
+>>>>>>> refs/remotes/origin/jinuk
  
 	<select id="selectCalculatedValueByAll" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo
 	</select>
 	
+<<<<<<< HEAD
 	<select id="selectCalculatedValueByNo" resultMap="CalculatedValueResult">
+=======
+	<select id="selectCalculatedValueByNo" parameterType="CalculatedValue" resultMap="CalculatedValueResult">
+>>>>>>> refs/remotes/origin/jinuk
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo 
 		where scode= #{scode}

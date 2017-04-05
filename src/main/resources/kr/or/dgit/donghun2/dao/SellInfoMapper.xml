@@ -12,7 +12,11 @@
 		<result property="dispcts" column="dispcts"/>
 		<result property="isexist" column="isexist"/>
 		</resultMap>
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/remotes/origin/jinuk
 
 	<select id="selectSellInfoByAll" resultType="SellInfo">
 		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
