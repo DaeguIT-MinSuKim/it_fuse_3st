@@ -6,19 +6,22 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerSellInfoTable;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,8 +31,8 @@ public class CustomerSellInfoView extends JFrame {
 	private JPanel contentPane;
 	private CustomerService cdao;
 	private JPanel pCombo;
-	private ComboPanel<String> pCustomerForCombo;
-	private JScrollPane scrollPane_1;
+	private ComboPanel<Customer> pCustomerForCombo;
+	private CalculatedValueService cvdao;
 	private JScrollPane scrollPane;
 	private CustomerSellInfoTable table;
 
@@ -55,14 +58,11 @@ public class CustomerSellInfoView extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		pCombo = new JPanel();
 		
 		
 		
 		
-		pCustomerForCombo = new ComboPanel();
+		pCustomerForCombo = new ComboPanel<>();
 		pCustomerForCombo.setTitle("거래처");
 
 		GridBagLayout cgridBagLayout = new GridBagLayout();
@@ -71,26 +71,42 @@ public class CustomerSellInfoView extends JFrame {
 		
 		GridBagConstraints cgbc_lbl = new GridBagConstraints();
 		cgbc_lbl.fill = GridBagConstraints.BOTH;		cgbc_lbl.insets = new Insets(0, 0, 0, 5);		cgbc_lbl.gridx = 0;		cgbc_lbl.gridy = 0;
-		pCombo.add(pCustomerForCombo,cgbc_lbl);
 		
 		GridBagConstraints cgbc_combo = new GridBagConstraints();
-		pCombo.add(pCustomerForCombo, cgbc_combo);
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
-		Vector<String> cVector = new Vector<>();
-		String cinit = "데이터를 선택하세요";
-		cVector.addElement(cinit);
+		Vector<Customer> cVector = new Vector<>();
+		cVector.add(new Customer());
 		for(int i = 0 ; i < cList.size(); i++){
-			cVector.addElement(cList.get(i).toString());
+			cVector.addElement(cList.get(i));
 		}
 		pCustomerForCombo.setcomboData(cVector);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{556, 0};
+		gbl_contentPane.rowHeights = new int[]{92, 185, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
+		
+		pCombo = new JPanel();
+		pCombo.add(pCustomerForCombo,cgbc_lbl);
+		pCombo.add(pCustomerForCombo, cgbc_combo);
 		
 		pCombo.add(pCustomerForCombo);
-		contentPane.add(pCombo);
+		GridBagConstraints gbc_pCombo = new GridBagConstraints();
+		gbc_pCombo.fill = GridBagConstraints.BOTH;
+		gbc_pCombo.insets = new Insets(0, 0, 5, 0);
+		gbc_pCombo.gridx = 0;
+		gbc_pCombo.gridy = 0;
+		contentPane.add(pCombo, gbc_pCombo);
 		pCombo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JPanel pTable = new JPanel();
-		contentPane.add(pTable);
+		GridBagConstraints gbc_pTable = new GridBagConstraints();
+		gbc_pTable.fill = GridBagConstraints.BOTH;
+		gbc_pTable.gridx = 0;
+		gbc_pTable.gridy = 1;
+		contentPane.add(pTable, gbc_pTable);
 		pTable.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
@@ -98,6 +114,21 @@ public class CustomerSellInfoView extends JFrame {
 		
 		table = new CustomerSellInfoTable();
 		scrollPane.setViewportView(table);
+		
+		
+		pCustomerForCombo.getTf().addActionListener(
+				new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Customer cRes = (Customer) pCustomerForCombo.getSelectItem();
+			//			CalculatedValue cValue = 
+			//			CalculatedValue cValue = cvdao.getInstance().vw_InfoByCustomerByCode(cRes.getCode());
+			//			System.out.println(cValue);
+					}
+				}
+				
+		);
 		
 	}
 

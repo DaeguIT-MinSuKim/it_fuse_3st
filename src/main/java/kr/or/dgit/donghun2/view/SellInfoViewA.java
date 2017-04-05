@@ -50,9 +50,9 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	private static EmployeeService edao;
 	private static CustomerService cdao;
 	private static SellInfoService sdao;
-	private ComboPanel<String> pEmployeeForCombo;
-	private ComboPanel<String> pProductForCombo;
-	private ComboPanel<String> pCustomerForCombo;
+	private ComboPanel<Employee> pEmployeeForCombo;
+	private ComboPanel<Product> pProductForCombo;
+	private ComboPanel<Customer> pCustomerForCombo;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -96,11 +96,11 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pEmployeeForCombo, egbc_combo);
 		
 		List<Employee> eList = edao.getInstance().selectEmployeeByAll();
-		Vector<String> eVector = new Vector<>();
-		String einit = "데이터를 선택하세요";
-		eVector.addElement(einit);
+		Vector<Employee> eVector = new Vector<>();
+		eVector.add(new Employee());
+
 		for(int i = 0 ; i < eList.size(); i++){
-			eVector.addElement(eList.get(i).toString());
+			eVector.addElement(eList.get(i));
 		}
 		pEmployeeForCombo.setcomboData(eVector);
 		
@@ -119,11 +119,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pProductForCombo, pgbc_combo);
 
 		List<Product> pList = pdao.getInstance().selectProductByAll();
-		Vector<String> pVector = new Vector<>();
-		String pinit = "데이터를 선택하세요";
-		pVector.addElement(pinit);
+		Vector<Product> pVector = new Vector<>();
+		pVector.addElement(new Product());
 		for(int i = 0 ; i < pList.size(); i++){
-			pVector.addElement(pList.get(i).toString());
+			pVector.addElement(pList.get(i));
 		}
 		pProductForCombo.setcomboData(pVector);
 		
@@ -144,11 +143,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		panel.add(pCustomerForCombo, cgbc_combo);
 		
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
-		Vector<String> cVector = new Vector<>();
-		String cinit = "데이터를 선택하세요";
-		cVector.addElement(cinit);
+		Vector<Customer> cVector = new Vector<>();
+		cVector.addElement(new Customer());
 		for(int i = 0 ; i < cList.size(); i++){
-			cVector.addElement(cList.get(i).toString());
+			cVector.addElement(cList.get(i));
 		}
 		pCustomerForCombo.setcomboData(cVector);
 		
@@ -181,7 +179,6 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 	}
 	
 	private void actionPerformedbtnSave(ActionEvent e) {
-		System.out.println("클릭");
 		SellInfo sellInfo = pSellInfoA.getObjectDateQuantity();
 		sdao.getInstance().insertSellInfo(sellInfo);
 		List<CalculatedValue> calculatedValue = 
@@ -203,7 +200,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		}catch(NumberFormatException ne){
 			ne.getStackTrace();
 		}
-		if(eRes == null || pRes == null || cRes == null || sRes == null){
+		if(eRes.getCode() == null || pRes.getCode() == null || cRes.getCode() == null || sRes == null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		}else{
 			int unitprice = 0;

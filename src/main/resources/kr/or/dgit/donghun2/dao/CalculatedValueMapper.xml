@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CalculatedValueMapper">
-	<sql id="whereSql">where s.scode=#{scode}</sql>
 	<resultMap type="CalculatedValue" id="CalculatedValueResult">
 		<id property="scode" column="scode"/>
 		<result property="unitprice" column="unitprice"/>
@@ -22,7 +21,17 @@
 	on vw.scode= s.scode 
 	join product p 
 	on s.pcode = p.code
-	<!-- 	<include refid="whereSql"/> -->
+	order by saledate desc
+	</select>
+	
+	<select id="vw_InfoByCustomerByCode" parameterMap="CalculatedValueResult" resultMap="CalculatedValueResult">
+	select saledate, p.code , p.name , quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join product p 
+	on s.pcode = p.code
+	where ccode = #{ccode};
 	order by saledate desc
 	</select>
 	
@@ -33,11 +42,23 @@
 	on vw.scode= s.scode 
 	join customer c 
 	on s.ccode = c.code
-		<!-- 	<include refid="whereSql"/> -->
 	group by c.code
-	order by ccode asc
+	order by c.code asc
 	</select>
-
+	
+	<select id="vw_InfoByProductByCode" parameterType="int" resultMap="CalculatedValueResult">
+	select c.code, c.name, quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join customer c 
+	on s.ccode = c.code
+	where pcode = #{pcode};
+	group by c.code
+	order by c.code asc
+	</select>
+	
+	
 	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
 	select e.code , e.name , sellprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
@@ -45,7 +66,17 @@
 	on vw.scode= s.scode 
 	join employee e 
 	on s.ecode = e.code
-		<!-- 	<include refid="whereSql"/> -->
+	order by ecode asc
+	</select>
+	
+	<select id="vw_InfoByEmployeeByCode" parameterType="int" resultMap="CalculatedValueResult">
+	select e.code , e.name , sellprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join employee e 
+	on s.ecode = e.code
+	where ecode = #{ecode};
 	order by ecode asc
 	</select>
 
@@ -55,7 +86,7 @@
 		from vw_calculate_sellInfo
 	</select>
 	
-	<select id="selectCalculatedValueByNo" parameterType="CalculatedValue" resultMap="CalculatedValueResult">
+	<select id="selectCalculatedValueByNo" parameterType="int" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo 
 		where scode= #{scode}

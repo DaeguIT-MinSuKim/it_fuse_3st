@@ -53,4 +53,24 @@ public class CalculatedValueService {
 		}
 	}
 	
+	public CalculatedValue vw_InfoByCustomerByCode(CalculatedValue item){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByCustomerByCode(item);
+		}
+	}
+	
+	public CalculatedValue vw_InfoByProductByCode(CalculatedValue pcode){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByProductByCode(pcode);
+		}
+	}
+	
+	public CalculatedValue vw_InfoByEmployeeByCode(CalculatedValue ecode){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.vw_InfoByEmployeeByCode(ecode);
+		}
+	}
 }
