@@ -65,7 +65,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 			}
 		});
 	}
-
+	
 	public SellInfoViewA() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 600);
@@ -188,9 +188,14 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		pSellInfoA.clear();
 
 		setinit();
-
+		
+		//
+		pSellInfoA.setSVA(SellInfoViewA.this);
+		//
+		
+		
 	} // constructor ends
-
+	
 	private void setinit() {
 		List<SellInfo> sellInfos = sdao.getInstance().selectSellInfoByAll();
 		sellInfos.get(sellInfos.size() - 1).getScode();
@@ -222,6 +227,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 			System.out.println(c);
 		}
 		JOptionPane.showMessageDialog(null, "저장되었습니다.");
+		
 		pSellInfoA.clear();
 		clear();
 		setinit();
@@ -285,5 +291,18 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 		}
 	}
+	
+	////////
+	public ComboPanel<Object> getpEmployeeForCombo() {
+		return pEmployeeForCombo;
+	}
 
+	public ComboPanel<Object> getpProductForCombo() {
+		return pProductForCombo;
+	}
+
+	public ComboPanel<Object> getpCustomerForCombo() {
+		return pCustomerForCombo;
+	}
+	/////////
 }

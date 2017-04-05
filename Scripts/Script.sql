@@ -190,6 +190,6 @@ from vw_InfoByEmployee;
 
 -- drop view vw_InfoByEmployee;
 
-
+select * from sellinfo;
 
 

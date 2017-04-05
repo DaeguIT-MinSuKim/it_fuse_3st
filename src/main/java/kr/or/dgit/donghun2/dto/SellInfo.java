@@ -22,6 +22,20 @@ public class SellInfo {
 		this.saledate = saledate;
 		this.quantity = quantity;
 	}
+	
+	public SellInfo( String ecode, String pcode, String ccode, String scode,Date saledate , int quantity, int saleprice,
+			int origiprice, int dispcts) {
+		super();
+		this.scode = scode;
+		this.ecode = ecode;
+		this.pcode = pcode;
+		this.ccode = ccode;
+		this.quantity = quantity;
+		this.saledate = saledate;
+		this.saleprice = saleprice;
+		this.origiprice = origiprice;
+		this.dispcts = dispcts;
+	}
 
 	public SellInfo(String scode, String ecode, String pcode, String ccode, int quantity, Date saledate, int saleprice,
 			int origiprice, int dispcts, boolean isexist) {
@@ -81,8 +95,29 @@ public class SellInfo {
 		this.quantity = quantity;
 	}
 
-
-
+	///////
+	public SellInfo(String scode, String pcode, int quantity, Date saledate) {
+		super();
+		this.scode = scode;
+		this.pcode = pcode;
+		this.quantity = quantity;
+		this.saledate = saledate;
+	}
+	////////
+	
+	public SellInfo(String scode2, String ecodeResult, String pCodeResult, String ccodeResult, int quantity2,
+			Date saleDate2, int saleprice2, int origiprice2, int fulldispcts) {
+		this.scode = scode2;
+		this.ecode = ecodeResult;
+		this.pcode = pCodeResult;
+		this.ccode = ccodeResult;
+		this.quantity = quantity2;
+		this.saledate = saleDate2;
+		this.saleprice = saleprice2;
+		this.origiprice = origiprice2;
+		this.dispcts = fulldispcts;
+		this.isexist = isexist;
+	}
 
 	public String getScode() {
 		return scode;

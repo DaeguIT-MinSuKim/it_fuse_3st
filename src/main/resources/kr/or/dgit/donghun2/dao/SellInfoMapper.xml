@@ -5,8 +5,12 @@
 	
 	<resultMap type="SellInfo" id="SellInfoResult">
 		<id property="scode" column="scode"/>
+		<result property="pcode" column="pcode"/>
+		<result property="ecode" column="ecode"/>
+		<result property="ccode" column="ccode"/>
 		<result property="quantity" column="quantity"/>
 		<result property="saledate" column="saledate"/>
+		
 		<result property="saleprice" column="saleprice"/>
 		<result property="origiprice" column="origiprice"/>
 		<result property="dispcts" column="dispcts"/>
@@ -19,8 +23,8 @@
 		FROM sellInfo
 	</select>
 	<insert id="insertSellInfo" parameterType="SellInfo" >
-		INSERT INTO sellinfo (scode, saledate, quantity, saleprice, origiprice, dispcts, isexist) 
-		values (#{scode},#{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},#{isexist})
+		INSERT INTO sellinfo (scode, ecode,pcode,ccode,saledate, quantity, saleprice, origiprice, dispcts, isexist) 
+		values (#{scode}, #{pcode}, #{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},#{isexist})
     </insert>
 	
 	<update id="updateSellInfo" parameterType="SellInfo">
