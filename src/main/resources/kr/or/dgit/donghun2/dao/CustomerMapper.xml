@@ -10,7 +10,7 @@
 
 
 
-	<select id="selectDiscnt" parameterType="Customer" resultType="int">
+	<select id="selectDiscnt" parameterType="Customer" resultMap="CustomerResult">
 		select dispct from cgrade cg join customer c 
 		on cg.grade = c.grade 
 		where code = #{code}; 

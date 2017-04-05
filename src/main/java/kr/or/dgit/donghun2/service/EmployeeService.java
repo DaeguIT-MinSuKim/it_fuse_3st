@@ -66,11 +66,11 @@ public class EmployeeService {
 			return employee;
 		}
 	}
-	public int selectDiscnt(Employee code){
+	public Employee selectDiscnt(Employee code){
 		log.debug("selectDiscnt()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
-			int discnt = sqlSession.getMapper(EmployeeMapper.class).selectDiscnt(code);
-			return discnt;
+			Employee employee = sqlSession.getMapper(EmployeeMapper.class).selectDiscnt(code);
+			return employee;
 		}
 	}
 	

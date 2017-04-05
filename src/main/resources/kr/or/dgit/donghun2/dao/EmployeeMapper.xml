@@ -10,7 +10,7 @@
 	</resultMap>
 
 	<select id="selectDiscnt" parameterType="Employee" resultMap="EmployeeResult">
-		select dispect from egrade eg join employee e
+		select dispct from egrade eg join employee e
 		on eg.grade = e.grade
 		where code=#{code}
 	</select>

@@ -70,11 +70,14 @@ public class CustomerService {
 	}
 
 
-	public int selectDiscnt(Customer code) {
+	public Customer selectDiscnt(Customer code) {
+		
 		log.debug("selectDiscnt()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
-			int discnt = sqlSession.getMapper(CustomerMapper.class).selectDiscnt(code);
-			return discnt;
+			System.out.println("********");
+			Customer customer = sqlSession.getMapper(CustomerMapper.class).selectDiscnt(code);
+			
+			return customer;
 		}
 	}
 	

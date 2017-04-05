@@ -6,6 +6,7 @@ public class Customer {
 	private String code;
 	private String name;
 	private String grade;
+	private Cgrade cGrade;
 	private boolean isexist;
 	
 	public Customer() {}
@@ -50,6 +51,14 @@ public class Customer {
 	}
 	
 	
+	public Cgrade getcGrade() {
+		return cGrade;
+	}
+
+	public void setcGrade(Cgrade cGrade) {
+		this.cGrade = cGrade;
+	}
+
 	@Override
 	public String toString() {
 		return "거래처코드 : " + code + "____거래처명 : " + name + "____거래처등급 : " + grade+"____";

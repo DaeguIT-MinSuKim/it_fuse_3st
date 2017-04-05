@@ -40,7 +40,7 @@ public class CustomerMapperImpl implements CustomerMapper{
 	}
 
 	@Override
-	public int selectDiscnt(Customer code) {
+	public Customer selectDiscnt(Customer code) {
 		return sqlSession.selectOne(namespace+"selectDiscnt",code);
 	}
 

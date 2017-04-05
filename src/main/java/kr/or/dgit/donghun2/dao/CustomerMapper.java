@@ -16,5 +16,5 @@ public interface CustomerMapper {
 	
 	Customer selectCustomerByNo(Customer customer);
 
-	int selectDiscnt(Customer code);
+	Customer selectDiscnt(Customer code);
 }	

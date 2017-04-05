@@ -27,12 +27,12 @@ public class CustomerServiceTest {
 		customerService = null;
 	}
 	
-	@Test
+	/*@Test
 	public void fTestSelectDiscnt() {
 		Customer	item = new Customer();
 		item.setCode("C001");
-		int res = customerService.selectDiscnt(item);
-	}
+		Customer res = customerService.selectDiscnt(item);
+	}*/
 	/*
 	@Test
 	public void aTestSelectCustomerByAll() {

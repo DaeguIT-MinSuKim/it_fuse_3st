@@ -16,5 +16,5 @@ public interface EmployeeMapper {
 	
 	Employee selectEmployeeByNo(Employee employee);
 	
-	int selectDiscnt(Employee code);
+	Employee selectDiscnt(Employee code);
 }
