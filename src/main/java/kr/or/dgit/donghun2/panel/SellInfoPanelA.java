@@ -24,9 +24,6 @@ public class SellInfoPanelA extends JPanel {
 	public static SellInfoPanelA getInstance() {
 		return instance;
 	}
-	//
-	private SellInfoViewA sellInfoViewA; 
-	//
 	private TextFiledPanel pScode;
 	private TextFiledPanel pSaleDate;
 	private TextFiledPanel pQuantity;
@@ -93,12 +90,7 @@ public class SellInfoPanelA extends JPanel {
 		basePanel.add(empty);
 	
 	}
-	
-	//
-	public void setSVA(SellInfoViewA sellInfoViewA){
-		this.sellInfoViewA = sellInfoViewA;
-	}
-	//
+
 	
 	public void setpUnPrice(int pUnPrice) {
 		this.pUnPrice.setTfValue(String.valueOf(pUnPrice));
@@ -106,6 +98,11 @@ public class SellInfoPanelA extends JPanel {
 
 	public void setpSellPrice(int pSellPrice) {
 		this.pSellPrice.setTfValue(String.valueOf(pSellPrice));
+	}
+	
+
+	public TextFiledPanel getpOrigiPrice() {
+		return pOrigiPrice;
 	}
 
 	public void setpDisPrice(int pDisPrice) {
@@ -121,26 +118,8 @@ public class SellInfoPanelA extends JPanel {
 		}
 		String scode = pScode.getTfValue();
 		int quantity = Integer.parseInt(pQuantity.getTfValue());
-		
-		//
-		String pcode = (sellInfoViewA.getpProductForCombo().getSelectItem()+"");
-		String pCodeResult = pcode.substring(pcode.indexOf(":")+2,pcode.indexOf("_"));
-		String ccode = (sellInfoViewA.getpCustomerForCombo().getSelectItem()+"");
-		String ccodeResult = ccode.substring(ccode.indexOf(":")+2,pcode.indexOf("_"));
-		String ecode = (sellInfoViewA.getpEmployeeForCombo().getSelectItem()+"");
-		String ecodeResult = ecode.substring(ecode.indexOf(":")+2,ecode.indexOf("_"));
-		int saleprice = Integer.parseInt(pSalePrice.getTfValue());
-		int origiprice = Integer.parseInt(pOrigiPrice.getTfValue());
-		String edispcts = (sellInfoViewA.getpEmployeeForCombo().getSelectItem()+"");
-		int dispcts1 = Integer.parseInt(edispcts.substring(edispcts.indexOf("급")+2,edispcts.indexOf("_")));
-		String pdispcts = (sellInfoViewA.getpProductForCombo().getSelectItem()+"");
-		int dispcts2 = Integer.parseInt(pdispcts.substring(pdispcts.indexOf("급")+2,pdispcts.indexOf("_")));
-		int Fulldispcts = dispcts1+dispcts2;
-		///
-		
-		//받아오는 값 적기!
-		
-		return new SellInfo(scode, ecodeResult,pCodeResult,ccodeResult,quantity, saleDate,saleprice,origiprice,Fulldispcts);
+	
+		return new SellInfo(scode, saleDate,quantity);
 	}
 
 	public void clear() {

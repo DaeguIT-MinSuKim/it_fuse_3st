@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import erp_myframework.ComboPanel;
+import erp_myframework.SpinnerPanel;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Cgrade;
 import kr.or.dgit.donghun2.dto.Customer;
@@ -38,11 +39,13 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private SellInfoPanelA pSellInfoA;
+	private SellInfo pSellInfo;
 	private JButton btnOK;
 	private JButton btnSave;
 	private EmployeePanel pEmployee;
 	private ProductPanel pProduct;
 	private CustomerPanel pCustomer;
+	private Product product;
 
 	private static CalculatedValueService cvdao;
 	private static ProductService pdao;
@@ -189,10 +192,6 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 		setinit();
 		
-		//
-		pSellInfoA.setSVA(SellInfoViewA.this);
-		//
-		
 		
 	} // constructor ends
 	
@@ -218,9 +217,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		}
 	}
 
-	private void actionPerformedbtnSave(ActionEvent e) {
+	/*private void actionPerformedbtnSave(ActionEvent e) {
 		System.out.println("클릭");
 		SellInfo sellInfo = pSellInfoA.getObjectDateQuantity();
+		System.out.println(""+sellInfo);
 		sdao.getInstance().insertSellInfo(sellInfo);
 		List<CalculatedValue> calculatedValue = cvdao.getInstance().selectCalculatedValueByAll();
 		for (CalculatedValue c : calculatedValue) {
@@ -232,6 +232,43 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		clear();
 		setinit();
 
+	}*/
+	private void actionPerformedbtnSave(ActionEvent e) {
+		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
+		Product pRes = (Product) pProductForCombo.getSelectItem();
+		Customer cRes  = (Customer) pCustomerForCombo.getSelectItem();
+		SellInfo sRes= pSellInfoA.getObjectDateQuantity();
+		
+		int salePrice = pRes.getSalePrice();
+		int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+		int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+		int dispct = edispct + cdispct;
+		int quantity = sRes.getQuantity();
+		int unitprice = 0;
+		int sellprice = 0;
+		
+		unitprice = (int) ((salePrice) * (1 - (dispct) * 0.01));
+		// 판매금액 = 판매단가*판매수량
+		sellprice = unitprice * quantity;
+		
+		sRes.setEcode(eRes.getCode());
+		sRes.setPcode(pRes.getCode());
+		sRes.setCcode(cRes.getCode());
+		sRes.setSaleprice(salePrice);
+		sRes.setOrigiprice(sellprice );
+		sRes.setDispcts(dispct);
+		System.out.println(sRes);
+		sdao.getInstance().insertSellInfo(sRes);
+		List<CalculatedValue> calculatedValue = 
+				cvdao.getInstance().selectCalculatedValueByAll();
+		for(CalculatedValue c : calculatedValue){
+			System.out.println(c);
+		}
+		JOptionPane.showMessageDialog(null, "저장되었습니다.");
+		pSellInfoA.clear();
+		clear();
+		setinit();
+		
 	}
 
 	private void clear() {
@@ -263,13 +300,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 			int quantity = sRes.getQuantity(); // 판매수량
 			// 제품 판매정가 받아오기
 			int saleprice = pRes.getSalePrice();
-			System.out.println(saleprice);
 			// 사원 등급에따른 할인율 받아오기
 			int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
-			System.out.println(edispct);
 			// 거래처 등급에따른 할인율 받아오기
 			int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
-			System.out.println(cdispct);
 			// 더하기
 			int dispct = edispct + cdispct;
 
@@ -291,18 +325,4 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 		}
 	}
-	
-	////////
-	public ComboPanel<Object> getpEmployeeForCombo() {
-		return pEmployeeForCombo;
-	}
-
-	public ComboPanel<Object> getpProductForCombo() {
-		return pProductForCombo;
-	}
-
-	public ComboPanel<Object> getpCustomerForCombo() {
-		return pCustomerForCombo;
-	}
-	/////////
 }

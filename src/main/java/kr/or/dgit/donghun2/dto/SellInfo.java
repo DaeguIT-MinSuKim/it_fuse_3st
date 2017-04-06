@@ -127,6 +127,32 @@ public class SellInfo {
 		this.scode = scode;
 	}
 
+	
+	
+	public String getEcode() {
+		return ecode;
+	}
+
+	public void setEcode(String ecode) {
+		this.ecode = ecode;
+	}
+
+	public String getPcode() {
+		return pcode;
+	}
+
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
+	}
+
+	public String getCcode() {
+		return ccode;
+	}
+
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
+	}
+
 	public Date getSaleDate() {
 		return saledate;
 	}
@@ -184,6 +210,7 @@ public class SellInfo {
 				ecode, pcode, ccode, scode, saledate, quantity, saleprice, origiprice, dispcts, isexist);
 	}
 
+	
 
 
 

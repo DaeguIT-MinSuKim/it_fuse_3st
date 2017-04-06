@@ -34,10 +34,11 @@
 		</set>
 		<include refid="whereSql"></include>
 	</update>
- 	<delete id="deleteProduct" parameterType="Product">
-		delete from Product
+ 	<update id="deleteProduct" parameterType="Product">
+		update Product 
+		set isexist = false
 		<include refid="whereSql"/>
-	</delete> 
+	</update> 
  	<select id="selectProductByNo" parameterType="Product" resultType="Product"> 
 		<include refid="selectSql"></include>
 		<include refid="whereSql"/>

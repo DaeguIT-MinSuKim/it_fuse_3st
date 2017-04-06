@@ -35,7 +35,11 @@
 	where code = #{code} 
 	</update>
 	
-	<delete parameterType="Customer" id="deleteCustomer"> delete from customer where code=#{code} </delete>
+	<update parameterType="Customer" id="deleteCustomer"> 
+	update customer 
+	set isexist = false 
+	where code=#{code} 
+	</update>
 	
 	<select parameterType="Customer" id="selectCustomerByNo" resultType="Customer"> select code, name, grade from customer where code=#{code}; </select>
 

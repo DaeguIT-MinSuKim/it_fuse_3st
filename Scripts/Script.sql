@@ -99,22 +99,24 @@ CREATE TABLE  sellInfoDetail (		-- 거래내역 상세 테이블 (계산값)
 -- 판매단가unitPrice,판매금액sellPrice,할인금액disprice,마진액marginprice,마진율marginPct 계산된 뷰 테이블
 drop view if exists vw_calculate_sellInfo;
 create view vw_calculate_sellInfo as
-select s.scode,
- (saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitPrice,
+select s.scode,e.code ecode, p.code pcode, c.code ccode,
+ (s.saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitPrice,
 -- 판매정가  * (1-(사원등급할인율+거래처등급할인율)*0.01) = 판매단가
- (saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellPrice,
+ (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellPrice,
 -- 판매단가*판매수량  = 판매금액
- (saleprice) * (quantity) - (saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) as disprice,
+ (s.saleprice) * (quantity) - (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) as disprice,
 -- 판매정가*판매수량-판매금액  = 할인금액
- (saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) - origiprice * quantity as marginprice,
+ (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) - s.origiprice * quantity as marginprice,
 -- 판매금액-(판매원가*판매수량) = 마진액
- ROUND(((saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-origiprice*quantity) / ((saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginPct
+ ROUND(((s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-s.origiprice*quantity) / ((s.saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginPct
 -- 마진액/판매금액*100 = 마진율 // 소수 둘째자리에서 반올림해서 첫째자리까지 표시
 from sellinfo s 
 join employee e on s.ecode= e.code 
 join egrade eg on eg.grade=e.grade
 join customer c on s.ccode = c.code		-- sellinfo가 있다는것은 employee custom모두 값이 있다는 전제이므로
-join cgrade cg on cg.grade=c.grade;
+join cgrade cg on cg.grade=c.grade
+join product p on s.pcode = p.code;
+
 
 select * from vw_calculate_sellInfo;
 
