@@ -1,15 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.CalculatedValueMapper">
+	<resultMap type="CalculatedValue" id="CalculatedValueResult">
+		<id property="scode" column="scode"/>
+		<result property="unitprice" column="unitprice"/>
+		<result property="sellprice" column="sellprice"/>
+		<result property="disprice" column="disprice"/>
+		<result property="marginprice" column="marginprice"/>
+		<result property="marginpct" column="marginpct"/>
+		<association property="employee" resultMap="kr.or.dgit.donghun2.dao.EmployeeMapper.EmployeeResult"/>
+		<association property="customer" resultMap="kr.or.dgit.donghun2.dao.CustomerMapper.CustomerResult"/>
+		<association property="product" resultMap="kr.or.dgit.donghun2.dao.ProductMapper.ProductResult"/>
+		<association property="sellinfo" resultMap="kr.or.dgit.donghun2.dao.SellInfoMapper.SellInfoResult"/>		
+	</resultMap>
 	
-	<select id="selectCalculatedValueByAll" resultType="CalculatedValue">
-		SELECT scode, unitPrice, sellPrice, disprice, marginprice, marginPct
+	<parameterMap type="Customer" id="CustomerParam">
+		
+		<parameter property="name" />
+	</parameterMap>
+	
+	<select id="vw_InfoByCustomerByCode"  resultMap="CalculatedValueResult">
+	select saledate, pcode, pname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_InfoByCustomer 
+		where ccode=#{ccode};
+	</select>
+	
+	<select id="vw_InfoByProductByCode" resultMap="CalculatedValueResult">
+	select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_infobyproduct 
+		where pcode=#{pcode}
+	</select>
+	
+	<select id="vw_InfoByEmployeeByCode" resultMap="CalculatedValueResult">
+	select ecode, ename, sellprice, marginprice, marginpct
+		from vw_InfoByEmployee
+		where ecode = #{ecode}
+	</select>
+
+	
+	<select id="vw_InfoByCustomer" resultMap="CalculatedValueResult">
+	select saledate, p.code, p.name, quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join product p 
+	on s.pcode = p.code
+	order by saledate desc
+	</select>
+	
+
+	<select id="vw_InfoByProduct" resultMap="CalculatedValueResult">
+	select c.code, c.name, quantity, sellprice, disprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join customer c 
+	on s.ccode = c.code
+	group by c.code
+	order by c.code asc
+	</select>
+	
+
+	
+	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
+	select e.code , e.name , sellprice, marginprice, marginpct
+	from vw_calculate_sellInfo vw 
+	join sellinfo s 
+	on vw.scode= s.scode 
+	join employee e 
+	on s.ecode = e.code
+	order by ecode asc
+	</select>
+	
+ 
+	<select id="selectCalculatedValueByAll" resultMap="CalculatedValueResult">
+		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo
 	</select>
 	
-	<select id="selectCalculatedValueByNo" parameterType="CalculatedValue" resultType="CalculatedValue">
-		SELECT scode, unitPrice, sellPrice, disprice, marginprice, marginPct
-		from vw_calculate_sellInfo where scode= #{scode}
+	<select id="selectCalculatedValueByNo" resultMap="CalculatedValueResult">
+		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
+		from vw_calculate_sellInfo 
+		where scode= #{scode}
 	</select>
-	
+
 </mapper>
