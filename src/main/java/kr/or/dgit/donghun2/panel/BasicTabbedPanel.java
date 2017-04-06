@@ -1,70 +1,18 @@
 package kr.or.dgit.donghun2.panel;
 
+import java.awt.BorderLayout;
+
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import erp_myframework.ComboPanel;
-import kr.or.dgit.donghun2.dto.Customer;
-import kr.or.dgit.donghun2.dto.Employee;
-import kr.or.dgit.donghun2.dto.Product;
-import kr.or.dgit.donghun2.service.CustomerService;
-import kr.or.dgit.donghun2.service.EmployeeService;
-import kr.or.dgit.donghun2.service.ProductService;
-import kr.or.dgit.donghun2.table.CustomerTable;
-import kr.or.dgit.donghun2.table.EmployeeTable;
-import kr.or.dgit.donghun2.table.ProductTable;
-
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Vector;
-
-public class BasicTabbedPanel extends JPanel implements ActionListener {
+public class BasicTabbedPanel extends JPanel{
 
    private JTabbedPane tabbedPane;
-   private JPanel pEmployee;
-   private EmployeePanel pEmpp;
-   private JPanel pEmpb;
-   private JButton EbtnSave;
-   private JButton EbtnDele;
-   private JButton EbtnSearch;
-   private EmployeeTable pEmpt;
-   private JPanel pProduct;
-   private ProductPanel pProp;
-   private JPanel pProb;
-   private JButton PbtnSave;
-   private JButton PbtnDele;
-   private JButton PbtnSearch;
-   private ProductTable pProt;
-   private JPanel pCustomer;
-   private CustomerPanel pCusp;
-   private JButton CbtnSave;
-   private JButton CbtnDele;
-   private Container pCusb;
-   private JButton CbtnSearch;
-   private CustomerTable pCust;
-   private ComboPanel pEmployeeForCombo;
-
-   private EmployeeService edao;
-   private ProductService pdao;
-   private CustomerService cdao;
-   private ComboPanel pProductForCombo;
-   private ComboPanel pCustomerForCombo;
-   private JPanel psellInfoDetail;
-   private JPanel psellInfobtn;
-   private JButton btnSave;
-   private JPanel pBtn;
-   private Container contentPane;
-   private JButton btn1;
-   private JButton btn2;
-   private JButton btn3;
    private SellInfoPanel pSellInfo;
+   private EmployeeTabbedPanel pEmployee;
+   private ProductTabbedPanel pProduct;
+   private CustomerTabbedPanel pCustomer;
 
    public BasicTabbedPanel() {
       setLayout(new BorderLayout(0, 0));
@@ -78,81 +26,22 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
       add(tabbedPane);
       /*pBasic.add(tabbedPane);*/
       
-      pEmployee = new JPanel();
+      pEmployee = new EmployeeTabbedPanel();
       tabbedPane.addTab("영업사원관리", null, pEmployee, null);
       pEmployee.setLayout(new BoxLayout(pEmployee, BoxLayout.Y_AXIS));
 
-      pEmpp = new EmployeePanel();
-      pEmployee.add(pEmpp);
+     
 
-      pEmpb = new JPanel();
-      pEmployee.add(pEmpb);
-
-      EbtnSave = new JButton("저장");
-      EbtnSave.addActionListener(this);
-      pEmpb.add(EbtnSave);
-
-      EbtnDele = new JButton("삭제");
-      EbtnDele.addActionListener(this);
-      pEmpb.add(EbtnDele);
-
-      EbtnSearch = new JButton("검색");
-      EbtnSearch.addActionListener(this);
-      pEmpb.add(EbtnSearch);
-
-      pEmpt = new EmployeeTable();
-      pEmployee.add(pEmpt);
-
-      pProduct = new JPanel();
+      pProduct = new ProductTabbedPanel();
       tabbedPane.addTab("제품관리", null, pProduct, null);
       pProduct.setLayout(new BoxLayout(pProduct, BoxLayout.Y_AXIS));
 
-      pProp = new ProductPanel();
-      pProduct.add(pProp);
+    
 
-      pProb = new JPanel();
-      pProduct.add(pProb);
-
-      PbtnSave = new JButton("저장");
-      PbtnSave.addActionListener(this);
-      pProb.add(PbtnSave);
-
-      PbtnDele = new JButton("삭제");
-      PbtnDele.addActionListener(this);
-      pProb.add(PbtnDele);
-
-      PbtnSearch = new JButton("검색");
-      PbtnSearch.addActionListener(this);
-      pProb.add(PbtnSearch);
-
-      pProt = new ProductTable();
-      pProduct.add(pProt);
-
-      pCustomer = new JPanel();
+      pCustomer = new CustomerTabbedPanel();
       tabbedPane.addTab("거래처관리", null, pCustomer, null);
       pCustomer.setLayout(new BoxLayout(pCustomer, BoxLayout.Y_AXIS));
 
-      pCusp = new CustomerPanel();
-      pCustomer.add(pCusp);
-
-      pCusb = new JPanel();
-      pCustomer.add(pCusb);
-
-      CbtnSave = new JButton("저장");
-      CbtnSave.addActionListener(this);
-      pCusb.add(CbtnSave);
-
-      CbtnDele = new JButton("삭제");
-      CbtnDele.addActionListener(this);
-      pCusb.add(CbtnDele);
-
-      CbtnSearch = new JButton("검색");
-      CbtnSearch.addActionListener(this);
-      pCusb.add(CbtnSearch);
-
-      pCust = new CustomerTable();
-      pCustomer.add(pCust);
-      pCust.loadDate();
 
       pSellInfo = new SellInfoPanel();
       tabbedPane.addTab("거래내역관리", null, pSellInfo, null);
@@ -162,176 +51,8 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
 
    }
 
-   public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == CbtnSave) {
-         actionPerformedCBtnSave(e);
-      }
-      if (e.getSource() == CbtnDele) {
-         actionPerformedCBtnDele(e);
-      }
-      if (e.getSource() == CbtnSearch) {
-         actionPerformedCbtnSearch(e);
-      }
-      if (e.getSource() == PbtnSave) {
-         actionPerformedPBtnSave(e);
-      }
-      if (e.getSource() == PbtnDele) {
-         actionPerformedPBtnDele(e);
-      }
-      if (e.getSource() == PbtnSearch) {
-         actionPerformedPbtnSearch(e);
-      }
-      if (e.getSource() == EbtnSave) {
-         actionPerformedEBtnSave(e);
-      }
-      if (e.getSource() == EbtnDele) {
-         actionPerformedEBtnDele(e);
-      }
-      if (e.getSource() == EbtnSearch) {
-         actionPerformedEbtnSearch(e);
-      }
-   }
-
-   private void actionPerformedEbtnSearch(ActionEvent e) {
-      Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
-      if (res == null) {
-         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-      } else {
-         JOptionPane.showMessageDialog(null, "검색하였습니다.");
-         pEmpp.setObject(res);
-      }
-      
-   }
-
-   private void actionPerformedEBtnDele(ActionEvent e) {
-      int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
-      if (res == 0) {
-         JOptionPane.showMessageDialog(null, "삭제안댐");
-      } else {
-         JOptionPane.showMessageDialog(null, "삭제댐");
-         pEmpt.loadDate();
-      }
-      
-   }
-
-   private void actionPerformedEBtnSave(ActionEvent e) {
-      if (pEmpp.isEmpty()) {
-         JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
-      } else {
-         edao.getInstance().insertEmployee(pEmpp.getObject());
-         JOptionPane.showMessageDialog(null, "저장되었습니다.");
-         pEmpt.loadDate();
-      }
-      
-   }
-
-   private void actionPerformedPbtnSearch(ActionEvent e) {
-      Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
-      if (res == null) {
-         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-      } else {
-         JOptionPane.showMessageDialog(null, "검색하였습니다.");
-         pProp.setObject(res);
-      }
-      
-   }
-
-   private void actionPerformedPBtnDele(ActionEvent e) {
-      int res = pdao.getInstance().deleteProduct(pProp.getObject());
-      if (res == 0) {
-         JOptionPane.showMessageDialog(null, "삭제안댐");
-      } else {
-         JOptionPane.showMessageDialog(null, "삭제댐");
-         pProt.loadData();
-         pProp.clear();
-      }
-      
-   }
-
-   private void actionPerformedPBtnSave(ActionEvent e) {
-		if (pProp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "공백이 존재");
-			return;
-		}
-		if (Integer.parseInt(pProp.getpSalePrice().getTfValue().toString()) <
-				Integer.parseInt(pProp.getpOrigiPrice().getTfValue().toString()) || 
-				Integer.parseInt(pProp.getpSalePrice().getTfValue().toString())==0 ||
-				Integer.parseInt(pProp.getpOrigiPrice().getTfValue().toString())==0
-				) {
-			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
-			return;
-		}
-		String msg = "추가됨";
-		Product item = pProp.getObject();
-
-		if (pdao.getInstance().selectProductByNo(item) != null) {
-
-			msg = "데이터가 이미 존재하므로 덮어씀";
-		}
-		pdao.getInstance().insertProduct(item);
-		JOptionPane.showMessageDialog(null, msg);
-		pProp.clear();
-		pProt.loadData();
-   }
-
-   private void actionPerformedCbtnSearch(ActionEvent e) {
-      Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
-      if (res == null) {
-         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-      } else {
-         JOptionPane.showMessageDialog(null, "검색하였습니다.");
-         pCusp.setObject(res);
-      }
-   }
-
-   private void actionPerformedCBtnDele(ActionEvent e) {
-      int res = cdao.getInstance().deleteCustomer(pCusp.getObject());
-      if (res == 0) {
-         JOptionPane.showMessageDialog(null, "삭제안댐");
-      } else {
-         JOptionPane.showMessageDialog(null, "삭제댐");
-         pCust.loadDate();
-      }
-   }
-
-   private void actionPerformedCBtnSave(ActionEvent e) {
-      if (pCusp.isEmpty()) {
-         JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
-      } else {
-         cdao.getInstance().insertCustomer(pCusp.getObject());
-         JOptionPane.showMessageDialog(null, "저장되었습니다.");
-         pCust.loadDate();
-      }
-   }
    
-   /*public JButton getCBtnSave(){
-      return CbtnSave;
-   }
-   public JButton getCBtnDele(){
-      return CbtnDele;
-   }
-   public JButton getCBtnSearch(){
-      return CbtnSearch;
-   }
-   public JButton getPBtnSave(){
-      return PbtnSave;
-   }
-   public JButton getPBtnDele(){
-      return PbtnDele;
-   }
-   public JButton getPBtnSearch(){
-      return PbtnSearch;
-   }
-   public JButton getEBtnSave(){
-      return EbtnSave;
-   }
-   public JButton getEBtnDele(){
-      return EbtnDele;
-   }
-   public JButton getEBtnSearch(){
-      return EbtnSearch;
-   }
-   */
+  
    
    
 }

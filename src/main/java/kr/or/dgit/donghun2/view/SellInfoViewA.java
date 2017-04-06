@@ -66,7 +66,6 @@ import kr.or.dgit.donghun2.service.CalculatedValueService;
 
 public class SellInfoViewA extends JFrame implements ActionListener {
 
-	private JPanel contentPane;
 
 	private SellInfoPanelA pSellInfoA;
 
@@ -102,15 +101,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 	
 	   public SellInfoViewA() {
-		      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		      setBounds(100, 100, 500, 600);
-		      contentPane = new JPanel();
-		      contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		      setContentPane(contentPane);
-		      contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+		   	setBounds(100, 100, 500, 600);
 		      
 		      JPanel panel = new JPanel();
-		      contentPane.add(panel);
+		      add(panel);
 		      panel.setLayout(new GridLayout(0, 1, 0, 10));
 		      
 		      pEmployeeForCombo = new ComboPanel<>();
@@ -118,11 +112,16 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      pEmployeeForCombo.setTitle("사원");
 		      
 		      GridBagLayout egridBagLayout = new GridBagLayout();
-		      egridBagLayout.columnWidths = new int[]{50,100,0};      egridBagLayout.rowHeights = new int[]{51, 0};      egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      egridBagLayout.columnWidths = new int[]{50,100,0};      
+		      egridBagLayout.rowHeights = new int[]{51, 0};      
+		      egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pEmployeeForCombo.setLayout(egridBagLayout);
 		      
 		      GridBagConstraints egbc_lbl = new GridBagConstraints();
-		      egbc_lbl.fill = GridBagConstraints.BOTH;      egbc_lbl.insets = new Insets(0, 0, 0, 5);      egbc_lbl.gridx = 0;      egbc_lbl.gridy = 0;
+		      egbc_lbl.fill = GridBagConstraints.BOTH;     
+		      egbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      egbc_lbl.gridx = 0;      egbc_lbl.gridy = 0;
 		      panel.add(pEmployeeForCombo,egbc_lbl);
 		      
 		      GridBagConstraints egbc_combo = new GridBagConstraints();
@@ -143,13 +142,21 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      
 		      pProductForCombo.setTitle("제품");
 		      GridBagLayout pgridBagLayout = new GridBagLayout();
-		      pgridBagLayout.columnWidths = new int[]{50, 100, 0};      pgridBagLayout.rowHeights = new int[]{51, 0};      pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      pgridBagLayout.columnWidths = new int[]{50, 100, 0};      
+		      pgridBagLayout.rowHeights = new int[]{51, 0};      
+		      pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pProductForCombo.setLayout(pgridBagLayout);
+		      
 		      GridBagConstraints pgbc_lbl = new GridBagConstraints();
-		      pgbc_lbl.fill = GridBagConstraints.BOTH;      pgbc_lbl.insets = new Insets(0, 0, 0, 5);      pgbc_lbl.gridx = 0;      pgbc_lbl.gridy = 0;
+		      pgbc_lbl.fill = GridBagConstraints.BOTH;      
+		      pgbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      pgbc_lbl.gridx = 0;      pgbc_lbl.gridy = 0;
 		      panel.add(pProductForCombo,pgbc_lbl);
+		      
 		      GridBagConstraints pgbc_combo = new GridBagConstraints();
-		      pgbc_combo.fill = GridBagConstraints.BOTH;      pgbc_combo.gridx = 1;      pgbc_combo.gridy = 0;
+		      pgbc_combo.fill = GridBagConstraints.BOTH;      
+		      pgbc_combo.gridx = 1;      pgbc_combo.gridy = 0;
 		      panel.add(pProductForCombo, pgbc_combo);
 
 		      List<Product> pList = pdao.getInstance().selectProductByAll();
@@ -166,11 +173,17 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      pCustomerForCombo.setTitle("거래처");
 		      
 		      GridBagLayout cgridBagLayout = new GridBagLayout();
-		      cgridBagLayout.columnWidths = new int[]{50,100,0};      cgridBagLayout.rowHeights = new int[]{51, 0};      cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      cgridBagLayout.columnWidths = new int[]{50,100,0};      
+		      cgridBagLayout.rowHeights = new int[]{51, 0};      
+		      cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pCustomerForCombo.setLayout(cgridBagLayout);
 		      
 		      GridBagConstraints cgbc_lbl = new GridBagConstraints();
-		      cgbc_lbl.fill = GridBagConstraints.BOTH;      cgbc_lbl.insets = new Insets(0, 0, 0, 5);      cgbc_lbl.gridx = 0;      cgbc_lbl.gridy = 0;
+		      cgbc_lbl.fill = GridBagConstraints.BOTH;      
+		      cgbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      cgbc_lbl.gridx = 0;      
+		      cgbc_lbl.gridy = 0;
 		      panel.add(pCustomerForCombo,cgbc_lbl);
 		      
 		      GridBagConstraints cgbc_combo = new GridBagConstraints();
@@ -190,10 +203,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      btnOK = pSellInfoA.getBtnOk();
 		      btnOK.addActionListener(this);
 
-		      contentPane.add(pSellInfoA);
+		      add(pSellInfoA);
 		      
 		      JPanel panel_4 = new JPanel();
-		      contentPane.add(panel_4);
+		      add(panel_4);
 		      
 		      btnSave = new JButton("저장");
 		      btnSave.addActionListener(this);
