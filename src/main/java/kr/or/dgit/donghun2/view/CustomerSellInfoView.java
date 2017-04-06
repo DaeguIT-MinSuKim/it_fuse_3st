@@ -28,16 +28,27 @@ import kr.or.dgit.donghun2.table.CustomerSellInfoTable;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.service.CustomerService;
+import kr.or.dgit.donghun2.table.CustomerTable;
 
 public class CustomerSellInfoView extends JFrame {
-
-	private JPanel contentPane;
 	private CustomerService cdao;
 	private JPanel pCombo;
 	private ComboPanel<Customer> pCustomerForCombo;
 	private CalculatedValueService cvdao;
 	private JScrollPane scrollPane;
 	private CustomerSellInfoTable table;
+	private JPanel contentPane;
+	private CustomerTable pTable;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -136,6 +147,10 @@ public class CustomerSellInfoView extends JFrame {
 				
 		);
 		
+		pTable = new CustomerTable();
+		contentPane.add(pTable);
+		pTable.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		
 	}
-
 }

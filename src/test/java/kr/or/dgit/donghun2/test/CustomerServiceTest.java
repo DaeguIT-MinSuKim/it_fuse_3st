@@ -28,7 +28,17 @@ public class CustomerServiceTest {
 		customerService = null;
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	/*@Test
+	public void fTestSelectDiscnt() {
+		Customer	item = new Customer();
+		item.setCode("C001");
+		Customer res = customerService.selectDiscnt(item);
+	}*/
+	/*
+>>>>>>> refs/remotes/origin/jinuk
 	@Test
 	public void aTestSelectCustomerByAll() {
 		List<Customer> customers = customerService.selectCustomerByAll();

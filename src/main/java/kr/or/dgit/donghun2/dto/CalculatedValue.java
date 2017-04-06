@@ -36,7 +36,6 @@ public class CalculatedValue {
 
 
 	public CalculatedValue(String scode, int unitprice, int sellprice, int disprice, int marginprice, int marginpct) {
-		super();
 		this.scode = scode;
 		this.unitprice = unitprice;
 		this.sellprice = sellprice;
@@ -56,6 +55,7 @@ public class CalculatedValue {
 		this.marginpct = marginpct;
 	}
 
+
 	
 	
 	
@@ -65,6 +65,60 @@ public class CalculatedValue {
 	}
 
 	
+
+	
+	
+
+
+
+
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+
+	public SellInfo getSellinfo() {
+		return sellinfo;
+	}
+
+
+
+	public void setSellinfo(SellInfo sellinfo) {
+		this.sellinfo = sellinfo;
+	}
+
 
 
 	public String getScode() {
@@ -138,51 +192,14 @@ public class CalculatedValue {
 	}
 
 
-
-	public Employee getEmployee() {
-		return employee;
-	}
+	
 
 
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-
-
-	public Product getProduct() {
-		return product;
-	}
-
-
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-
-
-	public SellInfo getSellinfo() {
-		return sellinfo;
-	}
-
-
-
-	public void setSellinfo(SellInfo sellinfo) {
-		this.sellinfo = sellinfo;
+	@Override
+	public String toString() {
+		return "CalculatedValue [scode=" + scode + ", unitprice=" + unitprice + ", sellprice=" + sellprice
+				+ ", disprice=" + disprice + ", marginprice=" + marginprice + ", marginpct=" + marginpct + ", employee="
+				+ employee + ", product=" + product + ", customer=" + customer + ", sellinfo=" + sellinfo + "]";
 	}
 
 
@@ -216,12 +233,6 @@ public class CalculatedValue {
 
 
 
-	@Override
-	public String toString() {
-		return "CalculatedValue [scode=" + scode + ", unitprice=" + unitprice + ", sellprice=" + sellprice
-				+ ", disprice=" + disprice + ", marginprice=" + marginprice + ", marginpct=" + marginpct + ", employee="
-				+ employee + ", product=" + product + ", customer=" + customer + ", sellinfo=" + sellinfo + "]";
-	}
 	
 
 	public String[] toArrayforCustomerSellInfoT(){

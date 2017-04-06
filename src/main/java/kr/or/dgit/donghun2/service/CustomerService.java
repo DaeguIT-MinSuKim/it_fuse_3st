@@ -76,6 +76,8 @@ public class CustomerService {
 		log.debug("selectDiscnt()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			Customer customer = sqlSession.getMapper(CustomerMapper.class).selectDiscnt(code);
+			System.out.println("********");
+			
 			return customer;
 		}
 	}

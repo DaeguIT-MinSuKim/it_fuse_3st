@@ -33,6 +33,8 @@ public class CalculatedValueService {
 			return calculatedValueMapper.selectCalculatedValueByNo(scode);
 		}
 	}
+
+	
 	
 	public List<CalculatedValue> vw_InfoByCustomer(){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){

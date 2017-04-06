@@ -37,7 +37,7 @@ public class ProductServiceTest {
 		item.setName("딸기요거트");
 		item.setSalePrice(6000);
 		item.setOrigiPrice(3000);
-		int res = productService.insertProduct(item);
+		Product res = productService.insertProduct(item);
 		Assert.assertEquals(1,res);
 	}
 	
@@ -48,7 +48,7 @@ public class ProductServiceTest {
 		item.setName("아메리카노");
 		item.setSalePrice(1000);
 		item.setOrigiPrice(500);
-		int res = productService.updateProduct(item);
+		Product res = productService.updateProduct(item);
 		Assert.assertEquals(1,res);
 	}
 	
@@ -56,7 +56,7 @@ public class ProductServiceTest {
 	public void dTestDeleteProduct() {
 		Product	item = new Product();
 		item.setCode("P001");
-		int res = productService.deleteProduct(item);
+		Product res = productService.deleteProduct(item);
 		Assert.assertEquals(1,res);
 	}
 	

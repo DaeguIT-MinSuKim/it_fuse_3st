@@ -59,7 +59,7 @@ public class CustomerConditionView extends JFrame {
 		
 		pTable = new CustomerTable();
 		 contentPane.add(pTable);
-		 pTable.setVisible(true);
+		
 	}
 
 }

@@ -64,6 +64,8 @@ public class Employee {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	
+	
 
 	public Employee(String code, String name) {
 		this.code = code;
@@ -112,5 +114,5 @@ public class Employee {
 	public String[] toArray() {
 		return new String[] {code, name, grade};
 	}
-	
+
 }

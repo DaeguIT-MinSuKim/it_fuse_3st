@@ -17,9 +17,7 @@ public class CustomerSellInfoTable extends JPanel {
 	private JTable table;
 	private static CalculatedValueService dao;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public CustomerSellInfoTable() {
 		setLayout(new BorderLayout(0, 0));
 		
@@ -51,9 +49,3 @@ public class CustomerSellInfoTable extends JPanel {
 	
 
 }
-
-
-
-
-
-
