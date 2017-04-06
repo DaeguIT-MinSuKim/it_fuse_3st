@@ -49,7 +49,6 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
    private Container pCusb;
    private JButton CbtnSearch;
    private CustomerTable pCust;
-   private JPanel pSellInfo;
    private ComboPanel pEmployeeForCombo;
 
    private EmployeeService edao;
@@ -65,6 +64,7 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
    private JButton btn1;
    private JButton btn2;
    private JButton btn3;
+   private SellInfoPanel pSellInfo;
 
    public BasicTabbedPanel() {
       setLayout(new BorderLayout(0, 0));
@@ -154,64 +154,11 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
       pCustomer.add(pCust);
       pCust.loadDate();
 
-      pSellInfo = new JPanel();
+      pSellInfo = new SellInfoPanel();
       tabbedPane.addTab("거래내역관리", null, pSellInfo, null);
       pSellInfo.setLayout(new BoxLayout(pSellInfo, BoxLayout.Y_AXIS));
 
-      pEmployeeForCombo = new ComboPanel<>();
-      pSellInfo.add(pEmployeeForCombo);
-      pEmployeeForCombo.setLayout(new BoxLayout(pEmployeeForCombo, BoxLayout.Y_AXIS));
-
-      pEmployeeForCombo.setTitle("사원");
-      List<Employee> eList = edao.getInstance().selectEmployeeByAll();
-      for (Employee c : eList) {
-         System.out.println(c);
-      }
-      Vector<Employee> eVector = new Vector<>();
-      for (int i = 0; i < eList.size(); i++) {
-         eVector.addElement(eList.get(i));
-      }
-      pEmployeeForCombo.setcomboData(eVector);
-
-      pProductForCombo = new ComboPanel<>();
-      pSellInfo.add(pProductForCombo);
-      pProductForCombo.setLayout(new BoxLayout(pProductForCombo, BoxLayout.Y_AXIS));
-
-      pProductForCombo.setTitle("제품");
-      List<Product> pList = pdao.getInstance().selectProductByAll();
-      for (Product c : pList) {
-         System.out.println(c);
-      }
-      Vector<Product> pVector = new Vector<>();
-      for (int i = 0; i < pList.size(); i++) {
-         pVector.addElement(pList.get(i));
-      }
-      pProductForCombo.setcomboData(pVector);
-
-      pCustomerForCombo = new ComboPanel<>();
-      pSellInfo.add(pCustomerForCombo);
-      pCustomerForCombo.setLayout(new BoxLayout(pCustomerForCombo, BoxLayout.Y_AXIS));
-
-      pCustomerForCombo.setTitle("제품");
-      List<Customer> cList = cdao.getInstance().selectCustomerByAll();
-      for (Customer c : cList) {
-         System.out.println(c);
-      }
-      Vector<Customer> cVector = new Vector<>();
-      for (int i = 0; i < cList.size(); i++) {
-         cVector.addElement(cList.get(i));
-      }
-      pCustomerForCombo.setcomboData(cVector);
-
-      psellInfoDetail = new JPanel();
-
-      psellInfoDetail = new SellInfoPanelA();
-      pSellInfo.add(psellInfoDetail);
-
-      psellInfobtn = new JPanel();
-      btnSave = new JButton("저장");
-      psellInfobtn.add(btnSave);
-      pSellInfo.add(psellInfobtn);
+    
 
    }
 

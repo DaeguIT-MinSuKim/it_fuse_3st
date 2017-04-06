@@ -1,148 +1,289 @@
-package kr.or.dgit.donghun2.panel;
-
-import java.awt.Component;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import erp_myframework.TextFiledPanel;
-import kr.or.dgit.donghun2.dto.SellInfo;
-
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-
-public class SellInfoPanel extends JPanel {
-	private static final SellInfoPanel instance = new SellInfoPanel();
-	public static SellInfoPanel getInstance() {return instance;}
+	package kr.or.dgit.donghun2.panel;
 	
-	private TextFiledPanel pSaleDate;
-	private TextFiledPanel pQuantity;
-	private TextFiledPanel pUnPrice;
-	private TextFiledPanel pSellPrice;
-	private TextFiledPanel pDisPrice;
-	private JButton btnOK;
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	private TextFiledPanel pScode;
-
-	public SellInfoPanel() {
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{225, 225, 0};
-		gridBagLayout.rowHeights = new int[]{58, 58, 58, 58, 58, 58, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+	import java.awt.Component;
+	import java.awt.GridBagConstraints;
+	import java.awt.GridBagLayout;
+	import java.awt.Insets;
+	import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+	import java.text.ParseException;
+	import java.text.SimpleDateFormat;
+	import java.util.Date;
+	import java.util.List;
+	import java.util.Vector;
+	
+	import javax.swing.BoxLayout;
+	import javax.swing.JButton;
+	import javax.swing.JFrame;
+	import javax.swing.JPanel;
+	import javax.swing.border.EmptyBorder;
+	
+	import erp_myframework.ComboPanel;
+	import erp_myframework.TextFiledPanel;
+	import kr.or.dgit.donghun2.dto.CalculatedValue;
+	import kr.or.dgit.donghun2.dto.Customer;
+	import kr.or.dgit.donghun2.dto.Employee;
+	import kr.or.dgit.donghun2.dto.Product;
+	import kr.or.dgit.donghun2.dto.SellInfo;
+	import kr.or.dgit.donghun2.service.CalculatedValueService;
+	import kr.or.dgit.donghun2.service.CustomerService;
+	import kr.or.dgit.donghun2.service.EmployeeService;
+	import kr.or.dgit.donghun2.service.ProductService;
+	import kr.or.dgit.donghun2.service.SellInfoService;
+	
+	import java.awt.GridLayout;
+	import javax.swing.JLabel;
+	import javax.swing.JOptionPane;
+	
+	public class SellInfoPanel extends JPanel implements ActionListener{
+		private static final SellInfoPanel instance = new SellInfoPanel();
+		public static SellInfoPanel getInstance() {return instance;}
 		
-
-		
-		TextFiledPanel pSode = new TextFiledPanel();
-		pSode.setTitle("거래코드");
-		GridBagConstraints gbc_pSode = new GridBagConstraints();
-		gbc_pSode.fill = GridBagConstraints.BOTH;
-		gbc_pSode.insets = new Insets(0, 0, 5, 5);
-		gbc_pSode.gridx = 0;
-		gbc_pSode.gridy = 0;
-		add(pSode, gbc_pSode);
-		
-		
-		pSaleDate = new TextFiledPanel();
-		pSaleDate.setTitle("거래일자");
-		GridBagConstraints gbc_pSaleDate = new GridBagConstraints();
-		gbc_pSaleDate.fill = GridBagConstraints.BOTH;
-		gbc_pSaleDate.insets = new Insets(0, 0, 5, 5);
-		gbc_pSaleDate.gridx = 0;
-		gbc_pSaleDate.gridy = 1;
-		add(pSaleDate, gbc_pSaleDate);
-		
-		pQuantity = new TextFiledPanel();
-		pQuantity.setTitle("판매수량");
-		GridBagConstraints gbc_pQuantity = new GridBagConstraints();
-		gbc_pQuantity.fill = GridBagConstraints.BOTH;
-		gbc_pQuantity.insets = new Insets(0, 0, 5, 5);
-		gbc_pQuantity.gridx = 0;
-		gbc_pQuantity.gridy = 2;
-		add(pQuantity, gbc_pQuantity);
-		
-		btnOK = new JButton("확인");
-		GridBagConstraints gbc_btnOK = new GridBagConstraints();
-		gbc_btnOK.fill = GridBagConstraints.BOTH;
-		gbc_btnOK.insets = new Insets(0, 0, 5, 0);
-		gbc_btnOK.gridx = 1;
-		gbc_btnOK.gridy = 2;
-		add(btnOK, gbc_btnOK);
-		
-		pUnPrice = new TextFiledPanel();
-		pUnPrice.setTitle("판매단가");
-		GridBagConstraints gbc_pUnPrice = new GridBagConstraints();
-		gbc_pUnPrice.fill = GridBagConstraints.BOTH;
-		gbc_pUnPrice.insets = new Insets(0, 0, 5, 5);
-		gbc_pUnPrice.gridx = 0;
-		gbc_pUnPrice.gridy = 3;
-		add(pUnPrice, gbc_pUnPrice);
-		
-		pSellPrice = new TextFiledPanel();
-		pSellPrice.setTitle("판매금액");
-		GridBagConstraints gbc_pSellPrice = new GridBagConstraints();
-		gbc_pSellPrice.fill = GridBagConstraints.BOTH;
-		gbc_pSellPrice.insets = new Insets(0, 0, 5, 5);
-		gbc_pSellPrice.gridx = 0;
-		gbc_pSellPrice.gridy = 4;
-		add(pSellPrice, gbc_pSellPrice);
-		
-		pDisPrice = new TextFiledPanel();
-		pDisPrice.setTitle("할인금액");
-		GridBagConstraints gbc_pDisPrice = new GridBagConstraints();
-		gbc_pDisPrice.fill = GridBagConstraints.BOTH;
-		gbc_pDisPrice.insets = new Insets(0, 0, 0, 5);
-		gbc_pDisPrice.gridx = 0;
-		gbc_pDisPrice.gridy = 5;
-		add(pDisPrice, gbc_pDisPrice);
-
-	}
-
-	public SellInfo getObjectDateQuantity(){
-		Date saleDate = null;
-		try {saleDate = sdf.parse(pSaleDate.getTfValue());
-		} catch (ParseException e) {e.printStackTrace();}
-		String scode = pScode.getTfValue();
-		int quantity = Integer.parseInt(pQuantity.getTfValue());
-		return new SellInfo(scode, saleDate, quantity);
+		private TextFiledPanel pSaleDate;
+		private TextFiledPanel pQuantity;
+		private TextFiledPanel pUnPrice;
+		private TextFiledPanel pSellPrice;
+		private TextFiledPanel pDisPrice;
+		private JButton btnOK;
+		private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		private TextFiledPanel pScode;
+		private ComboPanel<Employee> pEmployeeForCombo;
+		private static EmployeeService edao;
+		private static CustomerService cdao;
+		private static ProductService pdao;
+		private ComboPanel<Product> pProductForCombo;
+		private ComboPanel<Customer> pCustomerForCombo;
+		private SellInfoPanelA pSellInfoA;
+		private JButton btnSave;
+		private CalculatedValueService cvdao;
+		private SellInfoService sdao;
+	
+		public SellInfoPanel() {
+		      setBounds(100, 100, 500, 600);
+		     
+		      
+		      JPanel panel = new JPanel();
+		      add(panel);
+		      panel.setLayout(new GridLayout(0, 1, 0, 10));
+		      
+		      pEmployeeForCombo = new ComboPanel<>();
+		      
+		      pEmployeeForCombo.setTitle("사원");
+		      
+		      GridBagLayout egridBagLayout = new GridBagLayout();
+		      egridBagLayout.columnWidths = new int[]{50,100,0};      egridBagLayout.rowHeights = new int[]{51, 0};      egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      pEmployeeForCombo.setLayout(egridBagLayout);
+		      
+		      GridBagConstraints egbc_lbl = new GridBagConstraints();
+		      egbc_lbl.fill = GridBagConstraints.BOTH;      egbc_lbl.insets = new Insets(0, 0, 0, 5);      egbc_lbl.gridx = 0;      egbc_lbl.gridy = 0;
+		      panel.add(pEmployeeForCombo,egbc_lbl);
+		      
+		      GridBagConstraints egbc_combo = new GridBagConstraints();
+		      egbc_combo.fill = GridBagConstraints.BOTH;      egbc_combo.gridx = 1;      egbc_combo.gridy = 0;
+		      panel.add(pEmployeeForCombo, egbc_combo);
+		      
+		      List<Employee> eList = edao.getInstance().selectEmployeeByAll();
+		      Vector<Employee> eVector = new Vector<>();
+		      eVector.add(new Employee());
+	
+		      for(int i = 0 ; i < eList.size(); i++){
+		         eVector.addElement(eList.get(i));
+		      }
+		      pEmployeeForCombo.setcomboData(eVector);
+		      
+		      
+		      pProductForCombo = new ComboPanel();
+		      
+		      pProductForCombo.setTitle("제품");
+		      GridBagLayout pgridBagLayout = new GridBagLayout();
+		      pgridBagLayout.columnWidths = new int[]{50, 100, 0};      pgridBagLayout.rowHeights = new int[]{51, 0};      pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      pProductForCombo.setLayout(pgridBagLayout);
+		      GridBagConstraints pgbc_lbl = new GridBagConstraints();
+		      pgbc_lbl.fill = GridBagConstraints.BOTH;      pgbc_lbl.insets = new Insets(0, 0, 0, 5);      pgbc_lbl.gridx = 0;      pgbc_lbl.gridy = 0;
+		      panel.add(pProductForCombo,pgbc_lbl);
+		      GridBagConstraints pgbc_combo = new GridBagConstraints();
+		      pgbc_combo.fill = GridBagConstraints.BOTH;      pgbc_combo.gridx = 1;      pgbc_combo.gridy = 0;
+		      panel.add(pProductForCombo, pgbc_combo);
+	
+		      List<Product> pList = pdao.getInstance().selectProductByAll();
+		      Vector<Product> pVector = new Vector<>();
+		      pVector.addElement(new Product());
+		      for(int i = 0 ; i < pList.size(); i++){
+		         pVector.addElement(pList.get(i));
+		      }
+		      pProductForCombo.setcomboData(pVector);
+		      
+		      
+		      pCustomerForCombo = new ComboPanel();
+		      
+		      pCustomerForCombo.setTitle("거래처");
+		      
+		      GridBagLayout cgridBagLayout = new GridBagLayout();
+		      cgridBagLayout.columnWidths = new int[]{50,100,0};      cgridBagLayout.rowHeights = new int[]{51, 0};      cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      pCustomerForCombo.setLayout(cgridBagLayout);
+		      
+		      GridBagConstraints cgbc_lbl = new GridBagConstraints();
+		      cgbc_lbl.fill = GridBagConstraints.BOTH;      cgbc_lbl.insets = new Insets(0, 0, 0, 5);      cgbc_lbl.gridx = 0;      cgbc_lbl.gridy = 0;
+		      panel.add(pCustomerForCombo,cgbc_lbl);
+		      
+		      GridBagConstraints cgbc_combo = new GridBagConstraints();
+		      panel.add(pCustomerForCombo, cgbc_combo);
+		      
+		      List<Customer> cList = cdao.getInstance().selectCustomerByAll();
+		      Vector<Customer> cVector = new Vector<>();
+		      cVector.addElement(new Customer());
+		      for(int i = 0 ; i < cList.size(); i++){
+		         cVector.addElement(cList.get(i));
+		      }
+		      pCustomerForCombo.setcomboData(cVector);
+		      
+		      
+		      pSellInfoA = new SellInfoPanelA();
+		      
+		      btnOK = pSellInfoA.getBtnOk();
+		      btnOK.addActionListener(this);
+		      add(pSellInfoA);
+		      
+		      JPanel panel_4 = new JPanel();
+		      add(panel_4);
+		      
+		      btnSave = new JButton("저장");
+		      btnSave.addActionListener(this);
+		      panel_4.add(btnSave);
+		      
+		      pSellInfoA.clear();
+	
+		   }    // constructor ends
+	
+	private void setinit() {
+	
+		List<SellInfo> sellInfos = sdao.getInstance().selectSellInfoByAll();
+	
+		sellInfos.get(sellInfos.size() - 1).getScode();
+	
+		String value = String.format(setNoFormat(),
+	
+				Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
+	
+		pSellInfoA.getpScode().setTfValue(value);
+	
+		pSellInfoA.getpScode().gettF().setFocusable(false);
+	
 	}
 	
-
-	public void clear(){
-		pSaleDate.setTfValue(sdf.format(new Date()));
-		pQuantity.setTfValue("0");
-		pUnPrice.setTfValue("0");
-		pSellPrice.setTfValue("0");
-		pDisPrice.setTfValue("0");
+	protected String setNoFormat() {
+	
+		return "S%03d";
+	
 	}
-	public boolean isEmpty(){
-		boolean result = false;
-		for(Component c : getComponents()){
-			if(c instanceof TextFiledPanel){
-				TextFiledPanel tfp =(TextFiledPanel)c;
-				if(tfp.isEmpty()){
-					return true;
-				}
-			}
+	
+	public void actionPerformed(ActionEvent e) {
+	
+		if (e.getSource() == btnOK) {
+	
+			actionPerformedBtnOK(e);
+	
 		}
-		return false;
+	
+		if (e.getSource() == btnSave) {
+	
+			actionPerformedbtnSave(e);
+	
+		}
+	
 	}
 	
-	public JButton getBtnOk() {
-		return btnOK;
+	private void actionPerformedbtnSave(ActionEvent e) {
+	
+		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
+	
+		Product pRes = (Product) pProductForCombo.getSelectItem();
+	
+		Customer cRes = (Customer) pCustomerForCombo.getSelectItem();
+	
+		SellInfo sRes = pSellInfoA.getObjectDateQuantity();
+	
+		int salePrice = pRes.getSalePrice();
+	
+		int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+		int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+		int dispct = edispct + cdispct;
+		int quantity = sRes.getQuantity();
+		int unitprice = 0;
+		int sellprice = 0;
+		unitprice = (int) ((salePrice) * (1 - (dispct) * 0.01));
+		// 판매금액 = 판매단가*판매수량
+		sellprice = unitprice * quantity;
+		sRes.setEcode(eRes.getCode());
+		sRes.setPcode(pRes.getCode());
+		sRes.setCcode(cRes.getCode());
+		sRes.setSaleprice(salePrice);
+		sRes.setOrigiprice(sellprice);
+		sRes.setDispcts(dispct);
+		System.out.println(sRes);
+		sdao.getInstance().insertSellInfo(sRes);
+		List<CalculatedValue> calculatedValue =
+				cvdao.getInstance().selectCalculatedValueByAll();
+		for (CalculatedValue c : calculatedValue) {
+			System.out.println(c);
+		}
+		JOptionPane.showMessageDialog(null, "저장되었습니다.");
+		pSellInfoA.clear();
+		clear();
+		setinit();
 	}
 	
+	private void clear() {
+		pProductForCombo.setSelectedItem(0);
+		pCustomerForCombo.setSelectedItem(0);
+		pEmployeeForCombo.setSelectedItem(0);
+	}
 	
+	private void actionPerformedBtnOK(ActionEvent e) {
+		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
+		Product pRes = (Product) pProductForCombo.getSelectItem();
+		Customer cRes = (Customer) pCustomerForCombo.getSelectItem();
+		SellInfo sRes = null;
+		try {
+			sRes = pSellInfoA.getObjectDateQuantity();
+		} catch (NumberFormatException ne) {
+			ne.getStackTrace();
+		}
+		if (eRes == null || pRes == null || cRes == null || sRes == null) {
+			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		} else {
+			/*if(pSellInfoA.getpQuantity()<0){
+				JOptionPane.showMessageDialog(null, "양수를 입력하세요");
+			}else*/{
+				int unitprice = 0;
+				int sellprice = 0;
+				int disprice = 0;
+				int quantity = sRes.getQuantity(); // 판매수량
+				// 제품 판매정가 받아오기
+				int saleprice = pRes.getSalePrice();
+				// 사원 등급에따른 할인율 받아오기
+				int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+				// 거래처 등급에따른 할인율 받아오기
+				int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+				// 더하기
+				int dispct = edispct + cdispct;
+				// DB에서 해주는 것이나 확정값이 아직 아니기에 java로 임시 처리
+				// 판매단가 = 판매정가 *할인율
+				unitprice = (int) ((saleprice) * (1 - (dispct) * 0.01));
+				// 판매금액 = 판매단가*판매수량
+				sellprice = unitprice * quantity;
+				// 할인금액 = 판매정가*판매수량-판매금액
+				disprice = saleprice * quantity - sellprice;
+				// 뷰에 입력
+				pSellInfoA.setpUnPrice(unitprice);
+				pSellInfoA.setpSellPrice(sellprice);
+				pSellInfoA.setpDisPrice(disprice);
+				JOptionPane.showMessageDialog(null, "검색하였습니다.");
+			}
+			
+		}
+	}
+		
 	
-	
-	
-	
-
-}
+	}

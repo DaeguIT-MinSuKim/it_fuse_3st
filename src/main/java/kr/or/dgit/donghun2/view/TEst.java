@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
+import kr.or.dgit.donghun2.Main.Login;
 import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
 
 public class TEst extends JFrame {
@@ -41,13 +41,8 @@ public class TEst extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		/*UtilDateModel model = new UtilDateModel();
-		JDatePanelImpl datePanel = new JDatePanelImpl(model, null);
-		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, null);
-		contentPane.add(datePicker);*/
-		
-		BasicTabbedPanel btp = new BasicTabbedPanel();
-		contentPane.add(btp);
+		Login login = new Login();
+		contentPane.add(login);
 	}
 
 }

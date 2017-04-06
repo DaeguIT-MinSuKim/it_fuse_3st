@@ -122,6 +122,9 @@ public class SellInfoPanelA extends JPanel {
 	public TextFiledPanel getpOrigiPrice() {
 		return pOrigiPrice;
 	}
+	public TextFiledPanel getpQuantity(){
+		return pQuantity;
+	}
 
 	
 

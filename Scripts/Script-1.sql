@@ -27,6 +27,7 @@ CREATE TABLE employee (	-- 사원 테이블
 );
 
 
+
 CREATE TABLE  product (		-- 제품테이블
 	code       CHAR(4)  NOT NULL COMMENT '제품코드' PRIMARY KEY,
 	name       CHAR(11) NOT NULL COMMENT '제품명',

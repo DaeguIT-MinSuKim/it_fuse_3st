@@ -5,26 +5,26 @@
 	
 	<resultMap type="SellInfo" id="SellInfoResult">
 		<id property="scode" column="scode"/>
+		<result property="pcode" column="pcode"/>
+		<result property="ecode" column="ecode"/>
+		<result property="ccode" column="ccode"/>
 		<result property="quantity" column="quantity"/>
 		<result property="saledate" column="saledate"/>
+		
 		<result property="saleprice" column="saleprice"/>
 		<result property="origiprice" column="origiprice"/>
 		<result property="dispcts" column="dispcts"/>
 		<result property="isexist" column="isexist"/>
 		</resultMap>
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> refs/remotes/origin/jinuk
 
 	<select id="selectSellInfoByAll" resultType="SellInfo">
-		select scode,quantity,saledate,saleprice,origiprice, dispcts,isexist
+		select scode,pcode,ccode,ecode,quantity,saledate,saleprice,origiprice, dispcts,isexist
 		FROM sellInfo
 	</select>
 	<insert id="insertSellInfo" parameterType="SellInfo" >
-		INSERT INTO sellinfo (scode, saledate, quantity, saleprice, origiprice, dispcts, isexist) 
-		values (#{scode},#{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},#{isexist})
+		INSERT INTO sellinfo (scode,pcode,ccode,ecode,saledate, quantity, saleprice, origiprice, dispcts, isexist) 
+		values (#{scode},#{pcode},#{ccode},#{ecode}, #{saledate},#{quantity},#{saleprice},#{origiprice},#{dispcts},true)
     </insert>
 	
 	<update id="updateSellInfo" parameterType="SellInfo">
@@ -39,10 +39,37 @@
 		</set>
 		<include refid="whereSql"></include>
 	</update>
- 	<delete id="deleteSellInfo" parameterType="SellInfo">
-		delete from SellInfo
+ 	<update id="deleteSellInfo" parameterType="SellInfo">
+		update SellInfo set isexist = false 
 		<include refid="whereSql"/>
-	</delete> 
+	</update> 
 
 	
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
