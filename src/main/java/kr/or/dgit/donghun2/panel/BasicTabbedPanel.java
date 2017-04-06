@@ -243,19 +243,35 @@ public class BasicTabbedPanel extends JPanel implements ActionListener {
       } else {
          JOptionPane.showMessageDialog(null, "삭제댐");
          pProt.loadData();
+         pProp.clear();
       }
       
    }
 
    private void actionPerformedPBtnSave(ActionEvent e) {
-      if (pProp.isEmpty()) {
-         JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
-      } else {
-         pdao.getInstance().insertProduct(pProp.getObject());
-         JOptionPane.showMessageDialog(null, "저장되었습니다.");
-         pProt.loadData();
-      }
-      
+		if (pProp.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "공백이 존재");
+			return;
+		}
+		if (Integer.parseInt(pProp.getpSalePrice().getTfValue().toString()) <
+				Integer.parseInt(pProp.getpOrigiPrice().getTfValue().toString()) || 
+				Integer.parseInt(pProp.getpSalePrice().getTfValue().toString())==0 ||
+				Integer.parseInt(pProp.getpOrigiPrice().getTfValue().toString())==0
+				) {
+			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
+			return;
+		}
+		String msg = "추가됨";
+		Product item = pProp.getObject();
+
+		if (pdao.getInstance().selectProductByNo(item) != null) {
+
+			msg = "데이터가 이미 존재하므로 덮어씀";
+		}
+		pdao.getInstance().insertProduct(item);
+		JOptionPane.showMessageDialog(null, msg);
+		pProp.clear();
+		pProt.loadData();
    }
 
    private void actionPerformedCbtnSearch(ActionEvent e) {

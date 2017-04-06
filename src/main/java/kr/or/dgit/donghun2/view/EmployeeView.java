@@ -17,6 +17,7 @@ import kr.or.dgit.donghun2.dao.EmployeeMapper;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.service.EmployeeService;
+import kr.or.dgit.donghun2.table.EmployeeTable;
 
 @SuppressWarnings("serial")
 public class EmployeeView extends JFrame implements ActionListener {
@@ -29,6 +30,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 	private JButton btnDele;
 
 	private static EmployeeService dao;
+	private EmployeeTable pTable;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -69,6 +71,12 @@ public class EmployeeView extends JFrame implements ActionListener {
 		btnSearch = new JButton("검색");
 		btnSearch.addActionListener(this);
 		pBtn.add(btnSearch);
+		
+		pTable = new EmployeeTable();
+		contentPane.add(pTable);
+		pTable.loadDate();
+		
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -89,6 +97,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 		}else{
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 			pEmployee.setObject(res);
+			
 		}
 		
 		
@@ -100,6 +109,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 		}else{
 			dao.getInstance().insertEmployee(pEmployee.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다");
+			pTable.loadDate();
 		}
 		
 	}
@@ -111,6 +121,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "삭제실패");
 		}else{
 			JOptionPane.showMessageDialog(null, "삭제성공");
+			pTable.loadDate();
 		}
 	
 	}

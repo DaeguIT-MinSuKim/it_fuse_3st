@@ -249,13 +249,21 @@ import java.text.DateFormat;
 			sRes = pSellInfoA.getObjectDateQuantity();
 		} catch (NumberFormatException ne) {
 			ne.getStackTrace();
+			
 		}
-		if (eRes == null || pRes == null || cRes == null || sRes == null) {
-			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		} else {
-			/*if(pSellInfoA.getpQuantity()<0){
+		/*if (eRes.getCode() == null) {
+			JOptionPane.showMessageDialog(null, "사원을 선택 하십시오.");
+		}else if(pRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "제품을 선택 하십시오.");
+		} else if(cRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "거래처를 선택 하십시오.");
+		}*/
+		if(eRes.getCode()==null || pRes.getCode()==null|| cRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "사원, 제품, 거래처를 모두 선택 했는지 확인해주세요");
+		}else {
+			if(pSellInfoA.getObjectDateQuantity().getQuantity()<=0){
 				JOptionPane.showMessageDialog(null, "양수를 입력하세요");
-			}else*/{
+			}else{
 				int unitprice = 0;
 				int sellprice = 0;
 				int disprice = 0;

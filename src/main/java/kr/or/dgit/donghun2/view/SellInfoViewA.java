@@ -100,30 +100,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 	private ComboPanel<Customer> pCustomerForCombo;
 
-	public static void main(String[] args) {
-
-		EventQueue.invokeLater(new Runnable() {
-
-			public void run() {
-
-				try {
-
-					SellInfoViewA frame = new SellInfoViewA();
-
-					frame.setVisible(true);
-
-				} catch (Exception e) {
-
-					e.printStackTrace();
-
-				}
-
-			}
-
-		});
-
-	}
-
+	
 	   public SellInfoViewA() {
 		      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		      setBounds(100, 100, 500, 600);

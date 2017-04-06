@@ -99,8 +99,8 @@ public class ProductView extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "공백이 존재");
 			return;
 		}
-		if (Integer.parseInt(pProduct.getpSalePrice().getSpinner().toString()) <
-				Integer.parseInt(pProduct.getpOrigiPrice().getSpinner().toString())) {
+		if (Integer.parseInt(pProduct.getpSalePrice().getTfValue().toString()) <
+				Integer.parseInt(pProduct.getpOrigiPrice().getTfValue().toString())) {
 			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
 			return;
 		}

@@ -19,8 +19,8 @@ public class ProductPanel extends JPanel {
 	
 	private TextFiledPanel pCode;
 	private TextFiledPanel pName;
-	private SpinnerPanel pSalePrice;
-	private SpinnerPanel pOrigiPrice;
+	private TextFiledPanel pSalePrice;
+	private TextFiledPanel pOrigiPrice;
 
 	public ProductPanel() {
 		setLayout(new GridLayout(0, 1, 0, 10));
@@ -33,12 +33,14 @@ public class ProductPanel extends JPanel {
 		pName.setTitle("제 품 명");
 		add(pName);
 		
-		pSalePrice = new SpinnerPanel();
+		pSalePrice = new TextFiledPanel();
 		pSalePrice.setTitle("판매정가");
+		pSalePrice.setTfValue("0");
 		add(pSalePrice);
 		
-		pOrigiPrice = new SpinnerPanel();
+		pOrigiPrice = new TextFiledPanel();
 		pOrigiPrice.setTitle("판매원가");
+		pOrigiPrice.setTfValue("0");
 		add(pOrigiPrice);
 
 	}
@@ -49,32 +51,32 @@ public class ProductPanel extends JPanel {
 	public TextFiledPanel getpName() {
 		return pName;
 	}
-	public SpinnerPanel getpSalePrice() {
+	public TextFiledPanel getpSalePrice() {
 		return pSalePrice;
 	}
-	public SpinnerPanel getpOrigiPrice() {
+	public TextFiledPanel getpOrigiPrice() {
 		return pOrigiPrice;
 	}
 	public Product getObject(){
 		String code = pCode.getTfValue();
 		String name = pName.getTfValue();
-		int salePrice = (int)pSalePrice.getValue();
-		int origiPrice = (int)pOrigiPrice.getValue();
+		int salePrice = Integer.parseInt(pSalePrice.getTfValue());
+		int origiPrice = Integer.parseInt(pOrigiPrice.getTfValue());
 		return new Product(code, name, salePrice, origiPrice);
 	}
 	
 	public void setObject(Product item){
 		pCode.setTfValue(item.getCode());
 		pName.setTfValue(item.getName());
-		pSalePrice.setValue(item.getSalePrice());
-		pOrigiPrice.setValue(item.getOrigiPrice());
+		
 	}
+	
 
 	public void clear(){
 		pCode.setTfValue("");
 		pName.setTfValue("");
-		pSalePrice.setValue(0);
-		pOrigiPrice.setValue(0);
+		pSalePrice.setTfValue("0");
+		pOrigiPrice.setTfValue("0");
 	}
 	public boolean isEmpty(){
 		boolean result = false;
