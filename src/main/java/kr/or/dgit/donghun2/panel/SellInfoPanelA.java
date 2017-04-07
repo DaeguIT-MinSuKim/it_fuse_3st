@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import erp_myframework.ComboPanel;
@@ -109,10 +110,16 @@ public class SellInfoPanelA extends JPanel {
 
 	public SellInfo getObjectDateQuantity(){
 		Date saleDate = null;
+		int quantity = 0;
 		try {saleDate = sdf.parse(pSaleDate.getTfValue());
 		} catch (ParseException e) {e.printStackTrace();}
+		
 		String scode = pScode.getTfValue();
-		int quantity = Integer.parseInt(pQuantity.getTfValue());
+		
+		try {quantity = Integer.parseInt(pQuantity.getTfValue());
+		} catch (NumberFormatException e){
+			e.fillInStackTrace();
+		}
 		return new SellInfo(scode, saleDate, quantity);
 
 	}

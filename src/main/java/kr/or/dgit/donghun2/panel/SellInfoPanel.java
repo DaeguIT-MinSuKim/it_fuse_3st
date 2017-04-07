@@ -18,6 +18,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.util.regex.Pattern;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch;
 
 import erp_myframework.ComboPanel;
 import erp_myframework.TextFiledPanel;
@@ -313,5 +322,48 @@ public class SellInfoPanel extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "검색하였습니다.");
 		}
 
+		/*
+		 * boolean Ok = Pattern.matches("^[1-9]$",
+		 * String.valueOf(pSellInfoA.getObjectDateQuantity().getQuantity()));
+		 */
+
+		if (eRes.getCode() == null || pRes.getCode() == null || cRes.getCode() == null) {
+			JOptionPane.showMessageDialog(null, "사원, 제품, 거래처를 모두 선택 했는지 확인해주세요");
+			System.out.println("$$$$");
+		} else {
+
+			int Q = pSellInfoA.getObjectDateQuantity().getQuantity();
+			if (Q <= 0) {
+				JOptionPane.showMessageDialog(null, "양수를 입력하세요");
+				System.out.println("##");
+			} else {
+				System.out.println("#");
+				int unitprice = 0;
+				int sellprice = 0;
+				int disprice = 0;
+				int quantity = sRes.getQuantity(); // 판매수량
+				// 제품 판매정가 받아오기
+				int saleprice = pRes.getSalePrice();
+				// 사원 등급에따른 할인율 받아오기
+				int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
+				// 거래처 등급에따른 할인율 받아오기
+				int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
+				// 더하기
+				int dispct = edispct + cdispct;
+				// DB에서 해주는 것이나 확정값이 아직 아니기에 java로 임시 처리
+				// 판매단가 = 판매정가 *할인율
+				unitprice = (int) ((saleprice) * (1 - (dispct) * 0.01));
+				// 판매금액 = 판매단가*판매수량
+				sellprice = unitprice * quantity;
+				// 할인금액 = 판매정가*판매수량-판매금액
+				disprice = saleprice * quantity - sellprice;
+				// 뷰에 입력
+				pSellInfoA.setpUnPrice(unitprice);
+				pSellInfoA.setpSellPrice(sellprice);
+				pSellInfoA.setpDisPrice(disprice);
+				JOptionPane.showMessageDialog(null, "검색하였습니다.");
+			}
+
+		}
 	}
 }
