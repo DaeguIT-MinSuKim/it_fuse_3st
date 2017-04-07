@@ -44,6 +44,12 @@ public class CustomerMapperImpl implements CustomerMapper{
 		return sqlSession.selectOne(namespace+"selectDiscnt",code);
 	}
 
+	@Override
+	public List<Customer> selectCustomerTrue(Customer isexist) {
+		System.out.println("####");
+		return sqlSession.selectList(namespace+"selectCustomerTrue", isexist);
+	}
+
 
 	
 }

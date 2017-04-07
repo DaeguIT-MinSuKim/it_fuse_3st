@@ -15,7 +15,7 @@ import kr.or.dgit.donghun2.service.CustomerService;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CustomerServiceTest {
 	private static CustomerService customerService;
-	/*
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		System.out.println("setUpBeforeClass()");
@@ -28,17 +28,14 @@ public class CustomerServiceTest {
 		customerService = null;
 	}
 	
-<<<<<<< HEAD
 	
-=======
-	/*@Test
+	@Test
 	public void fTestSelectDiscnt() {
 		Customer	item = new Customer();
 		item.setCode("C001");
 		Customer res = customerService.selectDiscnt(item);
-	}*/
-	/*
->>>>>>> refs/remotes/origin/jinuk
+	}
+	
 	@Test
 	public void aTestSelectCustomerByAll() {
 		List<Customer> customers = customerService.selectCustomerByAll();
@@ -49,7 +46,7 @@ public class CustomerServiceTest {
 	}
 	
 	
-	@Test
+	/*@Test
 	public void bTestInsertCustomer() {
 		Customer item = new Customer();
 		item.setCode("C001");
@@ -57,9 +54,9 @@ public class CustomerServiceTest {
 		item.setGrade("B");
 		int res = customerService.insertCustomer(item);
 		Assert.assertEquals(1,res);
-	}
+	}*/
 	
-	@Test
+/*	@Test
 	public void cTestUpdateCustomer() {
 		Customer	item = new Customer();
 		item.setCode("C001");
@@ -67,36 +64,43 @@ public class CustomerServiceTest {
 		item.setGrade("A");
 		int res = customerService.updateCustomer(item);
 		Assert.assertEquals(1,res);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void dTestDeleteCustomer() {
 		Customer	item = new Customer();
 		item.setCode("C001");
 		int res = customerService.deleteCustomer(item);
 		Assert.assertEquals(1,res);
-	}
+	}*/
 	
 	@Test
 	public void eTestSelectCustomerByNo() {
 		Customer	item = new Customer();
-		item.setCode("C1");
+		item.setCode("C001");
 		Customer Customer = customerService.selectCustomerByNo(item);
 		
 		Assert.assertNotNull(Customer);
 	}	
 	
-		@Test
+	/*@Test
 	public void fTestSelectDiscnt() {
 		Customer	item = new Customer();
 		item.setCode("C001");
 		Customer c = customerService.selectDiscnt(item);
 		
 		System.out.println(c.getcGrade().getDispct());
-	}
-
-	*/
+	}*/
 
 	
+
+	@Test
+	public void gTestselectCustomerTrue(){
+		Customer item = new Customer();
+		System.out.println("######");
+		
+		List<Customer> customer = customerService.selectCustomerTrue(item);
+		
+	}
 	
 }

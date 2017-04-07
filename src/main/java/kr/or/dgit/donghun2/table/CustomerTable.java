@@ -13,7 +13,9 @@ import kr.or.dgit.donghun2.service.CustomerService;
 
 public class CustomerTable extends JPanel {
 	private JTable table;
+	private Customer Customer;
 	private static CustomerService dao;
+	
 
 	/**
 	 * Create the panel.
@@ -30,7 +32,7 @@ public class CustomerTable extends JPanel {
 
 	}
 	public void loadDate(){
-		table.setModel(new DefaultTableModel(getRowDate(),getColumn()));
+		table.setModel(new DefaultTableModel(getRowDate(Customer),getColumn()));
 	}
 	
 	
@@ -38,8 +40,8 @@ public class CustomerTable extends JPanel {
 		return new String[]{"거래처코드","거래처명","거래처등급"};
 	}
 	
-	protected String[][] getRowDate() {
-		List<Customer> customers = dao.getInstance().selectCustomerByAll();
+	protected String[][] getRowDate(Customer isexist) {
+		List<Customer> customers = dao.getInstance().selectCustomerTrue(isexist);
 		String[][] datas = new String[customers.size()][];
 		for(int i = 0; i < datas.length; i++){
 			datas[i] = customers.get(i).toArray();

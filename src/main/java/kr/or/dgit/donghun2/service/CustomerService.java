@@ -81,5 +81,13 @@ public class CustomerService {
 			return customer;
 		}
 	}
+	public List<Customer> selectCustomerTrue(Customer isexist){
+		log.debug("selectCustomerTrue()");
+		try(SqlSession sqlSession =MybatisSqlSessionFactory.openSession();){
+			List<Customer> customer = sqlSession.getMapper(CustomerMapper.class).selectCustomerTrue(isexist);
+			System.out.println("#####");
+			return customer;
+		}
+	}
 	
 }

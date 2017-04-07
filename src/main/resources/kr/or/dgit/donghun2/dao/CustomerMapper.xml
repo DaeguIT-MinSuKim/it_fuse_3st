@@ -41,6 +41,10 @@
 	where code=#{code} 
 	</update>
 	
+	<select id="selectCustomerTrue" parameterType="Customer" resultType="Customer">
+		select code, name, grade from customer where isexist=#{isexist}
+	</select>
+	
 	<select parameterType="Customer" id="selectCustomerByNo" resultType="Customer"> select code, name, grade from customer where code=#{code}; </select>
 
 </mapper>

@@ -22,6 +22,8 @@
       values (#{code},#{name},#{salePrice},#{origiPrice},true)
    	</insert>
 	
+	
+	
 	<update id="updateProduct" parameterType="Product">
 		UPDATE Product
 		<set>
