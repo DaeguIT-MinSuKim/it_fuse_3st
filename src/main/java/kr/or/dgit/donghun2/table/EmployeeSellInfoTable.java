@@ -47,7 +47,7 @@ public class EmployeeSellInfoTable extends JPanel {
 	}
 	
 	protected String[] getColumn() {
-		return new String[]{"사원코드","사원명","판매금액","마진액","마진율"};
+		return new String[]{"사원코드","사원명","거래일자","판매금액","마진액","마진율"};
 	}
 	
 	public void loadDateByCode(Employee eRes) {
