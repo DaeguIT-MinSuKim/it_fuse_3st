@@ -274,9 +274,10 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		int quantity = sRes.getQuantity();
 		int unitprice = 0;
 		int sellprice = 0;
-		unitprice = (int) ((salePrice) * (1 - (dispct) * 0.01));
+		unitprice = (int) ((salePrice) * (1 - ((dispct) * 0.01)));
 		// 판매금액 = 판매단가*판매수량
 		sellprice = unitprice * quantity;
+		
 		sRes.setEcode(eRes.getCode());
 		sRes.setPcode(pRes.getCode());
 		sRes.setCcode(cRes.getCode());
@@ -325,7 +326,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 			int dispct = edispct + cdispct;
 			// DB에서 해주는 것이나 확정값이 아직 아니기에 java로 임시 처리
 			// 판매단가 = 판매정가 *할인율
-			unitprice = (int) ((saleprice) * (1 - (dispct) * 0.01));
+			unitprice = (int) ((saleprice) * (1 - ((dispct) * 0.01)));
 			// 판매금액 = 판매단가*판매수량
 			sellprice = unitprice * quantity;
 			// 할인금액 = 판매정가*판매수량-판매금액

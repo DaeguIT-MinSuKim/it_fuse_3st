@@ -122,17 +122,15 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 	} // constructor ends
 
 	private void setinit() {
-
 		List<SellInfo> sellInfos = sdao.getInstance().selectSellInfoByAll();
-
-		sellInfos.get(sellInfos.size() - 1).getScode();
-
-		String value = String.format(setNoFormat(),
-
-				Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
-
+		String value = null;
+		if (sellInfos.size()==0 ) {
+			value = "S001";
+		} else {
+			value = String.format(setNoFormat(),
+					Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
+		}
 		pSellInfoA.getpScode().setTfValue(value);
-
 		pSellInfoA.getpScode().gettF().setFocusable(false);
 
 	}
@@ -174,17 +172,19 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		int edispct = edao.getInstance().selectDiscnt(eRes).geteGrade().getDispct();
 		int cdispct = cdao.getInstance().selectDiscnt(cRes).getcGrade().getDispct();
 		int dispct = edispct + cdispct;
+		int origiprice = pRes.getOrigiPrice();
 		int quantity = sRes.getQuantity();
 		int unitprice = 0;
 		int sellprice = 0;
-		unitprice = (int) ((salePrice) * (1 - (dispct) * 0.01));
+		unitprice = (int) ((salePrice) * (1 - ((dispct) * 0.01)));
 		// 판매금액 = 판매단가*판매수량
 		sellprice = unitprice * quantity;
+		
 		sRes.setEcode(eRes.getCode());
 		sRes.setPcode(pRes.getCode());
 		sRes.setCcode(cRes.getCode());
 		sRes.setSaleprice(salePrice);
-		sRes.setOrigiprice(sellprice);
+		sRes.setOrigiprice(origiprice);
 		sRes.setDispcts(dispct);
 		sdao.getInstance().insertSellInfo(sRes);
 		List<CalculatedValue> calculatedValue = cvdao.getInstance().selectCalculatedValueByAll();
@@ -238,7 +238,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 			int dispct = edispct + cdispct;
 			// DB에서 해주는 것이나 확정값이 아직 아니기에 java로 임시 처리
 			// 판매단가 = 판매정가 *할인율
-			unitprice = (int) ((saleprice) * (1 - (dispct) * 0.01));
+			unitprice = (int) ((saleprice) * (1 - ((dispct) * 0.01)));
 			// 판매금액 = 판매단가*판매수량
 			sellprice = unitprice * quantity;
 			// 할인금액 = 판매정가*판매수량-판매금액
@@ -251,6 +251,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		}
 
 	}
+
 	public TextFiledPanel getpScode() {
 		return pScode;
 	}

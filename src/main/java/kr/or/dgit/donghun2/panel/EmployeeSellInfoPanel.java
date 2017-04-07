@@ -105,11 +105,11 @@ public class EmployeeSellInfoPanel extends JPanel {
 				Map<String, String> item = new HashMap<>();
 				item.put("ecode", eRes.getCode());
 				List<CalculatedValue> calculatedValues = cvdao.getInstance().vw_InfoByEmployeeByCode(item);
-				for (CalculatedValue cv : calculatedValues) {
-					System.out.println(cv);
+				if (eRes.getCode() == null) {
+					table.loadDateByAll();
+				} else {
+					table.loadDateByCode(eRes);
 				}
-				table.loadDateByCode(eRes);
-
 			}
 		}
 
