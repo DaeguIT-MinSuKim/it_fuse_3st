@@ -72,11 +72,16 @@ import java.text.DateFormat;
 		      pEmployeeForCombo.setTitle("사원");
 		      
 		      GridBagLayout egridBagLayout = new GridBagLayout();
-		      egridBagLayout.columnWidths = new int[]{50,100,0};      egridBagLayout.rowHeights = new int[]{51, 0};      egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      egridBagLayout.columnWidths = new int[]{50,100,0};     
+		      egridBagLayout.rowHeights = new int[]{51, 0};      
+		      egridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      egridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pEmployeeForCombo.setLayout(egridBagLayout);
 		      
 		      GridBagConstraints egbc_lbl = new GridBagConstraints();
-		      egbc_lbl.fill = GridBagConstraints.BOTH;      egbc_lbl.insets = new Insets(0, 0, 0, 5);      egbc_lbl.gridx = 0;      egbc_lbl.gridy = 0;
+		      egbc_lbl.fill = GridBagConstraints.BOTH;      
+		      egbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      egbc_lbl.gridx = 0;      egbc_lbl.gridy = 0;
 		      panel.add(pEmployeeForCombo,egbc_lbl);
 		      
 		      GridBagConstraints egbc_combo = new GridBagConstraints();
@@ -97,13 +102,21 @@ import java.text.DateFormat;
 		      
 		      pProductForCombo.setTitle("제품");
 		      GridBagLayout pgridBagLayout = new GridBagLayout();
-		      pgridBagLayout.columnWidths = new int[]{50, 100, 0};      pgridBagLayout.rowHeights = new int[]{51, 0};      pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      pgridBagLayout.columnWidths = new int[]{50, 100, 0};     
+		      pgridBagLayout.rowHeights = new int[]{51, 0};     
+		      pgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      pgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pProductForCombo.setLayout(pgridBagLayout);
+		      
 		      GridBagConstraints pgbc_lbl = new GridBagConstraints();
-		      pgbc_lbl.fill = GridBagConstraints.BOTH;      pgbc_lbl.insets = new Insets(0, 0, 0, 5);      pgbc_lbl.gridx = 0;      pgbc_lbl.gridy = 0;
+		      pgbc_lbl.fill = GridBagConstraints.BOTH;      
+		      pgbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      pgbc_lbl.gridx = 0;      pgbc_lbl.gridy = 0;
 		      panel.add(pProductForCombo,pgbc_lbl);
+		      
 		      GridBagConstraints pgbc_combo = new GridBagConstraints();
-		      pgbc_combo.fill = GridBagConstraints.BOTH;      pgbc_combo.gridx = 1;      pgbc_combo.gridy = 0;
+		      pgbc_combo.fill = GridBagConstraints.BOTH;      
+		      pgbc_combo.gridx = 1;      pgbc_combo.gridy = 0;
 		      panel.add(pProductForCombo, pgbc_combo);
 	
 		      List<Product> pList = pdao.getInstance().selectProductByAll();
@@ -120,11 +133,17 @@ import java.text.DateFormat;
 		      pCustomerForCombo.setTitle("거래처");
 		      
 		      GridBagLayout cgridBagLayout = new GridBagLayout();
-		      cgridBagLayout.columnWidths = new int[]{50,100,0};      cgridBagLayout.rowHeights = new int[]{51, 0};      cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		      cgridBagLayout.columnWidths = new int[]{50,100,0};      
+		      cgridBagLayout.rowHeights = new int[]{51, 0};      
+		      cgridBagLayout.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};      
+		      cgridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		      pCustomerForCombo.setLayout(cgridBagLayout);
 		      
 		      GridBagConstraints cgbc_lbl = new GridBagConstraints();
-		      cgbc_lbl.fill = GridBagConstraints.BOTH;      cgbc_lbl.insets = new Insets(0, 0, 0, 5);      cgbc_lbl.gridx = 0;      cgbc_lbl.gridy = 0;
+		      cgbc_lbl.fill = GridBagConstraints.BOTH;      
+		      cgbc_lbl.insets = new Insets(0, 0, 0, 5);      
+		      cgbc_lbl.gridx = 0;      
+		      cgbc_lbl.gridy = 0;
 		      panel.add(pCustomerForCombo,cgbc_lbl);
 		      
 		      GridBagConstraints cgbc_combo = new GridBagConstraints();
@@ -249,13 +268,21 @@ import java.text.DateFormat;
 			sRes = pSellInfoA.getObjectDateQuantity();
 		} catch (NumberFormatException ne) {
 			ne.getStackTrace();
+			
 		}
-		if (eRes == null || pRes == null || cRes == null || sRes == null) {
-			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		} else {
-			/*if(pSellInfoA.getpQuantity()<0){
+		/*if (eRes.getCode() == null) {
+			JOptionPane.showMessageDialog(null, "사원을 선택 하십시오.");
+		}else if(pRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "제품을 선택 하십시오.");
+		} else if(cRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "거래처를 선택 하십시오.");
+		}*/
+		if(eRes.getCode()==null || pRes.getCode()==null|| cRes.getCode()==null){
+			JOptionPane.showMessageDialog(null, "사원, 제품, 거래처를 모두 선택 했는지 확인해주세요");
+		}else {
+			if(pSellInfoA.getObjectDateQuantity().getQuantity()<=0){
 				JOptionPane.showMessageDialog(null, "양수를 입력하세요");
-			}else*/{
+			}else{
 				int unitprice = 0;
 				int sellprice = 0;
 				int disprice = 0;
