@@ -17,6 +17,7 @@ import erp_myframework.ComboPanel;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.dto.SellInfo;
+import kr.or.dgit.donghun2.service.SellInfoService;
 import kr.or.dgit.donghun2.view.SellInfoViewA;
 
 public class SellInfoPanel extends JPanel {
@@ -38,6 +39,8 @@ public class SellInfoPanel extends JPanel {
 	private JButton btnOk;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
+	private SellInfoService sdao;
+	private SellInfoTabbedPanel pSellp;
 	/**
 	 * Create the panel.
 	 */
@@ -90,8 +93,6 @@ public class SellInfoPanel extends JPanel {
 		JPanel empty = new JPanel();
 		basePanel.add(empty);
 	}
-	
-	
 	public void setpUnPrice(int pUnPrice) {
 		this.pUnPrice.setTfValue(String.valueOf(pUnPrice));
 	}
@@ -125,10 +126,7 @@ public class SellInfoPanel extends JPanel {
 	public String getQuantity(){
 		String Squantity = pQuantity.getTfValue();
 		return Squantity;
-	}
-
-	
-
+	}	
 	public TextFiledPanel getpOrigiPrice() {
 		return pOrigiPrice;
 	}
