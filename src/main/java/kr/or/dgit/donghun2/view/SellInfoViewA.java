@@ -52,7 +52,7 @@ import kr.or.dgit.donghun2.panel.EmployeePanel;
 
 import kr.or.dgit.donghun2.panel.ProductPanel;
 
-import kr.or.dgit.donghun2.panel.SellInfoPanelA;
+import kr.or.dgit.donghun2.panel.SellInfoPanel;
 
 import kr.or.dgit.donghun2.service.CustomerService;
 
@@ -67,7 +67,7 @@ import kr.or.dgit.donghun2.service.CalculatedValueService;
 public class SellInfoViewA extends JFrame implements ActionListener {
 
 
-	private SellInfoPanelA pSellInfoA;
+	private SellInfoPanel pSellInfoA;
 
 	private SellInfo pSellInfo;
 
@@ -198,7 +198,7 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      pCustomerForCombo.setcomboData(cVector);
 		      
 		      
-		      pSellInfoA = new SellInfoPanelA();
+		      pSellInfoA = new SellInfoPanel();
 		      
 		      btnOK = pSellInfoA.getBtnOk();
 		      btnOK.addActionListener(this);

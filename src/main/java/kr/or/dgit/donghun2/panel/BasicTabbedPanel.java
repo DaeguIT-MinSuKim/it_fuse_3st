@@ -9,7 +9,7 @@ import javax.swing.JTabbedPane;
 public class BasicTabbedPanel extends JPanel{
 
    private JTabbedPane tabbedPane;
-   private SellInfoPanel pSellInfo;
+   private SellInfoTabbedPanel pSellInfo;
    private EmployeeTabbedPanel pEmployee;
    private ProductTabbedPanel pProduct;
    private CustomerTabbedPanel pCustomer;
@@ -43,7 +43,7 @@ public class BasicTabbedPanel extends JPanel{
       pCustomer.setLayout(new BoxLayout(pCustomer, BoxLayout.Y_AXIS));
 
 
-      pSellInfo = new SellInfoPanel();
+      pSellInfo = new SellInfoTabbedPanel();
       tabbedPane.addTab("거래내역관리", null, pSellInfo, null);
       pSellInfo.setLayout(new BoxLayout(pSellInfo, BoxLayout.Y_AXIS));
 
