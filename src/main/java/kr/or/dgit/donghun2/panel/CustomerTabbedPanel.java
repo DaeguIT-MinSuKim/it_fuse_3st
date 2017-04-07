@@ -7,8 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.birosoft.liquid.util.Panel;
-
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;

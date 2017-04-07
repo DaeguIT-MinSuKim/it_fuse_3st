@@ -24,32 +24,38 @@ public class EmployeeTable extends JPanel {
 	 */
 	public EmployeeTable() {
 		setLayout(new BorderLayout(0, 0));
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
-		
+
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		loadDate();
 
 	}
-	public void loadDate(){
-		table.setModel(new DefaultTableModel(getRowDate(),getColumn()));
+
+	public void loadDate() {
+		table.setModel(new DefaultTableModel(getRowDate(), getColumn()));
 	}
-	
-	
+
 	protected String[] getColumn() {
-		return new String[]{"사원코드","사원명","사원등급"};
+		return new String[] { "사원코드", "사원명", "사원등급" };
 	}
-	
+
 	protected String[][] getRowDate() {
 		List<Employee> employee = dao.getInstance().selectEmployeeByAll();
+		for(int i=employee.size()-1;i>=0;i--){
+			if(employee.get(i).isIsexist()==false){
+				employee.remove(i);
+			}
+		}
 		String[][] datas = new String[employee.size()][];
-		for(int i = 0; i < datas.length; i++){
-			datas[i] = employee.get(i).toArray();
+		for (int i = 0; i < datas.length; i++) {
+			if (employee.get(i).isIsexist()) {
+				datas[i] = employee.get(i).toArray();
+			}
 		}
 		return datas;
 	}
-	
 
 }
