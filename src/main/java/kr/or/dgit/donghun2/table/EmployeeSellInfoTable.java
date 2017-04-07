@@ -47,7 +47,9 @@ public class EmployeeSellInfoTable extends JPanel {
 	
 	public void loadDateByCode(Employee eRes) {
 		table.setModel(new DefaultTableModel(getRowDate(eRes),getColumn()));
-		
+	}
+	public void loadDateByAll(){
+		table.setModel(new DefaultTableModel(getRowDate(),getColumn()));
 	}
 	
 	private String[][] getRowDate(Employee eRes) {

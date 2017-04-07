@@ -279,7 +279,19 @@ public class CalculatedValue {
 				 String.format("%,d",marginprice),
 				 String.format("%,d",marginpct)};
 	}
-	
+
+	public String[] toArrayforCustomerSellInfoByCodeT(){
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		return new String[] 
+				{df.format(sellinfo.getSaleDate()),
+							product.getCode(),
+							product.getName(),
+				 String.format("%,d",sellinfo.getQuantity()),
+				 String.format("%,d",sellprice),
+				 String.format("%,d",disprice),
+				 String.format("%,d",marginprice),
+				 String.format("%,d",marginpct)};
+	}
 	
 	
 	
