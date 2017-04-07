@@ -16,6 +16,11 @@ dependencies {
    compile group: 'mysql', name: 'mysql-connector-java', version: '5.+'
    testImplementation 'junit:junit:4.12'
    compile files('src/main/resources/erp_myframework.jar')
+   compile files('src/main/resources/lib/idw-gpl.jar')
+   compile files('src/main/resources/lib/JTattoo.jar')
+   compile files('src/main/resources/lib/liquidlnf.jar')
+   compile files('src/main/resources/lib/quaqua.jar')
+   
    
 
 }
