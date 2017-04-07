@@ -72,7 +72,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		return "E%03d";
 	}
 
-	boolean EmployeeName = Pattern.matches("^[a-zA-Z가-힣]*$", pEmpp.getObject().getName());
+	
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
@@ -95,10 +95,11 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedEBtnSave(ActionEvent e) {
+		boolean EmployeeName = Pattern.matches("^[a-zA-Z가-힣]*$", pEmpp.getObject().getName());
 		if (pEmpp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
 		} else if(EmployeeName == false) {
-			JOptionPane.showMessageDialog(null, "이름을 입력하세요");
+			JOptionPane.showMessageDialog(null, "사원명에 숫자를 넣지 마십시오.");
 		} else  {
 			edao.getInstance().insertEmployee(pEmpp.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다.");
