@@ -2,6 +2,7 @@ package kr.or.dgit.donghun2.panel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -39,6 +40,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		CbtnSearch.addActionListener(this);
 		pCust = new CustomerTable();
 		add(pCust);
+		setInit();
 	}
 
 	public JButton getCbtnSave() {
@@ -63,6 +65,18 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		if (e.getSource() == CbtnSearch) {
 			actionPerformedCbtnSearch(e);
 		}
+	}
+	protected void setInit(){
+		List<Customer> customer = cdao.getInstance().selectCustomerByAll();
+		
+		String lastNum = customer.get(customer.size()-1).getCode();
+		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
+		pCusp.getpCode().setTfValue(value);
+		pCusp.getpCode().setFocusable(true);
+	}
+
+	private String setFormat() {
+		return "C%03d";
 	}
 
 	private void actionPerformedCbtnSearch(ActionEvent e) {

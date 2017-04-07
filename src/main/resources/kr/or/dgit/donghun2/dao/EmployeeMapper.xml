@@ -3,9 +3,9 @@
 <mapper namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
 
 	<resultMap type="Employee" id="EmployeeResult">
-		<id property="code" column="code"/>
-		<result property="name" column="name"/>		
-		<result property="grade" column="grade"/>
+		<id property="code" column="ecode"/>
+		<result property="name" column="ename"/>		
+		<result property="grade" column="egrade"/>
 		<association property="eGrade" resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult"/>
 	</resultMap>
 

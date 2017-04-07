@@ -3,6 +3,7 @@ package kr.or.dgit.donghun2.panel;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 		pbtn.add(PbtnSearch);
 		pProt = new ProductTable();
 		add(pProt);
+		setInit();
 	}
 
 
@@ -55,6 +57,18 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 	      if (e.getSource() == PbtnSearch) {
 	         actionPerformedPbtnSearch(e);
 	      }
+	}
+	protected void setInit(){
+		List<Product> product = pdao.getInstance().selectProductByAll();
+		
+		String lastNum = product.get(product.size()-1).getCode();
+		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
+		pProp.getpCode().setTfValue(value);
+		pProp.getpCode().setFocusable(true);
+	}
+
+	private String setFormat() {
+		return "P%03d";
 	}
 
 

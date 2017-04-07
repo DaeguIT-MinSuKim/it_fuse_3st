@@ -39,7 +39,7 @@
 
 	
 	<select id="vw_InfoByCustomer" resultMap="CalculatedValueResult">
-	select saledate, p.code, p.name, quantity, sellprice, disprice, marginprice, marginpct
+	select saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
 	join sellinfo s 
 	on vw.scode= s.scode 
@@ -50,7 +50,7 @@
 	
 
 	<select id="vw_InfoByProduct" resultMap="CalculatedValueResult">
-	select c.code, c.name, quantity, sellprice, disprice, marginprice, marginpct
+	select c.code ccode, c.name cname, quantity, sellprice, disprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
 	join sellinfo s 
 	on vw.scode= s.scode 
@@ -63,7 +63,7 @@
 
 	
 	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
-	select e.code , e.name , sellprice, marginprice, marginpct
+	select e.code ecode, e.name ename, sellprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
 	join sellinfo s 
 	on vw.scode= s.scode 

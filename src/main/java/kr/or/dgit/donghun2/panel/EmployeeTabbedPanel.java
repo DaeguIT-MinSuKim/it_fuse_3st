@@ -2,6 +2,7 @@ package kr.or.dgit.donghun2.panel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -41,6 +42,8 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener{
 		pEmpt = new EmployeeTable();
 		add(pEmpt);
 		
+		setInit();
+		
 	}
 
 	@Override
@@ -54,6 +57,18 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener{
 	      if (e.getSource() == EbtnSearch) {
 	         actionPerformedEbtnSearch(e);
 	      }
+	}
+	protected void setInit(){
+		List<Employee> employee = edao.getInstance().selectEmployeeByAll();
+		
+		String lastNum = employee.get(employee.size()-1).getCode();
+		String value= String.format(setNoFormat(), Integer.parseInt(lastNum.substring(1))+1);
+		pEmpp.getpCode().setTfValue(value);
+		pEmpp.getpCode().setFocusable(true);
+	}
+
+	private String setNoFormat() {
+		return "E%03d";
 	}
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {

@@ -84,6 +84,7 @@ public class CustomerView extends JFrame implements ActionListener {
 		pTable = new CustomerTable();
 		 contentPane.add(pTable);
 		 pTable.setVisible(true);
+		 pTable.loadDate();
 		 
 		 setinit();
 	}
@@ -132,6 +133,9 @@ public class CustomerView extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "삭제댐");
 			pTable.loadDate();
 		}
+		
+		
+		
 	}
 	protected void actionPerformedBtnSearch(ActionEvent e) {
 		Customer res = dao.getInstance().selectCustomerByNo(pCustomer.getObject());
