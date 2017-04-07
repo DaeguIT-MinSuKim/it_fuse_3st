@@ -293,13 +293,9 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		sRes.setSaleprice(salePrice);
 		sRes.setOrigiprice(sellprice);
 		sRes.setDispcts(dispct);
-		System.out.println(sRes);
 		sdao.getInstance().insertSellInfo(sRes);
 		List<CalculatedValue> calculatedValue =
 				cvdao.getInstance().selectCalculatedValueByAll();
-		for (CalculatedValue c : calculatedValue) {
-			System.out.println(c);
-		}
 		JOptionPane.showMessageDialog(null, "저장되었습니다.");
 		pSellInfoA.clear();
 		clear();
