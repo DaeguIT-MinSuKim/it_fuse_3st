@@ -157,7 +157,7 @@ join product p on s.pcode = p.code;
 
 
 delete from sellinfo;
-
+select * from sellinfo;
 select * from vw_calculate_sellInfo;
 
 insert into sellinfo values ('S010','E001','P021','C001','2017-04-07',100,10000,1000,3,1); -- 수량, 단가, 원가, 할인률, 

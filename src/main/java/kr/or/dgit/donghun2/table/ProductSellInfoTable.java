@@ -65,7 +65,7 @@ public class ProductSellInfoTable extends JPanel {
 	}
 
 	protected String[] getColumn() {
-		return new String[]{"제품코드","제품명","판매정가","판매원가"};
+		return new String[]{"거래처코드","제품코드","판매수량","판매금액","할인금액","마진액","마진율"};
 	}
 	
 	protected String[][] getRowDate() {
