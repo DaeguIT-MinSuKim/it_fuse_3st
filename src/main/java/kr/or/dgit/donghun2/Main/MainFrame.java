@@ -5,35 +5,17 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
-import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import erp_myframework.ComboPanel;
-import erp_myframework.TextFiledPanel;
-import kr.or.dgit.donghun2.dto.Customer;
-import kr.or.dgit.donghun2.dto.Employee;
-import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.CustomerPanel;
-import kr.or.dgit.donghun2.panel.EmployeePanel;
 import kr.or.dgit.donghun2.panel.InquiryPanel;
-import kr.or.dgit.donghun2.panel.ProductPanel;
-import kr.or.dgit.donghun2.panel.SellInfoPanel;
-import kr.or.dgit.donghun2.service.CustomerService;
-import kr.or.dgit.donghun2.service.EmployeeService;
-import kr.or.dgit.donghun2.service.ProductService;
-import kr.or.dgit.donghun2.table.CustomerTable;
-import kr.or.dgit.donghun2.table.EmployeeTable;
-import kr.or.dgit.donghun2.table.ProductTable;
 
 public class MainFrame extends JFrame implements ActionListener {
 

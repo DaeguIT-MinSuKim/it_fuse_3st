@@ -38,6 +38,7 @@ public class SellInfoPanel extends JPanel {
 	boolean isexist;
 	private JButton btnOk;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 	private SellInfoService sdao;
 	private SellInfoTabbedPanel pSellp;
 	/**
@@ -91,9 +92,7 @@ public class SellInfoPanel extends JPanel {
 
 		JPanel empty = new JPanel();
 		basePanel.add(empty);
-	
 	}
-	
 	public void setpUnPrice(int pUnPrice) {
 		this.pUnPrice.setTfValue(String.valueOf(pUnPrice));
 	}
@@ -123,8 +122,11 @@ public class SellInfoPanel extends JPanel {
 		}
 		return new SellInfo(scode, saleDate, quantity);
 
+	}
+	public String getQuantity(){
+		String Squantity = pQuantity.getTfValue();
+		return Squantity;
 	}	
-
 	public TextFiledPanel getpOrigiPrice() {
 		return pOrigiPrice;
 	}

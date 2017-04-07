@@ -70,6 +70,7 @@ public class ProductPanel extends JPanel {
 		pName.setTfValue(item.getName());
 		pSalePrice.setTfValue(String.valueOf(item.getSalePrice()));
 		pOrigiPrice.setTfValue(String.valueOf(item.getOrigiPrice()));
+		
 	}
 	
 

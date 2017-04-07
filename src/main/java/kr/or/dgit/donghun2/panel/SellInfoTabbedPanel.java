@@ -1,32 +1,19 @@
 package kr.or.dgit.donghun2.panel;
 
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.util.regex.Pattern;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch;
 
 import erp_myframework.ComboPanel;
 import erp_myframework.TextFiledPanel;
@@ -41,10 +28,6 @@ import kr.or.dgit.donghun2.service.EmployeeService;
 import kr.or.dgit.donghun2.service.ProductService;
 import kr.or.dgit.donghun2.service.SellInfoService;
 
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 	private static final SellInfoTabbedPanel instance = new SellInfoTabbedPanel();
 
@@ -52,14 +35,8 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		return instance;
 	}
 
-	private TextFiledPanel pSaleDate;
-	private TextFiledPanel pQuantity;
-	private TextFiledPanel pUnPrice;
-	private TextFiledPanel pSellPrice;
-	private TextFiledPanel pDisPrice;
+	
 	private JButton btnOK;
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	private TextFiledPanel pScode;
 	private ComboPanel<Employee> pEmployeeForCombo;
 	private static EmployeeService edao;
 	private static CustomerService cdao;
@@ -70,6 +47,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 	private JButton btnSave;
 	private CalculatedValueService cvdao;
 	private SellInfoService sdao;
+	private TextFiledPanel pScode;
 
 	public SellInfoTabbedPanel() {
 		setBounds(100, 100, 500, 600);
@@ -79,29 +57,12 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		panel.setLayout(new GridLayout(0, 1, 0, 10));
 
 		pEmployeeForCombo = new ComboPanel<>();
-
-		pEmployeeForCombo.setTitle("사원");
-
-		GridBagLayout egridBagLayout = new GridBagLayout();
-		egridBagLayout.columnWidths = new int[] { 50, 100, 0 };
-		egridBagLayout.rowHeights = new int[] { 51, 0 };
-		egridBagLayout.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		egridBagLayout.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pEmployeeForCombo.setLayout(egridBagLayout);
-
-		GridBagConstraints egbc_lbl = new GridBagConstraints();
-		egbc_lbl.fill = GridBagConstraints.BOTH;
-		egbc_lbl.insets = new Insets(0, 0, 0, 5);
-		egbc_lbl.gridx = 0;
-		egbc_lbl.gridy = 0;
-		panel.add(pEmployeeForCombo, egbc_lbl);
-
-		GridBagConstraints egbc_combo = new GridBagConstraints();
-		egbc_combo.fill = GridBagConstraints.BOTH;
-		egbc_combo.gridx = 1;
-		egbc_combo.gridy = 0;
-		panel.add(pEmployeeForCombo, egbc_combo);
-
+		pEmployeeForCombo.setLayout(new GridLayout(0, 1, 0, 0));
+		pEmployeeForCombo.setTitle("     사        원       ");
+		pEmployeeForCombo.setLayout(new BoxLayout(pEmployeeForCombo, BoxLayout.X_AXIS));
+		panel.add(pEmployeeForCombo);
+		
+		
 		List<Employee> eList = edao.getInstance().selectEmployeeByAll();
 		Vector<Employee> eVector = new Vector<>();
 		eVector.add(new Employee());
@@ -111,28 +72,13 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		}
 		pEmployeeForCombo.setcomboData(eVector);
 
-		pProductForCombo = new ComboPanel();
+		pProductForCombo = new ComboPanel<>();
 
-		pProductForCombo.setTitle("제품");
-		GridBagLayout pgridBagLayout = new GridBagLayout();
-		pgridBagLayout.columnWidths = new int[] { 50, 100, 0 };
-		pgridBagLayout.rowHeights = new int[] { 51, 0 };
-		pgridBagLayout.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		pgridBagLayout.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pProductForCombo.setLayout(pgridBagLayout);
-
-		GridBagConstraints pgbc_lbl = new GridBagConstraints();
-		pgbc_lbl.fill = GridBagConstraints.BOTH;
-		pgbc_lbl.insets = new Insets(0, 0, 0, 5);
-		pgbc_lbl.gridx = 0;
-		pgbc_lbl.gridy = 0;
-		panel.add(pProductForCombo, pgbc_lbl);
-
-		GridBagConstraints pgbc_combo = new GridBagConstraints();
-		pgbc_combo.fill = GridBagConstraints.BOTH;
-		pgbc_combo.gridx = 1;
-		pgbc_combo.gridy = 0;
-		panel.add(pProductForCombo, pgbc_combo);
+		pProductForCombo.setTitle("     제        품       ");
+		pProductForCombo.setLayout(new BoxLayout(pProductForCombo, BoxLayout.X_AXIS));
+		panel.add(pProductForCombo);
+		
+		
 
 		List<Product> pList = pdao.getInstance().selectProductByAll();
 		Vector<Product> pVector = new Vector<>();
@@ -142,26 +88,13 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		}
 		pProductForCombo.setcomboData(pVector);
 
-		pCustomerForCombo = new ComboPanel();
+		pCustomerForCombo = new ComboPanel<>();
 
-		pCustomerForCombo.setTitle("거래처");
-
-		GridBagLayout cgridBagLayout = new GridBagLayout();
-		cgridBagLayout.columnWidths = new int[] { 50, 100, 0 };
-		cgridBagLayout.rowHeights = new int[] { 51, 0 };
-		cgridBagLayout.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
-		cgridBagLayout.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
-		pCustomerForCombo.setLayout(cgridBagLayout);
-
-		GridBagConstraints cgbc_lbl = new GridBagConstraints();
-		cgbc_lbl.fill = GridBagConstraints.BOTH;
-		cgbc_lbl.insets = new Insets(0, 0, 0, 5);
-		cgbc_lbl.gridx = 0;
-		cgbc_lbl.gridy = 0;
-		panel.add(pCustomerForCombo, cgbc_lbl);
-
-		GridBagConstraints cgbc_combo = new GridBagConstraints();
-		panel.add(pCustomerForCombo, cgbc_combo);
+		pCustomerForCombo.setTitle("     거  래  처       ");
+		pCustomerForCombo.setLayout(new BoxLayout(pCustomerForCombo, BoxLayout.X_AXIS));
+		panel.add(pCustomerForCombo);
+		
+		
 
 		List<Customer> cList = cdao.getInstance().selectCustomerByAll();
 		Vector<Customer> cVector = new Vector<>();
@@ -186,7 +119,6 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 
 		pSellInfoA.clear();
 		setinit();
-
 	} // constructor ends
 
 	private void setinit() {
