@@ -2,8 +2,8 @@
 <mapper namespace="kr.or.dgit.donghun2.dao.ProductMapper">
 	
 	<resultMap type="Product" id="ProductResult">
-		<id property="code" column="code"/>
-		<result property="name" column="name"/>
+		<id property="code" column="pcode"/>
+		<result property="name" column="pname"/>
 		<result property="saleprice" column="saleprice"/>
 		<result property="origiprice" column="origiprice"/>
 		<result property="isexist" column="isexist"/>

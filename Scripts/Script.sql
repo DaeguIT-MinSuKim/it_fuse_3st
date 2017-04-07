@@ -114,7 +114,7 @@ values('S003','P001','E002','C002',20000,6000,150,now(),1),
 /*delete from sellinfo where scode = 'S001';*/
 
 create view vw_InfoByCustomer as
-select s.ccode,saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
+select s.ccode ccode,saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join product p on s.pcode = p.code
 order by saledate desc;
 
@@ -125,7 +125,7 @@ where ccode='C001';
 -- drop view vw_InfoByCustomer;
 
 create view vw_InfoByProduct as
-select s.pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct
+select s.pcode pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
 group by ccode
 order by ccode asc ;

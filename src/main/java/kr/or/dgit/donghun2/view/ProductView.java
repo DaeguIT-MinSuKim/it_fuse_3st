@@ -126,23 +126,6 @@ public class ProductView extends JFrame implements ActionListener {
 				}
 			}
 		}
-
-		if (Integer.parseInt(pProduct.getpSalePrice().getTfValue().toString()) <
-				Integer.parseInt(pProduct.getpOrigiPrice().getTfValue().toString())) {
-			JOptionPane.showMessageDialog(null, "정가보다 원가가 클 수 없음");
-			return;
-		}
-		String msg = "추가됨";
-		Product item = pProduct.getObject();
-
-		if (dao.getInstance().selectProductByNo(item) != null) {
-
-			msg = "데이터가 이미 존재하므로 덮어씀";
-		}
-		dao.getInstance().insertProduct(item);
-		JOptionPane.showMessageDialog(null, msg);
-		pProduct.clear();
-		pTable.loadData();
 	}
 
 	private void setinit() {

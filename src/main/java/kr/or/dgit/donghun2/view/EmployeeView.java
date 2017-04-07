@@ -132,8 +132,10 @@ public class EmployeeView extends JFrame implements ActionListener {
 				if (ok == true) {
 					dao.getInstance().insertEmployee(pEmployee.getObject());
 					JOptionPane.showMessageDialog(null, "저장되었습니다");
+					pTable.loadDate();
 				} else {
 					JOptionPane.showMessageDialog(null, "코드 입력 형식은 E000입니다.");
+					
 				}
 			}
 		}
@@ -142,7 +144,7 @@ public class EmployeeView extends JFrame implements ActionListener {
 
 	protected void actionPerformedBtnDele(ActionEvent e) {
 
-		int res = dao.deleteEmployee(pEmployee.getObject());
+		int res = dao.getInstance().deleteEmployee(pEmployee.getObject());
 
 		if (res == 0) {
 			JOptionPane.showMessageDialog(null, "삭제실패");

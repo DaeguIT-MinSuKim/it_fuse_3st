@@ -116,6 +116,10 @@ public class SellInfoPanelA extends JPanel {
 		return new SellInfo(scode, saleDate, quantity);
 
 	}
+	public String getQuantity(){
+		String Squantity = pQuantity.getTfValue();
+		return Squantity;
+	}
 
 	
 

@@ -72,6 +72,7 @@ public class ProductSellInfoTable extends JPanel {
 		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByProduct();
 		String[][] datas = new String[calculatedValues.size()][];
 		for(int i = 0; i < datas.length; i++){
+			System.out.println(calculatedValues.get(i));
 			datas[i] = calculatedValues.get(i).toArrayforProductSellInfoT();
 		}
 		return datas;
