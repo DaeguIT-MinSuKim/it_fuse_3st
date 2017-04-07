@@ -58,6 +58,8 @@ public class Customer {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	
+	
 
 	@Override
 	public String toString() {

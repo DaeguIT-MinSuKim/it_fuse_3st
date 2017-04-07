@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
--- 영업사원 등급 할인율 추출
-select dispct from egrade eg join employee e on eg.grade = e.grade where code = 'E001'; 
-
-
->>>>>>> refs/remotes/origin/jinuk
 -- 거래처 영업관리 프로그램
 DROP database IF EXISTS donghun2;
 create database donghun2;
@@ -87,29 +80,16 @@ CREATE TABLE  sellInfo (		-- 거래내역 테이블
 -- 판매단가unitPrice,판매금액sellprice,할인금액disprice,마진액marginprice,마진율marginpct 계산된 뷰 테이블
 drop view if exists vw_calculate_sellInfo;
 create view vw_calculate_sellInfo as
-<<<<<<< HEAD
-select s.scode,
- (saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitprice,
-=======
 select s.scode,e.code ecode, p.code pcode, c.code ccode,
  (s.saleprice) * (1-(eg.dispct+cg.dispct)*0.01) as unitPrice,
->>>>>>> refs/remotes/origin/jinuk
 -- 판매정가  * (1-(사원등급할인율+거래처등급할인율)*0.01) = 판매단가
-<<<<<<< HEAD
- (saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellprice,
-=======
  (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)) * (quantity) as sellPrice,
->>>>>>> refs/remotes/origin/jinuk
 -- 판매단가*판매수량  = 판매금액
  (s.saleprice) * (quantity) - (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) as disprice,
 -- 판매정가*판매수량-판매금액  = 할인금액
  (s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity) - s.origiprice * quantity as marginprice,
 -- 판매금액-(판매원가*판매수량) = 마진액
-<<<<<<< HEAD
- ROUND(((saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-origiprice*quantity) / ((saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginpct
-=======
  ROUND(((s.saleprice*(1-(eg.dispct+cg.dispct)*0.01)*quantity)-s.origiprice*quantity) / ((s.saleprice*(1-(eg.dispct+cg.dispct)*0.01))*(quantity))*100, 1) as marginPct
->>>>>>> refs/remotes/origin/jinuk
 -- 마진액/판매금액*100 = 마진율 // 소수 둘째자리에서 반올림해서 첫째자리까지 표시
 from sellinfo s 
 join employee e on s.ecode= e.code 
@@ -167,8 +147,13 @@ select ecode, ename, sellprice, marginprice, marginpct
 from vw_InfoByEmployee
 where ecode = 'E001';
 
+select e.code , e.name , sellprice, marginprice, marginpct
+	from vw_InfoByEmployee vw
+	join employee e 
+	on vw.ecode = e.code
+	order by e.code asc;
+
 -- drop view vw_InfoByEmployee;
 
 select * from sellinfo;
-
-
+select * from customer;

@@ -223,6 +223,8 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 		      panel_4.add(btnSave);
 		      
 		      pSellInfoA.clear();
+		      
+		      setinit();
 
 		   }    // constructor ends
 
@@ -230,12 +232,12 @@ public class SellInfoViewA extends JFrame implements ActionListener {
 
 		List<SellInfo> sellInfos = sdao.getInstance().selectSellInfoByAll();
 
-		sellInfos.get(sellInfos.size() - 1).getScode();
-
+		String asdf = sellInfos.get(sellInfos.size() - 1).getScode();
+		System.out.println(asdf);
 		String value = String.format(setNoFormat(),
 
-				Integer.parseInt(sellInfos.get(sellInfos.size() - 1).getScode().substring(1)) + 1);
-
+				Integer.parseInt(asdf.substring(1)) + 1);
+		System.out.println(value);
 		pSellInfoA.getpScode().setTfValue(value);
 
 		pSellInfoA.getpScode().gettF().setFocusable(false);

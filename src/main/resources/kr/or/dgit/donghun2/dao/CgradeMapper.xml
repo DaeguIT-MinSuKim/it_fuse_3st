@@ -8,7 +8,7 @@
 	</resultMap>
 	
 	<select id="selectDiscntByGrade" resultMap="CgradeResult">
-		select grade, dispct from cgrade
+		select grade, dispct,isexist from cgrade
 	</select>
 
 </mapper>

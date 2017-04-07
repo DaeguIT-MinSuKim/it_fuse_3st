@@ -18,7 +18,7 @@
 
 	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code, name, grade, isexist) values(#{code},#{name},#{grade},true) </insert>
 	
-	<select id="selectEmployeeByAll" resultType="Employee"> select code, name, grade from Employee </select>
+	<select id="selectEmployeeByAll" resultType="Employee"> select code, name, grade,isexist from Employee </select>
 	
 	
 	<update parameterType="Employee" id="updateEmployee">
@@ -40,7 +40,7 @@
 	set isexist = false
 	where code=#{code} </update>
 	
-	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade from Employee where code=#{code} </select>
+	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade,isexist from Employee where code=#{code} </select>
 
 </mapper>
 

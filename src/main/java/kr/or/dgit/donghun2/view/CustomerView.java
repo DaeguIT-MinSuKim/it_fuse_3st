@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -83,6 +84,8 @@ public class CustomerView extends JFrame implements ActionListener {
 		pTable = new CustomerTable();
 		 contentPane.add(pTable);
 		 pTable.setVisible(true);
+		 
+		 setinit();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -96,7 +99,20 @@ public class CustomerView extends JFrame implements ActionListener {
 			actionPerformedBtnSave(e);
 		}
 	}
+	protected void setinit(){
+		List<Customer> customer = dao.getInstance().selectCustomerByAll();
+		String asdf = customer.get(customer.size()-1).getCode();
+		String value = String.format(setNoformat(), Integer.parseInt(asdf.substring(1))+1);
+		
+		pCustomer.getpCode().setTfValue(value);
+		pCustomer.getpCode().gettF().setFocusable(true);
+		
+	}
 	
+	private String setNoformat() {
+		return	"C%03d";
+	}
+
 	protected void actionPerformedBtnSave(ActionEvent e) {
 		if(pCustomer.isEmpty()){
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
