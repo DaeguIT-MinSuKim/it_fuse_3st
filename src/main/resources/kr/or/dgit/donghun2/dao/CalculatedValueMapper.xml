@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="vw_InfoByEmployeeByCode" resultMap="CalculatedValueResult">
-	select ecode, ename, sellprice, marginprice, marginpct
+	select ecode, ename, saledate,sellprice, marginprice, marginpct
 		from vw_InfoByEmployee
 		where ecode = #{ecode}
 	</select>
@@ -63,7 +63,7 @@
 
 	
 	<select id="vw_InfoByEmployee" resultMap="CalculatedValueResult">
-	select e.code ecode, e.name ename, sellprice, marginprice, marginpct
+	select e.code ecode, e.name ename, saledate,sellprice, marginprice, marginpct
 	from vw_calculate_sellInfo vw 
 	join sellinfo s 
 	on vw.scode= s.scode 

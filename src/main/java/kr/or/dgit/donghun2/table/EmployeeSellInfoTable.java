@@ -47,7 +47,7 @@ public class EmployeeSellInfoTable extends JPanel {
 	}
 	
 	protected String[] getColumn() {
-		return new String[]{"사원코드","사원명","판매금액","마진액","마진율"};
+		return new String[]{"사원코드","사원명","거래일자","판매금액","마진액","마진율"};
 	}
 	
 	public void loadDateByCode(Employee eRes) {
@@ -58,8 +58,8 @@ public class EmployeeSellInfoTable extends JPanel {
 	
 	
 	private void cellAlign() {
-		tableCellAlignment(SwingConstants.CENTER, 0, 1);
-		tableCellAlignment(SwingConstants.RIGHT, 2, 3, 4);
+		tableCellAlignment(SwingConstants.CENTER, 0, 1,2);
+		tableCellAlignment(SwingConstants.RIGHT, 3, 4, 5);
 	}
 
 	private void tableCellAlignment(int align, int... idx) {
@@ -73,7 +73,7 @@ public class EmployeeSellInfoTable extends JPanel {
 	}
 
 	private void cellWidth() {
-		tableSetWidth(100, 120, 120, 120, 120);
+		tableSetWidth(100, 120, 120, 120, 120,120);
 	}
 
 	private void tableSetWidth(int... width) {

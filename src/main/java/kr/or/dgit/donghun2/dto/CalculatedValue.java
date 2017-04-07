@@ -64,14 +64,6 @@ public class CalculatedValue {
 		this.scode = scode;
 	}
 
-	
-
-	
-	
-
-
-
-
 
 	public Employee getEmployee() {
 		return employee;
@@ -260,9 +252,11 @@ public class CalculatedValue {
 	}
 	
 	public String[] toArrayforEmployeeSellInfoT(){
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 		return new String[] 
-				{			employee.getCode(),
+				{employee.getCode(),
 							employee.getName(),
+							df.format(sellinfo.getSaleDate()),
 				 String.format("%,d",sellprice),
 				 String.format("%,d",marginprice),
 				 String.format("%,d",marginpct)};
@@ -271,9 +265,11 @@ public class CalculatedValue {
 
 
 	public String[] toArrayforEmployeeSellInfoByCodeT() {
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 		return new String[] 
 				{			employee.getCode(),
 							employee.getName(),
+							df.format(sellinfo.getSaleDate()),
 					//	"","",
 				 String.format("%,d",sellprice),
 				 String.format("%,d",marginprice),

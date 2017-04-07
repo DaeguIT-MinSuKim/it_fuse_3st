@@ -42,7 +42,7 @@ public class ProductSellInfoTable extends JPanel {
 	
 	private void cellAlign() {
 		tableCellAlignment(SwingConstants.CENTER, 0,1);
-		tableCellAlignment(SwingConstants.RIGHT, 2,3);
+		tableCellAlignment(SwingConstants.RIGHT, 2,3,4,5,6);
 	}
 	private void tableCellAlignment(int align, int... idx) {
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
@@ -54,7 +54,7 @@ public class ProductSellInfoTable extends JPanel {
 		}
 	}
 	private void cellWidth() {
-		tableSetWidth(100,120,120,120);
+		tableSetWidth(100,120,120,120,120,120,120);
 	}
 	private void tableSetWidth(int... width) {
 		TableColumnModel tcm = table.getColumnModel();
@@ -65,7 +65,7 @@ public class ProductSellInfoTable extends JPanel {
 	}
 
 	protected String[] getColumn() {
-		return new String[]{"제품코드","제품명","판매정가","판매원가"};
+		return new String[]{"거래처코드","거래처명","판매수량","판매금액","할인금액","마진액","마진율"};
 	}
 	
 	protected String[][] getRowDate() {
