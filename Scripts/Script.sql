@@ -156,11 +156,11 @@ join cgrade cg on cg.grade=c.grade
 join product p on s.pcode = p.code;
 
 
- -- delete from sellinfo;
+-- delete from sellinfo;
 select * from sellinfo;
 select * from vw_calculate_sellInfo;
 
-insert into sellinfo values ('S010','E001','P021','C001','2017-04-07',100,10000,1000,3,1); -- 수량, 단가, 원가, 할인률, 
+-- insert into sellinfo values ('S010','E001','P021','C001','2017-04-07',100,10000,1000,3,1); -- 수량, 단가, 원가, 할인률, 
 
 create view vw_InfoByCustomer as
 select s.ccode ccode,saledate, p.code pcode, p.name pname, quantity, sellprice, disprice, marginprice, marginpct
@@ -176,14 +176,16 @@ where ccode='C001';
 create view vw_InfoByProduct as
 select s.pcode pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
-group by ccode
-order by ccode asc ;
+group by pcode
+order by pcode asc ;
 
 select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 from vw_infobyproduct 
 where pcode='P001';
-/*select  ccode,cname,sum(quantity),sum(sellprice),sum(disprice),sum(marginprice),avg(marginpct)
-from vw_InfoByProduct where pcode='P001';  ??*/
+
+select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_infobyproduct 
+		where pcode='P005';
 
 -- drop view vw_InfoByEmployee;
 create view vw_InfoByEmployee as
