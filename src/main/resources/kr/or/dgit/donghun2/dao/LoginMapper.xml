@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.donghun2.dao.LoginMapper">
+	
+	<resultMap type="Login" id="LoginResult">
+		<id property="id" column="id"/>
+		<result property="password" column="password"/>
+		<result property="passwordRe" column="passwordRe"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	
+	<insert id="insertLogin" parameterType="Login">
+		insert into login(id,password,email) values(#{id},password(#{password}),#{email})
+	</insert>
+	
+	<select id="selectLoginById" resultType="Login" parameterType="Login">
+		select id, password from login 
+			where id=#{id} AND password=password(#{password});
+	</select>
+	
+	<select id="selectLoginByPw" resultType="Login">
+		select password from login where = id
+	</select>
+
+</mapper>

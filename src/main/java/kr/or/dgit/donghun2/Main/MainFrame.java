@@ -21,21 +21,12 @@ import kr.or.dgit.donghun2.panel.SellInfoTabbedPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
 
-	private JPanel contentPane;
-	
-
-	
+	private JPanel contentPane;	
 	private JPanel pBtn;
-	
 	private JButton btn1;
 	private JButton btn2;
 	private JTabbedPane tabbedPane;
-	
-	
 	private JPanel pTabbedPane;
-
-
-
 	private JButton btn3;
 
 	public static void main(String[] args) {
@@ -93,6 +84,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		btn2.addActionListener(this);
 		pBtn.add(btn3);
 		btn3.addActionListener(this);
+		
+		setVisible(true);
 		
 	}
 
