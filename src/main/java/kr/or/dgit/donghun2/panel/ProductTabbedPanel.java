@@ -63,7 +63,10 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 
 	private void actionPerformedPbtnSearch(ActionEvent e) {
 		  Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
-	      if (res == null) {
+	      if(res.isIsexist()==false){
+	    	  JOptionPane.showMessageDialog(null, "삭제된 제품입니다.");
+	    	  pProp.clear();
+	      }else if (res == null) {
 	         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 	      } else {
 	         JOptionPane.showMessageDialog(null, res);
@@ -75,15 +78,26 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 
 
 	private void actionPerformedPBtnDele(ActionEvent e) {
-		int res = pdao.getInstance().deleteProduct(pProp.getObject());
-	      if (res == 0) {
-	         JOptionPane.showMessageDialog(null, "삭제안댐");
-	      } else {
-	    	  if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_NO_OPTION){
-	         pProt.loadData();
-	         pProp.clear();
+		Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
+		if(res.isIsexist()==false){
+			JOptionPane.showMessageDialog(null, "이미 삭제된 제품입니다.");
+			return;
+		}else{ 
+			if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_OPTION){
+				int pRes = pdao.getInstance().deleteProduct(pProp.getObject());
+			      if (pRes == 0) {
+			         JOptionPane.showMessageDialog(null, "삭제불가");
+			      } else {
+			    	  JOptionPane.showMessageDialog(null, "삭제완료");
+			    	  pProt.loadData();
+				      pProp.clear();
+			      }
+	        
 	    	  }
-	      }
+			
+		}
+		
+		
 	}
 
 	

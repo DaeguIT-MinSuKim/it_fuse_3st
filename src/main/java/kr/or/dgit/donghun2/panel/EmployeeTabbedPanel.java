@@ -66,10 +66,8 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
-		Employee eRes = new Employee();
 		if (res.isIsexist()==false) {
 			JOptionPane.showMessageDialog(null,"퇴사한회원입니다");
-			System.out.println(eRes.isIsexist());
 			pEmpp.clear();
 		} else if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
@@ -84,16 +82,13 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
 		if (res.isIsexist() == false) {
 			JOptionPane.showMessageDialog(null, "이미 퇴사한 사원입니다.");
-			System.out.println("@@@@@@@@@@@@@@@@@@");
 			return;
 		} else {
-			System.out.println("@@@$$$$$$$$$$$$$$$$$@@@");
 			if (JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?") == JOptionPane.YES_OPTION) {
 				
 				int eRes = edao.getInstance().deleteEmployee(pEmpp.getObject());
 				if (eRes == 0) {
-					JOptionPane.showMessageDialog(null, "삭제안댐 ");
-					System.out.println("@@@#############@@@");
+					JOptionPane.showMessageDialog(null, "삭제불가 ");
 				}else{
 					JOptionPane.showMessageDialog(null, "삭제완료");
 					pEmpt.loadDate();

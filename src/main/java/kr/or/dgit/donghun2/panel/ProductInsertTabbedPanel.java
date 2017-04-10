@@ -47,7 +47,7 @@ public class ProductInsertTabbedPanel extends JPanel implements ActionListener{
 		String lastNum = product.get(product.size()-1).getCode();
 		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
 		pProp.getpCode().setTfValue(value);
-		pProp.getpCode().setFocusable(true);
+		pProp.getpCode().gettF().setEditable(false);
 	}
 
 	private String setFormat() {
