@@ -1,7 +1,9 @@
 package kr.or.dgit.donghun2.table;
 
 import java.awt.BorderLayout;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -73,6 +75,22 @@ public class ProductSellInfoTable extends JPanel {
 		String[][] datas = new String[calculatedValues.size()][];
 		for(int i = 0; i < datas.length; i++){
 			System.out.println(calculatedValues.get(i));
+			datas[i] = calculatedValues.get(i).toArrayforProductSellInfoT();
+		}
+		return datas;
+	}
+	public void loadDateByCode(Product pRes) {
+		table.setModel(new DefaultTableModel(getRowDate(pRes),getColumn()));
+	}
+	private Object[][] getRowDate(Product pRes) {
+		Map<String, String> item = new HashMap<>();
+		item.put("pcode", pRes.getCode());
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByProductByCode(item);
+		for(CalculatedValue cv : calculatedValues){
+			System.out.println(cv);
+		}
+		String[][] datas = new String[calculatedValues.size()][];
+		for(int i = 0; i < datas.length; i++){
 			datas[i] = calculatedValues.get(i).toArrayforProductSellInfoT();
 		}
 		return datas;

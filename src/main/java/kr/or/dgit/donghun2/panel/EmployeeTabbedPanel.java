@@ -104,6 +104,8 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 			edao.getInstance().insertEmployee(pEmpp.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다.");
 			pEmpt.loadDate();
+			pEmpp.clear();
+			setInit();
 		}
 	}
 

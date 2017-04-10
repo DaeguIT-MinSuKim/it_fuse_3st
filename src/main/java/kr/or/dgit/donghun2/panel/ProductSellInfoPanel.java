@@ -99,12 +99,11 @@ public class ProductSellInfoPanel extends JPanel {
 						Map<String, String> item = new HashMap<>();
 						item.put("pcode", pRes.getCode());
 						List<CalculatedValue> calculatedValues = cvdao.getInstance().vw_InfoByProductByCode(item);
-						for(CalculatedValue cv : calculatedValues){
-							System.out.println(cv);
+						if (pRes.getCode() == null) {
+							table.loadData();
+						} else {
+							table.loadDateByCode(pRes);
 						}
-					//	table.loadDateByCode(pRes);
-						
-						
 					}
 				}
 				
