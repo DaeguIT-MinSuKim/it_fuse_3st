@@ -122,6 +122,7 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 		JOptionPane.showMessageDialog(null, msg);
 		pProp.clear();
 		pProt.loadData();
+		setInit();
 	}
 	public JButton getPbtnSave(){
 		return PbtnSave;

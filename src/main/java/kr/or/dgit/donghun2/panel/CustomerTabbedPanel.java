@@ -106,6 +106,8 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	         cdao.getInstance().insertCustomer(pCusp.getObject());
 	         JOptionPane.showMessageDialog(null, "저장되었습니다.");
 	         pCust.loadDate();
+	         pCusp.clear();
+	         setInit();
 	      }
 	}
 
