@@ -59,19 +59,21 @@ public class JoinPanel extends JPanel{
 		String ID = pID.getTfValue();
 		String password = pPassword.getTfValue();
 		String passwordre = pPasswordRe.getTfValue();
-		return new Login(ID, password, passwordre);
+		String email = pEmail.getTfValue();
+		return new Login(ID, password, passwordre, email);
 	}
 	
 	public void setObject(Login item){
 		pID.setTfValue(item.getId());
 		pPassword.setTfValue(item.getPassword());
-		pPasswordRe.setTfValue(item.getPasswordRe());
+		pEmail.setTfValue(item.getEmail());
 	}
 	
 	public void clear(){
 		pID.setTfValue("");
 		pPassword.setTfValue("");
 		pPasswordRe.setTfValue("");
+		pEmail.setTfValue("");
 	}
 	public boolean isEmpty(){
 		boolean result = false;

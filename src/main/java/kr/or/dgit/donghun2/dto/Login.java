@@ -3,19 +3,75 @@ package kr.or.dgit.donghun2.dto;
 public class Login {
 	private String id;
 	private String password;
+	private String email;
+	private String grade;
 	private String passwordRe;
 	
-	public Login() {}
-
-	public Login(String id, String password, String passwordRe) {
+	
+	public Login(String id, String password, String email, String grade, String passwordRe) {
 		this.id = id;
 		this.password = password;
+		this.email = email;
+		this.grade = grade;
+		this.passwordRe = passwordRe;
+	}
+	
+	
+
+	public Login(String id, String password, String email, String passwordRe) {
+		this.id = id;
+		this.password = password;
+		this.email = email;
 		this.passwordRe = passwordRe;
 	}
 
-	public Login(String id, String password) {
+
+
+	public Login() {}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getPasswordRe() {
+		return passwordRe;
+	}
+
+	public void setPasswordRe(String passwordRe) {
+		this.passwordRe = passwordRe;
+	}
+
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Login [id=%s, password=%s, email=%s, grade=%s]", id, password, email, grade);
 	}
 
 	@Override
@@ -24,7 +80,6 @@ public class Login {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((passwordRe == null) ? 0 : passwordRe.hashCode());
 		return result;
 	}
 
@@ -47,43 +102,11 @@ public class Login {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (passwordRe == null) {
-			if (other.passwordRe != null)
-				return false;
-		} else if (!passwordRe.equals(other.passwordRe))
-			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return String.format("Login [id=%s, password=%s, passwordRe=%s]", id, password, passwordRe);
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPasswordRe() {
-		return passwordRe;
-	}
-
-	public void setPasswordRe(String passwordRe) {
-		this.passwordRe = passwordRe;
-	}
 	
+	
+
 	
 	
 }

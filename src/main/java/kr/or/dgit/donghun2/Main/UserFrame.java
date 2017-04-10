@@ -15,19 +15,19 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
-import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.InquiryPanel;
+import kr.or.dgit.donghun2.panel.UnitBasicTabbedPanel;
+import kr.or.dgit.donghun2.panel.UnitInquiryPanel;
 
-@SuppressWarnings("serial")
-public class MainFrame extends JFrame implements ActionListener {
+public class UserFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JPanel pTabbedPane;
+	private JTabbedPane tabbedPane;
 	private JPanel pBtn;
 	private JButton btn1;
 	private JButton btn2;
-	private JTabbedPane tabbedPane;
-	private JPanel pTabbedPane;
 	private JButton btn3;
+
 	
 	public static void main(String[] args) {
 		try {
@@ -35,12 +35,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		} catch (Exception e) {
 		}
-		MainFrame mf = new MainFrame();
-
+		UserFrame uf = new UserFrame();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame frame = new MainFrame();
+					UserFrame frame = new UserFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +48,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		});
 	}
 
-	public MainFrame() {
+	public UserFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 700);
 		contentPane = new JPanel();
@@ -77,42 +76,42 @@ public class MainFrame extends JFrame implements ActionListener {
 		btn2.addActionListener(this);
 		pBtn.add(btn3);
 		btn3.addActionListener(this);
-		
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btn3){
-			actionPerformedbtn2(e);
+			actionPerformedbtn3(e);
 		}
 		if(e.getSource()== btn1){
 			actionPerformedbtn1(e);
 		}
 		if(e.getSource() == btn2){
-			actionPerformedbtn3(e);
+			actionPerformedbtn2(e);
 		}
-	}
-
-	private void actionPerformedbtn3(ActionEvent e) {
-		pTabbedPane.removeAll();
-		pTabbedPane.add(new AdvancedTabbedPanel());
-		revalidate();
-		repaint();
-		
-	}
-
-	private void actionPerformedbtn1(ActionEvent e) {
-		pTabbedPane.removeAll();
-		pTabbedPane.add(new BasicTabbedPanel());
-		revalidate();
-		repaint();
-		
 	}
 
 	private void actionPerformedbtn2(ActionEvent e) {
 		pTabbedPane.removeAll();
-		pTabbedPane.add(new InquiryPanel());
+		pTabbedPane.add(new AdvancedTabbedPanel());
 		revalidate();
 		repaint();
 	}
 
+	private void actionPerformedbtn1(ActionEvent e) {
+		pTabbedPane.removeAll();
+		pTabbedPane.add(new UnitBasicTabbedPanel());
+		revalidate();
+		repaint();
+	}
+
+	private void actionPerformedbtn3(ActionEvent e) {
+		pTabbedPane.removeAll();
+		pTabbedPane.add(new UnitInquiryPanel());
+		revalidate();
+		repaint();
+	}
+	
+
+	
 }
