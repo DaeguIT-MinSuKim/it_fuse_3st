@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.Main;
+package kr.or.dgit.donghun2.panel;
 
 import javax.swing.JPanel;
 
@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
-public class Login extends JPanel {
+public class LoginPanel extends JPanel {
 
 	
 	private TextFiledPanel pID;
@@ -20,7 +20,7 @@ public class Login extends JPanel {
 	private JButton bLogin;
 	private JButton bSearch;
 
-	public Login() {
+	public LoginPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panel = new JPanel();
