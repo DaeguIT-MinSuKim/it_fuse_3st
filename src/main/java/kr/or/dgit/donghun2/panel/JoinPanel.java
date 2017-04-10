@@ -1,58 +1,88 @@
 package kr.or.dgit.donghun2.panel;
 
-import javax.swing.JPanel;
-
-import erp_myframework.TextFiledPanel;
-
+import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public class JoinPanel extends JPanel implements ActionListener{
+import erp_myframework.TextFiledPanel;
+import kr.or.dgit.donghun2.dto.Login;
+
+public class JoinPanel extends JPanel{
 
 	
 	private JPanel pJoin;
 	private TextFiledPanel pID;
 	private TextFiledPanel pPassword;
 	private TextFiledPanel pPasswordRe;
-	private JPanel pBtn;
-	private JButton bJoin;
-	private JButton bBack;
+	
 
 	public JoinPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		pJoin = new JPanel();
 		add(pJoin);
-		pJoin.setLayout(new BoxLayout(pJoin, BoxLayout.Y_AXIS));
+		pJoin.setLayout(new GridLayout(0, 1,0,10));
 		
 		pID = new TextFiledPanel();
+		pID.setTitle("아이디");
 		pJoin.add(pID);
 		
 		pPassword = new TextFiledPanel();
+		pPassword.setTitle("비밀번호");
 		pJoin.add(pPassword);
 		
 		pPasswordRe = new TextFiledPanel();
+		pPasswordRe.setTitle("비밀번호확인");
 		pJoin.add(pPasswordRe);
-		
-		pBtn = new JPanel();
-		pJoin.add(pBtn);
-		
-		bJoin = new JButton("가입하기");
-		pBtn.add(bJoin);
-		
-		bBack = new JButton("뒤로가기");
-		pBtn.add(bBack);
-
+	}
+	
+	
+	public TextFiledPanel getpID() {
+		return pID;
+	}
+	public TextFiledPanel getpPassword() {
+		return pPassword;
+	}
+	public TextFiledPanel getpPasswordRe() {
+		return pPasswordRe;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+
+	public Login getObject(){
+		String ID = pID.getTfValue();
+		String password = pPassword.getTfValue();
+		String passwordre = pPasswordRe.getTfValue();
+		return new Login(ID, password, passwordre);
 	}
+	
+	public void setObject(Login item){
+		pID.setTfValue(item.getId());
+		pPassword.setTfValue(item.getPassword());
+		pPasswordRe.setTfValue(item.getPasswordRe());
+	}
+	
+	public void clear(){
+		pID.setTfValue("");
+		pPassword.setTfValue("");
+		pPasswordRe.setTfValue("");
+	}
+	public boolean isEmpty(){
+		boolean result = false;
+		for(Component c : getComponents()){
+			if(c instanceof TextFiledPanel){
+				TextFiledPanel tfp =(TextFiledPanel)c;
+				if(tfp.isEmpty()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+
 	
 	
 

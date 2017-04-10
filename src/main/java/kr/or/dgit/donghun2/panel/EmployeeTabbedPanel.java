@@ -54,6 +54,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == EbtnSearch) {
 			actionPerformedEbtnSearch(e);
+			System.out.println("######");
 		}
 	}
 
@@ -67,7 +68,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
 		if (res == null) {
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		} else {
+		} else if(res!=null){
 			JOptionPane.showMessageDialog(null, res);
 			pEmpp.setObject(res);
 			pEmpp.clear();

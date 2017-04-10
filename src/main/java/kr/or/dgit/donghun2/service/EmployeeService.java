@@ -66,6 +66,8 @@ public class EmployeeService {
 			return employee;
 		}
 	}
+	
+	
 	public Employee selectDiscnt(Employee code){
 		log.debug("selectDiscnt()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
@@ -73,6 +75,7 @@ public class EmployeeService {
 			return employee;
 		}
 	}
+	
 	
 
 

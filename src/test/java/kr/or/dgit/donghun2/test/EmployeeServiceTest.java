@@ -41,13 +41,13 @@ public class EmployeeServiceTest {
 			System.out.println(c);
 		}
 		Assert.assertNotNull(employees);
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void bTestInsertEmployee() {
 		Employee item = new Employee();
-		item.setCode("E001");
-		item.setName("신진욱");
+		item.setCode("E101");
+		item.setName("멕크리");
 		item.setGrade("B");
 		int res = employeeService.insertEmployee(item);
 		Assert.assertEquals(1,res);
@@ -71,9 +71,9 @@ public class EmployeeServiceTest {
 		Employee employee = employeeService.selectEmployeeByNo(item);
 		
 		Assert.assertNotNull(employee);
-	}	
+	}*/	
 	
-	@Test
+	/*@Test
 	public void eTestDeleteEmployee() {
 		Employee	item = new Employee();
 		item.setCode("E001");
@@ -86,6 +86,7 @@ public class EmployeeServiceTest {
 		Employee	item = new Employee();
 		item.setCode("E001");
 		int res = employeeService.selectDiscnt(item);
-	}
-*/
+	}*/
+
+	
 }

@@ -41,6 +41,5 @@
 	where code=#{code} </update>
 	
 	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> select code, name, grade,isexist from Employee where code=#{code} </select>
-
 </mapper>
 

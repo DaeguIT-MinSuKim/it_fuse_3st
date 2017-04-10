@@ -208,3 +208,10 @@ select e.code , e.name , sellprice, marginprice, marginpct
 select * from sellinfo;
 select * from vw_calculate_sellinfo;
 select * from customer;
+
+
+select * from login where id='A001' and password ='1234';
+
+
+
+

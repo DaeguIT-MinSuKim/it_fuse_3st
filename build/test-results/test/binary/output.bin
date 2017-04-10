@@ -1,0 +1,2 @@
+UDEBUG [Test worker] - ==>  Preparing: insert into login(id, password) values(?,?); 
+MDEBUG [Test worker] - ==> Parameters: ehdgnsdms321(String), 1234567(String)

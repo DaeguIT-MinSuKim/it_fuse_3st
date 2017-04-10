@@ -31,12 +31,12 @@ public class LoginPanel extends JPanel implements ActionListener{
 		pLogin.setLayout(new GridLayout(0, 1, 0, 10));
 				
 		pID = new TextFiledPanel();
-		pID.setTitle("  아  이  디         ");
+		pID.setTitle("  아  이  디          ");
 		pLogin.add(pID);
 		pID.setLayout(new BoxLayout(pID, BoxLayout.X_AXIS));
 		
 		pPassword = new TextFiledPanel();
-		pPassword.setTitle("  비  밀  번  호  ");
+		pPassword.setTitle("  비  밀  번  호    ");
 		pLogin.add(pPassword);
 		pPassword.setLayout(new BoxLayout(pPassword, BoxLayout.X_AXIS));
 		
@@ -67,7 +67,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 
 	private void actionPerformedbJoin(ActionEvent e) {
 		pLogin.removeAll();
-		pLogin.add(new JoinPanel());
+		pLogin.add(new JoinPanelA());
 		revalidate();
 		repaint();
 	}
