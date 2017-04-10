@@ -3,6 +3,7 @@ package kr.or.dgit.donghun2.panel;
 import javax.swing.JPanel;
 
 import erp_myframework.TextFiledPanel;
+import kr.or.dgit.donghun2.Main.JoinView;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,13 +22,15 @@ public class LoginPanel extends JPanel implements ActionListener{
 
 	private JPanel pLogin;
 	private LoginBtnPanel pLBP;
+	private JPanel panel;
 
 	public LoginPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
-		
+		panel = new JPanel();
+		add(panel);
 		
 		pLogin = new JPanel();
-		add(pLogin);
+		panel.add(pLogin);
 		pLogin.setLayout(new GridLayout(0, 1, 0, 10));
 				
 		pID = new TextFiledPanel();
@@ -66,10 +69,8 @@ public class LoginPanel extends JPanel implements ActionListener{
 	}
 
 	private void actionPerformedbJoin(ActionEvent e) {
-		pLogin.removeAll();
-		pLogin.add(new JoinPanelA());
-		revalidate();
-		repaint();
+		JoinView jv = new JoinView();
+		jv.setVisible(true);
 	}
 	
 	

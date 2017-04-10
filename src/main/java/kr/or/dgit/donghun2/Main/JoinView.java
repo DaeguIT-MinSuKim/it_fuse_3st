@@ -1,27 +1,57 @@
-package kr.or.dgit.donghun2.panel;
+package kr.or.dgit.donghun2.Main;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.donghun2.panel.JoinPanel;
+import kr.or.dgit.donghun2.panel.LoginPanel;
 import kr.or.dgit.donghun2.service.LoginService;
 
-public class JoinPanelA extends JPanel implements ActionListener{
+public class JoinView extends JFrame implements ActionListener{
 
+	private JPanel contentPane;
+	private JPanel pMemberJoin;
 	private JoinPanel pJoin;
 	private JPanel pBtn;
 	private JButton btnJoin;
 	private JButton btnBack;
-	private JPanel pMemberJoin;
 	private LoginService dao;
-	
-	public JoinPanelA() {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					JoinView frame = new JoinView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public JoinView() {
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 		JPanel panel = new JPanel();
 		add(panel);
 		pMemberJoin = new JPanel();
@@ -35,7 +65,7 @@ public class JoinPanelA extends JPanel implements ActionListener{
 		
 		btnJoin = new JButton("가입하기");
 		btnJoin.addActionListener(this);
-		btnBack = new JButton("뒤로가기");
+		btnBack = new JButton("가입 취소하기");
 		btnBack.addActionListener(this);
 		pBtn.add(btnJoin);
 		pBtn.add(btnBack);
@@ -66,10 +96,6 @@ public class JoinPanelA extends JPanel implements ActionListener{
 	}
 
 	private void actionPerformedbBack(ActionEvent e) {
-		pMemberJoin.removeAll();
-		pMemberJoin.add(new LoginPanel());
-		revalidate();
-		repaint();
+		setVisible(false);
 	}
-	
 }

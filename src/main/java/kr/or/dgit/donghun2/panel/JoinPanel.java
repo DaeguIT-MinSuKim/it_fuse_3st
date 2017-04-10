@@ -17,7 +17,7 @@ public class JoinPanel extends JPanel{
 	private TextFiledPanel pID;
 	private TextFiledPanel pPassword;
 	private TextFiledPanel pPasswordRe;
-	
+	private TextFiledPanel pEmail;
 
 	public JoinPanel() {
 		setLayout(new GridLayout(0, 1, 0, 0));
@@ -37,6 +37,10 @@ public class JoinPanel extends JPanel{
 		pPasswordRe = new TextFiledPanel();
 		pPasswordRe.setTitle("비밀번호확인");
 		pJoin.add(pPasswordRe);
+		
+		pEmail = new TextFiledPanel();
+		pEmail.setTitle("email");
+		pJoin.add(pEmail);
 	}
 	
 	

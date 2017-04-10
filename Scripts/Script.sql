@@ -212,6 +212,19 @@ select * from customer;
 
 select * from login where id='A001' and password ='1234';
 
+drop table login;
+-- 로그인
+CREATE TABLE donghun2.Login (
+	id       VARCHAR(12) NOT NULL, -- 아이디
+	password VARCHAR(15) NOT NULL, -- 비밀번호
+	email    VARCHAR(50) NOT null, -- 이메일
+	grade	 varchar(50) not null
+);
 
-
+-- 로그인
+ALTER TABLE donghun2.Login
+	ADD CONSTRAINT PK_Login -- 로그인 기본키
+		PRIMARY KEY (
+			id -- 아이디
+		);
 
