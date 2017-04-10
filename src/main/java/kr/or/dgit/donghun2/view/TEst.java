@@ -31,14 +31,19 @@ public class TEst extends JFrame {
 	
 	public TEst() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 360, 200);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		LoginPanel login = new LoginPanel();
-		contentPane.add(login);
+		contentPane.add(login, BorderLayout.CENTER);
+		
+		JPanel panel= new JPanel();
+		
+		
+		
 	}
 
 }
