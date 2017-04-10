@@ -19,7 +19,6 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 
 	private CustomerPanel pCusp;
 	private JPanel pbtn;
-	private JButton CbtnSave;
 	private JButton CbtnDele;
 	private JButton CbtnSearch;
 	private CustomerTable pCust;
@@ -32,12 +31,11 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		pCusp = new CustomerPanel();
 		add(pCusp);
 		pbtn = new JPanel();
-		CbtnSave = new JButton("저장");
+		
 		CbtnDele = new JButton("삭제");
 		CbtnSearch = new JButton("검색");
 		add(pbtn);
-		pbtn.add(CbtnSave);
-		CbtnSave.addActionListener(this);
+		
 		pbtn.add(CbtnDele);
 		CbtnDele.addActionListener(this);
 		pbtn.add(CbtnSearch);
@@ -45,10 +43,6 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		pCust = new CustomerTable();
 		add(pCust);
 		setInit();
-	}
-
-	public JButton getCbtnSave() {
-		return CbtnSave;
 	}
 
 	public JButton getCbtnDele() {
@@ -60,9 +54,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == CbtnSave) {
-			actionPerformedCBtnSave(e);
-		}
+		
 		if (e.getSource() == CbtnDele) {
 			actionPerformedCBtnDele(e);
 		}
@@ -72,24 +64,18 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	}
 	protected void setInit(){
 		List<Customer> customer = cdao.getInstance().selectCustomerByAll();
-		
-		String lastNum = customer.get(customer.size()-1).getCode();
-		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
-		pCusp.getpCode().setTfValue(value);
 		pCusp.getpCode().setFocusable(true);
 	}
 
-	private String setFormat() {
-		return "C%03d";
-	}
 
 	private void actionPerformedCbtnSearch(ActionEvent e) {
 		  Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
 	      if (res == null) {
 	         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 	      } else {
-	         JOptionPane.showMessageDialog(null, "검색하였습니다.");
+	         JOptionPane.showMessageDialog(null, res);
 	         pCusp.setObject(res);
+	         pCusp.clear();
 	      }
 	}
 
@@ -98,8 +84,10 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	      if (res == 0) {
 	         JOptionPane.showMessageDialog(null, "삭제안댐");
 	      } else {
-	         JOptionPane.showMessageDialog(null, "삭제댐");
+	    	  if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_NO_OPTION){
 	         pCust.loadDate();
+	         pCusp.clear();
+	    	  }
 	      }
 	}
 

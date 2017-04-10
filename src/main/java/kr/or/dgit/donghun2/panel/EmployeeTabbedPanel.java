@@ -18,7 +18,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	private EmployeePanel pEmpp;
 	private EmployeeService edao;
 	private JPanel pbtn;
-	private JButton EbtnSave;
+	
 	private JButton EbtnDele;
 	private JButton EbtnSearch;
 	private EmployeeTable pEmpt;
@@ -30,11 +30,11 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		pbtn = new JPanel();
 		add(pbtn);
 
-		EbtnSave = new JButton("저장");
+		
 		EbtnDele = new JButton("삭제");
 		EbtnSearch = new JButton("검색");
-		pbtn.add(EbtnSave);
-		EbtnSave.addActionListener(this);
+	
+	
 		EbtnDele.addActionListener(this);
 		EbtnSearch.addActionListener(this);
 		pbtn.add(EbtnDele);
@@ -49,9 +49,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == EbtnSave) {
-			actionPerformedEBtnSave(e);
-		}
+		
 		if (e.getSource() == EbtnDele) {
 			actionPerformedEBtnDele(e);
 		}
@@ -62,63 +60,44 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 
 	protected void setInit() {
 		List<Employee> employee = edao.getInstance().selectEmployeeByAll();
-
-		String lastNum = employee.get(employee.size() - 1).getCode();
-		String value = String.format(setNoFormat(), Integer.parseInt(lastNum.substring(1)) + 1);
-		pEmpp.getpCode().setTfValue(value);
 		pEmpp.getpCode().setFocusable(true);
 	}
 
-	private String setNoFormat() {
-		return "E%03d";
-	}
-
-	
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
 		Employee eRes = new Employee();
 		if (eRes.isIsexist()==false) {
-			JOptionPane.showMessageDialog(null, "퇴사한 사원입니다.");
+			JOptionPane.showMessageDialog(null,"퇴사한회원입니다");
 			pEmpp.clear();
 		} else if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		}else{
-			
+		} else {
 			JOptionPane.showMessageDialog(null, res);
-			}
 			pEmpp.setObject(res);
+			pEmpp.clear();
 		}
-	
+	}
 
 	private void actionPerformedEBtnDele(ActionEvent e) {
-		int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
+
 		Employee eRes = new Employee();
-		if (res == 0 ) {
-			JOptionPane.showMessageDialog(null, "삭제안댐 ");
+		if (eRes.isIsexist() == false) {
+			JOptionPane.showMessageDialog(null, "이미 퇴사한 사원입니다.");
+			System.out.println("@@@@@@@@@@@@@@@@@@");
+			return;
 		} else {
-			JOptionPane.showMessageDialog(null, "삭제댐");
-			pEmpt.loadDate();
+			System.out.println("@@@$$$$$$$$$$$$$$$$$@@@");
+			if (JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?") == JOptionPane.YES_NO_OPTION) {
+				pEmpt.loadDate();
+				pEmpp.clear();
+				int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
+				if (res == 0) {
+					JOptionPane.showMessageDialog(null, "삭제안댐 ");
+					System.out.println("@@@#############@@@");
+				}
+			}
 		}
-	}
-
-	private void actionPerformedEBtnSave(ActionEvent e) {
-		boolean EmployeeName = Pattern.matches("^[a-zA-Z가-힣]*$", pEmpp.getObject().getName());
-		if (pEmpp.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
-		} else if(EmployeeName == false) {
-			JOptionPane.showMessageDialog(null, "사원명에 숫자를 넣지 마십시오.");
-		} else  {
-			edao.getInstance().insertEmployee(pEmpp.getObject());
-			JOptionPane.showMessageDialog(null, "저장되었습니다.");
-			pEmpt.loadDate();
-			pEmpp.clear();
-			setInit();
-		}
-	}
-
-	public JButton getEBtnSave() {
-		return EbtnSave;
 	}
 
 	public JButton getEBtnDele() {
