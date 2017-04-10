@@ -31,7 +31,7 @@ public class BasicTabbedPanel extends JTabbedPane implements ChangeListener{
 	   pEmployeeInsert = new JPanel();
 	     
 	   addTab("영업사원등록", null, pEmployeeInsert, null);
-	   pEmployeeInsert.setLayout(new BoxLayout(pEmployeeInsert, BoxLayout.X_AXIS));
+	   pEmployeeInsert.setLayout(new BoxLayout(pEmployeeInsert, BoxLayout.Y_AXIS));
 	      if(employeeInsertTabbedPanel != null){
 	         pEmployeeInsert.removeAll();
 	      }
@@ -66,42 +66,42 @@ public class BasicTabbedPanel extends JTabbedPane implements ChangeListener{
 
 	private void stateChangedThis(int selectedIndex) {
 		if(this.getTitleAt(selectedIndex).equals("영업사원등록")){
-			pEmployeeInsert.setLayout(new BoxLayout(pEmployeeInsert, BoxLayout.X_AXIS));
+			pEmployeeInsert.setLayout(new BoxLayout(pEmployeeInsert, BoxLayout.Y_AXIS));
 			if(employeeInsertTabbedPanel != null){
 				pEmployeeInsert.removeAll();
 			}
 			employeeInsertTabbedPanel = new EmployeeInsertTabbedPanel();
 			pEmployeeInsert.add(employeeInsertTabbedPanel);
 		} else if(this.getTitleAt(selectedIndex).equals("영업사원관리")){
-			pEmployeeManage.setLayout(new BoxLayout(pEmployeeManage, BoxLayout.X_AXIS));
+			pEmployeeManage.setLayout(new BoxLayout(pEmployeeManage, BoxLayout.Y_AXIS));
 			if(employeeTabbedPanel != null){
 				pEmployeeManage.removeAll();
 			}
 			employeeTabbedPanel = new EmployeeTabbedPanel();
 			pEmployeeManage.add(employeeTabbedPanel);
 		}  else if(this.getTitleAt(selectedIndex).equals("제품등록")){
-			pProductInsert.setLayout(new BoxLayout(pProductInsert, BoxLayout.X_AXIS));
+			pProductInsert.setLayout(new BoxLayout(pProductInsert, BoxLayout.Y_AXIS));
 			if(productInsertTabbedPanel != null){
 				pProductInsert.removeAll();
 			}
 			productInsertTabbedPanel = new ProductInsertTabbedPanel();
 			pProductInsert.add(productInsertTabbedPanel);
 		}  else if(this.getTitleAt(selectedIndex).equals("제품관리")){
-			pProductManage.setLayout(new BoxLayout(pProductManage, BoxLayout.X_AXIS));
+			pProductManage.setLayout(new BoxLayout(pProductManage, BoxLayout.Y_AXIS));
 			if(productTabbedPanel != null){
 				pProductManage.removeAll();
 			}
 			productTabbedPanel = new ProductTabbedPanel();
 			pProductManage.add(productTabbedPanel);
 		}  else if(this.getTitleAt(selectedIndex).equals("거래처등록")){
-			pCustomerInsert.setLayout(new BoxLayout(pCustomerInsert, BoxLayout.X_AXIS));
+			pCustomerInsert.setLayout(new BoxLayout(pCustomerInsert, BoxLayout.Y_AXIS));
 			if(customerInsertTabbedPanel != null){
 				pCustomerInsert.removeAll();
 			}
 			customerInsertTabbedPanel = new CustomerInsertTabbedPanel();
 			pCustomerInsert.add(customerInsertTabbedPanel);
 		}  else if(this.getTitleAt(selectedIndex).equals("거래처관리")){
-			pCustomerManage.setLayout(new BoxLayout(pCustomerManage, BoxLayout.X_AXIS));
+			pCustomerManage.setLayout(new BoxLayout(pCustomerManage, BoxLayout.Y_AXIS));
 			if(customerTabbedPanel != null){
 				pCustomerManage.removeAll();
 			}

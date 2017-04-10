@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	 * Create the panel.
 	 */
 	public CustomerTabbedPanel() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		pCusp = new CustomerPanel();
 		add(pCusp);
 		pbtn = new JPanel();

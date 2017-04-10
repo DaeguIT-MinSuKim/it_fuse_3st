@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,6 +26,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	private Employee pEmp;
 
 	public EmployeeTabbedPanel() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		pEmpp = new EmployeePanel();
 		add(pEmpp);
 		pbtn = new JPanel();

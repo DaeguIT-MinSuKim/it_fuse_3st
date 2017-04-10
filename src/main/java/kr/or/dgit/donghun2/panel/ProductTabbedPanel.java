@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 	
 	
 	public ProductTabbedPanel() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		pProp = new ProductPanel();
 		add(pProp);
 		pbtn = new JPanel();
