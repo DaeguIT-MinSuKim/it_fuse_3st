@@ -41,7 +41,14 @@ public class TEst extends JFrame {
 		contentPane.add(login, BorderLayout.CENTER);
 		
 		JPanel panel= new JPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
 		
+		JPanel panel1= new JPanel();
+		contentPane.add(panel1, BorderLayout.SOUTH);
+		JPanel panel2= new JPanel();
+		contentPane.add(panel2, BorderLayout.EAST);
+		JPanel panel3= new JPanel();
+		contentPane.add(panel3, BorderLayout.WEST);
 		
 		
 	}

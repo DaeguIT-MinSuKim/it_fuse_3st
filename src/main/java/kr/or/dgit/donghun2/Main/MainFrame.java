@@ -14,8 +14,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
 import kr.or.dgit.donghun2.panel.InquiryPanel;
+import kr.or.dgit.donghun2.panel.SellInfoTabbedPanel;
 
 public class MainFrame extends JFrame implements ActionListener {
 
@@ -31,6 +33,10 @@ public class MainFrame extends JFrame implements ActionListener {
 	
 	
 	private JPanel pTabbedPane;
+
+
+
+	private JButton btn3;
 
 	public static void main(String[] args) {
 		try {
@@ -78,28 +84,42 @@ public class MainFrame extends JFrame implements ActionListener {
 		contentPane.add(pBtn, BorderLayout.EAST);
 		pBtn.setLayout(new GridLayout(0, 1, 10, 50));
 		btn1 = new JButton("기초자료관리");
-		btn2 = new JButton("조회 현황");
+		btn2 = new JButton("거래내역관리");
+		btn3 = new JButton("조회 현황");
 		
 		pBtn.add(btn1);
 		btn1.addActionListener(this);
 		pBtn.add(btn2);
 		btn2.addActionListener(this);
+		pBtn.add(btn3);
+		btn3.addActionListener(this);
 		
 	}
 
 	
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btn2){
+		if(e.getSource() == btn3){
 			actionPerformedbtn2(e);
 		}
 		if(e.getSource()== btn1){
 			actionPerformedbtn1(e);
 		}
+		if(e.getSource() == btn2){
+			actionPerformedbtn3(e);
+		}
 	}
 	
 
 	
+
+	private void actionPerformedbtn3(ActionEvent e) {
+		pTabbedPane.removeAll();
+		pTabbedPane.add(new AdvancedTabbedPanel());
+		revalidate();
+		repaint();
+		
+	}
 
 	private void actionPerformedbtn1(ActionEvent e) {
 		pTabbedPane.removeAll();
