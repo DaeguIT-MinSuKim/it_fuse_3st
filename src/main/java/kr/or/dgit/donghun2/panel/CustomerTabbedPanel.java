@@ -3,12 +3,15 @@ package kr.or.dgit.donghun2.panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;
 
@@ -20,6 +23,8 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	private JButton CbtnSearch;
 	private CustomerTable pCust;
 	private CustomerService cdao;
+	private ComboPanel<Customer> pCustomerForCombo;
+
 	/**
 	 * Create the panel.
 	 */
@@ -27,11 +32,11 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		pCusp = new CustomerPanel();
 		add(pCusp);
 		pbtn = new JPanel();
-		
+
 		CbtnDele = new JButton("삭제");
 		CbtnSearch = new JButton("검색");
 		add(pbtn);
-		
+
 		pbtn.add(CbtnDele);
 		CbtnDele.addActionListener(this);
 		pbtn.add(CbtnSearch);
@@ -50,7 +55,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == CbtnDele) {
 			actionPerformedCBtnDele(e);
 		}
@@ -58,34 +63,42 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 			actionPerformedCbtnSearch(e);
 		}
 	}
-	protected void setInit(){
+
+	protected void setInit() {
 		List<Customer> customer = cdao.getInstance().selectCustomerByAll();
 		pCusp.getpCode().setFocusable(true);
 	}
 
-
 	private void actionPerformedCbtnSearch(ActionEvent e) {
-		  Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
-	      if (res == null) {
-	         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-	      } else {
-	         JOptionPane.showMessageDialog(null, res);
-	         pCusp.setObject(res);
-	         pCusp.clear();
-	      }
+		Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
+		if (res.isIsexist() == false) {
+			JOptionPane.showMessageDialog(null, "퇴사한 회원입니다.");
+		} else if (res == null) {
+			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		} else {
+			JOptionPane.showMessageDialog(null, res);
+			pCusp.setObject(res);
+			pCusp.clear();
+		}
 	}
 
 	private void actionPerformedCBtnDele(ActionEvent e) {
-		int res = cdao.getInstance().deleteCustomer(pCusp.getObject());
-	      if (res == 0) {
-	         JOptionPane.showMessageDialog(null, "삭제안댐");
-	      } else {
-	    	  if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_NO_OPTION){
-	         pCust.loadDate();
-	         pCusp.clear();
-	    	  }
-	      }
-	}
+		Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
+		if (res.isIsexist() == false) {
+			JOptionPane.showMessageDialog(null, "삭제된 거래처입니다.");
+		} else {
+			if (JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?") == JOptionPane.YES_NO_OPTION) {
 
+			}
+			int cRes = cdao.getInstance().deleteCustomer(pCusp.getObject());
+			if (cRes == 0) {
+				JOptionPane.showMessageDialog(null, "삭제불가");
+			} else {
+				JOptionPane.showMessageDialog(null, "삭제완료");
+				pCust.loadDate();
+				pCusp.clear();
+			}
+		}
+	}
 
 }

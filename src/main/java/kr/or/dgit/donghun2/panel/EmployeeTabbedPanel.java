@@ -22,6 +22,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	private JButton EbtnDele;
 	private JButton EbtnSearch;
 	private EmployeeTable pEmpt;
+	private Employee pEmp;
 
 	public EmployeeTabbedPanel() {
 		pEmpp = new EmployeePanel();
@@ -66,7 +67,10 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
-		if (res == null) {
+		if (res.isIsexist()==false) {
+			JOptionPane.showMessageDialog(null,"퇴사한회원입니다");
+			pEmpp.clear();
+		} else if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		} else if(res!=null){
 			JOptionPane.showMessageDialog(null, res);
@@ -76,13 +80,21 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedEBtnDele(ActionEvent e) {
-		int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
-		if (res == 0) {
-			JOptionPane.showMessageDialog(null, "삭제안댐");
+		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
+		if (res.isIsexist() == false) {
+			JOptionPane.showMessageDialog(null, "이미 퇴사한 사원입니다.");
+			return;
 		} else {
-			if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_NO_OPTION){
-			pEmpt.loadDate();
-			pEmpp.clear();
+			if (JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?") == JOptionPane.YES_OPTION) {
+				
+				int eRes = edao.getInstance().deleteEmployee(pEmpp.getObject());
+				if (eRes == 0) {
+					JOptionPane.showMessageDialog(null, "삭제불가 ");
+				}else{
+					JOptionPane.showMessageDialog(null, "삭제완료");
+					pEmpt.loadDate();
+					pEmpp.clear();
+				}
 			}
 		}
 	}

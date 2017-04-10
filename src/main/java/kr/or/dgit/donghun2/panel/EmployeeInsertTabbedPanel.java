@@ -53,7 +53,7 @@ public class EmployeeInsertTabbedPanel extends JPanel implements ActionListener 
 		String lastNum = employee.get(employee.size() - 1).getCode();
 		String value = String.format(setNoFormat(), Integer.parseInt(lastNum.substring(1)) + 1);
 		pEmpp.getpCode().setTfValue(value);
-		pEmpp.getpCode().setFocusable(true);
+		pEmpp.getpCode().gettF().setEditable(false);
 	}
 
 	private String setNoFormat() {
@@ -66,7 +66,7 @@ public class EmployeeInsertTabbedPanel extends JPanel implements ActionListener 
 			JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
 		} else if(EmployeeName == false) {
 			JOptionPane.showMessageDialog(null, "사원명에 숫자를 넣지 마십시오.");
-		} else  {
+		} else{
 			edao.getInstance().insertEmployee(pEmpp.getObject());
 			JOptionPane.showMessageDialog(null, "저장되었습니다.");
 			pEmpt.loadDate();
@@ -74,6 +74,7 @@ public class EmployeeInsertTabbedPanel extends JPanel implements ActionListener 
 			setInit();
 		}
 	}
+		
 
 	public JButton getEBtnSave() {
 		return EbtnSave;

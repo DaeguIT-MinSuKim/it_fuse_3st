@@ -50,7 +50,7 @@ public class CustomerInsertTabbedPanel extends JPanel implements ActionListener 
 		String lastNum = customer.get(customer.size()-1).getCode();
 		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
 		pCusp.getpCode().setTfValue(value);
-		pCusp.getpCode().setFocusable(true);
+		pCusp.getpCode().gettF().setEditable(false);
 	}
 
 	private String setFormat() {
@@ -61,7 +61,7 @@ public class CustomerInsertTabbedPanel extends JPanel implements ActionListener 
 		 if (pCusp.isEmpty()) {
 	         JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
 	      } else {
-	         cdao.getInstance().insertCustomer(pCusp.getObject());
+	    	 cdao.getInstance().insertCustomer(pCusp.getObject());
 	         JOptionPane.showMessageDialog(null, "저장되었습니다.");
 	         pCust.loadDate();
 	         pCusp.clear();
