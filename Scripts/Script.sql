@@ -156,7 +156,7 @@ join cgrade cg on cg.grade=c.grade
 join product p on s.pcode = p.code;
 
 
-delete from sellinfo;
+ -- delete from sellinfo;
 select * from sellinfo;
 select * from vw_calculate_sellInfo;
 
@@ -185,28 +185,16 @@ where pcode='P001';
 /*select  ccode,cname,sum(quantity),sum(sellprice),sum(disprice),sum(marginprice),avg(marginpct)
 from vw_InfoByProduct where pcode='P001';  ??*/
 
-drop view vw_InfoByEmployee;
+-- drop view vw_InfoByEmployee;
 create view vw_InfoByEmployee as
 select e.code ecode, e.name ename, saledate,sellprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join employee e on s.ecode = e.code
 order by e.code asc;
 
-<<<<<<< HEAD
-select ecode, ename, sellprice, saledate,marginprice, marginpct
-=======
 select ecode, ename,  saledate,sellprice,marginprice, marginpct
->>>>>>> refs/remotes/origin/master
 from vw_InfoByEmployee
 where ecode = 'E001';
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> refs/remotes/origin/master
+ 
 select e.code , e.name , sellprice, marginprice, marginpct
 	from vw_InfoByEmployee vw
 	join employee e 
