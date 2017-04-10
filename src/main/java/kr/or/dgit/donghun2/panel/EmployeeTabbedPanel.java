@@ -22,6 +22,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 	private JButton EbtnDele;
 	private JButton EbtnSearch;
 	private EmployeeTable pEmpt;
+	private Employee pEmp;
 
 	public EmployeeTabbedPanel() {
 		pEmpp = new EmployeePanel();
@@ -76,18 +77,25 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 
 	private void actionPerformedEbtnSearch(ActionEvent e) {
 		Employee res = edao.getInstance().selectEmployeeByNo(pEmpp.getObject());
-		if (res == null) {
+		Employee eRes = new Employee();
+		if (eRes.isIsexist()==false) {
+			JOptionPane.showMessageDialog(null, "퇴사한 사원입니다.");
+			pEmpp.clear();
+		} else if(res==null){
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-		} else {
-			JOptionPane.showMessageDialog(null, "검색하였습니다.");
+		}else{
+			
+			JOptionPane.showMessageDialog(null, res);
+			}
 			pEmpp.setObject(res);
 		}
-	}
+	
 
 	private void actionPerformedEBtnDele(ActionEvent e) {
 		int res = edao.getInstance().deleteEmployee(pEmpp.getObject());
-		if (res == 0) {
-			JOptionPane.showMessageDialog(null, "삭제안댐");
+		Employee eRes = new Employee();
+		if (res == 0 ) {
+			JOptionPane.showMessageDialog(null, "삭제안댐 ");
 		} else {
 			JOptionPane.showMessageDialog(null, "삭제댐");
 			pEmpt.loadDate();

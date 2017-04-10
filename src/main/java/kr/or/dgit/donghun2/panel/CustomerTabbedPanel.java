@@ -3,12 +3,15 @@ package kr.or.dgit.donghun2.panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;
 
@@ -21,6 +24,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	private JButton CbtnSearch;
 	private CustomerTable pCust;
 	private CustomerService cdao;
+	private ComboPanel<Customer> pCustomerForCombo;
 	/**
 	 * Create the panel.
 	 */
@@ -106,6 +110,10 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 	         cdao.getInstance().insertCustomer(pCusp.getObject());
 	         JOptionPane.showMessageDialog(null, "저장되었습니다.");
 	         pCust.loadDate();
+	        
+	         List<Customer> customer = cdao.getInstance().selectCustomerByAll();
+	         Vector<Customer> items = new Vector<>();
+	         pCustomerForCombo.setcomboData(items);
 	         pCusp.clear();
 	         setInit();
 	      }

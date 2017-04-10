@@ -35,6 +35,7 @@ values
 ('E010', '이원준', 'C',1),
 ('E011', '김동욱', 'C',1),
 ('E012', '허강민', 'C',1);
+select * from employee;
 
 CREATE TABLE  product (		-- 제품테이블
 	code       CHAR(4)  NOT NULL COMMENT '제품코드' PRIMARY KEY,
