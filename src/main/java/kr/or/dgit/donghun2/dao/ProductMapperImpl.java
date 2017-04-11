@@ -14,7 +14,7 @@ public class ProductMapperImpl implements ProductMapper{
 		this.sqlSession = sqlSession;
 	}
 	
-
+/*사원명(사원코드/등급)*/
 	public List<Product> selectProductByAll() {
 		return sqlSession.selectList(namespace+"selectProductByAll");
 	}
