@@ -41,11 +41,11 @@ public class LoginService {
 			return res;
 		}
 	}
-	public boolean selectLoginByGrade(String string){
+	public Login selectLoginByGrade(Login login){
 		log.debug("selectLoginByGrade()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			LoginMapper loginMapper = new LoginMapperImpl(sqlSession);
-			return loginMapper.selectLoginByGrade(string);
+			return loginMapper.selectLoginByGrade(login);
 		}
 	}
 

@@ -12,14 +12,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.management.PlatformLoggingMXBean;
 
-public class LoginPanel extends JPanel implements ActionListener{
+public class LoginPanel extends JPanel implements ActionListener {
 
-	
 	private TextFiledPanel pID;
 	private TextFiledPanel pPassword;
 	private JoinPanel joinpanel;
@@ -31,45 +31,41 @@ public class LoginPanel extends JPanel implements ActionListener{
 		setLayout(new GridLayout(0, 1, 0, 0));
 		panel = new JPanel();
 		add(panel);
-		
+
 		pLogin = new JPanel();
 		panel.add(pLogin);
 		pLogin.setLayout(new GridLayout(0, 1, 0, 10));
-				
+
 		pID = new TextFiledPanel();
 		pID.setTitle("  아  이  디          ");
 		pLogin.add(pID);
 		pID.setLayout(new BoxLayout(pID, BoxLayout.X_AXIS));
-		
+
 		pPassword = new TextFiledPanel();
 		pPassword.setTitle("  비  밀  번  호    ");
 		pLogin.add(pPassword);
 		pPassword.setLayout(new BoxLayout(pPassword, BoxLayout.X_AXIS));
-		
-		
+
 		pLBP = new LoginBtnPanel();
 		pLogin.add(pLBP);
 		pLBP.getbJoin().addActionListener(this);
-		
-		/*pbtn = new JPanel();
-		pLogin.add(pbtn);
-		bJoin = new JButton("회원가입");
-		bLogin = new JButton("로그인");
-		bSearch = new JButton("아이디/비밀번호 찾기");
 
-		pbtn.add(bLogin);
-		pbtn.add(bJoin);
-		bJoin.addActionListener(this);
-		pbtn.add(bSearch);*/
+		/*
+		 * pbtn = new JPanel(); pLogin.add(pbtn); bJoin = new JButton("회원가입");
+		 * bLogin = new JButton("로그인"); bSearch = new JButton("아이디/비밀번호 찾기");
+		 * 
+		 * pbtn.add(bLogin); pbtn.add(bJoin); bJoin.addActionListener(this);
+		 * pbtn.add(bSearch);
+		 */
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == pLBP.getbJoin()){
+		if (e.getSource() == pLBP.getbJoin()) {
 			actionPerformedbJoin(e);
 		}
-		if(e.getSource() == pLBP.getbLogin()){
+		if (e.getSource() == pLBP.getbLogin()) {
 			actionPerformedbLogin(e);
 		}
 	}
@@ -77,9 +73,9 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private void actionPerformedbLogin(ActionEvent e) {
 		MainFrame mf = new MainFrame();
 		UserFrame uf = new UserFrame();
-		if(joinpanel.getObject().getGrade()==true){
+		if (joinpanel.getObject().getGrade() == true) {
 			mf.setVisible(true);
-		}else{
+		} else {
 			mf.setVisible(true);
 		}
 	}
@@ -87,9 +83,20 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private void actionPerformedbJoin(ActionEvent e) {
 		JoinView jv = new JoinView();
 		jv.setVisible(true);
-		
+
 	}
-	
-	
-	
+
+	public boolean isEmpty() {
+		boolean result = false;
+		for (Component c : getComponents()) {
+			if (c instanceof TextFiledPanel) {
+				TextFiledPanel tfp = (TextFiledPanel) c;
+				if (tfp.isEmpty()) {
+					return true;
+				}
+			}
+		}
+		return false;
+
+	}
 }

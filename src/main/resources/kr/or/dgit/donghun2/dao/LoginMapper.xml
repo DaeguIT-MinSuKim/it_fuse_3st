@@ -17,7 +17,7 @@
 	
 	<select id="selectLoginById" resultType="Login" parameterType="Login">
 		select id, password, grade from login 
-			where id=#{id} AND password=password(#{password})and grade=#{grade};
+			where id=#{id} AND password=password(#{password});
 	</select>
 	
 	<select id="selectLoginByPw" resultType="Login">

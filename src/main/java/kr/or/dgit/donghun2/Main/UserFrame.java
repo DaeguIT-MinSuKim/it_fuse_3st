@@ -18,6 +18,7 @@ import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.panel.UnitBasicTabbedPanel;
 import kr.or.dgit.donghun2.panel.UnitInquiryPanel;
 
+@SuppressWarnings("serial")
 public class UserFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;

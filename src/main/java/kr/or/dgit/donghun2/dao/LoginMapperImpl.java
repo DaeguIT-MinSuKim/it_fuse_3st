@@ -27,8 +27,8 @@ public class LoginMapperImpl implements LoginMapper {
 		return sqlSession.selectList(namespace+"selectLoginBypw");
 	}
 
-	public boolean selectLoginByGrade(String string) {
-		return sqlSession.selectOne(namespace+"selectLoginByGrade");
+	public Login selectLoginByGrade(Login login) {
+		return sqlSession.selectOne(namespace+"selectLoginByGrade",login);
 	}
 
 	
