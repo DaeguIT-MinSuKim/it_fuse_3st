@@ -134,17 +134,15 @@ public class MainProcess extends JFrame{
 	        	 MainFrame mf = new MainFrame();
 	     		UserFrame uf = new UserFrame();
 	     		Login login = new Login();
-	     		if(LoginService.getInstance().selectLoginByGrade()==true){
-	     			System.out.println(pJoin.isgradeEquls());
+	     		if(LoginService.getInstance().selectLoginByGrade(login)==true){
 	     			mf.setVisible(true);
 	     		}else{
-	     			System.out.println(pJoin.isgradeEquls());
 	     			uf.setVisible(true);
 	     		}
-		            /*bLoginCheck = true;*/
-		           /* if(isLogin()){
+		            bLoginCheck = true;
+		            if(isLogin()){
 		               showFrameTest();
-		            }  */             
+		            }              
 	        }
 	    }
 	 

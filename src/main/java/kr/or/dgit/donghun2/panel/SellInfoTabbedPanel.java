@@ -61,6 +61,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		pEmployeeForCombo.setTitle("     사        원       ");
 		pEmployeeForCombo.setLayout(new BoxLayout(pEmployeeForCombo, BoxLayout.X_AXIS));
 		panel.add(pEmployeeForCombo);
+		/*pEmployeeForCombo.setSelectedItem(0);*/
 		
 		
 		List<Employee> eList = edao.getInstance().selectEmployeeByAll();

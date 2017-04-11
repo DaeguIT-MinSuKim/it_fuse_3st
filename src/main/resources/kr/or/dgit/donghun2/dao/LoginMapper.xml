@@ -16,14 +16,14 @@
 	
 	<select id="selectLoginById" resultType="Login" parameterType="Login">
 		select id, password, grade from login 
-			where id=#{id} AND password=password(#{password})and grade=#{grade};
+			where id=#{id} AND password=password(#{password})<!-- and grade=#{grade} -->;
 	</select>
 	
 	<select id="selectLoginByPw" resultType="Login">
 		select password from login where = id
 	</select>
-	<select id="selectLoginByGrade" resultType="boolean"> 
-		select id, password, grade from login where grade=#{grade};
+	<select id="selectLoginByGrade" resultType="boolean" parameterType="Login"> 
+		select grade from login where id=#{id} and password=password(#{password});
 	</select>
 
 </mapper>
