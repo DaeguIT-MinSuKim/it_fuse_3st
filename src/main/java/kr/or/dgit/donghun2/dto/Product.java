@@ -85,7 +85,6 @@ public class Product {
 
 
 	public Product(String code, String name, int salePrice, int origiPrice, boolean isexist) {
-		super();
 		this.code = code;
 		this.name = name;
 		this.salePrice = salePrice;
@@ -95,7 +94,10 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "제품코드 : "+code+"( 제품명  : " + name + " / 판매정가  : " + String.format("%,d",salePrice)+" )";
+		if(isexist==false){
+			return code == null ? "전체보기" : code+"( 제품명  : " + name + " / 판매정가  : " + String.format("%,d",salePrice)+" )"+"(삭제)";
+		}
+			return code == null ? "전체보기" : code+"( 제품명  : " + name + " / 판매정가  : " + String.format("%,d",salePrice)+" )"+"(존재)";
 	}
 	
 

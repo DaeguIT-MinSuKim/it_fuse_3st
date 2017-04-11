@@ -14,5 +14,5 @@ public interface LoginMapper {
 
 	public List<Login> selectLoginByPw();
 
-	public boolean selectLoginByGrade(String string);
+	public Login selectLoginByGrade(Login login);
 }

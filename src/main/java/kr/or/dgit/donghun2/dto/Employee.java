@@ -83,7 +83,10 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "사원코드 : "+code+"( "+name+" / "+grade+" ) ";
+		if(isexist==false){
+			return code == null ? "전체보기" : code+"( "+name+" / "+grade+" ) " +"("+"퇴사"+")";
+		}
+		return code == null ? "전체보기" : code+"( "+name+" / "+grade+" ) " +"("+"입사"+")";
 	}
 
 	@Override

@@ -1,5 +1,9 @@
 package kr.or.dgit.donghun2.dto;
 
+import java.awt.Component;
+
+import erp_myframework.TextFiledPanel;
+
 public class Login {
 	private String id;
 	private String password;
@@ -111,7 +115,8 @@ public class Login {
 			return false;
 		return true;
 	}
-	
+
+
 	
 
 	
