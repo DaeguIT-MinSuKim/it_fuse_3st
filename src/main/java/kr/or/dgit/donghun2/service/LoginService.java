@@ -41,4 +41,11 @@ public class LoginService {
 			return res;
 		}
 	}
+	public boolean selectLoginByGrade(Login login){
+		log.debug("selectLoginByGrade()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			LoginMapper loginMapper = new LoginMapperImpl(sqlSession);
+			return loginMapper.selectLoginByGrade(login);
+		}
+	}
 }

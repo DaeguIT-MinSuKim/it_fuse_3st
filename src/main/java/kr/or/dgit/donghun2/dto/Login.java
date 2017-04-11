@@ -4,16 +4,16 @@ public class Login {
 	private String id;
 	private String password;
 	private String email;
-	private String grade;
+	private boolean grade;
 	private String passwordRe;
 	
 	
-	public Login(String id, String password, String email, String grade, String passwordRe) {
+	public Login(String id, String password, String email,  String passwordRe,boolean grade) {
 		this.id = id;
 		this.password = password;
 		this.email = email;
-		this.grade = grade;
 		this.passwordRe = passwordRe;
+		this.grade = grade;
 	}
 	
 	
@@ -68,11 +68,11 @@ public class Login {
 		this.email = email;
 	}
 
-	public String getGrade() {
+	public boolean getGrade() {
 		return grade;
 	}
 
-	public void setGrade(String grade) {
+	public void setGrade(boolean grade) {
 		this.grade = grade;
 	}
 

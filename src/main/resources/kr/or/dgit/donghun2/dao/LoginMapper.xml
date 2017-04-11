@@ -11,16 +11,19 @@
 	</resultMap>
 	
 	<insert id="insertLogin" parameterType="Login">
-		insert into login(id,password,email) values(#{id},password(#{password}),#{email})
+		insert into login(id,password,email,grade) values(#{id},password(#{password}),#{email},#{grade})
 	</insert>
 	
 	<select id="selectLoginById" resultType="Login" parameterType="Login">
-		select id, password from login 
-			where id=#{id} AND password=password(#{password});
+		select id, password, grade from login 
+			where id=#{id} AND password=password(#{password})and grade=#{grade};
 	</select>
 	
 	<select id="selectLoginByPw" resultType="Login">
 		select password from login where = id
+	</select>
+	<select id="selectLoginByGrade" resultType="boolean"> 
+		select id, password, grade from login where grade=#{grade};
 	</select>
 
 </mapper>

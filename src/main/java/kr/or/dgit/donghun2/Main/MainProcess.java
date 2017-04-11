@@ -29,6 +29,7 @@ public class MainProcess extends JFrame{
 	private boolean bLoginCheck;
 	private JoinPanel pJoin;
 	
+	
 	public static void main(String[] args) {
 		try {
 		UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
@@ -130,10 +131,20 @@ public class MainProcess extends JFrame{
 	        	JOptionPane.showMessageDialog(null, "Faild");
 	        }else{
 	        	 JOptionPane.showMessageDialog(null, "Success");
-		            bLoginCheck = true;
-		            if(isLogin()){
+	        	 MainFrame mf = new MainFrame();
+	     		UserFrame uf = new UserFrame();
+	     		Login login = new Login();
+	     		if(LoginService.getInstance().selectLoginByGrade()==true){
+	     			System.out.println(pJoin.isgradeEquls());
+	     			mf.setVisible(true);
+	     		}else{
+	     			System.out.println(pJoin.isgradeEquls());
+	     			uf.setVisible(true);
+	     		}
+		            /*bLoginCheck = true;*/
+		           /* if(isLogin()){
 		               showFrameTest();
-		            }               
+		            }  */             
 	        }
 	    }
 	 

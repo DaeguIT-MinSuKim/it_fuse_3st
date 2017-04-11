@@ -218,7 +218,7 @@ CREATE TABLE donghun2.Login (
 	id       VARCHAR(12) NOT NULL, -- 아이디
 	password char(50) NOT NULL, -- 비밀번호
 	email    VARCHAR(50) NOT null, -- 이메일
-	grade	 varchar(50) not null
+	grade	boolean not null
 );
 
 -- 로그인
@@ -227,7 +227,7 @@ ALTER TABLE donghun2.Login
 		PRIMARY KEY (
 			id -- 아이디
 		);
-insert into login(id, password, email, grade) values('A001',password('1234'),'ehdgnsdms321@naver.com','L');
+insert into login(id, password, email, grade) values('A001',password('1234'),'ehdgnsdms321@naver.com',true);
 
 
 select * from login;

@@ -2,8 +2,11 @@ package kr.or.dgit.donghun2.panel;
 
 import javax.swing.JPanel;
 
+import ch.randelshofer.quaqua.color.GradientColor;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.Main.JoinView;
+import kr.or.dgit.donghun2.Main.MainFrame;
+import kr.or.dgit.donghun2.Main.UserFrame;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -19,7 +22,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 	
 	private TextFiledPanel pID;
 	private TextFiledPanel pPassword;
-
+	private JoinPanel joinpanel;
 	private JPanel pLogin;
 	private LoginBtnPanel pLBP;
 	private JPanel panel;
@@ -66,11 +69,25 @@ public class LoginPanel extends JPanel implements ActionListener{
 		if(e.getSource() == pLBP.getbJoin()){
 			actionPerformedbJoin(e);
 		}
+		if(e.getSource() == pLBP.getbLogin()){
+			actionPerformedbLogin(e);
+		}
+	}
+
+	private void actionPerformedbLogin(ActionEvent e) {
+		MainFrame mf = new MainFrame();
+		UserFrame uf = new UserFrame();
+		if(joinpanel.getObject().getGrade()==true){
+			mf.setVisible(true);
+		}else{
+			mf.setVisible(true);
+		}
 	}
 
 	private void actionPerformedbJoin(ActionEvent e) {
 		JoinView jv = new JoinView();
 		jv.setVisible(true);
+		
 	}
 	
 	

@@ -1,3 +1,3 @@
 %DEBUG [Test worker] - insertLogin()
-eDEBUG [Test worker] - ==>  Preparing: insert into login(id,password,email) values(?,password(?),?) 
-SDEBUG [Test worker] - ==> Parameters: ehdgnsdms321(String), 1234567(String), null
+mDEBUG [Test worker] - ==>  Preparing: insert into login(id,password,email,grade) values(?,password(?),?,?) 
+cDEBUG [Test worker] - ==> Parameters: ehdgnsdms321(String), 1234567(String), null, false(Boolean)
