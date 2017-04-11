@@ -81,5 +81,12 @@ public class CustomerService {
 			return customer;
 		}
 	}
+	public List<Customer> selectCustomerByAllDesc(){
+		log.debug("selectCustomerByAllDesc()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			List<Customer> list =sqlSession.getMapper(CustomerMapper.class).selectCustomerByAllDesc();
+			return list;
+		}
+	}
 	
 }

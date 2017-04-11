@@ -20,6 +20,7 @@
 	
 	<select id="selectCustomerByAll" resultType="Customer"> select code, name, grade,isexist from customer </select>
 	
+	<select id="selectCustomerByAllDesc" resultType="Customer">select code, name, grade,isexist from customer order by code desc</select>
 	
 	<update parameterType="Customer" id="updateCustomer">
 		update customer 

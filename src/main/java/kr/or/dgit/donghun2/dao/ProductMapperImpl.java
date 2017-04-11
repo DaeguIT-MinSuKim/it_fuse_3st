@@ -41,5 +41,10 @@ public class ProductMapperImpl implements ProductMapper{
 		return sqlSession.selectOne(namespace+"selectProductByNoForSellInfo",code);
 	}
 
+	@Override
+	public List<Product> selectProductByAllDesc() {
+		return sqlSession.selectList(namespace+"selectProductByAllDesc");
+	}
+
 	
 }

@@ -229,5 +229,5 @@ ALTER TABLE donghun2.Login
 		);
 insert into login(id, password, email, grade) values('A001',password('1234'),'ehdgnsdms321@naver.com',true);
 
-
+select code, name, grade,isexist from Employee order by code desc;
 select * from login;

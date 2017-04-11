@@ -11,14 +11,17 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-import kr.or.dgit.donghun2.dto.Product;
-import kr.or.dgit.donghun2.service.ProductService;
+import kr.or.dgit.donghun2.dto.Customer;
+import kr.or.dgit.donghun2.service.CustomerService;
 
-public class ProductTable extends JPanel {
+public class CustomerConditionTable extends JPanel {
 	private JTable table;
-	private static ProductService dao;
+	private static CustomerService dao;
 
-	public ProductTable() {
+	/**
+	 * Create the panel.
+	 */
+	public CustomerConditionTable() {
 		setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -26,33 +29,18 @@ public class ProductTable extends JPanel {
 
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		loadData();
+		loadDate();
 
 	}
 
-	public void loadData() {
+	public void loadDate() {
 		table.setModel(new DefaultTableModel(getRowDate(), getColumn()));
 		cellAlign();
 		cellWidth();
 	}
 
-	private void cellAlign() {
-		tableCellAlignment(SwingConstants.CENTER, 0, 1);
-		tableCellAlignment(SwingConstants.RIGHT, 2, 3);
-	}
-
-	private void tableCellAlignment(int align, int... idx) {
-		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-		dtcr.setHorizontalAlignment(align);
-
-		TableColumnModel tcm = table.getColumnModel();
-		for (int i = 0; i < idx.length; i++) {
-			tcm.getColumn(idx[i]).setCellRenderer(dtcr);
-		}
-	}
-
 	private void cellWidth() {
-		tableSetWidth(100, 120, 120, 120);
+		tableSetWidth(100, 120, 120);
 	}
 
 	private void tableSetWidth(int... width) {
@@ -63,25 +51,40 @@ public class ProductTable extends JPanel {
 		}
 	}
 
+	private void cellAlign() {
+		tableCellAlignment(SwingConstants.CENTER, 0, 1, 2);
+	}
+
+	private void tableCellAlignment(int align, int... idx) {
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(align);
+
+		TableColumnModel tcm = table.getColumnModel();
+		for (int i = 0; i < idx.length; i++) {
+			tcm.getColumn(idx[i]).setCellRenderer(dtcr);
+		}
+		
+	}
+	
+	
+
 	protected String[] getColumn() {
-		return new String[] { "제품코드", "제품명", "판매정가", "판매원가" };
+		return new String[] { "거래처코드", "거래처명", "거래처등급" };
 	}
 
 	protected String[][] getRowDate() {
-		List<Product> products = dao.getInstance().selectProductByAllDesc();
-		for(int i=products.size()-1; i>=0;i--){
-			if(products.get(i).isIsexist()==false){
-				products.remove(i);
+		List<Customer> customers = dao.getInstance().selectCustomerByAll();
+		for (int i = customers.size()-1; i >= 0; i--) {
+			if (customers.get(i).isIsexist() == false) {
+				customers.remove(i);
 			}
 		}
-		
-		String[][] datas = new String[products.size()][];
+		String[][] datas = new String[customers.size()][];
 		for (int i = 0; i < datas.length; i++) {
-			if (products.get(i).isIsexist()) {
-				datas[i] = products.get(i).toArray();
-			}
+				datas[i] = customers.get(i).toArray();
 		}
 		return datas;
 	}
-
+	
+	
 }

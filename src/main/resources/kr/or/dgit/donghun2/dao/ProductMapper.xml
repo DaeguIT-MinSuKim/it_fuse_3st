@@ -17,6 +17,12 @@
 		<include refid="selectSql"/>
 	</select>
 	
+	<select id="selectProductByAllDesc" resultType="Product">
+		<include refid="selectSql"/>
+		order by code desc;
+	</select>
+	
+	
 	<insert id="insertProduct" parameterType="Product" >
       insert into Product (code,name,saleprice,origiprice,isexist)
       values (#{code},#{name},#{salePrice},#{origiPrice},true)

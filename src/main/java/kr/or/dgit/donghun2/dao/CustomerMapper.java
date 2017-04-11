@@ -17,4 +17,5 @@ public interface CustomerMapper {
 	Customer selectCustomerByNo(Customer customer);
 
 	Customer selectDiscnt(Customer code);
+	List<Customer> selectCustomerByAllDesc();
 }	

@@ -75,7 +75,13 @@ public class EmployeeService {
 			return employee;
 		}
 	}
-	
+	public List<Employee> selectEmployeeByAllDesc(){
+		log.debug("selectEmployeeByAllDesc()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			List<Employee> list =sqlSession.getMapper(EmployeeMapper.class).selectEmployeeByAllDesc();
+			return list;
+		}
+	}
 	
 
 

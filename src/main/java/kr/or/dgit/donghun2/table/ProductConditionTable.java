@@ -14,11 +14,11 @@ import javax.swing.table.TableColumnModel;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.service.ProductService;
 
-public class ProductTable extends JPanel {
+public class ProductConditionTable extends JPanel {
 	private JTable table;
 	private static ProductService dao;
 
-	public ProductTable() {
+	public ProductConditionTable() {
 		setLayout(new BorderLayout(0, 0));
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -68,7 +68,7 @@ public class ProductTable extends JPanel {
 	}
 
 	protected String[][] getRowDate() {
-		List<Product> products = dao.getInstance().selectProductByAllDesc();
+		List<Product> products = dao.getInstance().selectProductByAll();
 		for(int i=products.size()-1; i>=0;i--){
 			if(products.get(i).isIsexist()==false){
 				products.remove(i);

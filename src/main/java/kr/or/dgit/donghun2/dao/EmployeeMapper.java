@@ -17,4 +17,5 @@ public interface EmployeeMapper {
 	Employee selectEmployeeByNo(Employee employee);
 	
 	Employee selectDiscnt(Employee code);
+	List<Employee> selectEmployeeByAllDesc();
 }

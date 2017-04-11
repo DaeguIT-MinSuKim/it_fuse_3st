@@ -44,6 +44,11 @@ public class CustomerMapperImpl implements CustomerMapper{
 		return sqlSession.selectOne(namespace+"selectDiscnt",code);
 	}
 
+	@Override
+	public List<Customer> selectCustomerByAllDesc() {
+		return sqlSession.selectList(namespace+"selectCustomerByAllDesc");
+	}
+
 
 	
 }

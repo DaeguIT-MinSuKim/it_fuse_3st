@@ -74,7 +74,7 @@ public class EmployeeTable extends JPanel {
 	}
 	
 	protected String[][] getRowDate() {
-		List<Employee> employee = dao.getInstance().selectEmployeeByAll();
+		List<Employee> employee = dao.getInstance().selectEmployeeByAllDesc();
 		for(int i=employee.size()-1;i>=0;i--){
 			if(employee.get(i).isIsexist()==false){
 				employee.remove(i);

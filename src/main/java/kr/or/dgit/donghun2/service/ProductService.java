@@ -69,4 +69,11 @@ public class ProductService {
 			return productMapper.selectProductByNoForSellInfo(code);
 		}
 	}
+	public List<Product> selectProductByAllDesc(){
+		log.debug("selectProductByAllDesc()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			ProductMapper productMapper = new ProductMapperImpl(sqlSession);
+			return productMapper.selectProductByAllDesc();
+		}
+	}
 }

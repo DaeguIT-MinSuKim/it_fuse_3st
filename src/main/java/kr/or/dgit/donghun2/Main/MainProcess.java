@@ -130,7 +130,7 @@ public class MainProcess extends JFrame{
 	        	 MainFrame mf = new MainFrame();
 	     		UserFrame uf = new UserFrame();
 	     		Login login = new Login();
-	     		if(LoginService.getInstance().selectLoginByGrade(login)==true){
+	     		if(LoginService.getInstance().selectLoginByGrade("")==true){
 	     			mf.setVisible(true);
 	     		}else{
 	     		if(LoginService.getInstance().selectLoginByGrade(userText.getText())==true){

@@ -80,7 +80,6 @@ public class MainFrame extends JFrame implements ActionListener {
 		pBtn.add(btn3);
 		btn3.addActionListener(this);
 		
-		setVisible(true);
 		
 	}
 

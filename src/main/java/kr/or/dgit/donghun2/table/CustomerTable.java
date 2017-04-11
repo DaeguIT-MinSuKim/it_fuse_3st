@@ -73,7 +73,7 @@ public class CustomerTable extends JPanel {
 	}
 
 	protected String[][] getRowDate() {
-		List<Customer> customers = dao.getInstance().selectCustomerByAll();
+		List<Customer> customers = dao.getInstance().selectCustomerByAllDesc();
 		for (int i = customers.size()-1; i >= 0; i--) {
 			if (customers.get(i).isIsexist() == false) {
 				customers.remove(i);

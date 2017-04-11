@@ -19,5 +19,5 @@ public interface ProductMapper{
 
 	public Product selectProductByNoForSellInfo(Product code);
 
-	
+	public List<Product> selectProductByAllDesc();
 }

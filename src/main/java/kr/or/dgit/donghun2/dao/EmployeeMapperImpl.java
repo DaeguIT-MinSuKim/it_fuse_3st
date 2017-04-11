@@ -44,6 +44,11 @@ private String namespace = "kr.or.dgit.donghun2.dao.EmployeeMapper.";
 		return sqlSession.selectOne(namespace+"selectDiscnt", code);
 	}
 
+	@Override
+	public List<Employee> selectEmployeeByAllDesc() {
+		return sqlSession.selectList(namespace+"selectEmployeeByAllDesc");
+	}
+
 
 	
 
