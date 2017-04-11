@@ -25,6 +25,13 @@ public class Login {
 		this.passwordRe = passwordRe;
 	}
 
+	
+
+	public Login(String id, String password) {
+		this.id = id;
+		this.password = password;
+	}
+
 
 
 	public Login() {}
@@ -108,5 +115,6 @@ public class Login {
 	
 
 	
+
 	
 }

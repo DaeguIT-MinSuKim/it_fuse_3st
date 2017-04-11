@@ -21,7 +21,9 @@ import kr.or.dgit.donghun2.panel.InquiryPanel;
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame implements ActionListener {
 
+
 	private JPanel contentPane;
+
 	private JPanel pBtn;
 	private JButton btn1;
 	private JButton btn2;
@@ -77,6 +79,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		btn2.addActionListener(this);
 		pBtn.add(btn3);
 		btn3.addActionListener(this);
+		
+		setVisible(true);
 		
 	}
 

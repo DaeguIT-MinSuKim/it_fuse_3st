@@ -209,3 +209,13 @@ select e.code , e.name , sellprice, marginprice, marginpct
 select * from sellinfo;
 select * from vw_calculate_sellinfo;
 select * from customer;
+
+drop table login;
+create table login(
+	id  CHAR(12)  NOT NULL COMMENT '아이디' PRIMARY KEY,
+	password  CHAR(50) NOT NULL COMMENT '비밀번호',
+	email char(30) not null comment '이메일'
+);
+
+insert into login(id, password,email) value ('est2',password('1234'),'kimcio505@naver.com');
+select * from login;

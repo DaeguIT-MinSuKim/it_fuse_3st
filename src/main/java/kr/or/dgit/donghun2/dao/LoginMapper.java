@@ -2,8 +2,15 @@ package kr.or.dgit.donghun2.dao;
 
 import kr.or.dgit.donghun2.dto.Login;
 
-public interface LoginMapper {
-	int insertLogin(Login login);
 	
-	/*Login SelectLoginByIDPW*/
+import java.util.List;
+
+
+public interface LoginMapper {
+	
+	public Login selectLoginById(Login login);
+	
+	public int insertLogin(Login login);
+
+	public List<Login> selectLoginByPw();
 }

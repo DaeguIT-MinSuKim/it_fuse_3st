@@ -39,6 +39,7 @@ public class JoinView extends JFrame implements ActionListener{
 		});
 	}
 
+	
 	public JoinView() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -59,7 +60,7 @@ public class JoinView extends JFrame implements ActionListener{
 		
 		btnJoin = new JButton("가입하기");
 		btnJoin.addActionListener(this);
-		btnBack = new JButton("가입 취소하기");
+		btnBack = new JButton("취소");
 		btnBack.addActionListener(this);
 		pBtn.add(btnJoin);
 		pBtn.add(btnBack);
@@ -79,13 +80,12 @@ public class JoinView extends JFrame implements ActionListener{
 	private void actionPerformedbJoin(ActionEvent e) {
 		if(pJoin.isEmpty()){
 			JOptionPane.showMessageDialog(null, "빈 칸이 있습니다.");
-			System.out.println("####");
-		}else if(pJoin.getObject().getPassword()!=pJoin.getObject().getPasswordRe()){
-			JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요");
-			System.out.println("####%%");
+		}else if(pJoin.isPasswordEquls()==false){
+			JOptionPane.showMessageDialog(null, "비밀번호를 다시 입력해주세요.");
 		}else{
 			dao.getInstance().insertLogin(pJoin.getObject());
 			JOptionPane.showMessageDialog(null, "가입되었습니다.");
+			System.out.println(pJoin.isPasswordEquls());
 		}
 	}
 
