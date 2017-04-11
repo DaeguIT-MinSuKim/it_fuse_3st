@@ -129,7 +129,7 @@ public class MainProcess extends JFrame {
 	}
 
 	public void isLoginCheck() {
-		if (userText.getText().equals("") || passText.getUIClassID().equals("")) { // 공백확인
+		if (userText.getText().equals("") || passText.getText().equals("")) { // 공백확인
 			JOptionPane.showMessageDialog(null, "공백이 있습니다.");
 			return;
 		} else { // 공백이 아니면?
@@ -138,14 +138,14 @@ public class MainProcess extends JFrame {
 					.selectLoginById(new Login(userText.getText(), String.valueOf(passText.getPassword())));
 			if (Ls != null) { // ID 확인
 				if (isGrade.getGrade()) {
-					JOptionPane.showMessageDialog(null, "Success");
+					JOptionPane.showMessageDialog(null, "관리자로 로그인하였습니다");
 					showMainFrame();
 				} else {
-					JOptionPane.showMessageDialog(null, "Success");
+					JOptionPane.showMessageDialog(null, "일반사원으로 로그인하였습니다");
 					showUserFrame();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Faild");
+				JOptionPane.showMessageDialog(null, "아이디와 비밀번호를 다시 한번 확인해주세요.");
 				clear();
 			}
 		}
