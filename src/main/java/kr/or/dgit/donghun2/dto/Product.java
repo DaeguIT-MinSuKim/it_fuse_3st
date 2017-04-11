@@ -95,7 +95,7 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "제품코드 : " + code + "____제품명 : " + name + "____판매정가 : " + String.format("%,d",salePrice)+"____";
+		return "제품코드 : "+code+"( 제품명  : " + name + " / 판매정가  : " + String.format("%,d",salePrice)+" )";
 	}
 	
 

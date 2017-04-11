@@ -85,6 +85,7 @@ public class JoinView extends JFrame implements ActionListener{
 		}else{
 			dao.getInstance().insertLogin(pJoin.getObject());
 			JOptionPane.showMessageDialog(null, "가입되었습니다.");
+			setVisible(false);
 		}
 	}
 

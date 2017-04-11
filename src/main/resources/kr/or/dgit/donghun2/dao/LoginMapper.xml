@@ -7,6 +7,7 @@
 		<id property="id" column="id"/>
 		<result property="password" column="password"/>
 		<result property="passwordRe" column="passwordRe"/>
+		<result property="grade" column="grade"/>
 		<result property="email" column="email"/>
 	</resultMap>
 	
@@ -20,10 +21,11 @@
 	</select>
 	
 	<select id="selectLoginByPw" resultType="Login">
-		select password from login where = id
+	select password from login where = id
 	</select>
-	<select id="selectLoginByGrade" resultType="boolean" parameterType="Login"> 
-		select grade from login where id=#{id} and password=password(#{password});
+	
+	<select id="selectLoginByGrade" resultType="Login" parameterType="Login"> 
+		select grade from login where id=#{id};
 	</select>
 
 </mapper>

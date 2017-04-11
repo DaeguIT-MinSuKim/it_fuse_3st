@@ -126,18 +126,17 @@ public class MainProcess extends JFrame{
 	    }
 	   
 	    public void isLoginCheck(){
-	        if(LoginService.getInstance().selectLoginById(
-	        		new Login(userText.getText(),passText.getText()))==null){
-	        	JOptionPane.showMessageDialog(null, "Faild");
-	        }else{
-	        	 JOptionPane.showMessageDialog(null, "Success");
+	      
 	        	 MainFrame mf = new MainFrame();
 	     		UserFrame uf = new UserFrame();
 	     		Login login = new Login();
 	     		if(LoginService.getInstance().selectLoginByGrade(login)==true){
 	     			mf.setVisible(true);
 	     		}else{
+	     		if(LoginService.getInstance().selectLoginByGrade(userText.getText())==true){
 	     			uf.setVisible(true);
+	     		}else{
+	     			mf.setVisible(true);
 	     		}
 		            bLoginCheck = true;
 		            if(isLogin()){

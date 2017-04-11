@@ -83,7 +83,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "사원코드 : " + code + "____사원명 : " + name + "____사원등급 : " + grade+"____";
+		return "사원코드 : "+code+"( "+name+" / "+grade+" ) ";
 	}
 
 	@Override
