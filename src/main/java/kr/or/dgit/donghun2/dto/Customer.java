@@ -63,7 +63,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "거래처코드 : "+code+"( "+name+" / "+grade+" ) ";
+		return code == null ? "전체보기" : code +"( "+name+" / "+grade+" ) ";
 	}
 
 	@Override

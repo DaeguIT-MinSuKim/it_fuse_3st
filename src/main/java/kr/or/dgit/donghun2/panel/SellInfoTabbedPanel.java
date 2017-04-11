@@ -71,6 +71,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		for (int i = 0; i < eList.size(); i++) {
 			eVector.addElement(eList.get(i));
 		}
+		eVector.remove(0);
 		pEmployeeForCombo.setcomboData(eVector);
 
 		pProductForCombo = new ComboPanel<>();
@@ -88,6 +89,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		for (int i = 0; i < pList.size(); i++) {
 			pVector.addElement(pList.get(i));
 		}
+			pVector.remove(0);
 		pProductForCombo.setcomboData(pVector);
 
 		pCustomerForCombo = new ComboPanel<>();
@@ -105,6 +107,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 		for (int i = 0; i < cList.size(); i++) {
 			cVector.addElement(cList.get(i));
 		}
+		cVector.remove(0);
 		pCustomerForCombo.setcomboData(cVector);
 
 		pSellInfoA = new SellInfoPanel();
