@@ -57,8 +57,13 @@ public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	}
 
 	@Override
-	public List<CalculatedValue> selectCalculatedValueByChart() {
-		return sqlSession.selectList(namespace+"selectCalculatedValueByChart");
+	public List<CalculatedValue> selectCalculatedValueByEmployeeChart() {
+		return sqlSession.selectList(namespace+"selectCalculatedValueByEmployeeChart");
+	}
+
+	@Override
+	public List<CalculatedValue> selectCalculatedValueByProductChart() {
+		return sqlSession.selectList(namespace+"selectCalculatedValueByProductChart");
 	}
 
 }

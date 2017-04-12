@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.Main;
+package kr.or.dgit.donghun2.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -28,18 +28,7 @@ public class JoinView extends JFrame implements ActionListener {
 	private JButton btnBack;
 	private LoginService dao;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JoinView frame = new JoinView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	public JoinView() {
 		setTitle("사원등록");

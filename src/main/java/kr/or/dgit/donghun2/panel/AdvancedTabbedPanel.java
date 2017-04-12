@@ -1,27 +1,48 @@
 package kr.or.dgit.donghun2.panel;
 
+import java.awt.BorderLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import java.awt.BorderLayout;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class AdvancedTabbedPanel extends JPanel {
+import javafx.beans.value.ObservableValue;
+import kr.or.dgit.donghun2.EmployeeChart.EmployeeChartPanel;
 
-	private SellInfoTabbedPanel pSellInfo;
+public class AdvancedTabbedPanel extends JTabbedPane implements ChangeListener{
 
+	private SellInfoTabbedPanel pSellInfoTabbedPanel;
+	private JPanel pSellInfo;
+	private EmployeeChartPanel pECP;
 	/**
 	 * Create the panel.
 	 */
 	public AdvancedTabbedPanel() {
-		setLayout(new BorderLayout(0, 0));
+		addChangeListener(this);
+		pSellInfo = new JPanel();
+		pSellInfoTabbedPanel = new SellInfoTabbedPanel();
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		add(tabbedPane, BorderLayout.CENTER);
-		
-		pSellInfo = new SellInfoTabbedPanel();
-		tabbedPane.addTab("거래내역등록", null, pSellInfo, null);
+		addTab("거래내역관리", null, pSellInfo, null);
 		pSellInfo.setLayout(new BoxLayout(pSellInfo, BoxLayout.Y_AXIS));
-
+		pSellInfoTabbedPanel.setLayout(new BoxLayout(pSellInfoTabbedPanel, BoxLayout.Y_AXIS));
+			if(pSellInfoTabbedPanel !=null){
+				pSellInfo.removeAll();
+			}
+		pSellInfo.add(pSellInfoTabbedPanel);
+		
+		pECP = new EmployeeChartPanel();
+		addTab("영업사원 별 거래내역 차트", null, pECP, null);
+		
 	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		
+	}
+
+		
+	
 
 }

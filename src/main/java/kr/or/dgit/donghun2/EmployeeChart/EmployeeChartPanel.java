@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.chart;
+package kr.or.dgit.donghun2.EmployeeChart;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
@@ -12,10 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-public class ViewChart extends JPanel{
+public class EmployeeChartPanel extends JPanel{
 	private BorderPane rootLayout;
 	
-	public ViewChart() {
+	public EmployeeChartPanel() {
 		setLayout(new BorderLayout(0, 0));
 		JFXPanel jfxPanel = new JFXPanel();
 		add(jfxPanel,"Center");
@@ -37,7 +37,7 @@ public class ViewChart extends JPanel{
 		Scene scene = null;
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ViewChart.class.getResource("EmployeeChartTab.fxml"));
+			loader.setLocation(EmployeeChartPanel.class.getResource("EmployeeChartTab.fxml"));
 			rootLayout = (BorderPane) loader.load();
 			scene = new Scene(rootLayout);
 		} catch (IOException e) {

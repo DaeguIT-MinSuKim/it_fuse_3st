@@ -4,9 +4,9 @@ import javax.swing.JPanel;
 
 import ch.randelshofer.quaqua.color.GradientColor;
 import erp_myframework.TextFiledPanel;
-import kr.or.dgit.donghun2.Main.JoinView;
-import kr.or.dgit.donghun2.Main.MainFrame;
-import kr.or.dgit.donghun2.Main.UserFrame;
+import kr.or.dgit.donghun2.view.JoinView;
+import kr.or.dgit.donghun2.view.MainFrame;
+import kr.or.dgit.donghun2.view.UserFrame;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;

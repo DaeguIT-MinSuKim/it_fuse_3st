@@ -17,6 +17,9 @@ import javax.swing.UIManager;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Login;
 import kr.or.dgit.donghun2.service.LoginService;
+import kr.or.dgit.donghun2.view.JoinView;
+import kr.or.dgit.donghun2.view.MainFrame;
+import kr.or.dgit.donghun2.view.UserFrame;
 
 public class MainProcess extends JFrame {
 	MainFrame mainFrame;

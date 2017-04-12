@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.Main;
+package kr.or.dgit.donghun2.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -15,43 +15,30 @@ import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import javafx.scene.shape.Box;
+import kr.or.dgit.donghun2.Main.MainProcess;
 import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
-import kr.or.dgit.donghun2.panel.UnitBasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.UnitInquiryPanel;
+import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
+import kr.or.dgit.donghun2.panel.HomePanel;
+import kr.or.dgit.donghun2.panel.InquiryPanel;
 
 @SuppressWarnings("serial")
-public class UserFrame extends JFrame implements ActionListener{
+public class MainFrame extends JFrame implements ActionListener {
+
 
 	private JPanel contentPane;
-	private JPanel pTabbedPane;
-	private JTabbedPane tabbedPane;
+
 	private JPanel pBtn;
 	private JButton btn1;
 	private JButton btn2;
+	private JTabbedPane tabbedPane;
+	private JPanel pTabbedPane;
 	private JButton btn3;
 	private JButton btn4;
 
+	private JButton btnHome;
 	
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-
-		} catch (Exception e) {
-		}
-		UserFrame uf = new UserFrame();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UserFrame frame = new UserFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	public UserFrame() {
+	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 700);
 		contentPane = new JPanel();
@@ -64,24 +51,32 @@ public class UserFrame extends JFrame implements ActionListener{
 		contentPane.add(pTabbedPane, BorderLayout.CENTER);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		pTabbedPane.add(tabbedPane);
+		//pTabbedPane.add(tabbedPane);
+		HomePanel hp = new HomePanel();
+		pTabbedPane.add(hp);
 
 		pBtn = new JPanel();
 		contentPane.add(pBtn, BorderLayout.EAST);
+		
 		pBtn.setLayout(new GridLayout(0, 1, 10, 50));
 		btn1 = new JButton("기초자료관리");
 		btn2 = new JButton("거래내역관리");
 		btn3 = new JButton("조회 현황");
-		
-		JPanel panel = new JPanel();
-		JPanel pBtn2 = new JPanel();
-		
-		
 		btn4 = new JButton("로그아웃");
 		
 		
+		JPanel pBtn2 = new JPanel();
+		JPanel panelLogOut = new JPanel();
+		JPanel panelHome = new JPanel();
 		
 		
+		
+		
+		pBtn.add(panelHome);
+		panelHome.setLayout(new GridLayout(0, 1));
+		btnHome = new JButton("Home");
+		btnHome.addActionListener(this);
+		panelHome.add(btnHome);
 		pBtn.add(btn1);
 		btn1.addActionListener(this);
 		pBtn.add(btn2);
@@ -90,28 +85,40 @@ public class UserFrame extends JFrame implements ActionListener{
 		btn3.addActionListener(this);
 		
 		pBtn.add(pBtn2);
-		pBtn2.add(panel);
-		pBtn2.setLayout(new BoxLayout(pBtn2, BoxLayout.Y_AXIS));
+		pBtn2.add(panelLogOut);
 		pBtn2.add(btn4);
 		btn4.addActionListener(this);
+		pBtn2.setLayout(new BoxLayout(pBtn2, BoxLayout.Y_AXIS));
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btn3){
-			actionPerformedbtn3(e);
+			actionPerformedbtn2(e);
 		}
 		if(e.getSource()== btn1){
 			actionPerformedbtn1(e);
 		}
 		if(e.getSource() == btn2){
-			actionPerformedbtn2(e);
+			actionPerformedbtn3(e);
 		}
 		if(e.getSource() == btn4){
 			actionPerformedbtn4(e);
 		}
+		if(e.getSource() == btnHome){
+			actionPerformedbtnHome(e);
+		}
+		
 	}
 
+	private void actionPerformedbtnHome(ActionEvent e) {
+		pTabbedPane.removeAll();
+		pTabbedPane.add(new HomePanel());
+		revalidate();
+		repaint();
+		
+	}
+
+	
 	private void actionPerformedbtn4(ActionEvent e) {
 		MainProcess mp = new MainProcess();
 		if(JOptionPane.showConfirmDialog(null, "로그아웃하시겠습니까?","",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
@@ -120,27 +127,27 @@ public class UserFrame extends JFrame implements ActionListener{
 		}
 	}
 
-	private void actionPerformedbtn2(ActionEvent e) {
+	private void actionPerformedbtn3(ActionEvent e) {
 		pTabbedPane.removeAll();
 		pTabbedPane.add(new AdvancedTabbedPanel());
 		revalidate();
 		repaint();
+		
 	}
 
 	private void actionPerformedbtn1(ActionEvent e) {
 		pTabbedPane.removeAll();
-		pTabbedPane.add(new UnitBasicTabbedPanel());
+		pTabbedPane.add(new BasicTabbedPanel());
 		revalidate();
 		repaint();
+		
 	}
 
-	private void actionPerformedbtn3(ActionEvent e) {
+	private void actionPerformedbtn2(ActionEvent e) {
 		pTabbedPane.removeAll();
-		pTabbedPane.add(new UnitInquiryPanel());
+		pTabbedPane.add(new InquiryPanel());
 		revalidate();
 		repaint();
 	}
-	
 
-	
 }

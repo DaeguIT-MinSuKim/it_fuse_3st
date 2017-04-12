@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.chart;
+package kr.or.dgit.donghun2.ProductChart;
 
 import javax.swing.JFrame;
 
@@ -14,7 +14,7 @@ public class MainApp extends JFrame{
 	}
 	public MainApp(){
 		setBounds(100,100,1000,1000);
-		ViewChart vc = new ViewChart();
+		ProductChartPanel vc = new ProductChartPanel();
 		add(vc);
 		setVisible(true);
 	}

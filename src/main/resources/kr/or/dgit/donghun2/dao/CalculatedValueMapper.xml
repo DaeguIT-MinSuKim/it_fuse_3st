@@ -67,13 +67,22 @@
 	order by ecode asc
 	</select>
 	
-	<select id="selectCalculatedValueByChart" resultMap="CalculatedValueResult">
+	<select id="selectCalculatedValueByEmployeeChart" resultMap="CalculatedValueResult">
 		select sellprice, e.name ename
 		from vw_calculate_sellInfo vw
 		join sellinfo s
 		on vw.scode=s.scode
 		join employee e
 		on s.ecode = e.code
+	</select>
+	
+	<select id="selectCalculatedValueByProductChart" resultMap="CalculatedValueResult">
+		select quantity, p.name pname
+		from vw_calculate_sellInfo vw
+		join sellinfo s
+		on vw.scode = s.scode
+		join product p
+		on s.pcode=p.code
 	</select>
 	
 	

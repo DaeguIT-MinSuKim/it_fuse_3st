@@ -1,4 +1,4 @@
-package kr.or.dgit.donghun2.chart;
+package kr.or.dgit.donghun2.ProductChart;
 
 import java.net.URL;
 import java.util.List;
@@ -9,24 +9,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Employee;
+import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
-import kr.or.dgit.donghun2.service.EmployeeService;
+import kr.or.dgit.donghun2.service.ProductService;
 
 //고객사별 주문 수량
 public class ChartController implements Initializable{
    @FXML
    private BarChart<String, Integer> barChart;
-   private List<Employee> employeeNameList;
+   private List<Product> productNameList;
    private String[] arrayClientNames;
 
    @Override
    public void initialize(URL location, ResourceBundle resources) {
-      employeeNameList = EmployeeService.getInstance().selectEmployeeByAll();
-      arrayClientNames = new String[employeeNameList.size()];
-      for(int i=0; i<employeeNameList.size(); i++){
-         arrayClientNames[i] = employeeNameList.get(i).getName();
-         System.out.println("Add Employee Name :" + arrayClientNames[i]);
+      productNameList = ProductService.getInstance().selectProductByAll();
+      arrayClientNames = new String[productNameList.size()];
+      for(int i=0; i<productNameList.size(); i++){
+         arrayClientNames[i] = productNameList.get(i).getName();
+         System.out.println("Add Product Name :" + arrayClientNames[i]);
       }
       
       int[] arrSaleAmount = createArraySaleAmount();
@@ -41,17 +41,17 @@ public class ChartController implements Initializable{
    }
 
    private int[] createArraySaleAmount() {
-      List<CalculatedValue> list = CalculatedValueService.getInstance().selectCalculatedValueByChart();
-      int[] arraySaleAmount = new int[employeeNameList.size()];
+      List<CalculatedValue> list = CalculatedValueService.getInstance().selectCalculatedValueByProductChart();
+      int[] arraySaleAmount = new int[productNameList.size()];
 //
       for (int i=0; i< list.size(); i++){
          //인자로 받은 list의 i번째 인자의 수량과 클라이언트
-         int amount = list.get(i).getSellprice();
-         String clientName = list.get(i).getEmployee().getName();
+         int amount = list.get(i).getSellinfo().getQuantity();
+         String clientName = list.get(i).getProduct().getName();
 
          //client Name이 몇 번째 배열에 있는지 확인
          int idx = -1;
-         for(int j=0; j<employeeNameList.size(); j++){
+         for(int j=0; j<productNameList.size(); j++){
             if(arrayClientNames[j].equals(clientName))
                idx = j;
          }

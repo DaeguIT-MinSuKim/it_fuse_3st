@@ -11,7 +11,8 @@ public interface CalculatedValueMapper {
 	public List<CalculatedValue> vw_InfoByCustomer();
 	public List<CalculatedValue> vw_InfoByProduct();
 	public List<CalculatedValue> vw_InfoByEmployee();
-	public List<CalculatedValue> selectCalculatedValueByChart();
+	public List<CalculatedValue> selectCalculatedValueByEmployeeChart();
+	public List<CalculatedValue> selectCalculatedValueByProductChart();
 	public List<CalculatedValue> vw_InfoByCustomerByCode(Map<String, String> item);
 	public List<CalculatedValue> vw_InfoByProductByCode(Map<String, String> item);
 	public List<CalculatedValue> vw_InfoByEmployeeByCode(Map<String, String> item);

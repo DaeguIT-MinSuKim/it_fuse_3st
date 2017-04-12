@@ -225,7 +225,12 @@ ALTER TABLE donghun2.Login
 		);
 insert into login(id, password, email, grade) values('A001',password('1234'),'ehdgnsdms321@naver.com',true);
 
-
+select quantity, p.name pname
+		from vw_calculate_sellInfo vw
+		join sellinfo s
+		on vw.scode = s.scode
+		join product p
+		on s.pcode=p.code;
 
 
 select code, name, grade,isexist from Employee order by code desc;

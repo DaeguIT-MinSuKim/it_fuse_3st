@@ -77,10 +77,16 @@ public class CalculatedValueService {
 			return calculatedValueMapper.vw_InfoByEmployeeByCode(item);
 		}
 	}
-	public List<CalculatedValue> selectCalculatedValueByChart(){
+	public List<CalculatedValue> selectCalculatedValueByEmployeeChart(){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
-			return calculatedValueMapper.selectCalculatedValueByChart();
+			return calculatedValueMapper.selectCalculatedValueByEmployeeChart();
+		}
+	}
+	public List<CalculatedValue> selectCalculatedValueByProductChart(){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.selectCalculatedValueByProductChart();
 		}
 	}
 }
