@@ -42,6 +42,7 @@ public class JoinView extends JFrame implements ActionListener {
 	}
 
 	public JoinView() {
+		setTitle("사원등록");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -86,7 +87,7 @@ public class JoinView extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "정확하게 아이디를 입력하세요.");
 			return;
 		} else if (checkPw() == false) {
-			JOptionPane.showMessageDialog(null, "비밀번호를 정확히 입력하세요.");
+			JOptionPane.showMessageDialog(null, "첫글자는 영어 대소문자, 6자리 이상 16자리 이하로 입력해주세요.");
 			return;
 		} else if (pJoin.isPasswordEquls() == false) {
 			JOptionPane.showMessageDialog(null, "비밀번호를 다시 입력해주세요.");
