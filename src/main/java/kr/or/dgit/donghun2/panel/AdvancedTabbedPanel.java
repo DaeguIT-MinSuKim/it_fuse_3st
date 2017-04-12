@@ -19,7 +19,7 @@ public class AdvancedTabbedPanel extends JPanel {
 		add(tabbedPane, BorderLayout.CENTER);
 		
 		pSellInfo = new SellInfoTabbedPanel();
-		tabbedPane.addTab("거래내역관리", null, pSellInfo, null);
+		tabbedPane.addTab("거래내역등록", null, pSellInfo, null);
 		pSellInfo.setLayout(new BoxLayout(pSellInfo, BoxLayout.Y_AXIS));
 
 	}

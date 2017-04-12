@@ -76,6 +76,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 		pBtn = new JPanel();
 		contentPane.add(pBtn, BorderLayout.EAST);
+		
 		pBtn.setLayout(new GridLayout(0, 1, 10, 50));
 		btn1 = new JButton("기초자료관리");
 		btn2 = new JButton("거래내역관리");
