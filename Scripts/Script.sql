@@ -210,9 +210,9 @@ select * from vw_calculate_sellinfo;
 select * from customer;
 
 
-select * from login where id='A001' and password ='1234';
+-- select * from login where id='A001' and password ='1234';
 
-drop table login;
+-- drop table login;
 -- 로그인
 CREATE TABLE donghun2.Login (
 	id       VARCHAR(12) NOT NULL, -- 아이디
