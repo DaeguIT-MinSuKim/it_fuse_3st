@@ -16,7 +16,6 @@ import javax.swing.UIManager;
 
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Login;
-import kr.or.dgit.donghun2.panel.JoinPanel;
 import kr.or.dgit.donghun2.service.LoginService;
 
 public class MainProcess extends JFrame {
@@ -27,8 +26,6 @@ public class MainProcess extends JFrame {
 	private JButton btnInit;
 	private JButton btnSave;
 	private JButton btnLogin;
-	private boolean bLoginCheck;
-	private JoinPanel pJoin;
 	private JLabel userLabel;
 	private JLabel passLabel;
 
@@ -140,9 +137,11 @@ public class MainProcess extends JFrame {
 				if (isGrade.getGrade()) {
 					JOptionPane.showMessageDialog(null, "Success");
 					showMainFrame();
+					setVisible(false);
 				} else {
 					JOptionPane.showMessageDialog(null, "Success");
 					showUserFrame();
+					setVisible(false);
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "Faild");

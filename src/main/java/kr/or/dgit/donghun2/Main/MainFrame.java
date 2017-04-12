@@ -15,8 +15,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import javafx.scene.shape.Box;
 import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
+import kr.or.dgit.donghun2.panel.HomePanel;
 import kr.or.dgit.donghun2.panel.InquiryPanel;
 
 @SuppressWarnings("serial")
@@ -32,6 +34,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JPanel pTabbedPane;
 	private JButton btn3;
 	private JButton btn4;
+
+	private JButton btnHome;
 	
 	public static void main(String[] args) {
 		try {
@@ -66,7 +70,9 @@ public class MainFrame extends JFrame implements ActionListener {
 		contentPane.add(pTabbedPane, BorderLayout.CENTER);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		pTabbedPane.add(tabbedPane);
+		//pTabbedPane.add(tabbedPane);
+		HomePanel hp = new HomePanel();
+		pTabbedPane.add(hp);
 
 		pBtn = new JPanel();
 		contentPane.add(pBtn, BorderLayout.EAST);
@@ -78,9 +84,17 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 		
 		JPanel pBtn2 = new JPanel();
-		JPanel panel = new JPanel();
-		pBtn.add(pBtn2);
+		JPanel panelLogOut = new JPanel();
+		JPanel panelHome = new JPanel();
 		
+		
+		
+		
+		pBtn.add(panelHome);
+		panelHome.setLayout(new GridLayout(0, 1));
+		btnHome = new JButton("Home");
+		btnHome.addActionListener(this);
+		panelHome.add(btnHome);
 		pBtn.add(btn1);
 		btn1.addActionListener(this);
 		pBtn.add(btn2);
@@ -89,7 +103,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		btn3.addActionListener(this);
 		
 		pBtn.add(pBtn2);
-		pBtn2.add(panel);
+		pBtn2.add(panelLogOut);
 		pBtn2.add(btn4);
 		btn4.addActionListener(this);
 		pBtn2.setLayout(new BoxLayout(pBtn2, BoxLayout.Y_AXIS));
@@ -108,6 +122,18 @@ public class MainFrame extends JFrame implements ActionListener {
 		if(e.getSource() == btn4){
 			actionPerformedbtn4(e);
 		}
+		if(e.getSource() == btnHome){
+			actionPerformedbtnHome(e);
+		}
+		
+	}
+
+	private void actionPerformedbtnHome(ActionEvent e) {
+		pTabbedPane.removeAll();
+		pTabbedPane.add(new HomePanel());
+		revalidate();
+		repaint();
+		
 	}
 
 	private void actionPerformedbtn4(ActionEvent e) {
