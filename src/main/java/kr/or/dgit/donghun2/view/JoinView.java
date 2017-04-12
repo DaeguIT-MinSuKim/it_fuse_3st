@@ -1,7 +1,6 @@
 package kr.or.dgit.donghun2.view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import erp_myframework.TextFiledPanel;
-import kr.or.dgit.donghun2.panel.JoinPanel;
-import kr.or.dgit.donghun2.panel.LoginPanel;
+import kr.or.dgit.donghun2.Intro.JoinPanel;
 import kr.or.dgit.donghun2.service.LoginService;
 
 public class JoinView extends JFrame implements ActionListener {

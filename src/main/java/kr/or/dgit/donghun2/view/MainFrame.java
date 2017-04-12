@@ -16,11 +16,11 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import javafx.scene.shape.Box;
+import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
+import kr.or.dgit.donghun2.Intro.BasicTabbedPanel;
+import kr.or.dgit.donghun2.Intro.HomePanel;
+import kr.or.dgit.donghun2.Intro.InquiryPanel;
 import kr.or.dgit.donghun2.Main.MainProcess;
-import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
-import kr.or.dgit.donghun2.panel.BasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.HomePanel;
-import kr.or.dgit.donghun2.panel.InquiryPanel;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame implements ActionListener {

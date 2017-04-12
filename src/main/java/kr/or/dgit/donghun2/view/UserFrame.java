@@ -15,10 +15,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
+import kr.or.dgit.donghun2.Intro.UnitBasicTabbedPanel;
+import kr.or.dgit.donghun2.Intro.UnitInquiryPanel;
 import kr.or.dgit.donghun2.Main.MainProcess;
-import kr.or.dgit.donghun2.panel.AdvancedTabbedPanel;
-import kr.or.dgit.donghun2.panel.UnitBasicTabbedPanel;
-import kr.or.dgit.donghun2.panel.UnitInquiryPanel;
 
 @SuppressWarnings("serial")
 public class UserFrame extends JFrame implements ActionListener{
