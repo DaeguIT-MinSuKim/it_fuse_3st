@@ -77,4 +77,10 @@ public class CalculatedValueService {
 			return calculatedValueMapper.vw_InfoByEmployeeByCode(item);
 		}
 	}
+	public List<CalculatedValue> selectCalculatedValueByChart(){
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			CalculatedValueMapper calculatedValueMapper = new CalculatedValueMapperImpl(sqlSession);
+			return calculatedValueMapper.selectCalculatedValueByChart();
+		}
+	}
 }

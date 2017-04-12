@@ -35,6 +35,7 @@ values
 ('E010', '이원준', 'C',1),
 ('E011', '김동욱', 'C',1),
 ('E012', '허강민', 'C',1);
+
 select * from employee;
 
 CREATE TABLE  product (		-- 제품테이블
@@ -216,6 +217,18 @@ create table login(
 	password  CHAR(50) NOT NULL COMMENT '비밀번호',
 	email char(30) not null comment '이메일'
 );
+
+SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
+		from vw_calculate_sellInfo;
+
+select sellprice, e.name ename
+		from vw_calculate_sellInfo vw
+		join sellinfo s
+		on vw.scode=s.scode
+		join employee e
+		on s.ecode = e.code;
+		
+		
 
 insert into login(id, password,email) value ('est2',password('1234'),'kimcio505@naver.com');
 select * from login;

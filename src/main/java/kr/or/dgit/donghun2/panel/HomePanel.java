@@ -1,9 +1,12 @@
 package kr.or.dgit.donghun2.panel;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import kr.or.dgit.donghun2.initSetting.InitSettingService;
@@ -28,6 +31,15 @@ public class HomePanel extends JPanel implements ActionListener{
 		panel.add(bBackup);
 		panel.add(bRestore);
 		initSettingService = new InitSettingService();
+		JPanel pHello = new JPanel();
+		add(pHello);
+		String path = "icon/Hello.jpg";
+	    JPanel pImage = new JPanel(new BorderLayout());
+	    JLabel label = new JLabel(new ImageIcon(path));
+	    label.setHorizontalAlignment(JLabel.CENTER);
+	    pImage.add(label);
+	    pHello.add(pImage);
+		
 	}
 
 	@Override

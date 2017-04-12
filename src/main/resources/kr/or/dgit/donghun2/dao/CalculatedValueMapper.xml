@@ -71,7 +71,16 @@
 	order by ecode asc
 	</select>
 	
- 
+	<select id="selectCalculatedValueByChart" resultMap="CalculatedValueResult">
+		select sellprice, e.name ename
+		from vw_calculate_sellInfo vw
+		join sellinfo s
+		on vw.scode=s.scode
+		join employee e
+		on s.ecode = e.code
+	</select>
+	
+	
 	<select id="selectCalculatedValueByAll" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
 		from vw_calculate_sellInfo
