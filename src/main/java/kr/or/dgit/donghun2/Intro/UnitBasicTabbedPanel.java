@@ -6,10 +6,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import kr.or.dgit.donghun2.Customer.CustomerInsertTabbedPanel;
-import kr.or.dgit.donghun2.Customer.CustomerTabbedPanel;
-import kr.or.dgit.donghun2.Product.ProductInsertTabbedPanel;
-import kr.or.dgit.donghun2.Product.ProductTabbedPanel;
+import kr.or.dgit.donghun2.customer.CustomerInsertTabbedPanel;
+import kr.or.dgit.donghun2.customer.CustomerTabbedPanel;
+import kr.or.dgit.donghun2.product.ProductInsertTabbedPanel;
+import kr.or.dgit.donghun2.product.ProductTabbedPanel;
 
 public class UnitBasicTabbedPanel extends JTabbedPane implements ChangeListener{
 	private JPanel pProductInsert;

@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.Intro.UnitBasicTabbedPanel;
 import kr.or.dgit.donghun2.Intro.UnitInquiryPanel;
-import kr.or.dgit.donghun2.Main.MainProcess;
+import kr.or.dgit.donghun2.main.MainProcess;
 
 @SuppressWarnings("serial")
 public class UserFrame extends JFrame implements ActionListener{

@@ -17,7 +17,7 @@ import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.Intro.BasicTabbedPanel;
 import kr.or.dgit.donghun2.Intro.HomePanel;
 import kr.or.dgit.donghun2.Intro.InquiryPanel;
-import kr.or.dgit.donghun2.Main.MainProcess;
+import kr.or.dgit.donghun2.main.MainProcess;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame implements ActionListener {

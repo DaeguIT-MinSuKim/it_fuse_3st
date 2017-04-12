@@ -6,10 +6,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import kr.or.dgit.donghun2.Customer.CustomerConditionPanel;
-import kr.or.dgit.donghun2.Customer.CustomerSellInfoPanel;
-import kr.or.dgit.donghun2.Employee.EmployeeSellInfoPanel;
-import kr.or.dgit.donghun2.Product.ProductSellInfoPanel;
+import kr.or.dgit.donghun2.customer.CustomerConditionPanel;
+import kr.or.dgit.donghun2.customer.CustomerSellInfoPanel;
+import kr.or.dgit.donghun2.employee.EmployeeSellInfoPanel;
+import kr.or.dgit.donghun2.product.ProductSellInfoPanel;
 import kr.or.dgit.donghun2.table.ProductTable;
 
 public class UnitInquiryPanel extends JPanel {
