@@ -51,11 +51,15 @@ public class EmployeeInsertTabbedPanel extends JPanel implements ActionListener 
 
 	protected void setInit() {
 		List<Employee> employee = edao.getInstance().selectEmployeeByAll();
-
-		String lastNum = employee.get(employee.size() - 1).getCode();
-		String value = String.format(setNoFormat(), Integer.parseInt(lastNum.substring(1)) + 1);
-		pEmpp.getpCode().setTfValue(value);
-		pEmpp.getpCode().gettF().setEditable(false);
+		if(employee.size()==0){
+			pEmpp.getpCode().setTfValue("E001");
+			pEmpp.getpCode().gettF().setEditable(false);
+		}else{
+			String lastNum = employee.get(employee.size() - 1).getCode();
+			String value = String.format(setNoFormat(), Integer.parseInt(lastNum.substring(1)) + 1);
+			pEmpp.getpCode().setTfValue(value);
+			pEmpp.getpCode().gettF().setEditable(false);
+		}
 	}
 
 	private String setNoFormat() {

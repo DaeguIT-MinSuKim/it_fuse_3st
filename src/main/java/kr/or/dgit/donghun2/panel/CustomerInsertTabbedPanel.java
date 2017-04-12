@@ -48,11 +48,15 @@ public class CustomerInsertTabbedPanel extends JPanel implements ActionListener 
 	}
 	protected void setInit(){
 		List<Customer> customer = cdao.getInstance().selectCustomerByAll();
-		
+		if(customer.size()==0){
+			pCusp.getpCode().setTfValue("C001");
+			pCusp.getpCode().gettF().setEditable(false);
+		}else{
 		String lastNum = customer.get(customer.size()-1).getCode();
 		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
 		pCusp.getpCode().setTfValue(value);
 		pCusp.getpCode().gettF().setEditable(false);
+		}
 	}
 
 	private String setFormat() {

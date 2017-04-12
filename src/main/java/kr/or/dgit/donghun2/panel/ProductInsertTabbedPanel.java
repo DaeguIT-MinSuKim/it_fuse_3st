@@ -45,11 +45,15 @@ public class ProductInsertTabbedPanel extends JPanel implements ActionListener{
 	}
 	protected void setInit(){
 		List<Product> product = pdao.getInstance().selectProductByAll();
-		
+		if(product.size()==0){
+			pProp.getpCode().setTfValue("P001");
+			pProp.getpCode().gettF().setEditable(false);
+		}else{
 		String lastNum = product.get(product.size()-1).getCode();
 		String value = String.format(setFormat(), Integer.parseInt(lastNum.substring(1))+1);
 		pProp.getpCode().setTfValue(value);
 		pProp.getpCode().gettF().setEditable(false);
+		}
 	}
 
 	private String setFormat() {
