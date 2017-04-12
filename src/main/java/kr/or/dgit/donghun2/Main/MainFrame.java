@@ -136,6 +136,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		
 	}
 
+	
 	private void actionPerformedbtn4(ActionEvent e) {
 		MainProcess mp = new MainProcess();
 		if(JOptionPane.showConfirmDialog(null, "로그아웃하시겠습니까?","",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
