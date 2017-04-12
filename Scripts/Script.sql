@@ -171,21 +171,23 @@ select saledate, pcode, pname, quantity, sellprice, disprice, marginprice, margi
 from vw_InfoByCustomer 
 where ccode='C001';
 
--- drop view vw_InfoByCustomer;
 
+-- drop view vw_InfoByProduct;
+ 
 create view vw_InfoByProduct as
-select s.pcode pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct
+select s.pcode pcode, s.ccode, c.name cname,
+quantity, sellprice, disprice, marginprice, marginpct
 from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
-group by pcode
 order by pcode asc ;
 
-select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
-from vw_infobyproduct 
-where pcode='P001';
+select * from vw_infobyproduct;
+select * from vw_calculate_sellinfo;
 
-select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct from vw_infobyproduct;
+
+select  ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 		from vw_infobyproduct 
-		where pcode='P005';
+		where pcode='P002';
 
 -- drop view vw_InfoByEmployee;
 create view vw_InfoByEmployee as
@@ -196,12 +198,6 @@ order by e.code asc;
 select ecode, ename,  saledate,sellprice,marginprice, marginpct
 from vw_InfoByEmployee
 where ecode = 'E001';
- 
-select e.code , e.name , sellprice, marginprice, marginpct
-	from vw_InfoByEmployee vw
-	join employee e 
-	on vw.ecode = e.code
-	order by e.code asc;
 
 -- drop view vw_InfoByEmployee;
 
@@ -234,3 +230,7 @@ insert into login(id, password, email, grade) values('A001',password('1234'),'eh
 
 select code, name, grade,isexist from Employee order by code desc;
 select * from login;
+
+
+select * from vw_infobyproduct;
+select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct from vw_infobyproduct where pcode='P001';

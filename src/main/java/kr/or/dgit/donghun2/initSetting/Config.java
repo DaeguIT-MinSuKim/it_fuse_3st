@@ -86,11 +86,12 @@ public class Config {
 			+ " order by saledate desc "	,
 			
 			// 제품뷰
-			" create view vw_InfoByProduct as"
-			+ " select s.pcode pcode, c.code ccode, c.name cname, sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct"
+			" create view vw_InfoByProduct as "
+			+ " select s.pcode pcode, c.code ccode, c.name cname, "
+			+ " sum(quantity) quantity, sum(sellprice) sellprice, sum(disprice) disprice, sum(marginprice) marginprice, avg(marginpct) marginpct "
 			+ " from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code "
-			+ " group by pcode"
-			+ " order by pcode asc "	,
+			+ " group by ccode "
+			+ " order by pcode asc"	,
 			
 			// 사원뷰
 			" create view vw_InfoByEmployee as "

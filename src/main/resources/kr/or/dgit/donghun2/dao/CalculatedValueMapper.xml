@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="vw_InfoByProductByCode" resultMap="CalculatedValueResult">
-	select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+	select  ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 		from vw_infobyproduct 
 		where pcode=#{pcode}
 	</select>
@@ -49,14 +49,10 @@
 	
 
 	<select id="vw_InfoByProduct" resultMap="CalculatedValueResult">
-	select c.code ccode, c.name cname, quantity, sellprice, disprice, marginprice, marginpct
-	from vw_calculate_sellInfo vw 
-	join sellinfo s 
-	on vw.scode= s.scode 
-	join customer c 
-	on s.ccode = c.code
-	group by c.code
-	order by c.code asc
+		select s.pcode pcode, s.ccode, c.name cname,
+		quantity, sellprice, disprice, marginprice, marginpct
+		from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
+		order by pcode asc
 	</select>
 	
 
