@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,6 +25,9 @@ import kr.or.dgit.donghun2.service.EmployeeService;
 
 public class EmployeeSellInfoTable extends JPanel {
 	private JTable table;
+	private JLabel lblSum;
+	private JLabel lblSum1;
+	private JLabel lblSum2;
 	private static CalculatedValueService dao;
 
 	/**
@@ -37,7 +41,23 @@ public class EmployeeSellInfoTable extends JPanel {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.SOUTH);
+		
+		
+		lblSum = new JLabel("합계");
+		lblSum1 = new JLabel("판매 금액");
+		lblSum2 = new JLabel("마진액");
+		
+		panel.add(lblSum);
+		lblSum.setText("합계                   ");
+		panel.add(lblSum1);
+		lblSum1.setText("      판매 금액    "+String.format("%,d",loadSum()[0]));
+		panel.add(lblSum2);
+		lblSum2.setText("      마진액    "+String.format("%,d", loadSum()[1]));
 		loadDate();
+		
 
 	}
 	public void loadDate(){
@@ -58,7 +78,17 @@ public class EmployeeSellInfoTable extends JPanel {
 		cellAlign();
 		cellWidth();
 	}
-	
+	public int[] loadSum(){
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByEmployee();
+		int sellprice=0;
+		int marginprice=0;
+		for(int i = 0; i < calculatedValues.size(); i++){
+			sellprice = calculatedValues.get(i).getSellprice();
+			marginprice= calculatedValues.get(i).getMarginprice();
+		}
+		return new int[]{sellprice,marginprice};
+
+	}
 	
 	private void cellAlign() {
 		tableCellAlignment(SwingConstants.CENTER, 0, 1,2);
@@ -94,9 +124,6 @@ public class EmployeeSellInfoTable extends JPanel {
 		Map<String, String> item = new HashMap<>();
 		item.put("ecode", eRes.getCode());
 		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByEmployeeByCode(item);
-		for(CalculatedValue cv : calculatedValues){
-			System.out.println(cv);
-		}
 		String[][] datas = new String[calculatedValues.size()][];
 		for(int i = 0; i < datas.length; i++){
 			datas[i] = calculatedValues.get(i).toArrayforEmployeeSellInfoByCodeT();

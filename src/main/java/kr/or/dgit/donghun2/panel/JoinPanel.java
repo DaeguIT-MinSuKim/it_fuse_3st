@@ -20,7 +20,6 @@ public class JoinPanel extends JPanel{
 	
 	private JPanel pJoin;
 	private TextFiledPanel pID;
-	
 	private JPasswordField pPassword;
 	private JPasswordField pPasswordRe;
 	private TextFiledPanel pEmail;
@@ -89,7 +88,26 @@ public class JoinPanel extends JPanel{
 	public JPasswordField getpPasswordRe() {
 		return pPasswordRe;
 	}
+	
 
+	public void setpID(TextFiledPanel pID) {
+		this.pID = pID;
+	}
+
+
+	public void setpPassword(JPasswordField pPassword) {
+		this.pPassword = pPassword;
+	}
+
+
+	public void setpEmail(TextFiledPanel pEmail) {
+		this.pEmail = pEmail;
+	}
+
+
+	public TextFiledPanel getpEmail() {
+		return pEmail;
+	}
 
 	public Login getObject(){
 		String ID = pID.getTfValue();
@@ -132,19 +150,24 @@ public class JoinPanel extends JPanel{
 		pEmail.setTfValue("");
 		pGrade.setSelectedItem(0);
 	}
-	public boolean isEmpty(){
+	public boolean isEmptyCheck(){
 		boolean result = false;
-		for(Component c : getComponents()){
-			if(c instanceof TextFiledPanel){
-				TextFiledPanel tfp =(TextFiledPanel)c;
-				if(tfp.isEmpty()){
-					return true;
-				}
-			}
+		if(pID.getTfValue().equals("")){
+			return true;
+		}
+		if(pPassword.getPassword().equals("")){
+			return true;
+		}
+		if(pPasswordRe.getPassword().equals("")){
+			return true;
+		}
+		if(pEmail.getTfValue().equals("")){
+			return true;
 		}
 		return false;
 	}
-	
+
+
 
 	
 	

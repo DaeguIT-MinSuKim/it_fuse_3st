@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -17,11 +18,18 @@ import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 import kr.or.dgit.donghun2.service.ProductService;
+import javax.swing.JLabel;
 
 public class ProductSellInfoTable extends JPanel {
 	private JTable table;
 	private static CalculatedValueService dao;
-
+	private JLabel lblSum;
+	private JTextField lblText;
+	private JLabel lblSum1;
+	private JLabel lblSum2;
+	private JLabel lblSum3;
+	private JLabel lblSum4;
+	private JLabel lblSum5;
 	
 	public ProductSellInfoTable() {
 		setLayout(new BorderLayout(0, 0));
@@ -31,15 +39,47 @@ public class ProductSellInfoTable extends JPanel {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.SOUTH);
+		
+		lblSum = new JLabel("합계");
+		lblSum1 = new JLabel("판매 수량");
+		lblSum2 = new JLabel("판매 금액");
+		lblSum3 = new JLabel("할인 금액");
+		lblSum4 = new JLabel("마진액");
+		panel.add(lblSum);
+		lblSum.setText("합계                   ");
+		panel.add(lblSum1);
+		lblSum1.setText("판매 수량     "+String.format("%,d", loadSum()[0]));
+		panel.add(lblSum2);
+		lblSum2.setText("      판매 금액    "+String.format("%,d",loadSum()[1]));
+		panel.add(lblSum3);
+		lblSum3.setText("      할인 금액    "+String.format("%,d", loadSum()[2]));
+		panel.add(lblSum4);
+		lblSum4.setText("      마진액    "+String.format("%,d", loadSum()[3]));
 		loadData();
-
 	}
 	public void loadData(){
 		table.setModel(new DefaultTableModel(getRowDate(),getColumn()));
 		cellAlign();
 		cellWidth();
+		
 	}
-	
+	public int[] loadSum(){
+		List<CalculatedValue> calculatedValues = dao.getInstance().vw_InfoByProduct();
+		int quantity = 0;
+		int sellprice = 0;
+		int disprice = 0;
+		int marginprice = 0;
+		for(int i = 0; i < calculatedValues.size(); i++){
+			quantity += calculatedValues.get(i).getSellinfo().getQuantity();
+			sellprice += calculatedValues.get(i).getSellprice();
+			disprice += calculatedValues.get(i).getDisprice();
+			marginprice += calculatedValues.get(i).getMarginprice();
+		}
+		return new int[]{quantity,sellprice,disprice,marginprice};
+	}
 	
 	
 	private void cellAlign() {
