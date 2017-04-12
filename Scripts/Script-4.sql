@@ -212,10 +212,12 @@ select * from vw_calculate_sellinfo;
 select * from customer;
 
 drop table login;
+
 create table login(
 	id  CHAR(12)  NOT NULL COMMENT '아이디' PRIMARY KEY,
 	password  CHAR(50) NOT NULL COMMENT '비밀번호',
-	email char(30) not null comment '이메일'
+	email char(30) not null comment '이메일',
+	grade boolean not null
 );
 
 SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct

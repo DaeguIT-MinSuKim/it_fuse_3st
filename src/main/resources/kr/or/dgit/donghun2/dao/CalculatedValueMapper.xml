@@ -85,6 +85,15 @@
 		on s.pcode=p.code
 	</select>
 	
+	<select id="selectCalculatedValueByCustomerChart" resultMap="CalculatedValueResult">
+		select sellprice, c.name cname
+		from vw_calculate_sellInfo vw
+		join sellinfo s
+		on vw.scode = s.scode
+		join product c
+		on s.pcode=c.code
+	</select>
+	
 	
 	<select id="selectCalculatedValueByAll" resultMap="CalculatedValueResult">
 		SELECT scode, unitprice, sellprice, disprice, marginprice, marginPct
