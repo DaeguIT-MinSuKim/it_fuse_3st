@@ -10,8 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.dgit.donghun2.dao.CalculatedValueMapper;
 import kr.or.dgit.donghun2.dao.CalculatedValueMapperImpl;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Employee;
-import kr.or.dgit.donghun2.dto.SellInfo;
 import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 
 public class CalculatedValueService {

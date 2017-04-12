@@ -3,7 +3,6 @@ package kr.or.dgit.donghun2.Customer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -12,7 +11,6 @@ import javax.swing.JPanel;
 
 import erp_myframework.ComboPanel;
 import kr.or.dgit.donghun2.dto.Customer;
-import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CustomerService;
 import kr.or.dgit.donghun2.table.CustomerTable;
 

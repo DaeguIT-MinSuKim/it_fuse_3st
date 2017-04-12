@@ -2,12 +2,6 @@ package kr.or.dgit.donghun2.ProductChart;
 
 import javax.swing.JFrame;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-
 public class MainApp extends JFrame{
 	public static void main(String[] args) {
 		MainApp ma = new MainApp();

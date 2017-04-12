@@ -1,9 +1,8 @@
 package kr.or.dgit.donghun2.dao;
 
-import kr.or.dgit.donghun2.dto.Login;
-
-	
 import java.util.List;
+
+import kr.or.dgit.donghun2.dto.Login;
 
 
 public interface LoginMapper {

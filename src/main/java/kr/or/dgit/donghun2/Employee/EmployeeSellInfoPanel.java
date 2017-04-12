@@ -1,17 +1,5 @@
 package kr.or.dgit.donghun2.Employee;
 
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import erp_myframework.ComboPanel;
-import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Employee;
-import kr.or.dgit.donghun2.service.CalculatedValueService;
-import kr.or.dgit.donghun2.service.CustomerService;
-import kr.or.dgit.donghun2.service.EmployeeService;
-import kr.or.dgit.donghun2.table.EmployeeSellInfoTable;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -23,6 +11,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import erp_myframework.ComboPanel;
+import kr.or.dgit.donghun2.dto.CalculatedValue;
+import kr.or.dgit.donghun2.dto.Employee;
+import kr.or.dgit.donghun2.service.CalculatedValueService;
+import kr.or.dgit.donghun2.service.EmployeeService;
+import kr.or.dgit.donghun2.table.EmployeeSellInfoTable;
 
 public class EmployeeSellInfoPanel extends JPanel {
 

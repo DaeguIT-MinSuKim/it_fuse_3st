@@ -1,18 +1,15 @@
 package kr.or.dgit.donghun2.Intro;
 
-import java.awt.Component;
 import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 
 import erp_myframework.RadioPanel;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Login;
-import javax.swing.SwingConstants;
 
 
 public class JoinPanel extends JPanel{

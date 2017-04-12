@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import erp_myframework.SpinnerPanel;
 import erp_myframework.TextFiledPanel;
 import kr.or.dgit.donghun2.dto.Product;
 

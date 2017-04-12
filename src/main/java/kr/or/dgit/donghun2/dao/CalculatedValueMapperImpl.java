@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Employee;
 
 public class CalculatedValueMapperImpl implements CalculatedValueMapper {
 	private String namespace="kr.or.dgit.donghun2.dao.CalculatedValueMapper.";

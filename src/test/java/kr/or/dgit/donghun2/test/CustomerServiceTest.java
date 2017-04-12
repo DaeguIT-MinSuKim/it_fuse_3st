@@ -1,15 +1,8 @@
 package kr.or.dgit.donghun2.test;
 
-import java.util.List;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import kr.or.dgit.donghun2.dto.Cgrade;
-import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CustomerService;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

@@ -8,8 +8,6 @@ import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.donghun2.dao.CustomerMapper;
-import kr.or.dgit.donghun2.dao.EmployeeMapper;
-import kr.or.dgit.donghun2.dto.Cgrade;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.util.MybatisSqlSessionFactory;
 

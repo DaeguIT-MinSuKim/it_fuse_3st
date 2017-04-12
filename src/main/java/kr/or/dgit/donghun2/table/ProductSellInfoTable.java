@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,8 +18,6 @@ import javax.swing.table.TableColumnModel;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Product;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
-import kr.or.dgit.donghun2.service.ProductService;
-import javax.swing.JLabel;
 
 public class ProductSellInfoTable extends JPanel {
 	private JTable table;

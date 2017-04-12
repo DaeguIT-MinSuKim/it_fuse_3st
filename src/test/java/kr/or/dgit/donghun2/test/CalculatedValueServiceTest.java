@@ -1,18 +1,8 @@
 package kr.or.dgit.donghun2.test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
 
 

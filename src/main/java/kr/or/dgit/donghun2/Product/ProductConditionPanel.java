@@ -3,7 +3,6 @@ package kr.or.dgit.donghun2.Product;
 import javax.swing.JPanel;
 
 import kr.or.dgit.donghun2.table.ProductConditionTable;
-import kr.or.dgit.donghun2.table.ProductTable;
 
 public class ProductConditionPanel extends JPanel {
 

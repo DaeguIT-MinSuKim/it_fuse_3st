@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,13 +14,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-import kr.or.dgit.donghun2.dao.CustomerMapper;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
-import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.dto.Employee;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
-import kr.or.dgit.donghun2.service.CustomerService;
-import kr.or.dgit.donghun2.service.EmployeeService;
 
 public class EmployeeSellInfoTable extends JPanel {
 	private JTable table;

@@ -3,7 +3,6 @@ package kr.or.dgit.donghun2.ProductChart;
 import java.awt.BorderLayout;
 import java.io.IOException;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import javafx.application.Platform;

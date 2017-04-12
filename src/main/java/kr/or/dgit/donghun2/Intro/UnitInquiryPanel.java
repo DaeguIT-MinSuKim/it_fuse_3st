@@ -1,5 +1,7 @@
 package kr.or.dgit.donghun2.Intro;
 
+import java.awt.BorderLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -9,8 +11,6 @@ import kr.or.dgit.donghun2.Customer.CustomerSellInfoPanel;
 import kr.or.dgit.donghun2.Employee.EmployeeSellInfoPanel;
 import kr.or.dgit.donghun2.Product.ProductSellInfoPanel;
 import kr.or.dgit.donghun2.table.ProductTable;
-
-import java.awt.BorderLayout;
 
 public class UnitInquiryPanel extends JPanel {
 

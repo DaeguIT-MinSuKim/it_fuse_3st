@@ -1,7 +1,6 @@
 package kr.or.dgit.donghun2.view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import javafx.scene.shape.Box;
 import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.Intro.BasicTabbedPanel;
 import kr.or.dgit.donghun2.Intro.HomePanel;

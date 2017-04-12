@@ -1,14 +1,11 @@
 package kr.or.dgit.donghun2.Intro;
 
-import java.awt.BorderLayout;
-
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import javafx.beans.value.ObservableValue;
 import kr.or.dgit.donghun2.EmployeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.SellInfo.SellInfoTabbedPanel;
 

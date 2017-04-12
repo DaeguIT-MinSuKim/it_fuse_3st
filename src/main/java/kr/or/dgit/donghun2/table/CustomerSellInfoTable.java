@@ -17,7 +17,6 @@ import javax.swing.table.TableColumnModel;
 import kr.or.dgit.donghun2.dto.CalculatedValue;
 import kr.or.dgit.donghun2.dto.Customer;
 import kr.or.dgit.donghun2.service.CalculatedValueService;
-import kr.or.dgit.donghun2.service.CustomerService;
 
 public class CustomerSellInfoTable extends JPanel {
 	private JTable table;

@@ -1,7 +1,5 @@
 package kr.or.dgit.donghun2.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SellInfo {
