@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
@@ -30,6 +31,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JTabbedPane tabbedPane;
 	private JPanel pTabbedPane;
 	private JButton btn3;
+	private JButton btn4;
 	
 	public static void main(String[] args) {
 		try {
@@ -72,6 +74,12 @@ public class MainFrame extends JFrame implements ActionListener {
 		btn1 = new JButton("기초자료관리");
 		btn2 = new JButton("거래내역관리");
 		btn3 = new JButton("조회 현황");
+		btn4 = new JButton("로그아웃");
+		
+		
+		JPanel pBtn2 = new JPanel();
+		JPanel panel = new JPanel();
+		pBtn.add(pBtn2);
 		
 		pBtn.add(btn1);
 		btn1.addActionListener(this);
@@ -80,7 +88,11 @@ public class MainFrame extends JFrame implements ActionListener {
 		pBtn.add(btn3);
 		btn3.addActionListener(this);
 		
-		
+		pBtn.add(pBtn2);
+		pBtn2.add(panel);
+		pBtn2.add(btn4);
+		btn4.addActionListener(this);
+		pBtn2.setLayout(new BoxLayout(pBtn2, BoxLayout.Y_AXIS));
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -92,6 +104,17 @@ public class MainFrame extends JFrame implements ActionListener {
 		}
 		if(e.getSource() == btn2){
 			actionPerformedbtn3(e);
+		}
+		if(e.getSource() == btn4){
+			actionPerformedbtn4(e);
+		}
+	}
+
+	private void actionPerformedbtn4(ActionEvent e) {
+		MainProcess mp = new MainProcess();
+		if(JOptionPane.showConfirmDialog(null, "로그아웃하시겠습니까?","",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+			mp.setVisible(true);
+			this.setVisible(false);
 		}
 	}
 
