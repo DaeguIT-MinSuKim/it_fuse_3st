@@ -88,14 +88,10 @@ public class LoginPanel extends JPanel implements ActionListener {
 
 	public boolean isEmpty() {
 		boolean result = false;
-		for (Component c : getComponents()) {
-			if (c instanceof TextFiledPanel) {
-				TextFiledPanel tfp = (TextFiledPanel) c;
-				if (tfp.isEmpty()) {
-					return true;
-				}
-			}
+		if(pID.getTfValue().equals("")){
+			return true;
 		}
+
 		return false;
 
 	}
