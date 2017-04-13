@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import kr.or.dgit.donghun2.employeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.initSetting.InitSettingService;
 
 public class HomePanel extends JPanel implements ActionListener{
@@ -19,6 +20,7 @@ public class HomePanel extends JPanel implements ActionListener{
 	private InitSettingService initSettingService;
 	
 	public HomePanel() {
+		EmployeeChartPanel ecp = new EmployeeChartPanel();
 		JPanel panel = new JPanel();
 		add(panel);
 		bBackup = new JButton("백업");
@@ -39,7 +41,6 @@ public class HomePanel extends JPanel implements ActionListener{
 	    label.setHorizontalAlignment(JLabel.CENTER);
 	    pImage.add(label);
 	    pHello.add(pImage);
-		
 	}
 
 	@Override

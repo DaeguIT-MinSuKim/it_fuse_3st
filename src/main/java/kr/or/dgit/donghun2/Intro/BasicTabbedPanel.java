@@ -55,7 +55,6 @@ public class BasicTabbedPanel extends JTabbedPane implements ChangeListener{
 	   
 	   pCustomerManage = new JPanel();
 	   addTab("거래처관리", null, pCustomerManage, null);
-	   
    }
 
 

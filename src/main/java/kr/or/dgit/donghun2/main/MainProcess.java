@@ -15,7 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import erp_myframework.TextFiledPanel;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
 import kr.or.dgit.donghun2.dto.Login;
+import kr.or.dgit.donghun2.employeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.service.LoginService;
 import kr.or.dgit.donghun2.view.JoinView;
 import kr.or.dgit.donghun2.view.MainFrame;
@@ -50,7 +53,6 @@ public class MainProcess extends JFrame {
 				}
 			}
 		});
-
 	}
 
 	public MainProcess() {
@@ -67,7 +69,6 @@ public class MainProcess extends JFrame {
 
 		// add
 		add(panel);
-
 	}
 
 	public void placeLoginPanel(JPanel panel) {

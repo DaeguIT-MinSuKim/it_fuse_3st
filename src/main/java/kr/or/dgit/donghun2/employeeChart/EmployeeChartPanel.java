@@ -22,7 +22,7 @@ public class EmployeeChartPanel extends JPanel{
 		Platform.runLater(new Runnable() {
 	        @Override
 	        public void run() {
-	            initFX(jfxPanel);
+	        	initFX(jfxPanel);
 	        }
 	   });
 	}
