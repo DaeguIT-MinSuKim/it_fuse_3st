@@ -44,6 +44,7 @@ public class ChartController implements Initializable{
       List<CalculatedValue> list = CalculatedValueService.getInstance().selectCalculatedValueByEmployeeChart();
       int[] arraySaleAmount = new int[employeeNameList.size()];
 //
+      
       for (int i=0; i< list.size(); i++){
          //인자로 받은 list의 i번째 인자의 수량과 클라이언트
          int amount = list.get(i).getSellprice();
