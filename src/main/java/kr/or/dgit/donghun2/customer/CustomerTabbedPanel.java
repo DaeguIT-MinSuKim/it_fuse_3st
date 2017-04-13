@@ -77,11 +77,12 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 			return;
 		}else if (res.isIsexist() == false) {
 			JOptionPane.showMessageDialog(null, "퇴사한 회원입니다.");
+			pCusp.clear();
 			return;
 		} else {
 			JOptionPane.showMessageDialog(null, res);
 			pCusp.setObject(res);
-			pCusp.clear();
+		//	pCusp.clear();
 		}
 	}
 

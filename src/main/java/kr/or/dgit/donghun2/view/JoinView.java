@@ -69,6 +69,9 @@ public class JoinView extends JFrame implements ActionListener {
 		if (pJoin.isEmptyCheck()) {
 			JOptionPane.showMessageDialog(null, "빈 칸이 있습니다.");
 			return;
+		}else if(dao.getInstance().selectLoginById(pJoin.getObject())!=null){
+			JOptionPane.showMessageDialog(null, "이미 존재하는 아이디입니다.");
+			return;
 		} else if (checkId() == false) {
 			JOptionPane.showMessageDialog(null, "정확하게 아이디를 입력하세요.");
 			return;

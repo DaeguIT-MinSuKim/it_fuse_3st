@@ -73,7 +73,7 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 		  } else {
 	         JOptionPane.showMessageDialog(null, res);
 	         pProp.setObject(res);
-	         pProp.clear();
+	       //  pProp.clear();
 	      }
 	}
 

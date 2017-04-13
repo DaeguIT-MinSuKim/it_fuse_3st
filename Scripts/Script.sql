@@ -220,19 +220,13 @@ select * from customer;
 -- drop table login;
 -- 로그인
 CREATE TABLE donghun2.Login (
-	id       VARCHAR(12) NOT NULL, -- 아이디
+	id       VARCHAR(12) NOT null primary key, -- 아이디
 	password char(50) NOT NULL, -- 비밀번호
 	email    VARCHAR(50) NOT null, -- 이메일
 	grade	boolean not null
 );
 
--- 로그인
-ALTER TABLE donghun2.Login
-	ADD CONSTRAINT PK_Login -- 로그인 기본키
-		PRIMARY KEY (
-			id -- 아이디
-		);
-insert into login(id, password, email, grade) values('A001',password('1234'),'ehdgnsdms321@naver.com',true);
+insert into login(id, password, email, grade) values('admin',password('admin123'),'admin123@naver.com',true);
 
 select quantity, p.name pname
 		from vw_calculate_sellInfo vw
@@ -245,6 +239,3 @@ select quantity, p.name pname
 select code, name, grade,isexist from Employee order by code desc;
 select * from login;
 
-
-select * from vw_infobyproduct;
-select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct from vw_infobyproduct where pcode='P001';

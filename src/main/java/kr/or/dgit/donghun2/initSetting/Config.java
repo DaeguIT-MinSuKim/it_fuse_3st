@@ -60,7 +60,12 @@ public class Config {
 			+ "	CONSTRAINT FK_sellInfo		"
 			+ "		FOREIGN KEY (ecode) REFERENCES  employee (code),"
 			+ "		FOREIGN KEY (pcode) REFERENCES  product (code),"
-			+ "		FOREIGN KEY (ccode)	REFERENCES  customer (code)		) "	
+			+ "		FOREIGN KEY (ccode)	REFERENCES  customer (code)		) "	,
+			"CREATE TABLE donghun2.Login ("
+			+ "	id       VARCHAR(12) NOT null primary key, "
+			+ "	password char(50) NOT NULL, "
+			+ "	email    VARCHAR(50) NOT null, "
+			+ "	grade	boolean not null)"
 			
 	};
 

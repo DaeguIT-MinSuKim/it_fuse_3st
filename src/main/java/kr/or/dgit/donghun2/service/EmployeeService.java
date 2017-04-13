@@ -59,10 +59,10 @@ public class EmployeeService {
 	}
 	
 	
-	public Employee selectEmployeeByNo(Employee code){
+	public Employee selectEmployeeByNo(Employee item){
 		log.debug("selectEmployeeByNo()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
-			Employee employee = sqlSession.getMapper(EmployeeMapper.class).selectEmployeeByNo(code);
+			Employee employee = sqlSession.getMapper(EmployeeMapper.class).selectEmployeeByNo(item);
 			return employee;
 		}
 	}
