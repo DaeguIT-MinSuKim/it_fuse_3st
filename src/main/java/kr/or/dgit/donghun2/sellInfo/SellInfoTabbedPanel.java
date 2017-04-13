@@ -54,7 +54,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 
 		pEmployeeForCombo = new ComboPanel<>();
 		pEmployeeForCombo.setLayout(new GridLayout(0, 1, 0, 0));
-		pEmployeeForCombo.setTitle("     사        원       ");
+		pEmployeeForCombo.setTitle("     사        원        ");
 		pEmployeeForCombo.setLayout(new BoxLayout(pEmployeeForCombo, BoxLayout.X_AXIS));
 		pEmployeeForCombo.setStringcomboData("사원을 선택해주세요.");
 		panel.add(pEmployeeForCombo);
@@ -73,7 +73,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 
 		pProductForCombo = new ComboPanel<>();
 
-		pProductForCombo.setTitle("     제        품       ");
+		pProductForCombo.setTitle("     제        품        ");
 		pProductForCombo.setLayout(new BoxLayout(pProductForCombo, BoxLayout.X_AXIS));
 		pProductForCombo.setStringcomboData("제품을 선택해주세요.");
 		panel.add(pProductForCombo);
@@ -91,7 +91,7 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 
 		pCustomerForCombo = new ComboPanel<>();
 
-		pCustomerForCombo.setTitle("     거  래  처       ");
+		pCustomerForCombo.setTitle("     거  래  처        ");
 		pCustomerForCombo.setLayout(new BoxLayout(pCustomerForCombo, BoxLayout.X_AXIS));
 		pCustomerForCombo.setStringcomboData("거래처를 선택해주세요.");
 		panel.add(pCustomerForCombo);

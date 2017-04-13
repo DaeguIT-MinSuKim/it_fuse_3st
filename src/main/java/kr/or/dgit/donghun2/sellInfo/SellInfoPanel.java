@@ -51,17 +51,17 @@ public class SellInfoPanel extends JPanel {
 		contentPanel.setLayout(new GridLayout(0, 1, 0, 10));
 
 		pScode = new TextFiledPanel();
-		pScode.setTitle("거래내역코드    ");
+		pScode.setTitle("  거래내역코드   ");
 		contentPanel.add(pScode);
 		pScode.setLayout(new BoxLayout(pScode, BoxLayout.X_AXIS));
 
 		pSaleDate = new TextFiledPanel();
-		pSaleDate.setTitle("거  래  일  자      ");
+		pSaleDate.setTitle("  거  래  일  자     ");
 		contentPanel.add(pSaleDate);
 		pSaleDate.setLayout(new BoxLayout(pSaleDate, BoxLayout.X_AXIS));
 
 		pQuantity = new TextFiledPanel();
-		pQuantity.setTitle("판  매  수  량      ");
+		pQuantity.setTitle("  판  매  수  량     ");
 		contentPanel.add(pQuantity);
 		pQuantity.setLayout(new BoxLayout(pQuantity, BoxLayout.X_AXIS));
 
@@ -69,17 +69,17 @@ public class SellInfoPanel extends JPanel {
 		pQuantity.add(btnOk);
 
 		pUnPrice = new TextFiledPanel();
-		pUnPrice.setTitle("판  매  단  가      ");
+		pUnPrice.setTitle("  판  매  단  가     ");
 		contentPanel.add(pUnPrice);
 		pUnPrice.setLayout(new BoxLayout(pUnPrice, BoxLayout.X_AXIS));
 
 		pSellPrice = new TextFiledPanel();
-		pSellPrice.setTitle("판  매  금  액      ");
+		pSellPrice.setTitle("  판  매  금  액     ");
 		contentPanel.add(pSellPrice);
 		pSellPrice.setLayout(new BoxLayout(pSellPrice, BoxLayout.X_AXIS));
 
 		pDisPrice = new TextFiledPanel();
-		pDisPrice.setTitle("할  인  금  액      ");
+		pDisPrice.setTitle("  할  인  금  액     ");
 		contentPanel.add(pDisPrice);
 		pDisPrice.setLayout(new BoxLayout(pDisPrice, BoxLayout.X_AXIS));
 
