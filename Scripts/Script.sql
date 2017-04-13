@@ -10,7 +10,7 @@ create table egrade(	-- 사원 등급 테이블이구요
 INSERT INTO egrade	-- 사원 등급 테이블에 A등급3%B등급2%C등급3%로 인써트.
 (grade, dispct)
 VALUES('A', 3),('B',2),('C',1);
-
+		
 
 CREATE TABLE employee (	-- 사원 테이블
 	code  CHAR(4)  NOT NULL COMMENT '사원코드' PRIMARY KEY, 
