@@ -161,7 +161,8 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedbtnSave(ActionEvent e) {
-
+		
+		
 		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
 
 		Product pRes = (Product) pProductForCombo.getSelectItem();
@@ -204,6 +205,12 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 	}
 
 	private void actionPerformedBtnOK(ActionEvent e) {
+		if(pEmployeeForCombo.getSelectItem().equals("사원을 선택해주세요.")||
+				pProductForCombo.getSelectItem().equals("제품을 선택해주세요.")||
+				pCustomerForCombo.getSelectItem().equals("거래처를 선택해주세요.")){
+			JOptionPane.showMessageDialog(null, "사원,제품,거래처를 선택하였는지 확인해주세요.");
+			return;
+		}
 		Employee eRes = (Employee) pEmployeeForCombo.getSelectItem();
 		Product pRes = (Product) pProductForCombo.getSelectItem();
 		Customer cRes = (Customer) pCustomerForCombo.getSelectItem();
@@ -214,18 +221,8 @@ public class SellInfoTabbedPanel extends JPanel implements ActionListener {
 			ne.getStackTrace();
 
 		}
-		/*
-		 * if (eRes.getCode() == null) { JOptionPane.showMessageDialog(null,
-		 * "사원을 선택 하십시오."); }else if(pRes.getCode()==null){
-		 * JOptionPane.showMessageDialog(null, "제품을 선택 하십시오."); } else
-		 * if(cRes.getCode()==null){ JOptionPane.showMessageDialog(null,
-		 * "거래처를 선택 하십시오."); }
-		 */
-		if (eRes.getCode() == null || pRes.getCode() == null || cRes.getCode() == null) {
-			JOptionPane.showMessageDialog(null, "사원, 제품, 거래처를 모두 선택 했는지 확인해주세요");
-		}
 		if (pSellInfoA.getObjectDateQuantity().getQuantity() <= 0) {
-			JOptionPane.showMessageDialog(null, "양수를 입력하세요");
+			JOptionPane.showMessageDialog(null, "판매수량을 양수로 입력하시오.");
 		} else {
 			int unitprice = 0;
 			int sellprice = 0;

@@ -84,10 +84,10 @@ public class CustomerSellInfoTable extends JPanel {
 		int disprice=0;
 		int marginprice=0;
 		for(int i=0;i<calculatedValues.size();i++){
-			quantity = calculatedValues.get(i).getSellinfo().getQuantity();
-			sellprice = calculatedValues.get(i).getSellprice();
-			disprice = calculatedValues.get(i).getDisprice();
-			marginprice = calculatedValues.get(i).getMarginprice();
+			quantity += calculatedValues.get(i).getSellinfo().getQuantity();
+			sellprice += calculatedValues.get(i).getSellprice();
+			disprice += calculatedValues.get(i).getDisprice();
+			marginprice += calculatedValues.get(i).getMarginprice();
 		}
 		return new int[]{quantity,sellprice,disprice,marginprice};
 	}

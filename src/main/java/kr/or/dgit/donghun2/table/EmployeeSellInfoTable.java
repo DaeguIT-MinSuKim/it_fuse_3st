@@ -78,8 +78,8 @@ public class EmployeeSellInfoTable extends JPanel {
 		int sellprice=0;
 		int marginprice=0;
 		for(int i = 0; i < calculatedValues.size(); i++){
-			sellprice = calculatedValues.get(i).getSellprice();
-			marginprice= calculatedValues.get(i).getMarginprice();
+			sellprice += calculatedValues.get(i).getSellprice();
+			marginprice += calculatedValues.get(i).getMarginprice();
 		}
 		return new int[]{sellprice,marginprice};
 
