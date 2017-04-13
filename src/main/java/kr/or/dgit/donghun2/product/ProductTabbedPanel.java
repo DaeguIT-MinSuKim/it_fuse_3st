@@ -64,12 +64,13 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 
 	private void actionPerformedPbtnSearch(ActionEvent e) {
 		  Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
-	      if(res.isIsexist()==false){
-	    	  JOptionPane.showMessageDialog(null, "삭제된 제품입니다.");
-	    	  pProp.clear();
-	      }else if (res == null) {
-	         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
-	      } else {
+		  if (res == null) {
+		         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+		         pProp.clear();
+		  } else if(res.isIsexist()==false){
+		    	  JOptionPane.showMessageDialog(null, "삭제된 제품입니다.");
+		    	  pProp.clear();
+		  } else {
 	         JOptionPane.showMessageDialog(null, res);
 	         pProp.setObject(res);
 	         pProp.clear();
@@ -80,8 +81,14 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 
 	private void actionPerformedPBtnDele(ActionEvent e) {
 		Product res = pdao.getInstance().selectProductByNo(pProp.getObject());
-		if(res.isIsexist()==false){
+		if(res==null){
+			JOptionPane.showMessageDialog(null, "삭제할 제품이 없습니다.");
+			pProp.clear();
+			return;
+		}
+		else if(res.isIsexist()==false){
 			JOptionPane.showMessageDialog(null, "이미 삭제된 제품입니다.");
+			pProp.clear();
 			return;
 		}else{ 
 			if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_OPTION){

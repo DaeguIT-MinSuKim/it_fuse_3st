@@ -10,6 +10,7 @@ import kr.or.dgit.donghun2.customer.CustomerConditionPanel;
 import kr.or.dgit.donghun2.customer.CustomerSellInfoPanel;
 import kr.or.dgit.donghun2.employee.EmployeeConditionPanel;
 import kr.or.dgit.donghun2.employee.EmployeeSellInfoPanel;
+import kr.or.dgit.donghun2.product.ProductConditionPanel;
 import kr.or.dgit.donghun2.product.ProductSellInfoPanel;
 import kr.or.dgit.donghun2.table.ProductTable;
 
@@ -32,7 +33,7 @@ public class InquiryPanel extends JPanel {
       pEmpCon.setLayout(new BoxLayout(pEmpCon, BoxLayout.Y_AXIS));
       tabbedPane.addTab("영업사원현황", null, pEmpCon, null);
       
-      ProductTable pProCon = new ProductTable();
+      ProductConditionPanel pProCon = new ProductConditionPanel();
       pProCon.setLayout(new BoxLayout(pProCon, BoxLayout.Y_AXIS));
       tabbedPane.addTab("제품현황", null, pProCon, null);
       

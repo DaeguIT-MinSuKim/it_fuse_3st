@@ -187,8 +187,17 @@ select ccode, cname, quantity, sellprice, disprice, marginprice, marginpct from 
 
 select  ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
 		from vw_infobyproduct 
-		where pcode='P002';
+		where pcode='P001';
+		
+select  ccode, cname, quantity, sellprice, disprice, marginprice, marginpct
+		from vw_infobyproduct 
+		where pcode='P004';
 
+select s.pcode pcode, s.ccode, c.name cname,
+		quantity, sellprice, disprice, marginprice, marginpct
+		from vw_calculate_sellInfo vw join sellinfo s on vw.scode= s.scode join customer c on s.ccode = c.code
+		order by pcode asc;
+		
 -- drop view vw_InfoByEmployee;
 create view vw_InfoByEmployee as
 select e.code ecode, e.name ename, saledate,sellprice, marginprice, marginpct

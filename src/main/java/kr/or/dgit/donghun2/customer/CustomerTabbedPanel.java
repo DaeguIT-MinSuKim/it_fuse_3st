@@ -71,10 +71,13 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 
 	private void actionPerformedCbtnSearch(ActionEvent e) {
 		Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
-		if (res.isIsexist() == false) {
-			JOptionPane.showMessageDialog(null, "퇴사한 회원입니다.");
-		} else if (res == null) {
+		if (res == null) {
 			JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
+			pCusp.clear();
+			return;
+		}else if (res.isIsexist() == false) {
+			JOptionPane.showMessageDialog(null, "퇴사한 회원입니다.");
+			return;
 		} else {
 			JOptionPane.showMessageDialog(null, res);
 			pCusp.setObject(res);
@@ -84,8 +87,14 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 
 	private void actionPerformedCBtnDele(ActionEvent e) {
 		Customer res = cdao.getInstance().selectCustomerByNo(pCusp.getObject());
-		if (res.isIsexist() == false) {
+		if(res==null){
+			JOptionPane.showMessageDialog(null, "삭제 할 거래처가 없습니다.");
+			pCusp.clear();
+			return;
+		}else if (res.isIsexist() == false) {
 			JOptionPane.showMessageDialog(null, "삭제된 거래처입니다.");
+			pCusp.clear();
+			return;
 		} else {
 			if (JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?") == JOptionPane.YES_NO_OPTION) {
 

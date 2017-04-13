@@ -9,6 +9,7 @@ import javax.swing.JTabbedPane;
 import kr.or.dgit.donghun2.customer.CustomerConditionPanel;
 import kr.or.dgit.donghun2.customer.CustomerSellInfoPanel;
 import kr.or.dgit.donghun2.employee.EmployeeSellInfoPanel;
+import kr.or.dgit.donghun2.product.ProductConditionPanel;
 import kr.or.dgit.donghun2.product.ProductSellInfoPanel;
 import kr.or.dgit.donghun2.table.ProductTable;
 
@@ -27,7 +28,7 @@ public class UnitInquiryPanel extends JPanel {
       tabbedPane = new JTabbedPane(JTabbedPane.TOP);
       add(tabbedPane);
       
-      ProductTable pProCon = new ProductTable();
+      ProductConditionPanel pProCon = new ProductConditionPanel();
       pProCon.setLayout(new BoxLayout(pProCon, BoxLayout.Y_AXIS));
       tabbedPane.addTab("제품현황", null, pProCon, null);
       
