@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import kr.or.dgit.donghun2.customerChart.CustomerChartPanel;
 import kr.or.dgit.donghun2.employeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.initSetting.InitSettingService;
 

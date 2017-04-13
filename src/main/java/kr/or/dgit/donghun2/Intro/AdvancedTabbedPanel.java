@@ -65,7 +65,7 @@ public class AdvancedTabbedPanel extends JTabbedPane implements ChangeListener{
 		} else if(this.getTitleAt(selectedIndex).equals("영업사원 별 거래내역 현황 차트")){
 			pECP.setLayout(new BoxLayout(pECP, BoxLayout.Y_AXIS));
 			if(pECPTabbedPanel != null){
-				pPCP.removeAll();
+				pECP.removeAll();
 			}
 			pECPTabbedPanel = new EmployeeChartPanel();
 			pECP.add(pECPTabbedPanel);
