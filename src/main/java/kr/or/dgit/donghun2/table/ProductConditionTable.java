@@ -78,7 +78,9 @@ public class ProductConditionTable extends JPanel {
 		String[][] datas = new String[products.size()][];
 		for (int i = 0; i < datas.length; i++) {
 			if (products.get(i).isIsexist()) {
+				
 				datas[i] = products.get(i).toArray();
+				System.out.println(datas[i]);
 			}
 		}
 		return datas;
