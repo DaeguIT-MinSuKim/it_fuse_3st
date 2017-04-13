@@ -15,9 +15,10 @@ public class UnitAdvancedTabbedPanel extends JTabbedPane implements ChangeListen
 
 	private SellInfoTabbedPanel pSellInfoTabbedPanel;
 	private JPanel pSellInfo;
-	private EmployeeChartPanel pECP;
-	private ProductChartPanel pPCP;
-	private CustomerChartPanel pCCP;
+	private JPanel pPCP;
+	private JPanel pCCP;
+	private ProductChartPanel pPCPTabbedPanel;
+	private CustomerChartPanel pCCPTabbedPanel;
 	/**
 	 * Create the panel.
 	 */
@@ -34,19 +35,43 @@ public class UnitAdvancedTabbedPanel extends JTabbedPane implements ChangeListen
 			}
 		pSellInfo.add(pSellInfoTabbedPanel);
 		
-		pECP = new EmployeeChartPanel();
-		addTab("영업사원 별 거래내역 현황 차트", null, pECP, null);
-		
-		pPCP = new ProductChartPanel();
+		pPCP = new JPanel();
 		addTab("제품 별 거래내역 현황 차트", null, pPCP, null);
 		
-		pCCP = new CustomerChartPanel();
+		pCCP = new JPanel();
 		addTab("거래처 별 거래내역 현황 차트", null,pCCP, null);
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		
+		if(e.getSource()==this){
+			stateChangedThis(this.getSelectedIndex());
+		}
+	}
+
+	private void stateChangedThis(int selectedIndex) {
+		if(this.getTitleAt(selectedIndex).equals("영업사원등록")){
+			pSellInfo.setLayout(new BoxLayout(pSellInfo, BoxLayout.Y_AXIS));
+			if(pSellInfoTabbedPanel != null){
+				pSellInfo.removeAll();
+			}
+			pSellInfoTabbedPanel = new SellInfoTabbedPanel();
+			pSellInfo.add(pSellInfoTabbedPanel);
+		}  else if(this.getTitleAt(selectedIndex).equals("제품 별 거래내역 현황 차트")){
+			pPCP.setLayout(new BoxLayout(pPCP, BoxLayout.Y_AXIS));
+			if(pPCPTabbedPanel != null){
+				pPCP.removeAll();
+			}
+			pPCPTabbedPanel = new ProductChartPanel();
+			pPCP.add(pPCPTabbedPanel);
+		}  else if(this.getTitleAt(selectedIndex).equals("거래처 별 거래내역 현황 차트")){
+			pCCP.setLayout(new BoxLayout(pCCP, BoxLayout.Y_AXIS));
+			if(pCCPTabbedPanel != null){
+				pCCP.removeAll();
+			}
+			pCCPTabbedPanel = new CustomerChartPanel();
+			pCCP.add(pCCPTabbedPanel);
+		} 
 	}
 
 		

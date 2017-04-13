@@ -90,8 +90,8 @@
 		from vw_calculate_sellInfo vw
 		join sellinfo s
 		on vw.scode = s.scode
-		join product c
-		on s.pcode=c.code
+		join customer c
+		on s.ccode=c.code
 	</select>
 	
 	
