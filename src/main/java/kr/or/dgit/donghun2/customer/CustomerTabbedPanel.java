@@ -82,7 +82,7 @@ public class CustomerTabbedPanel extends JPanel implements ActionListener {
 		} else {
 			JOptionPane.showMessageDialog(null, res);
 			pCusp.setObject(res);
-		//	pCusp.clear();
+			pCusp.clear();		// 다음 데이터 검색시 중복오류 나지 않게 하기 위함입니다.
 		}
 	}
 

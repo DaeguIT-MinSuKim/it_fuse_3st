@@ -76,7 +76,7 @@ public class EmployeeTabbedPanel extends JPanel implements ActionListener {
 		} else if (res != null) {
 			JOptionPane.showMessageDialog(null, res);
 			pEmpp.setObject(res);
-		//	pEmpp.clear();
+			pEmpp.clear();
 		}
 	}
 

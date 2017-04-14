@@ -7,7 +7,12 @@
 			<result property="grade" column="cgrade"/>
 			<association property="cGrade" resultMap="kr.or.dgit.donghun2.dao.CgradeMapper.CgradeResult"/>
 		</resultMap>
-
+	<sql id="whereSql">
+		<where>
+			<if test="code !=null">code=#{code}</if>
+			<if test="name !=null">or name=#{name}</if>
+		</where>
+	</sql>
 
 
 	<select id="selectDiscnt" parameterType="Customer" resultMap="CustomerResult">
@@ -42,7 +47,10 @@
 	where code=#{code} 
 	</update>
 	
-	<select parameterType="Customer" id="selectCustomerByNo" resultType="Customer"> select code, name, grade,isexist from customer where code=#{code}; </select>
+	<select parameterType="Customer" id="selectCustomerByNo" resultType="Customer"> 
+	select code, name, grade,isexist from customer 
+	<include refid="whereSql"></include>
+	</select>
 
 </mapper>
 

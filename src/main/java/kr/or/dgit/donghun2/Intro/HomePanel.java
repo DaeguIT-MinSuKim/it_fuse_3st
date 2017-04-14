@@ -21,7 +21,7 @@ public class HomePanel extends JPanel implements ActionListener{
 	private InitSettingService initSettingService;
 	
 	public HomePanel() {
-		EmployeeChartPanel ecp = new EmployeeChartPanel();
+	//	EmployeeChartPanel ecp = new EmployeeChartPanel();
 		JPanel panel = new JPanel();
 		add(panel);
 		bBackup = new JButton("백업");

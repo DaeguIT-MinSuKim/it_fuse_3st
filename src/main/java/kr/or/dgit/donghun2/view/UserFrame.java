@@ -18,6 +18,7 @@ import kr.or.dgit.donghun2.Intro.UnitAdvancedTabbedPanel;
 import kr.or.dgit.donghun2.Intro.UnitBasicTabbedPanel;
 import kr.or.dgit.donghun2.Intro.UnitHomePanel;
 import kr.or.dgit.donghun2.Intro.UnitInquiryPanel;
+import kr.or.dgit.donghun2.employeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.main.MainProcess;
 
 @SuppressWarnings("serial")
@@ -35,6 +36,7 @@ public class UserFrame extends JFrame implements ActionListener{
 
 
 	public UserFrame() {
+		EmployeeChartPanel ecp = new EmployeeChartPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 700);
 		contentPane = new JPanel();

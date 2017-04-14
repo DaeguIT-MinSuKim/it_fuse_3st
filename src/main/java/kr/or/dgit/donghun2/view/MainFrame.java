@@ -17,6 +17,7 @@ import kr.or.dgit.donghun2.Intro.AdvancedTabbedPanel;
 import kr.or.dgit.donghun2.Intro.BasicTabbedPanel;
 import kr.or.dgit.donghun2.Intro.HomePanel;
 import kr.or.dgit.donghun2.Intro.InquiryPanel;
+import kr.or.dgit.donghun2.employeeChart.EmployeeChartPanel;
 import kr.or.dgit.donghun2.main.MainProcess;
 
 @SuppressWarnings("serial")
@@ -36,6 +37,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	private JButton btnHome;
 	
 	public MainFrame() {
+		EmployeeChartPanel ecp = new EmployeeChartPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 700);
 		contentPane = new JPanel();

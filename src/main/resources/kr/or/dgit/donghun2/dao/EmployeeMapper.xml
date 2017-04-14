@@ -2,12 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.donghun2.dao.EmployeeMapper">
 
+
 	<resultMap type="Employee" id="EmployeeResult">
-		<id property="code" column="ecode"/>
-		<result property="name" column="ename"/>		
-		<result property="grade" column="egrade"/>
-		<association property="eGrade" resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult"/>
+		<id property="code" column="ecode" />
+		<result property="name" column="ename" />
+		<result property="grade" column="egrade" />
+		<association property="eGrade"
+			resultMap="kr.or.dgit.donghun2.dao.EgradeMapper.EgradeResult" />
 	</resultMap>
+
+	<sql id="whereSql">
+		<where>
+			<if test="code !=null">code=#{code}</if>
+			<if test="name !=null">or name=#{name}</if>
+		</where>
+	</sql>
 
 	<select id="selectDiscnt" parameterType="Employee" resultMap="EmployeeResult">
 		select dispct from egrade eg join employee e
@@ -16,36 +25,42 @@
 	</select>
 
 
-	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code, name, grade, isexist) values(#{code},#{name},#{grade},true) </insert>
-	
-	<select id="selectEmployeeByAllDesc" resultType="Employee"> select code, name, grade,isexist from Employee order by code desc</select>
+	<insert parameterType="Employee" id="insertEmployee"> insert into Employee(code,
+		name, grade, isexist) values(#{code},#{name},#{grade},true) </insert>
+
+	<select id="selectEmployeeByAllDesc" resultType="Employee"> select code,
+		name, grade,isexist from Employee order by code desc</select>
 	<select id="selectEmployeeByAll" resultType="Employee">
-		select code, name, grade,isexist from Employee
+		select code, name,
+		grade,isexist from Employee
 	</select>
-	
+
 	<update parameterType="Employee" id="updateEmployee">
-		update Employee 
-	<set>
-	
-	<if test="code !=null">code=#{code},</if>
-	
-	<if test="name !=null">name=#{name},</if>
-	
-	<if test="grade !=null">grade=#{grade}</if>
-	
-	</set>
-	where code = #{code} 
+		update Employee
+		<set>
+
+			<if test="code !=null">code=#{code},</if>
+
+			<if test="name !=null">name=#{name},</if>
+
+			<if test="grade !=null">grade=#{grade}</if>
+
+		</set>
+		where code = #{code}
 	</update>
-	
-	<update parameterType="Employee" id="deleteEmployee"> 
-	update Employee 
-	set isexist = false
-	where code=#{code} </update>
-	
-	<select parameterType="Employee" id="selectEmployeeByNo" resultType="Employee"> 
-	select code, name, grade,isexist from Employee 
-	<if test="code !=null">code=#{code},</if>
-	<if test="name !=null">name=#{name},</if>
-	 </select>
+
+	<update parameterType="Employee" id="deleteEmployee">
+		update Employee
+		set isexist = false
+		where code=#{code}
+	</update>
+
+	<select parameterType="Employee" id="selectEmployeeByNo"
+		resultType="Employee">
+		select code, name, grade,isexist from Employee
+		<include refid="whereSql"/>
+	</select>
+
+
 </mapper>
 

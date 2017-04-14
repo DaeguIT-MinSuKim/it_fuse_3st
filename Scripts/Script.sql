@@ -136,18 +136,18 @@ CREATE TABLE  sellInfo (		-- 거래내역 테이블
 drop view if exists vw_calculate_sellInfo;
 
 create view vw_calculate_sellInfo as
-
 select s.scode,e.code ecode, p.code pcode, c.code ccode,
- (s.saleprice * (1-((eg.dispct+cg.dispct)*0.01))) as unitPrice,-- 1000 * 0.93
--- 판매정가  * (1-(사원등급할인율+거래처등급할인율)*0.01) = 판매단가 (930)
+ (s.saleprice * (1-((eg.dispct+cg.dispct)*0.01))) as unitPrice,
+-- 판매정가  * (1-(사원등급할인율+거래처등급할인율)*0.01) = 판매단가 		:930
  ((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity as sellPrice,
--- 판매단가*판매수량  = 판매금액(93000)
+-- 판매단가*판매수량  = 판매금액							 :93000
  (s.saleprice) * (quantity) -  (((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity) as disprice,
--- 판매정가*판매수량-판매금액  = 할인금액- (100000 - 93000= 7000
+-- 판매정가*판매수량-판매금액  = 할인금액 					:100000 - 93000= 7000
  (((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity) - (s.origiprice * quantity) as marginprice,
--- 판매금액-(판매원가*판매수량) = 마진액 93000-(50000) == 43000
- ROUND( ((((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity) - (s.origiprice * quantity))/(((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity)*100 ,1) as marginPct
--- 마진액/판매금액*100 = 마진율 // 소수 둘째자리에서 반올림해서 첫째자리까지 표시
+-- 판매금액-(판매원가*판매수량) = 마진액					 :93000-(50000) == 43000
+ ROUND( ((((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity) - (s.origiprice * quantity))/
+ (((s.saleprice * (1-((eg.dispct+cg.dispct)*0.01)))) * quantity)*100 ,1) as marginPct
+-- 마진액/판매금액*100 = 마진율   : 소수 둘째자리에서 반올림해서 첫째자리까지 표시
 from sellinfo s 
 join employee e on s.ecode= e.code 
 join egrade eg on eg.grade=e.grade

@@ -116,7 +116,7 @@ public class InitSettingService {
 		try {
 			Connection con = DBCon.getConnection(Config.URL+Config.DB_NAME,Config.USER,Config.PWD);
 			stmt = con.createStatement();
-			stmt.execute(sql);
+			stmt.execute(sql);		// 복원할 데이터 없는 경우 fileNotFound Exception뜸.
 			System.out.println(sql);
 			System.out.printf("Import Table(%s) %d Rows Success! %n",tableName, stmt.getUpdateCount());
 		} catch (SQLException e) {

@@ -7,7 +7,7 @@ public class Config {
 	public static final String URL    = "jdbc:mysql://localhost:3306/";
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
 	
-	public static final String[] TABLE_NAME = {"egrade","employee","product","cgrade","customer","sellinfo"};
+	public static final String[] TABLE_NAME = {"egrade","employee","product","cgrade","customer","sellinfo","Login"};
 	
 	public static final String[] CREATE_SQL_TABLE={
 			//영업사원 등급
@@ -61,7 +61,8 @@ public class Config {
 			+ "		FOREIGN KEY (ecode) REFERENCES  employee (code),"
 			+ "		FOREIGN KEY (pcode) REFERENCES  product (code),"
 			+ "		FOREIGN KEY (ccode)	REFERENCES  customer (code)		) "	,
-			"CREATE TABLE donghun2.Login ("
+			//로그인테이블
+			"CREATE TABLE Login ("
 			+ "	id       VARCHAR(12) NOT null primary key, "
 			+ "	password char(50) NOT NULL, "
 			+ "	email    VARCHAR(50) NOT null, "

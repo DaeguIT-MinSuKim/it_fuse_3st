@@ -9,10 +9,16 @@
 		<result property="isexist" column="isexist"/>
 	</resultMap>
 	
+
+	
 	<sql id="selectSql">SELECT code,name,salePrice,origiPrice,isexist FROM Product </sql>
 	<sql id="selectSqlForSellInfo">SELECT code,name,salePrice,isexist FROM Product </sql>
-	<sql id="whereSql"><where><if test="code !=null">code = #{code}</if></where></sql>
-	
+	<sql id="whereSql">
+		<where>
+			<if test="code !=null">code=#{code}</if>
+			<if test="name !=null">or name=#{name}</if>
+		</where>
+	</sql>	
 	<select id="selectProductByAll" resultType="Product">
 		<include refid="selectSql"/>
 		order by code asc;
@@ -47,7 +53,7 @@
 		<include refid="whereSql"/>
 	</update> 
  	<select id="selectProductByNo" parameterType="Product" resultType="Product"> 
-		<include refid="selectSql"></include>
+		<include refid="selectSql"/>
 		<include refid="whereSql"/>
 	</select>
 	
