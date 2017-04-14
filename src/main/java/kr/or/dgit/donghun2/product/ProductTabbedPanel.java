@@ -68,7 +68,7 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 		         JOptionPane.showMessageDialog(null, "검색결과가 없습니다.");
 		         pProp.clear();
 		  } else if(res.isIsexist()==false){
-		    	  JOptionPane.showMessageDialog(null, "삭제된 제품입니다.");
+		    	  JOptionPane.showMessageDialog(null, "이미 삭제된 제품입니다.");
 		    	  pProp.clear();
 		  } else {
 	         JOptionPane.showMessageDialog(null, res);
@@ -94,9 +94,9 @@ public class ProductTabbedPanel extends JPanel implements ActionListener{
 			if(JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?")==JOptionPane.YES_OPTION){
 				int pRes = pdao.getInstance().deleteProduct(pProp.getObject());
 			      if (pRes == 0) {
-			         JOptionPane.showMessageDialog(null, "삭제불가");
+			         JOptionPane.showMessageDialog(null, "삭제를 할 수 없습니다.");
 			      } else {
-			    	  JOptionPane.showMessageDialog(null, "삭제완료");
+			    	  JOptionPane.showMessageDialog(null, "삭제 되었습니다.");
 			    	  pProt.loadData();
 				      pProp.clear();
 			      }

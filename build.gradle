@@ -25,8 +25,7 @@ dependencies {
 
 }
 jar{
-	//mainClassName='kr.or.dgit.donghun2.Main.Main'
-	mainClassName='kr.or.dgit.donghun2.view.SellInfoViewA'
+	mainClassName='kr.or.dgit.donghun2.Main.Main'
 	baseName='CustomerMain'
 	appendix='bin'
 	version =1.0

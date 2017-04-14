@@ -3,6 +3,7 @@ package kr.or.dgit.donghun2.product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -60,8 +61,12 @@ public class ProductInsertTabbedPanel extends JPanel implements ActionListener{
 	}
 
 	private void actionPerformedPBtnSave(ActionEvent e) {
+		boolean ProductName = Pattern.matches("^[a-zA-Z가-힣]*$", pProp.getObject().getName());
 		if (pProp.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "공백이 존재");
+			return;
+		}else if(ProductName == false){
+			JOptionPane.showMessageDialog(null, "제품명에는 숫자를 입력 하실 수 없습니다.");
 			return;
 		}
 		if (Integer.parseInt(pProp.getpSalePrice().getTfValue().toString()) <

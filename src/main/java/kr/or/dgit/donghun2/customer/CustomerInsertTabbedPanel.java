@@ -3,6 +3,7 @@ package kr.or.dgit.donghun2.customer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -64,8 +65,13 @@ public class CustomerInsertTabbedPanel extends JPanel implements ActionListener 
 	}
 
 	private void actionPerformedCBtnSave(ActionEvent e) {
+		boolean CustomerName = Pattern.matches("^[a-zA-Z가-힣]*$", pCusp.getObject().getName());
 		 if (pCusp.isEmpty()) {
 	         JOptionPane.showMessageDialog(null, "빈칸이 있습니다.");
+	         return;
+	      }else if(CustomerName==false){
+	    	  JOptionPane.showMessageDialog(null, "거래처명에는 숫자를 입력 하실 수 없습니다.");
+	    	  return;
 	      } else {
 	    	 cdao.getInstance().insertCustomer(pCusp.getObject());
 	         JOptionPane.showMessageDialog(null, "저장되었습니다.");
